@@ -1,0 +1,53 @@
+{
+  "resources/css/app.css": {
+    "file": "assets/app-CTvEJyHQ.css",
+    "src": "resources/css/app.css",
+    "isEntry": true
+  },
+  "resources/images/logos/logo-simple.png": {
+    "file": "assets/logo-simple-CeE6Q00Y.png",
+    "src": "resources/images/logos/logo-simple.png"
+  },
+  "resources/images/logos/swiss-laravel-association.png": {
+    "file": "assets/swiss-laravel-association-atoXTyPS.png",
+    "src": "resources/images/logos/swiss-laravel-association.png"
+  },
+  "resources/images/logos/swiss-laravel-association_red.png": {
+    "file": "assets/swiss-laravel-association_red-C6iIOve1.png",
+    "src": "resources/images/logos/swiss-laravel-association_red.png"
+  },
+  "resources/images/logos/swiss-laravel-association_white.png": {
+    "file": "assets/swiss-laravel-association_white-QaLu_7zS.png",
+    "src": "resources/images/logos/swiss-laravel-association_white.png"
+  },
+  "resources/images/matterhorn.png": {
+    "file": "assets/matterhorn-BbUDBCvh.png",
+    "src": "resources/images/matterhorn.png"
+  },
+  "resources/images/matterhorn_2.png": {
+    "file": "assets/matterhorn_2-C8GRPj9c.png",
+    "src": "resources/images/matterhorn_2.png"
+  },
+  "resources/images/meetup/group-photo.jpeg": {
+    "file": "assets/group-photo-DN-JNVR8.jpeg",
+    "src": "resources/images/meetup/group-photo.jpeg"
+  },
+  "resources/images/meetup/group-selfie.jpeg": {
+    "file": "assets/group-selfie-BC9OlGKu.jpeg",
+    "src": "resources/images/meetup/group-selfie.jpeg"
+  },
+  "resources/images/meetup/laravel-letters.jpeg": {
+    "file": "assets/laravel-letters-B86JNMQN.jpeg",
+    "src": "resources/images/meetup/laravel-letters.jpeg"
+  },
+  "resources/images/meetup/presentation.jpeg": {
+    "file": "assets/presentation-CydwV2iF.jpeg",
+    "src": "resources/images/meetup/presentation.jpeg"
+  },
+  "resources/js/app.js": {
+    "file": "assets/app-z-Rg4TxU.js",
+    "name": "app",
+    "src": "resources/js/app.js",
+    "isEntry": true
+  }
+}
