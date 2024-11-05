@@ -1,3 +1,48 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@layer base {
+    @font-face {
+        font-family: helvetica;
+        font-style: normal;
+        font-weight: 400;
+        src: url(https://fonts.cdnfonts.com/s/14028/Helvetica.woff) format('woff')
+    }
+    @font-face {
+        font-family: helvetica;
+        font-style: italic;
+        font-weight: 400;
+        src: url(https://fonts.cdnfonts.com/s/14028/Helvetica-Oblique.woff) format('woff')
+    }
+    @font-face {
+        font-family: helvetica;
+        font-style: normal;
+        font-weight: 500;
+        src: url(https://fonts.cdnfonts.com/s/14028/helvetica-compressed-5871d14b6903a.woff) format('woff')
+    }
+    @font-face {
+        font-family: helvetica;
+        font-style: normal;
+        font-weight: 700;
+        src: url(https://fonts.cdnfonts.com/s/14028/helvetica-rounded-bold-5871d05ead8de.woff) format('woff')
+    }
+    @font-face {
+        font-family: helvetica;
+        font-style: normal;
+        font-weight: 700;
+        src: url(https://fonts.cdnfonts.com/s/14028/Helvetica-Bold.woff) format('woff')
+    }
+    @font-face {
+        font-family: helvetica;
+        font-style: italic;
+        font-weight: 700;
+        src: url(https://fonts.cdnfonts.com/s/14028/Helvetica-BoldOblique.woff) format('woff')
+    }
+    @font-face {
+        font-family: helvetica light;
+        font-style: normal;
+        font-weight: 400;
+        src: local('Helvetica Light'), url(https://fonts.cdnfonts.com/s/14028/helvetica-light-587ebe5a59211.woff) format('woff')
+    }
+}

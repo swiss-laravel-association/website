@@ -12,9 +12,36 @@ export default {
     theme: {
         extend: {
             fontFamily: {
-                sans: ['Figtree', ...defaultTheme.fontFamily.sans],
+                sans: ['helvetica', ...defaultTheme.fontFamily.sans],
             },
+            colors: {
+                'primary': {
+                    '50': '#fff2f1',
+                    '100': '#ffe1df',
+                    '200': '#ffc8c5',
+                    '300': '#ffa29d',
+                    '400': '#ff6c64',
+                    '500': '#ff2c20',
+                    '600': '#ed2115',
+                    '700': '#c8170d',
+                    '800': '#a5170f',
+                    '900': '#881a14',
+                    '950': '#4b0804',
+                },
+
+            },
+            animation: {
+                scale: 'scale 2s ease-in-out infinite',
+            },
+            keyframes: {
+                scale: {
+                    '0%, 100%': { transform: 'scale(1)' },
+                    '50%': { transform: 'scale(1.05)' },
+                }
+            }
         },
     },
-    plugins: [],
+    plugins: [
+        require('@tailwindcss/typography'),
+    ],
 };
