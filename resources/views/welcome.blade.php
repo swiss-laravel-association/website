@@ -114,21 +114,7 @@
                     </p>
                     <h2 class="mt-10 text-pretty text-2xl font-semibold tracking-tight text-gray-900 dark:text-gray-300">Keep in touch</h2>
                     <p class="mt-6 text-base/7 text-gray-600">Signup to our newsletter and be the first to know about upcoming events.</pv>
-                    <form class="my-4 w-full max-w-md lg:col-span-5 lg:pt-2 space-y-3">
-                        <div class="flex gap-x-4">
-                            <label for="name" class="sr-only">Name</label>
-                            <input id="name" name="name" type="text" autocomplete="name" required class="min-w-0 flex-auto rounded-md border-0 px-3.5 py-2 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-primary-600 focus-visible:outline-none sm:text-sm/6" placeholder="Name">
-                        </div>
-                        <div class="flex gap-x-4">
-                            <label for="email-address" class="sr-only">Email address</label>
-                            <input id="email-address" name="email" type="email" autocomplete="email" required class="min-w-0 flex-auto rounded-md border-0 px-3.5 py-2 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-primary-600 focus-visible:outline-none sm:text-sm/6" placeholder="E-Mail">
-                        </div>
-                        <button type="submit"
-                                class="flex-none rounded-md bg-primary-500 dark:bg-gray-700 px-3.5 py-2.5 text-sm font-semibold text-white shadow-sm hover:bg-primary-700 dark:hover:bg-gray-600 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary-600"
-                        >
-                            Subscribe
-                        </button>
-                    </form>
+                    <livewire:newsletter-signup />
                 </div>
                 <div class="pt-16 lg:row-span-2 lg:-mr-16 xl:mr-auto">
                     <div class="-mx-12 grid grid-cols-2 gap-4 sm:-mx-16 sm:grid-cols-4 lg:mx-0 lg:grid-cols-2 lg:gap-4 xl:gap-8">
