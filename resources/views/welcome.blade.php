@@ -20,14 +20,14 @@
              }"
              class="mx-auto container px-6 pt-2 lg:max-w-7xl lg:px-8 flex items-center justify-between space-x-8"
         >
-            <a href="{{ route('home') }}" class="shrink-0">
+            <a href="{{ route('home') }}" class="shrink-0 rounded focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white">
                 <img src="{{ Vite::asset('resources/images/logos/swiss-laravel-association_white.png') }}"
                      class="h-16"
                      alt="Logo Swiss Laravel Association"
                 >
             </a>
             <button @click.prevent.stop="open = !open"
-                    class="sm:hidden p-2"
+                    class="sm:hidden p-2 rounded focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white"
             >
                 <x-heroicon-c-bars-3 class="size-8 text-white" />
             </button>
@@ -44,7 +44,7 @@
                          alt="Logo Swiss Laravel Association"
                     >
                     <button @click.prevent.stop="open = !open"
-                            class="p-2"
+                            class="p-2 mr-1 rounded focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary-600 dark:focus-visible:outline-gray-900"
                     >
                         <x-heroicon-o-x-mark class="size-6 text-gray-500" />
                     </button>
@@ -52,19 +52,19 @@
                 <div class="space-y-2 sm:space-y-0 sm:flex sm:items-center sm:space-x-2">
                     <a @click="open = false"
                        href="{{ route('home') }}"
-                       class="block p-4 hover:bg-primary-500/10 hover:sm:bg-white/10 dark:hover:bg-gray-700/10 text-primary-500 dark:text-gray-700 sm:text-white dark:sm:text-white font-semibold rounded"
+                       class="block p-4 hover:bg-primary-500/10 hover:sm:bg-white/10 dark:hover:bg-gray-700/10 text-primary-500 dark:text-gray-700 sm:text-white dark:sm:text-white font-semibold rounded focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white"
                     >
                         {{ __('nav.home') }}
                     </a>
                     <a @click="open = false"
                        href="{{ route('home') }}#about"
-                       class="block p-4 hover:bg-primary-500/10 hover:sm:bg-white/10 dark:hover:bg-gray-700/10 text-primary-500 dark:text-gray-700 sm:text-white dark:sm:text-white font-semibold rounded"
+                       class="block p-4 hover:bg-primary-500/10 hover:sm:bg-white/10 dark:hover:bg-gray-700/10 text-primary-500 dark:text-gray-700 sm:text-white dark:sm:text-white font-semibold rounded focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white"
                     >
                         {{ __('nav.about') }}
                     </a>
                     <a @click="open = false"
                        href="{{ route('home') }}#events"
-                       class="block p-4 hover:bg-primary-500/10 hover:sm:bg-white/10 dark:hover:bg-gray-700/10 text-primary-500 dark:text-gray-700 sm:text-white dark:sm:text-white font-semibold rounded"
+                       class="block p-4 hover:bg-primary-500/10 hover:sm:bg-white/10 dark:hover:bg-gray-700/10 text-primary-500 dark:text-gray-700 sm:text-white dark:sm:text-white font-semibold rounded focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white"
                     >
                         {{ __('nav.events') }}
                     </a>
@@ -72,7 +72,7 @@
                 <div class="space-y-2 sm:flex sm:items-center sm:space-x-2">
                     <a @click="open = false"
                        href="{{ route('home') }}#socials"
-                       class="block p-4 hover:bg-primary-500/10 hover:sm:bg-white/10 dark:hover:bg-gray-700/10 text-primary-500 dark:text-gray-700 sm:text-white dark:sm:text-white font-semibold rounded"
+                       class="block p-4 hover:bg-primary-500/10 hover:sm:bg-white/10 dark:hover:bg-gray-700/10 text-primary-500 dark:text-gray-700 sm:text-white dark:sm:text-white font-semibold rounded focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white"
                     >
                         {{ __('nav.follow_us') }}
                     </a>
@@ -100,7 +100,7 @@
                 <p class="mt-6 text-balance text-xl/8 text-gray-700 dark:text-gray-400">
                     Starting in 2025 the <strong>Swiss Laravel Association</strong> will organize Laravel Meetups all around Switzerland.<br>
                     This is the sequel to the <strong>Laravel Switzerland Meetup</strong> currently<br>
-                    organized by <a class="font-semibold hover:underline" href="https://x.com">Ruslan Steiger</a>.
+                    organized by <a class="font-semibold hover:underline rounded focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary-600 dark:focus-visible:outline-white" href="https://x.com/ruslansteiger">Ruslan Steiger</a>.
                 </p>
             </div>
             <div class="mt-20 grid grid-cols-1 lg:grid-cols-2 lg:gap-x-8 lg:gap-y-16">
@@ -117,11 +117,11 @@
                     <form class="my-4 w-full max-w-md lg:col-span-5 lg:pt-2 space-y-3">
                         <div class="flex gap-x-4">
                             <label for="name" class="sr-only">Name</label>
-                            <input id="name" name="name" type="text" autocomplete="name" required class="min-w-0 flex-auto rounded-md border-0 px-3.5 py-2 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-primary-600 sm:text-sm/6" placeholder="Name">
+                            <input id="name" name="name" type="text" autocomplete="name" required class="min-w-0 flex-auto rounded-md border-0 px-3.5 py-2 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-primary-600 focus-visible:outline-none sm:text-sm/6" placeholder="Name">
                         </div>
                         <div class="flex gap-x-4">
                             <label for="email-address" class="sr-only">Email address</label>
-                            <input id="email-address" name="email" type="email" autocomplete="email" required class="min-w-0 flex-auto rounded-md border-0 px-3.5 py-2 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-primary-600 sm:text-sm/6" placeholder="E-Mail">
+                            <input id="email-address" name="email" type="email" autocomplete="email" required class="min-w-0 flex-auto rounded-md border-0 px-3.5 py-2 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-primary-600 focus-visible:outline-none sm:text-sm/6" placeholder="E-Mail">
                         </div>
                         <button type="submit"
                                 class="flex-none rounded-md bg-primary-500 dark:bg-gray-700 px-3.5 py-2.5 text-sm font-semibold text-white shadow-sm hover:bg-primary-700 dark:hover:bg-gray-600 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary-600"
@@ -186,7 +186,7 @@
                         </p>
                         <button x-show="collapsed"
                                 @click="collapsed = !collapsed"
-                                class="text-sm font-semibold text-white hover:text-primary-100"
+                                class="text-sm font-semibold text-white hover:text-primary-100 rounded focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white"
                         >Read more</button>
                     </li>
                 </ul>
@@ -201,23 +201,23 @@
                     <img class="h-14" src="{{ \Illuminate\Support\Facades\Vite::asset('resources/images/logos/swiss-laravel-association_white.png') }}" alt="Company name">
                     <p class="text-balance text-sm/6 text-gray-300">Brining the Swiss Laravel community together.</p>
                     <div id="socials" class="flex gap-x-6">
-                        <a href="https://x.com/swisslaravel" class="text-gray-400 hover:text-gray-300" target="_blank">
+                        <a href="https://x.com/swisslaravel" class="text-gray-400 hover:text-gray-300 rounded focus-visible:outline focus-visible:outline-1 focus-visible:outline-offset-2 focus-visible:outline-white" target="_blank">
                             <span class="sr-only">X</span>
                             <x-simpleicon-x class="size-5" />
                         </a>
-                        <a href="https://www.linkedin.com/company/105213228/admin/dashboard/" class="text-gray-400 hover:text-gray-300" target="_blank">
+                        <a href="https://www.linkedin.com/company/105213228/admin/dashboard/" class="text-gray-400 hover:text-gray-300 rounded focus-visible:outline focus-visible:outline-1 focus-visible:outline-offset-2 focus-visible:outline-white" target="_blank">
                             <span class="sr-only">LinkedIn</span>
                             <x-simpleicon-linkedin class="size-5" />
                         </a>
-                        <a href="https://www.youtube.com/@laravel-switzerland-meetup" class="text-gray-400 hover:text-gray-300" target="_blank">
+                        <a href="https://www.youtube.com/@laravel-switzerland-meetup" class="text-gray-400 hover:text-gray-300 rounded focus-visible:outline focus-visible:outline-1 focus-visible:outline-offset-2 focus-visible:outline-white" target="_blank">
                             <span class="sr-only">Youtube</span>
                             <x-simpleicon-youtube class="size-5" />
                         </a>
-                        <a href="https://www.meetup.com/laravel-switzerland-meetup/" class="text-gray-400 hover:text-gray-300" target="_blank">
+                        <a href="https://www.meetup.com/laravel-switzerland-meetup/" class="text-gray-400 hover:text-gray-300 rounded focus-visible:outline focus-visible:outline-1 focus-visible:outline-offset-2 focus-visible:outline-white" target="_blank">
                             <span class="sr-only">Meetup.com</span>
                             <x-simpleicon-meetup class="size-5" />
                         </a>
-                        <a href="https://github.com/swiss-laravel-association" class="text-gray-400 hover:text-gray-300" target="_blank">
+                        <a href="https://github.com/swiss-laravel-association" class="text-gray-400 hover:text-gray-300 rounded focus-visible:outline focus-visible:outline-1 focus-visible:outline-offset-2 focus-visible:outline-white" target="_blank">
                             <span class="sr-only">Github</span>
                             <x-simpleicon-github class="size-5" />
                         </a>
@@ -228,10 +228,10 @@
                         <h3 class="text-sm/6 font-semibold text-white">Legal</h3>
                         <ul role="list" class="mt-6 space-y-2">
                             <li>
-                                <a href="#" class="text-sm/6 text-gray-400 hover:text-white">Impress</a>
+                                <a href="#" class="text-sm/6 text-gray-400 hover:text-white rounded focus-visible:outline focus-visible:outline-1 focus-visible:outline-offset-2 focus-visible:outline-white">Impress</a>
                             </li>
                             <li>
-                                <a href="#" class="text-sm/6 text-gray-400 hover:text-white">Privacy policy</a>
+                                <a href="#" class="text-sm/6 text-gray-400 hover:text-white rounded focus-visible:outline focus-visible:outline-1 focus-visible:outline-offset-2 focus-visible:outline-white">Privacy policy</a>
                             </li>
                         </ul>
                     </div>
