@@ -185,7 +185,7 @@
             <div class="md:grid md:grid-cols-4 md:gap-8">
                 <div class="space-y-8 col-span-3">
                     <img class="h-14" src="{{ \Illuminate\Support\Facades\Vite::asset('resources/images/logos/swiss-laravel-association_white.png') }}" alt="Company name">
-                    <p class="text-balance text-sm/6 text-gray-300">Brining the Swiss Laravel community together.</p>
+                    <p class="text-balance text-sm/6 text-gray-300">Bringing the Swiss Laravel community together.</p>
                     <div id="socials" class="flex gap-x-6">
                         <a href="https://x.com/swisslaravel" class="text-gray-400 hover:text-gray-300 rounded focus-visible:outline focus-visible:outline-1 focus-visible:outline-offset-2 focus-visible:outline-white" target="_blank">
                             <span class="sr-only">X</span>
