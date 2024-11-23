@@ -191,6 +191,10 @@
                             <span class="sr-only">X</span>
                             <x-simpleicon-x class="size-5" />
                         </a>
+                        <a href="https://bsky.app/profile/laravel.swiss" class="text-gray-400 hover:text-gray-300 rounded focus-visible:outline focus-visible:outline-1 focus-visible:outline-offset-2 focus-visible:outline-white" target="_blank">
+                            <span class="sr-only">X</span>
+                            <x-simpleicon-bluesky class="size-5" />
+                        </a>
                         <a href="https://linkedin.com/company/swiss-laravel-association/" class="text-gray-400 hover:text-gray-300 rounded focus-visible:outline focus-visible:outline-1 focus-visible:outline-offset-2 focus-visible:outline-white" target="_blank">
                             <span class="sr-only">LinkedIn</span>
                             <x-simpleicon-linkedin class="size-5" />
