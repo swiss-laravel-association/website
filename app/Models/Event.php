@@ -13,7 +13,7 @@ class Event extends Model
     protected function casts(): array
     {
         return [
-            'password' => 'encrypted',
+            'api_code' => 'encrypted',
             'sign_in_start' => 'datetime',
             'sign_in_end' => 'datetime'
         ];

@@ -17,7 +17,7 @@ return new class extends Migration
             $table->id();
                 /** TODO: add all the other fields and relation */
             $table->string('name')->nullable();
-            $table->string('api_code', 200)->nullable();
+            $table->string('api_code', 500)->nullable(); // has to be long enough for the encrypted value
             $table->dateTime('sign_in_start')->nullable();
             $table->dateTime('sign_in_end')->nullable();
             $table->timestamps();

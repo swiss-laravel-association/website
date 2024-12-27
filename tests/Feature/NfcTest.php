@@ -1,6 +1,7 @@
 <?php
 
 use App\Models\Event as Event;
+use App\Models\User;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 
 uses(RefreshDatabase::class);
@@ -26,7 +27,34 @@ it('declines valid codes for past and future events', function() {
 });
 
 it('signs in a user with correct credentials', function () {
+    $event = Event::factory()->current()->create(['api_code' => 'somethingStrange']);
+    $member = User::factory()->create();
+    $signature = $member->getSignatureLiteral();
+    ray($member);
+    $uuid = $member->uuid;
 
+        // missing stuff
+    $this->withHeaders(['x-client-signature' => md5($event->api_code)])
+        ->postJson(route('nfc.member-sign-in'), [])
+        ->assertStatus(403)
+        ->assertJsonFragment(['error' => trans('api.nfc.errors.user_credentials')]);
+
+        // wrong uuid
+    $this->withHeaders(['x-client-signature' => md5($event->api_code)])
+        ->postJson(route('nfc.member-sign-in'), ['uuid' => Str::uuid(), 'signature' => $signature])
+        ->assertStatus(403)
+        ->assertJsonFragment(['error' => trans('api.nfc.errors.user_credentials')]);
+
+        // wrong signature
+    $this->withHeaders(['x-client-signature' => md5($event->api_code)])
+        ->postJson(route('nfc.member-sign-in'), ['uuid' => $uuid, 'signature' => 'something random'])
+        ->assertStatus(403)
+        ->assertJsonFragment(['error' => trans('api.nfc.errors.user_credentials')]);
+
+        // all shiny
+    $this->withHeaders(['x-client-signature' => md5($event->api_code)])
+        ->postJson(route('nfc.member-sign-in'), ['uuid' => $uuid, 'signature' => $signature])
+        ->assertStatus(201);
 });
 
 it('allows only one sign in per event', function () {

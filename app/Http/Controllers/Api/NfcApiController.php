@@ -2,7 +2,10 @@
 
 namespace App\Http\Controllers\Api;
 
+use App\Exceptions\NfcUserCredentialException;
 use App\Http\Controllers\Controller;
+use App\Models\User;
+use Exception;
 use Illuminate\Encryption\Encrypter;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Crypt;
@@ -17,14 +20,23 @@ class NfcApiController extends Controller
         return response()->json([]);
     }
 
-    public function memberSignIn()
+    /**
+     * @throws NfcUserCredentialException
+     */
+    public function memberSignIn(Request $request)
     {
-        $uuid = '1a24282c-dcbf-4502-9ae2-40c6cadf3550';
-        $userSecret = 'C7HRERb6DENA242y3P7ydHtQvcGazlQOYpbLMyGlMYYhpeZHeFIDDulj1KnNUDaY';
-        $signature = base64_encode(Hash::make(Crypt::encrypt($uuid . '.' . $userSecret)));
-//        $signature = Encrypter::
+        try{
+            if(! ($request->has('uuid') && $request->has('signature'))) throw new Exception();
+            $user = User::whereUuid($request->get('uuid'))->firstOrFail();
+            if($user->checkSignature($request->get('signature'))){
+                throw new Exception();
+            }
+        }catch (Exception){
+            throw new NfcUserCredentialException();
+        }
 
-        return response()->json(compact('uuid', 'signature'), 201);
+        // all shiny! Write the user in
+        return response()->json([], 201);
     }
 
 }

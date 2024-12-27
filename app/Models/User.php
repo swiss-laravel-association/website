@@ -65,7 +65,7 @@ class User extends Authenticatable
 
     public function checkSignature(string $hashToCheck): bool
     {
-        return Hash::check($this->getEncryptedSignature(), $hashToCheck);
+        return Hash::check($this->getEncryptedSignature(), base64_decode($hashToCheck));
     }
 
     private function getEncryptedSignature(): string
