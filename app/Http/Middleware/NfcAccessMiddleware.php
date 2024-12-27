@@ -2,6 +2,7 @@
 
 namespace App\Http\Middleware;
 
+use App\Models\Event;
 use App\Models\ServiceSecret;
 use Closure;
 use Illuminate\Http\Request;
@@ -16,14 +17,10 @@ class NfcAccessMiddleware
      */
     public function handle(Request $request, Closure $next): Response
     {
-        if(! $this->checkSignature()){
-            abort(403);
-        }
+        if(! $request->hasHeader('x-client-signature'))abort(403);
+        $event = Event::getBySignature($request->header('x-client-signature'));
+        if( ! ($event instanceof Event)) abort(403);
+        $request->merge(['event' => $event]);
         return $next($request);
-    }
-
-    private function checkSignature(): bool
-    {
-        return true;
     }
 }

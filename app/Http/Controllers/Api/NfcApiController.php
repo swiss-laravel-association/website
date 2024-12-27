@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Encryption\Encrypter;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Crypt;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Str;
@@ -11,9 +12,9 @@ use Illuminate\Support\Str;
 class NfcApiController extends Controller
 {
 
-    public function clientConnect()
+    public function clientConnect(Request $request)
     {
-
+        return response()->json([]);
     }
 
     public function memberSignIn()

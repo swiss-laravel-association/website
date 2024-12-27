@@ -6,6 +6,8 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
+use Illuminate\Support\Facades\Crypt;
+use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Str;
 
 class User extends Authenticatable
@@ -54,5 +56,20 @@ class User extends Authenticatable
         static::creating(function($model) {
             $model->pepper = Str::random(64);
         });
+    }
+
+    public function getSignatureLiteral(): string
+    {
+        return base64_encode(Hash::make($this->getEncryptedSignature()));
+    }
+
+    public function checkSignature(string $hashToCheck): bool
+    {
+        return Hash::check($this->getEncryptedSignature(), $hashToCheck);
+    }
+
+    private function getEncryptedSignature(): string
+    {
+        return Crypt::encrypt($this->uuid . '.' . $this->pepper);
     }
 }
