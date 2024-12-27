@@ -1,10 +1,28 @@
 # NFC Cards
 
+<!-- TOC -->
+* [NFC Cards](#nfc-cards)
+  * [Abstract](#abstract)
+  * [Todos](#todos)
+  * [Architecture](#architecture)
+    * [Event auth](#event-auth)
+    * [Member auth](#member-auth)
+<!-- TOC -->
+
 ## Abstract
 
 Every member receives a card with NFC capabilities. Those cards can be
 scanned at the meetups and automatically register the cardholder for
 that meetup.
+
+## Todos
+
+- [x] Base Model for events
+- [x] Additional fields for members/user
+- [x] Client app authentication
+- [x] User authentication
+- [ ] CLI commands to set passwords to events (?)
+- [ ] Encouraging messages after sign in (?)
 
 ## Architecture
 
@@ -30,12 +48,21 @@ people already checked in.
 ### Member auth
 
 The "credentials" of a member is saved on her/his card. It consists of the name the member goes by (and is 
-written on the card), the uuid and the signature. This data is serialized in JSON string on a NFC record:
+written on the card), the uuid and the signature. This data is serialized in JSON string on a NFC record.
+Example: 
 
-Signature: 
+```json
+{
+    "uuid" : "8df05a23-9123-4a7b-85bc-22fb332467b5",
+    "signature" : "JDJ5JDEyJGZ4NnAwRmNzUXRUTDlzREFzL0s3bU9iVkxySWJzSk9yNVlQcE5WUkR1VVdON3hLdC53QVpL"
+} 
+```
 
+The Signature is composed by the uuid of the member and the pepper, concatenated with a dot. That string is then
+encrypted by the laravel mechanic (use off the APP_SECRET), then hashed to make it smaller and in a last step
+base64 encoded, to be sure to have no funny characters in it. That result is saved as signature on the NFC tag and
+must be sent as payload, together with the uuid, on the sign in request.
 
+If a member loses his cards, a rotation of the pepper renders the lost care invalid and a new one can be created
+without affecting any other card.
 
-## Preparation of events
-
-## Api
