@@ -13,7 +13,11 @@ it('accepts only calls from clients with valid signatures', function(){
     Event::factory()->current()->create(['api_code' => 'somethingStranger']);
     Event::factory()->current()->create(['api_code' => 'theStrangest!']);
     $this->withHeaders(['x-client-signature' => 'wrong password'])->getJson(route('nfc.client-connect'))->assertStatus(403);
-    $this->withHeaders(['x-client-signature' => 'somethingStrange'])->getJson(route('nfc.client-connect'))->assertStatus(403);
+    $this->withHeaders(['x-client-signature' => 'somethingStrange'])->getJson(route('nfc.client-connect'))
+        ->assertStatus(403)
+        ->assertJsonFragment([
+            'error' => trans('api.nfc.errors.client_code')
+        ]);
     $this->withHeaders(['x-client-signature' => md5('somethingStrange')])->getJson(route('nfc.client-connect'))->assertStatus(200);
     $this->withHeaders(['x-client-signature' => md5('somethingStranger')])->getJson(route('nfc.client-connect'))->assertStatus(200);
     $this->withHeaders(['x-client-signature' => md5('theStrangest!')])->getJson(route('nfc.client-connect'))->assertStatus(200);
@@ -22,7 +26,10 @@ it('accepts only calls from clients with valid signatures', function(){
 it('declines valid codes for past and future events', function() {
     Event::factory()->past()->create(['api_code' => 'past']);
     Event::factory()->future()->create(['api_code' => 'future']);
-    $this->withHeaders(['x-client-signature' => md5('past')])->getJson(route('nfc.client-connect'))->assertStatus(403);
+    $this->withHeaders(['x-client-signature' => md5('past')])->getJson(route('nfc.client-connect'))->assertStatus(403)
+        ->assertJsonFragment([
+            'error' => trans('api.nfc.errors.client_code')
+        ]);;
     $this->withHeaders(['x-client-signature' => md5('future')])->getJson(route('nfc.client-connect'))->assertStatus(403);
 });
 
