@@ -30,7 +30,6 @@ it('signs in a user with correct credentials', function () {
     $event = Event::factory()->current()->create(['api_code' => 'somethingStrange']);
     $member = User::factory()->create();
     $signature = $member->getSignatureLiteral();
-    ray($member);
     $uuid = $member->uuid;
 
         // missing stuff
@@ -58,9 +57,76 @@ it('signs in a user with correct credentials', function () {
 });
 
 it('allows only one sign in per event', function () {
+    $eventOne = Event::factory()->current()->create(['api_code' => 'somethingStrange']);
+    $eventTwo = Event::factory()->current()->create(['api_code' => 'someOtherCode']);
+    $eventThree = Event::factory()->current()->create(['api_code' => 'AndAnotherSomething']);
+    $member = User::factory()->create();
+    $signature = $member->getSignatureLiteral();
+    $uuid = $member->uuid;
 
+    $this->withHeaders(['x-client-signature' => md5($eventOne->api_code)])
+        ->postJson(route('nfc.member-sign-in'), ['uuid' => $uuid, 'signature' => $signature])
+        ->assertStatus(201);
+
+    $this->withHeaders(['x-client-signature' => md5($eventTwo->api_code)])
+        ->postJson(route('nfc.member-sign-in'), ['uuid' => $uuid, 'signature' => $signature])
+        ->assertStatus(201);
+
+    $this->withHeaders(['x-client-signature' => md5($eventTwo->api_code)])
+        ->postJson(route('nfc.member-sign-in'), ['uuid' => $uuid, 'signature' => $signature])
+        ->assertStatus(403)
+        ->assertJsonFragment(['error' => trans('api.nfc.errors.multi_sign_in')]);
+
+    $this->withHeaders(['x-client-signature' => md5($eventTwo->api_code)])
+        ->postJson(route('nfc.member-sign-in'), ['uuid' => $uuid, 'signature' => $signature])
+        ->assertStatus(403)
+        ->assertJsonFragment(['error' => trans('api.nfc.errors.multi_sign_in')]);
+
+    $this->withHeaders(['x-client-signature' => md5($eventThree->api_code)])
+        ->postJson(route('nfc.member-sign-in'), ['uuid' => $uuid, 'signature' => $signature])
+        ->assertStatus(201);
+
+    $this->withHeaders(['x-client-signature' => md5($eventThree->api_code)])
+        ->postJson(route('nfc.member-sign-in'), ['uuid' => $uuid, 'signature' => $signature])
+        ->assertStatus(403)
+        ->assertJsonFragment(['error' => trans('api.nfc.errors.multi_sign_in')]);
 });
 
 it('returns the correct number of signed in members', function() {
+    $event = Event::factory()->current()->create(['api_code' => 'somethingStrange']);
+    $members = User::factory()->count(5)->create();
+
+    $this->withHeaders(['x-client-signature' => md5($event->api_code)])
+        ->getJson(route('nfc.client-connect'))
+        ->assertStatus(200)
+        ->assertJsonFragment([
+            'sign_in_count' => 0
+        ]);
+
+    $this->withHeaders(['x-client-signature' => md5($event->api_code)])
+        ->postJson(route('nfc.member-sign-in'), ['uuid' => $members[0]->uuid, 'signature' => $members[0]->getSignatureLiteral()])
+        ->assertStatus(201);
+
+    $this->withHeaders(['x-client-signature' => md5($event->api_code)])
+        ->getJson(route('nfc.client-connect'))
+        ->assertStatus(200)
+        ->assertJsonFragment([
+            'sign_in_count' => 1
+        ]);
+
+    $this->withHeaders(['x-client-signature' => md5($event->api_code)])
+        ->postJson(route('nfc.member-sign-in'), ['uuid' => $members[1]->uuid, 'signature' => $members[1]->getSignatureLiteral()])
+        ->assertStatus(201);
+
+    $this->withHeaders(['x-client-signature' => md5($event->api_code)])
+        ->postJson(route('nfc.member-sign-in'), ['uuid' => $members[2]->uuid, 'signature' => $members[2]->getSignatureLiteral()])
+        ->assertStatus(201);
+
+    $this->withHeaders(['x-client-signature' => md5($event->api_code)])
+        ->getJson(route('nfc.client-connect'))
+        ->assertStatus(200)
+        ->assertJsonFragment([
+            'sign_in_count' => 3
+        ]);
 
 });

@@ -4,7 +4,7 @@ namespace App\Exceptions;
 
 use Exception;
 
-class NfcClientCredentialException extends NfcApiException
+class NfcClientCodeException extends NfcApiException
 {
     protected $code = 403;
     protected $message = '';

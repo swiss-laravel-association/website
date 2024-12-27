@@ -6,6 +6,7 @@ use Carbon\CarbonImmutable;
 use Exception;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 
 class Event extends Model
 {
@@ -19,9 +20,9 @@ class Event extends Model
         ];
     }
 
-    public function users()
+    public function users(): BelongsToMany
     {
-        return $this->belongsToMany(User::class, '');
+        return $this->belongsToMany(User::class, 'event_has_users');
     }
 
     public static function getBySignature($signature): ?Event
