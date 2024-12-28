@@ -15,6 +15,7 @@ Route::redirect('/newsletter', 'https://sla.mailcoach.app/newsletter');
 
 // Social Media Redirects
 Route::redirect('/discord', 'https://discord.gg/Zpjd9ZkPcd');
+Route::redirect('/whatsapp', 'https://chat.whatsapp.com/J8l1kyqIwK209nrT89Ns2H');
 Route::redirect('/youtube', 'https://www.youtube.com/@swiss-laravel-association');
 Route::redirect('/github', 'https://github.com/swiss-laravel-association');
 Route::redirect('/bluesky', 'https://bsky.app/profile/laravel.swiss');
