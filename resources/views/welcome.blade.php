@@ -152,11 +152,11 @@
                             <span class="block font-semibold text-sm text-gray-900 px-2 py-1 text-right">
                                 30. January 2025<br>
                                 19:00<br>
-                                Zürich
+                                Liip Arena, Zürich
                             </span>
                             </div>
                         </div>
-                        <h3 class="mt-4 text-md/8 font-semibold tracking-tight text-white">Kicking-Off 2025</h3>
+                        <h3 class="mt-4 text-md/8 font-semibold tracking-tight text-white">Event Sourcing & Exclusive Intro to Laravel Cloud</h3>
                         <p class="text-base text-primary-100 dark:text-gray-400 line-clamp-1 cursor-pointer"
                            :class="{ 'line-clamp-1 cursor-pointer': collapsed }"
                            @click="collapsed = false"
@@ -168,7 +168,7 @@
                             <br>
                             Location: Liip AG, Limmatstrasse 183, 8005 Zürich<br>
                             <br>
-                            Registration: TBA
+                            <a href="https://www.meetup.com/laravel-switzerland-meetup/events/305019231/" class="underline">RSVP on Meetup.com</a>
                         </p>
                         <button x-show="collapsed"
                                 @click="collapsed = !collapsed"
@@ -218,10 +218,14 @@
                         <h3 class="text-sm/6 font-semibold text-white">Legal</h3>
                         <ul role="list" class="mt-6 space-y-2">
                             <li>
-                                <a href="#" class="text-sm/6 text-gray-400 hover:text-white rounded focus-visible:outline focus-visible:outline-1 focus-visible:outline-offset-2 focus-visible:outline-white">Impress</a>
+                                <a href="#" class="text-sm/6 text-gray-400 hover:text-white rounded focus-visible:outline focus-visible:outline-1 focus-visible:outline-offset-2 focus-visible:outline-white">
+                                    Imprint
+                                </a>
                             </li>
                             <li>
-                                <a href="#" class="text-sm/6 text-gray-400 hover:text-white rounded focus-visible:outline focus-visible:outline-1 focus-visible:outline-offset-2 focus-visible:outline-white">Privacy policy</a>
+                                <a href="#" class="text-sm/6 text-gray-400 hover:text-white rounded focus-visible:outline focus-visible:outline-1 focus-visible:outline-offset-2 focus-visible:outline-white">
+                                    Privacy Policy
+                                </a>
                             </li>
                         </ul>
                     </div>
