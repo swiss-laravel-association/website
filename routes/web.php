@@ -23,4 +23,4 @@ Route::redirect('/mastodon', 'https://phpc.social/@swiss_laravel_association');
 Route::redirect('/twitter', 'https://x.com/swisslaravel');
 Route::redirect('/x', 'https://x.com/swisslaravel');
 
-Route::get('/meetups/calendar', \App\Http\Controllers\MeetupEventsCalendarController::class)->name('meetups.calendar');
+Route::get('/meetups/calendar.ics', \App\Http\Controllers\MeetupEventsCalendarController::class)->name('meetups.calendar');
