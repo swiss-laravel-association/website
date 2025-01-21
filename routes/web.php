@@ -11,6 +11,7 @@ Route::get('/', function () {
 Route::redirect('/feedback', 'https://forms.gle/aGtW8T8GrgZX4kAfA');
 Route::redirect('/rfp', 'https://forms.gle/M7gXenkv7F21ZYbMA');
 Route::redirect('/newsletter', 'https://sla.mailcoach.app/newsletter');
+Route::redirect('/code-of-conduct', 'https://github.com/swiss-laravel-association/policies/blob/main/policies/CODE_OF_CONDUCT.md');
 
 
 // Social Media Redirects
