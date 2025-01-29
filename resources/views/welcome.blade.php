@@ -99,7 +99,7 @@
                 <h1 class="mt-2 text-pretty text-4xl font-semibold tracking-tight text-gray-900 dark:text-gray-300 sm:text-5xl">Spread the word about Laravel</h1>
                 <p class="mt-6 text-balance text-xl/8 text-gray-700 dark:text-gray-400">
                     Starting in 2025 the <strong>Swiss Laravel Association</strong> will organize Laravel Meetups all around Switzerland.<br>
-                    This is the sequel to the <strong>Laravel Switzerland Meetup</strong> currently<br>
+                    This is the sequel to the <strong>Laravel Switzerland Meetup</strong> previously<br>
                     organized by <a class="font-semibold hover:underline rounded focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary-600 dark:focus-visible:outline-white" href="https://x.com/ruslansteiger">Ruslan Steiger</a>.
                 </p>
             </div>
