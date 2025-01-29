@@ -83,7 +83,7 @@
     <section class="bg-primary-500 dark:bg-black">
         <div class="container mx-auto flex items-center justify-center space-x-8 pt-2 pb-12 px-12">
             <img src="{{ Vite::asset('resources/images/logos/logo-simple.png') }}"
-                 class="animate-scale hidden sm:block sm:size-48 md:size-64"
+                 class="animate-scale hidden sm:block sm:size-48 md:size-64 brightness-[.9] dark:brightness-100"
                  alt="Logo simple"
             />
             <div>
@@ -99,7 +99,7 @@
                 <h1 class="mt-2 text-pretty text-4xl font-semibold tracking-tight text-gray-900 dark:text-gray-300 sm:text-5xl">Spread the word about Laravel</h1>
                 <p class="mt-6 text-balance text-xl/8 text-gray-700 dark:text-gray-400">
                     Starting in 2025 the <strong>Swiss Laravel Association</strong> will organize Laravel Meetups all around Switzerland.<br>
-                    This is the sequel to the <strong>Laravel Switzerland Meetup</strong> currently<br>
+                    This is the sequel to the <strong>Laravel Switzerland Meetup</strong> previously<br>
                     organized by <a class="font-semibold hover:underline rounded focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary-600 dark:focus-visible:outline-white" href="https://x.com/ruslansteiger">Ruslan Steiger</a>.
                 </p>
             </div>
@@ -142,39 +142,40 @@
                 <h1 class="mt-2 text-pretty text-4xl font-semibold tracking-tight text-white dark:text-gray-300 sm:text-5xl">Meet the Swiss Laravel community</h1>
                 <p class="mt-6 text-balance text-xl/8 text-primary-200 dark:text-gray-400">
                 <ul role="list" class="mx-auto mt-20 grid max-w-2xl grid-cols-1 gap-x-8 gap-y-16 sm:grid-cols-2 lg:mx-0 lg:max-w-none lg:grid-cols-3">
-                    <li x-data="{ collapsed: true }">
-                        <div class="relative">
-                            <img class="aspect-[3/2] w-full rounded-2xl object-cover"
-                                 src="{{ \Illuminate\Support\Facades\Vite::asset('resources/images/meetup/laravel-letters.jpeg') }}"
-                                 alt=""
-                            >
-                            <div class="absolute right-2 bottom-2 rounded-lg rounded-br-2xl bg-white/90">
+                    @foreach(\App\Models\Event::query()->where('is_published', true)->orderBy('start_date')->get() as $event)
+                        <li x-data="{ collapsed: true }" wire:key="{{ $event->id }}">
+                            <div class="relative">
+                                <img class="aspect-[3/2] w-full rounded-2xl object-cover"
+                                     src="{{ \Illuminate\Support\Facades\Vite::asset('resources/images/meetup/laravel-letters.jpeg') }}"
+                                     alt=""
+                                >
+                                <div class="absolute right-2 bottom-2 rounded-lg rounded-br-2xl bg-white/90">
                             <span class="block font-semibold text-sm text-gray-900 px-2 py-1 text-right">
-                                30. January 2025<br>
-                                19:00<br>
-                                Liip Arena, Zürich
+                                {{ $event->start_date->format('d. F Y') }}<br>
+                                {{ $event->start_date->format('H:i') }}<br>
+                                {{ $event->location }}
                             </span>
+                                </div>
                             </div>
-                        </div>
-                        <h3 class="mt-4 text-md/8 font-semibold tracking-tight text-white">Event Sourcing & Exclusive Intro to Laravel Cloud</h3>
-                        <p class="text-base text-primary-100 dark:text-gray-400 line-clamp-1 cursor-pointer"
-                           :class="{ 'line-clamp-1 cursor-pointer': collapsed }"
-                           @click="collapsed = false"
-                        >
-                            Join us for the first Meetup of the year and take your Laravel skills to the next level.<br>
-                            <br>
-                            Doors open: 19:00<br>
-                            First talk: 19:30<br>
-                            <br>
-                            Location: Liip AG, Limmatstrasse 183, 8005 Zürich<br>
-                            <br>
-                            <a href="https://www.meetup.com/laravel-switzerland-meetup/events/305019231/" class="underline">RSVP on Meetup.com</a>
-                        </p>
-                        <button x-show="collapsed"
-                                @click="collapsed = !collapsed"
-                                class="text-sm font-semibold text-white hover:text-primary-100 rounded focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white"
-                        >Read more</button>
-                    </li>
+                            <h3 class="mt-4 text-md/8 font-semibold tracking-tight text-white">Event Sourcing & Exclusive Intro to Laravel Cloud</h3>
+                            <p class="text-base text-primary-100 dark:text-gray-400 line-clamp-1 cursor-pointer"
+                               :class="{ 'line-clamp-1 cursor-pointer': collapsed }"
+                               @click="collapsed = false"
+                            >
+                                {!! nl2br($event->description) !!}
+                                <br>
+                                @if($event->meetup_link)
+                                    <a href="{{ $event->meetup_link }}" class="underline" target="_blank">RSVP on Meetup.com</a>
+                                @endif
+                            </p>
+                            @if(\Illuminate\Support\Str::length($event->description) > 10)
+                                <button x-show="collapsed"
+                                        @click="collapsed = !collapsed"
+                                        class="text-sm font-semibold text-white hover:text-primary-100 rounded focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white"
+                                >Read more</button>
+                            @endif
+                        </li>
+                    @endforeach
                 </ul>
                 </p>
             </div>
