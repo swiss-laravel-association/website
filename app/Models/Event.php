@@ -10,6 +10,7 @@ class Event extends Model
     {
         return [
             'start_date' => 'immutable_datetime',
+            'end_date' => 'immutable_datetime',
         ];
     }
 }
