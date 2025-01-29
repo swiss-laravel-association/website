@@ -83,7 +83,7 @@
     <section class="bg-primary-500 dark:bg-black">
         <div class="container mx-auto flex items-center justify-center space-x-8 pt-2 pb-12 px-12">
             <img src="{{ Vite::asset('resources/images/logos/logo-simple.png') }}"
-                 class="animate-scale hidden sm:block sm:size-48 md:size-64"
+                 class="animate-scale hidden sm:block sm:size-48 md:size-64 brightness-[.9] dark:brightness-100"
                  alt="Logo simple"
             />
             <div>
