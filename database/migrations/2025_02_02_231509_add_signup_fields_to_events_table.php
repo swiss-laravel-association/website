@@ -13,14 +13,11 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('events', function (Blueprint $table) {
-            $table->id();
+        Schema::table('events', function (Blueprint $table) {
                 /** TODO: add all the other fields and relation */
-            $table->string('name')->nullable();
             $table->string('api_code', 500)->nullable(); // has to be long enough for the encrypted value
             $table->dateTime('sign_in_start')->nullable();
             $table->dateTime('sign_in_end')->nullable();
-            $table->timestamps();
         });
 
         Schema::create('event_has_users', function (Blueprint $table) {
@@ -35,6 +32,6 @@ return new class extends Migration
     public function down(): void
     {
         Schema::dropIfExists('event_has_users');
-        Schema::dropIfExists('events');
+        Schema::dropColumns('events', ['api_code', 'sign_in_start', 'sign_in_end']);
     }
 };
