@@ -85,4 +85,12 @@ class User extends Authenticatable implements FilamentUser
     {
         return $this->hasVerifiedEmail();
     }
+
+    public function respice(): self
+    {
+        $this->pepper = Str::random(64);
+        return $this;
+    }
+
+
 }
