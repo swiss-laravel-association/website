@@ -21,6 +21,7 @@ that meetup.
 - [x] Additional fields for members/user
 - [x] Client app authentication
 - [x] User authentication
+- [ ] Throttle API calls
 - [ ] CLI commands to set passwords to events (?)
 - [ ] Encouraging messages after sign in (?)
 

@@ -8,11 +8,7 @@ use App\Http\Controllers\Controller;
 use App\Models\Event;
 use App\Models\User;
 use Exception;
-use Illuminate\Encryption\Encrypter;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Crypt;
-use Illuminate\Support\Facades\Hash;
-use Illuminate\Support\Str;
 
 class NfcApiController extends Controller
 {
@@ -53,10 +49,15 @@ class NfcApiController extends Controller
         }
 
             // add user to event
-        $event->users()->save($user);;
+        $event->users()->save($user);
+
+        $user->load('events');
 
         // all shiny! Write the user in
-        return response()->json(['some shiny' => 'data maybe?'], 201);
+        return response()->json([
+            'events' => $user->events()->count(),
+            'name' => $user->name
+        ], 201);
     }
 
 }
