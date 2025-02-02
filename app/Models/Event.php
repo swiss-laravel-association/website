@@ -16,7 +16,9 @@ class Event extends Model
         return [
             'api_code' => 'encrypted',
             'sign_in_start' => 'datetime',
-            'sign_in_end' => 'datetime'
+            'sign_in_end' => 'datetime',
+            'start_date' => 'immutable_datetime',
+            'end_date' => 'immutable_datetime',
         ];
     }
 

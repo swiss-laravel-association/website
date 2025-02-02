@@ -13,5 +13,5 @@ return [
         'newsletter' => [
             'uuid' => env('MAILCOACH_NEWSLETTER_LIST_UUID'),
         ],
-    ]
+    ],
 ];
