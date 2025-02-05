@@ -21,7 +21,7 @@
              class="mx-auto container px-6 pt-2 lg:max-w-7xl lg:px-8 flex items-center justify-between space-x-8"
         >
             <a href="{{ route('home') }}" class="shrink-0 rounded focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white">
-                <img src="{{ Vite::asset('resources/images/logos/swiss-laravel-association_white.png') }}"
+                <img src="{{ Vite::asset('resources/images/logos/swiss-laravel-association_white.webp') }}"
                      class="h-16"
                      alt="Logo Swiss Laravel Association"
                 >
@@ -39,7 +39,7 @@
                  x-trap.inert.noscroll.noreturn="open"
             >
                 <div class="flex sm:hidden items-center justify-between">
-                    <img src="{{ Vite::asset('resources/images/logos/swiss-laravel-association.png') }}"
+                    <img src="{{ Vite::asset('resources/images/logos/swiss-laravel-association.webp') }}"
                          class="h-12"
                          alt="Logo Swiss Laravel Association"
                     >
@@ -82,7 +82,7 @@
     </header>
     <section class="bg-primary-500 dark:bg-black">
         <div class="container mx-auto flex items-center justify-center space-x-8 pt-2 pb-12 px-12">
-            <img src="{{ Vite::asset('resources/images/logos/logo-simple.png') }}"
+            <img src="{{ Vite::asset('resources/images/logos/logo-simple.webp') }}"
                  class="animate-scale hidden sm:block sm:size-48 md:size-64 brightness-[.9] dark:brightness-100"
                  alt="Logo simple"
             />
@@ -119,16 +119,16 @@
                 <div class="pt-16 lg:row-span-2 lg:-mr-16 xl:mr-auto">
                     <div class="-mx-12 grid grid-cols-2 gap-4 sm:-mx-16 sm:grid-cols-4 lg:mx-0 lg:grid-cols-2 lg:gap-4 xl:gap-8">
                         <div class="aspect-square overflow-hidden rounded-xl shadow-xl outline-1 -outline-offset-1 outline-black/10">
-                            <img alt="" src="{{ \Illuminate\Support\Facades\Vite::asset('resources/images/meetup/group-selfie.jpeg') }}" class="block size-full object-cover">
+                            <img alt="" src="{{ \Illuminate\Support\Facades\Vite::asset('resources/images/meetup/group-selfie.webp') }}" class="block size-full object-cover" loading="lazy">
                         </div>
                         <div class="-mt-8 aspect-square overflow-hidden rounded-xl shadow-xl outline-1 -outline-offset-1 outline-black/10 lg:-mt-40">
-                            <img alt="" src="{{ \Illuminate\Support\Facades\Vite::asset('resources/images/meetup/laravel-letters.jpeg') }}" class="block size-full object-cover">
+                            <img alt="" src="{{ \Illuminate\Support\Facades\Vite::asset('resources/images/meetup/laravel-letters.webp') }}" class="block size-full object-cover" loading="lazy">
                         </div>
                         <div class="aspect-square overflow-hidden rounded-xl shadow-xl outline-1 -outline-offset-1 outline-black/10">
-                            <img alt="" src="{{ \Illuminate\Support\Facades\Vite::asset('resources/images/meetup/presentation.jpeg') }}" class="block size-full object-cover">
+                            <img alt="" src="{{ \Illuminate\Support\Facades\Vite::asset('resources/images/meetup/presentation.webp') }}" class="block size-full object-cover" loading="lazy">
                         </div>
                         <div class="-mt-8 aspect-square overflow-hidden rounded-xl shadow-xl outline-1 -outline-offset-1 outline-black/10 lg:-mt-40">
-                            <img alt="" src="{{ \Illuminate\Support\Facades\Vite::asset('resources/images/meetup/group-photo.jpeg') }}" class="block size-full object-cover">
+                            <img alt="" src="{{ \Illuminate\Support\Facades\Vite::asset('resources/images/meetup/group-photo.webp') }}" class="block size-full object-cover" loading="lazy">
                         </div>
                     </div>
                 </div>
@@ -146,7 +146,7 @@
                         <li x-data="{ collapsed: true }" wire:key="{{ $event->id }}">
                             <div class="relative">
                                 <img class="aspect-[3/2] w-full rounded-2xl object-cover"
-                                     src="{{ \Illuminate\Support\Facades\Vite::asset('resources/images/meetup/laravel-letters.jpeg') }}"
+                                     src="{{ \Illuminate\Support\Facades\Vite::asset('resources/images/meetup/laravel-letters.webp') }}"
                                      alt=""
                                      loading="lazy"
                                 >
@@ -188,7 +188,7 @@
         <div class="mx-auto max-w-7xl px-6 pb-8 pt-16 lg:px-8">
             <div class="md:grid md:grid-cols-4 md:gap-8">
                 <div class="space-y-8 col-span-2">
-                    <img class="h-14" src="{{ \Illuminate\Support\Facades\Vite::asset('resources/images/logos/swiss-laravel-association_white.png') }}" alt="Company name">
+                    <img class="h-14" src="{{ \Illuminate\Support\Facades\Vite::asset('resources/images/logos/swiss-laravel-association_white.webp') }}" alt="Company name">
                     <p class="text-balance text-sm/6 text-gray-300">Bringing the Swiss Laravel community together.</p>
                     <div id="socials" class="flex gap-x-6">
                         <a href="https://x.com/swisslaravel" class="text-gray-400 hover:text-gray-300 rounded focus-visible:outline focus-visible:outline-1 focus-visible:outline-offset-2 focus-visible:outline-white" target="_blank">
