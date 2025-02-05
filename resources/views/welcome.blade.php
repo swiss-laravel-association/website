@@ -148,6 +148,7 @@
                                 <img class="aspect-[3/2] w-full rounded-2xl object-cover"
                                      src="{{ \Illuminate\Support\Facades\Vite::asset('resources/images/meetup/laravel-letters.jpeg') }}"
                                      alt=""
+                                     loading="lazy"
                                 >
                                 <div class="absolute right-2 bottom-2 rounded-lg rounded-br-2xl bg-white/90">
                             <span class="block font-semibold text-sm text-gray-900 px-2 py-1 text-right">
@@ -157,7 +158,9 @@
                             </span>
                                 </div>
                             </div>
-                            <h3 class="mt-4 text-md/8 font-semibold tracking-tight text-white">Event Sourcing & Exclusive Intro to Laravel Cloud</h3>
+                            <h3 class="mt-4 text-md/8 font-semibold tracking-tight text-white">
+                                {{ $event->name }}
+                            </h3>
                             <p class="text-base text-primary-100 dark:text-gray-400 line-clamp-1 cursor-pointer"
                                :class="{ 'line-clamp-1 cursor-pointer': collapsed }"
                                @click="collapsed = false"
@@ -184,7 +187,7 @@
     <footer class="bg-gray-900">
         <div class="mx-auto max-w-7xl px-6 pb-8 pt-16 lg:px-8">
             <div class="md:grid md:grid-cols-4 md:gap-8">
-                <div class="space-y-8 col-span-3">
+                <div class="space-y-8 col-span-2">
                     <img class="h-14" src="{{ \Illuminate\Support\Facades\Vite::asset('resources/images/logos/swiss-laravel-association_white.png') }}" alt="Company name">
                     <p class="text-balance text-sm/6 text-gray-300">Bringing the Swiss Laravel community together.</p>
                     <div id="socials" class="flex gap-x-6">
@@ -200,7 +203,7 @@
                             <span class="sr-only">LinkedIn</span>
                             <x-simpleicon-linkedin class="size-5" />
                         </a>
-                        <a href="https://www.youtube.com/@laravel-switzerland-meetup" class="text-gray-400 hover:text-gray-300 rounded focus-visible:outline focus-visible:outline-1 focus-visible:outline-offset-2 focus-visible:outline-white" target="_blank">
+                        <a href="https://www.youtube.com/@swiss-laravel-association" class="text-gray-400 hover:text-gray-300 rounded focus-visible:outline focus-visible:outline-1 focus-visible:outline-offset-2 focus-visible:outline-white" target="_blank">
                             <span class="sr-only">Youtube</span>
                             <x-simpleicon-youtube class="size-5" />
                         </a>
@@ -215,6 +218,19 @@
                     </div>
                 </div>
                 <div class="mt-16 md:mt-0">
+                    <div class="mt-10 md:mt-0">
+                        <h3 class="text-sm/6 font-semibold text-white">Links</h3>
+                        <ul role="list" class="mt-6 space-y-2">
+                            <li>
+                                <a href="{{ route('meetups.calendar') }}" class="text-sm/6 text-gray-400 hover:text-white rounded focus-visible:outline focus-visible:outline-1 focus-visible:outline-offset-2 focus-visible:outline-white">
+                                    Event Calendar
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="mt-16 md:mt-0">
+
                     <div class="mt-10 md:mt-0">
                         <h3 class="text-sm/6 font-semibold text-white">Legal</h3>
                         <ul role="list" class="mt-6 space-y-2">
