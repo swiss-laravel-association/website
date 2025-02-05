@@ -4853,16 +4853,16 @@
         },
         {
             "name": "spatie/icalendar-generator",
-            "version": "2.9.0",
+            "version": "2.9.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/spatie/icalendar-generator.git",
-                "reference": "9df8161a6b771d232890826011356734e46ed57c"
+                "reference": "21b8d259156368812a6d55096499f289b265be4e"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spatie/icalendar-generator/zipball/9df8161a6b771d232890826011356734e46ed57c",
-                "reference": "9df8161a6b771d232890826011356734e46ed57c",
+                "url": "https://api.github.com/repos/spatie/icalendar-generator/zipball/21b8d259156368812a6d55096499f289b265be4e",
+                "reference": "21b8d259156368812a6d55096499f289b265be4e",
                 "shasum": ""
             },
             "require": {
@@ -4875,8 +4875,7 @@
                 "larapack/dd": "^1.1",
                 "nesbot/carbon": "^3.5",
                 "pestphp/pest": "^2.34",
-                "spatie/pest-plugin-snapshots": "^2.1",
-                "vimeo/psalm": "^5.24"
+                "spatie/pest-plugin-snapshots": "^2.1"
             },
             "type": "library",
             "autoload": {
@@ -4907,9 +4906,9 @@
             ],
             "support": {
                 "issues": "https://github.com/spatie/icalendar-generator/issues",
-                "source": "https://github.com/spatie/icalendar-generator/tree/2.9.0"
+                "source": "https://github.com/spatie/icalendar-generator/tree/2.9.1"
             },
-            "time": "2024-12-02T08:41:57+00:00"
+            "time": "2025-01-31T13:50:13+00:00"
         },
         {
             "name": "spatie/invade",
