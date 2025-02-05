@@ -3,12 +3,9 @@
 namespace App\Filament\Resources;
 
 use App\Filament\Resources\EventResource\Pages;
-use App\Filament\Resources\EventResource\RelationManagers;
 use App\Models\Event;
 use Carbon\CarbonImmutable;
-use Filament\Forms;
 use Filament\Forms\Components\Checkbox;
-use Filament\Forms\Components\DatePicker;
 use Filament\Forms\Components\DateTimePicker;
 use Filament\Forms\Components\Textarea;
 use Filament\Forms\Components\TextInput;
@@ -17,8 +14,6 @@ use Filament\Resources\Resource;
 use Filament\Tables;
 use Filament\Tables\Columns\TextColumn;
 use Filament\Tables\Table;
-use Illuminate\Database\Eloquent\Builder;
-use Illuminate\Database\Eloquent\SoftDeletingScope;
 
 class EventResource extends Resource
 {
@@ -60,7 +55,7 @@ class EventResource extends Resource
                 TextColumn::make('name'),
                 TextColumn::make('location'),
                 TextColumn::make('start_date')
-                    ->formatStateUsing(fn(CarbonImmutable $state) => $state->format('Y-m-d H:i')),
+                    ->formatStateUsing(fn (CarbonImmutable $state) => $state->format('Y-m-d H:i')),
                 Tables\Columns\IconColumn::make('is_published')
                     ->boolean(),
             ])
