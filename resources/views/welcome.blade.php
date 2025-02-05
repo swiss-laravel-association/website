@@ -148,6 +148,7 @@
                                 <img class="aspect-[3/2] w-full rounded-2xl object-cover"
                                      src="{{ \Illuminate\Support\Facades\Vite::asset('resources/images/meetup/laravel-letters.jpeg') }}"
                                      alt=""
+                                     loading="lazy"
                                 >
                                 <div class="absolute right-2 bottom-2 rounded-lg rounded-br-2xl bg-white/90">
                             <span class="block font-semibold text-sm text-gray-900 px-2 py-1 text-right">
