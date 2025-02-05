@@ -8,17 +8,33 @@
     "file": "assets/logo-simple-CeE6Q00Y.png",
     "src": "resources/images/logos/logo-simple.png"
   },
+  "resources/images/logos/logo-simple.webp": {
+    "file": "assets/logo-simple-CflT_JUD.webp",
+    "src": "resources/images/logos/logo-simple.webp"
+  },
   "resources/images/logos/swiss-laravel-association.png": {
     "file": "assets/swiss-laravel-association-atoXTyPS.png",
     "src": "resources/images/logos/swiss-laravel-association.png"
+  },
+  "resources/images/logos/swiss-laravel-association.webp": {
+    "file": "assets/swiss-laravel-association-jDN4SpDg.webp",
+    "src": "resources/images/logos/swiss-laravel-association.webp"
   },
   "resources/images/logos/swiss-laravel-association_red.png": {
     "file": "assets/swiss-laravel-association_red-C6iIOve1.png",
     "src": "resources/images/logos/swiss-laravel-association_red.png"
   },
+  "resources/images/logos/swiss-laravel-association_red.webp": {
+    "file": "assets/swiss-laravel-association_red-DqLGWkiw.webp",
+    "src": "resources/images/logos/swiss-laravel-association_red.webp"
+  },
   "resources/images/logos/swiss-laravel-association_white.png": {
     "file": "assets/swiss-laravel-association_white-QaLu_7zS.png",
     "src": "resources/images/logos/swiss-laravel-association_white.png"
+  },
+  "resources/images/logos/swiss-laravel-association_white.webp": {
+    "file": "assets/swiss-laravel-association_white-DV1lWGgB.webp",
+    "src": "resources/images/logos/swiss-laravel-association_white.webp"
   },
   "resources/images/matterhorn.png": {
     "file": "assets/matterhorn-BbUDBCvh.png",
@@ -32,17 +48,33 @@
     "file": "assets/group-photo-DN-JNVR8.jpeg",
     "src": "resources/images/meetup/group-photo.jpeg"
   },
+  "resources/images/meetup/group-photo.webp": {
+    "file": "assets/group-photo-D6s_F-S_.webp",
+    "src": "resources/images/meetup/group-photo.webp"
+  },
   "resources/images/meetup/group-selfie.jpeg": {
     "file": "assets/group-selfie-BC9OlGKu.jpeg",
     "src": "resources/images/meetup/group-selfie.jpeg"
+  },
+  "resources/images/meetup/group-selfie.webp": {
+    "file": "assets/group-selfie-Yh99MzXt.webp",
+    "src": "resources/images/meetup/group-selfie.webp"
   },
   "resources/images/meetup/laravel-letters.jpeg": {
     "file": "assets/laravel-letters-B86JNMQN.jpeg",
     "src": "resources/images/meetup/laravel-letters.jpeg"
   },
+  "resources/images/meetup/laravel-letters.webp": {
+    "file": "assets/laravel-letters-BnTuBNpb.webp",
+    "src": "resources/images/meetup/laravel-letters.webp"
+  },
   "resources/images/meetup/presentation.jpeg": {
     "file": "assets/presentation-CydwV2iF.jpeg",
     "src": "resources/images/meetup/presentation.jpeg"
+  },
+  "resources/images/meetup/presentation.webp": {
+    "file": "assets/presentation-fulGV73u.webp",
+    "src": "resources/images/meetup/presentation.webp"
   },
   "resources/js/app.js": {
     "file": "assets/app-z-Rg4TxU.js",
