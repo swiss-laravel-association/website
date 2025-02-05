@@ -1,0 +1,55 @@
+name: Integrate
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+
+jobs:
+  tests:
+    name: Tests
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: true
+      matrix:
+        php: [8.3]
+
+    concurrency:
+      group: ${{ github.workflow }}-${{ github.ref }}
+      cancel-in-progress: true
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Setup PHP
+        uses: shivammathur/setup-php@v2
+        with:
+          php-version: ${{ matrix.php }}
+          ini-values: pcov.directory=app
+          coverage: pcov
+
+      - uses: ramsey/composer-install@v3
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20.x'
+
+      - uses: bahmutov/npm-install@v1
+
+      - name: Build frontend
+        run: npm run build
+
+      - name: Copy .env
+        run: cp .env.example .env
+
+      - name: Directory Permissions
+        run: chmod -R 777 storage bootstrap/cache
+
+      - name: Generate Application Key
+        run: php artisan key:generate
+
+      - name: Execute tests
+        run: php artisan test --coverage-text
