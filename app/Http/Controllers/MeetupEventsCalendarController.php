@@ -2,7 +2,6 @@
 
 namespace App\Http\Controllers;
 
-use Carbon\CarbonImmutable;
 use Illuminate\Http\Request;
 use Spatie\IcalendarGenerator\Components\Calendar;
 use Spatie\IcalendarGenerator\Components\Event;
@@ -22,9 +21,9 @@ class MeetupEventsCalendarController extends Controller
             ->where('is_published', true)
             ->orderBy('start_date')
             ->each(function (\App\Models\Event $event) use ($calendar) {
-                $event = Event::create('Laravel Switzerland Meetup - ' . $event->start_date->format('F Y'))
+                $event = Event::create('Laravel Switzerland Meetup - '.$event->start_date->format('F Y'))
                     ->description('🇨🇭 Bringing artisans together across Switzerland. 🤝 In-person meetups where community and learning thrive.')
-                    ->uniqueIdentifier('laravel-switzerland-meetup-' . $event->start_date->format('Y-m-d'))
+                    ->uniqueIdentifier('laravel-switzerland-meetup-'.$event->start_date->format('Y-m-d'))
                     ->startsAt($event->start_date)
                     ->endsAt($event->end_date);
 
