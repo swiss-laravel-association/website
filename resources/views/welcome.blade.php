@@ -200,7 +200,7 @@
                             <span class="sr-only">LinkedIn</span>
                             <x-simpleicon-linkedin class="size-5" />
                         </a>
-                        <a href="https://www.youtube.com/@laravel-switzerland-meetup" class="text-gray-400 hover:text-gray-300 rounded focus-visible:outline focus-visible:outline-1 focus-visible:outline-offset-2 focus-visible:outline-white" target="_blank">
+                        <a href="https://www.youtube.com/@swiss-laravel-association" class="text-gray-400 hover:text-gray-300 rounded focus-visible:outline focus-visible:outline-1 focus-visible:outline-offset-2 focus-visible:outline-white" target="_blank">
                             <span class="sr-only">Youtube</span>
                             <x-simpleicon-youtube class="size-5" />
                         </a>
