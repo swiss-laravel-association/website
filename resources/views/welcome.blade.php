@@ -158,7 +158,9 @@
                             </span>
                                 </div>
                             </div>
-                            <h3 class="mt-4 text-md/8 font-semibold tracking-tight text-white">Event Sourcing & Exclusive Intro to Laravel Cloud</h3>
+                            <h3 class="mt-4 text-md/8 font-semibold tracking-tight text-white">
+                                {{ $event->name }}
+                            </h3>
                             <p class="text-base text-primary-100 dark:text-gray-400 line-clamp-1 cursor-pointer"
                                :class="{ 'line-clamp-1 cursor-pointer': collapsed }"
                                @click="collapsed = false"
