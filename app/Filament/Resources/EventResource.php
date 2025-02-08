@@ -41,7 +41,7 @@ class EventResource extends Resource
                     ->label('Description')
                     ->autosize()
                     ->required(),
-                    TextInput::make('meetup_link')
+                TextInput::make('meetup_link')
                     ->label('Meetup Link'),
                 Checkbox::make('is_published')
                     ->label('Is Published')
