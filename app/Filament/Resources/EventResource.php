@@ -28,8 +28,8 @@ class EventResource extends Resource
                 TextInput::make('name')
                     ->label('Name')
                     ->required(),
-                Textarea::make('description')
-                    ->label('Description')
+                TextInput::make('location')
+                    ->label('Location')
                     ->required(),
                 DateTimePicker::make('start_date')
                     ->label('Start Date')
@@ -37,8 +37,9 @@ class EventResource extends Resource
                 DateTimePicker::make('end_date')
                     ->label('End Date')
                     ->required(),
-                TextInput::make('location')
-                    ->label('Location')
+                Textarea::make('description')
+                    ->label('Description')
+                    ->autosize()
                     ->required(),
                 TextInput::make('meetup_link')
                     ->label('Meetup Link'),
