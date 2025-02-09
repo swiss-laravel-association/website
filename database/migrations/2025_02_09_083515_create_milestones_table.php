@@ -16,6 +16,7 @@ return new class extends Migration
             $table->date('date');
             $table->string('name');
             $table->text('description');
+            $table->string('main_image')->nullable();
             $table->boolean('is_published')->default(false);
             $table->timestamps();
         });

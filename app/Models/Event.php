@@ -3,8 +3,8 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
-use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 
 class Event extends Model
 {
@@ -13,6 +13,7 @@ class Event extends Model
         return [
             'start_date' => 'immutable_datetime',
             'end_date' => 'immutable_datetime',
+            'images' => 'array',
         ];
     }
 
@@ -30,7 +31,7 @@ class Event extends Model
     {
         return $this->belongsTo(Location::class);
     }
-    
+
     public function talks(): HasMany
     {
         return $this->hasMany(Talk::class);

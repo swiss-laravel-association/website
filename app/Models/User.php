@@ -3,12 +3,12 @@
 namespace App\Models;
 
 // use Illuminate\Contracts\Auth\MustVerifyEmail;
-use Filament\Panel;
-use Illuminate\Notifications\Notifiable;
 use Filament\Models\Contracts\FilamentUser;
-use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Filament\Panel;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Foundation\Auth\User as Authenticatable;
+use Illuminate\Notifications\Notifiable;
 
 class User extends Authenticatable implements FilamentUser
 {
@@ -36,8 +36,6 @@ class User extends Authenticatable implements FilamentUser
         'remember_token',
     ];
 
-
-
     public function user(): BelongsTo
     {
         return $this->belongsTo(User::class);
@@ -47,7 +45,6 @@ class User extends Authenticatable implements FilamentUser
     {
         return $this->belongsTo(EventType::class);
     }
-    
 
     /**
      * Get the attributes that should be cast.
@@ -72,7 +69,7 @@ class User extends Authenticatable implements FilamentUser
         }
 
         if ($panel->getId() === 'cockpit') {
-            return  $this->is_speaker == 1 && $this->hasVerifiedEmail();
+            return $this->is_speaker == 1 && $this->hasVerifiedEmail();
         }
 
     }

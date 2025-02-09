@@ -4,7 +4,6 @@ namespace Database\Seeders;
 
 use App\Models\EventType;
 use Illuminate\Database\Seeder;
-use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 
 class EventTypeSeeder extends Seeder
 {
@@ -15,7 +14,7 @@ class EventTypeSeeder extends Seeder
     {
         // Prevents the seed from running multiple times :
 
-        if (EventType::count() === 0) { 
+        if (EventType::count() === 0) {
 
             EventType::create([
                 'name' => 'Meetup',

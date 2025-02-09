@@ -15,7 +15,6 @@ class DatabaseSeeder extends Seeder
     public function run(): void
     {
 
-
         $this->call(CountrySeeder::class);
         $this->call(EventTypeSeeder::class);
         $this->call(LocationSeeder::class);
@@ -29,7 +28,6 @@ class DatabaseSeeder extends Seeder
                 ['name' => 'Test User'],
             );
         }
-
 
     }
 }

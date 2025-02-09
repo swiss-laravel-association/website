@@ -4,7 +4,6 @@ namespace Database\Seeders;
 
 use App\Models\Country;
 use Illuminate\Database\Seeder;
-use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 
 class CountrySeeder extends Seeder
 {
@@ -20,17 +19,17 @@ class CountrySeeder extends Seeder
 
         Country::firstOrCreate(
             ['code' => 'DE'],
-            ['name' => 'Germany', 'sort_order' => 2, 'description' => "Germany makes the best Schnitzel.",]
+            ['name' => 'Germany', 'sort_order' => 2, 'description' => 'Germany makes the best Schnitzel.']
         );
 
         Country::firstOrCreate(
             ['code' => 'IT'],
-            ['name' => 'Italy', 'sort_order' => 3, 'description' => "Pasta e pizza. E Chianti. Ma!"]
+            ['name' => 'Italy', 'sort_order' => 3, 'description' => 'Pasta e pizza. E Chianti. Ma!']
         );
 
         Country::firstOrCreate(
             ['code' => 'FR'],
-            ['name' => 'France',  'sort_order' => 4, 'description' => "The most romantic contry in the World."]
+            ['name' => 'France',  'sort_order' => 4, 'description' => 'The most romantic contry in the World.']
         );
     }
 }

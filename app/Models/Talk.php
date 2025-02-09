@@ -18,12 +18,12 @@ class Talk extends Model
         return $this->belongsTo(User::class);
     }
 
-    // Not used for the moment.
+    // Not used for the moment. We should prefer Spatie's tags package.
 
-/*     public function tags(): BelongsToMany
-    {
-        return $this->belongsToMany(Tag::class);
-    } */
+    /*     public function tags(): BelongsToMany
+        {
+            return $this->belongsToMany(Tag::class);
+        } */
 
     /**
      * Get the attributes that should be cast.
@@ -34,8 +34,8 @@ class Talk extends Model
     {
         return [
             'is_published' => 'boolean',
+            'images' => 'array',
         ];
-        
-    }    
 
+    }
 }

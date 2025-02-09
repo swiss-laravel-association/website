@@ -9,7 +9,8 @@ class EventType extends Model
 {
     use HasFactory;
 
-    public static function boot() {
+    public static function boot()
+    {
         parent::boot();
 
         static::creating(function ($element) {
@@ -17,5 +18,5 @@ class EventType extends Model
             $biggestSortOrder = EventType::max('sort_order');
             $element->sort_order = $biggestSortOrder + 1;
         });
-    }    
+    }
 }

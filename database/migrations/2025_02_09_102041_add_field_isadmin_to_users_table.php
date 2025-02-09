@@ -12,9 +12,9 @@ return new class extends Migration
     public function up(): void
     {
         Schema::table('users', function (Blueprint $table) {
-            $table->boolean('is_admin')->default(0)->after('remember_token');;
-            $table->boolean('is_superadmin')->default(0)->after('is_admin');;
-            $table->boolean('is_speaker')->default(0)->after('is_superadmin');;
+            $table->boolean('is_admin')->default(0)->after('remember_token');
+            $table->boolean('is_superadmin')->default(0)->after('is_admin');
+            $table->boolean('is_speaker')->default(0)->after('is_superadmin');
         });
     }
 

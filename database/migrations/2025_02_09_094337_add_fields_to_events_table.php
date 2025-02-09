@@ -1,11 +1,11 @@
 <?php
 
-use App\Models\User;
-use App\Models\Location;
 use App\Models\EventType;
-use Illuminate\Support\Facades\Schema;
-use Illuminate\Database\Schema\Blueprint;
+use App\Models\Location;
+use App\Models\User;
 use Illuminate\Database\Migrations\Migration;
+use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Support\Facades\Schema;
 
 return new class extends Migration
 {
@@ -16,7 +16,8 @@ return new class extends Migration
     {
         Schema::table('events', function (Blueprint $table) {
             $table->string('banner_image')->nullable()->after('is_published');
-            $table->foreignIdFor(EventType::class)->nullable()->after('banner_image');
+            $table->string('images')->nullable()->after('banner_image');
+            $table->foreignIdFor(EventType::class)->nullable()->after('images');
             $table->foreignIdFor(User::class)->nullable()->after('event_type_id');
             $table->foreignIdFor(Location::class)->nullable()->after('user_id');
             $table->string('location')->nullable()->change();

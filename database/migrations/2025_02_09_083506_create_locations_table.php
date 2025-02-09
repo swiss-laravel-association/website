@@ -1,10 +1,9 @@
 <?php
 
-use App\Models\Chapter;
 use App\Models\Country;
-use Illuminate\Support\Facades\Schema;
-use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
+use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Support\Facades\Schema;
 
 return new class extends Migration
 {
@@ -16,6 +15,7 @@ return new class extends Migration
         Schema::create('locations', function (Blueprint $table) {
             $table->id();
             $table->string('name');
+            $table->string('complement')->nullable();
             $table->string('address')->nullable();
             $table->string('address2')->nullable();
             $table->string('postal_code');
@@ -23,6 +23,7 @@ return new class extends Migration
             $table->string('canton')->nullable();
             $table->foreignIdFor(Country::class);
             $table->text('description')->nullable();
+            $table->string('main_image')->nullable();
             $table->boolean('is_published')->default(false);
             $table->timestamps();
         });

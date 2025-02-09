@@ -8,8 +8,4 @@ use Illuminate\Database\Eloquent\Model;
 class Country extends Model
 {
     use HasFactory;
-
-    public static function boot() {
-        parent::boot();
-    }
 }

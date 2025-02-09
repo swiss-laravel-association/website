@@ -8,12 +8,11 @@ use Filament\Resources\RelationManagers\RelationManager;
 use Filament\Tables;
 use Filament\Tables\Table;
 use Illuminate\Database\Eloquent\Builder;
-use Illuminate\Database\Eloquent\SoftDeletingScope;
 
 class TalksRelationManager extends RelationManager
 {
     protected static string $relationship = 'talks';
-    # protected static ?string $title = 'Talks';
+    // protected static ?string $title = 'Talks';
 
     public function form(Form $form): Form
     {
@@ -40,7 +39,7 @@ class TalksRelationManager extends RelationManager
                     ->url(),
                 Forms\Components\Checkbox::make('is_published')
                     ->label('Is Published')
-                    ->default(false),                         
+                    ->default(false),
             ]);
     }
 
@@ -49,12 +48,12 @@ class TalksRelationManager extends RelationManager
         return $table
             ->recordTitleAttribute('name')
             ->columns([
-                Tables\Columns\TextColumn::make('name'),   
+                Tables\Columns\TextColumn::make('name'),
                 Tables\Columns\TextColumn::make('user.name')
-                    ->label('Speaker'),      
+                    ->label('Speaker'),
                 Tables\Columns\IconColumn::make('is_published')
                     ->label('Published')
-                    ->boolean()  
+                    ->boolean(),
             ])
             ->filters([
                 //
