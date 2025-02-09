@@ -3,9 +3,11 @@
 namespace App\Filament\Resources\EventsResource\RelationManagers;
 
 use Filament\Forms;
+use Filament\Forms\Components\SpatieTagsInput;
 use Filament\Forms\Form;
 use Filament\Resources\RelationManagers\RelationManager;
 use Filament\Tables;
+use Filament\Tables\Columns\SpatieTagsColumn;
 use Filament\Tables\Table;
 use Illuminate\Database\Eloquent\Builder;
 
@@ -37,6 +39,7 @@ class TalksRelationManager extends RelationManager
                     ->numeric(),
                 Forms\Components\TextInput::make('video_url')
                     ->url(),
+                SpatieTagsInput::make('tags'),
                 Forms\Components\Checkbox::make('is_published')
                     ->label('Is Published')
                     ->default(false),
@@ -51,6 +54,7 @@ class TalksRelationManager extends RelationManager
                 Tables\Columns\TextColumn::make('name'),
                 Tables\Columns\TextColumn::make('user.name')
                     ->label('Speaker'),
+                SpatieTagsColumn::make('tags'),
                 Tables\Columns\IconColumn::make('is_published')
                     ->label('Published')
                     ->boolean(),

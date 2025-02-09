@@ -5,9 +5,12 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
+use Spatie\Tags\HasTags;
 
 class Talk extends Model
 {
+    use HasTags;
+
     public function event(): BelongsTo
     {
         return $this->belongsTo(Event::class);

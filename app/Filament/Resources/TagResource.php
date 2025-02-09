@@ -3,14 +3,14 @@
 namespace App\Filament\Resources;
 
 use App\Filament\Resources\TagResource\Pages;
-use App\Models\Tag;
+use Filament\Forms\Components\KeyValue;
 use Filament\Forms\Components\Textarea;
-use Filament\Forms\Components\TextInput;
 use Filament\Forms\Form;
 use Filament\Resources\Resource;
 use Filament\Tables;
 use Filament\Tables\Columns\TextColumn;
 use Filament\Tables\Table;
+use Spatie\Tags\Tag;
 
 class TagResource extends Resource
 {
@@ -22,10 +22,10 @@ class TagResource extends Resource
     {
         return $form
             ->schema([
-                TextInput::make('name')
+                KeyValue::make('name')
                     ->label('Name')
                     ->required(),
-                Textarea::make('description'),
+                // Textarea::make('description'),
             ]);
     }
 

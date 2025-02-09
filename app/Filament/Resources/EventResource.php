@@ -77,7 +77,8 @@ class EventResource extends Resource
     {
         return $table
             ->columns([
-                TextColumn::make('name'),
+                TextColumn::make('name')
+                    ->limit(20),
                 TextColumn::make('location'),
                 TextColumn::make('start_date')
                     ->formatStateUsing(fn (CarbonImmutable $state) => $state->format('Y-m-d H:i')),
