@@ -2,18 +2,22 @@
 
 namespace App\Filament\Resources;
 
-use App\Filament\Resources\EventResource\Pages;
-use App\Models\Event;
-use Carbon\CarbonImmutable;
-use Filament\Forms\Components\Checkbox;
-use Filament\Forms\Components\DateTimePicker;
-use Filament\Forms\Components\Textarea;
-use Filament\Forms\Components\TextInput;
-use Filament\Forms\Form;
-use Filament\Resources\Resource;
 use Filament\Tables;
-use Filament\Tables\Columns\TextColumn;
+use App\Models\Event;
+use Filament\Forms\Form;
 use Filament\Tables\Table;
+use Carbon\CarbonImmutable;
+use Filament\Resources\Resource;
+use Filament\Forms\Components\Select;
+use Filament\Forms\Components\Checkbox;
+use Filament\Forms\Components\Textarea;
+use Filament\Tables\Columns\TextColumn;
+use Filament\Forms\Components\TextInput;
+use Filament\Forms\Components\FileUpload;
+use Illuminate\Database\Eloquent\Builder;
+use App\Filament\Resources\EventsResource\RelationManagers;
+use Filament\Forms\Components\DateTimePicker;
+use App\Filament\Resources\EventResource\Pages;
 
 class EventResource extends Resource
 {
@@ -28,14 +32,15 @@ class EventResource extends Resource
                 TextInput::make('name')
                     ->label('Name')
                     ->required(),
-                TextInput::make('location')
-                    ->label('Location')
-                    ->required(),
+                Select::make('event_type_id')
+                    ->relationship('eventType', 'name', fn (Builder $query) => $query->orderBy('sort_order')),                      
                 DateTimePicker::make('start_date')
                     ->label('Start Date')
+                    ->firstDayOfWeek(1)
                     ->required(),
                 DateTimePicker::make('end_date')
                     ->label('End Date')
+                    ->firstDayOfWeek(1)
                     ->required(),
                 Textarea::make('description')
                     ->label('Description')
@@ -43,9 +48,22 @@ class EventResource extends Resource
                     ->required(),
                 TextInput::make('meetup_link')
                     ->label('Meetup Link'),
+                Select::make('location_id')
+                    ->relationship(name: 'location', titleAttribute: 'name')
+                    ->label('Location'),
+                TextInput::make('location')
+                    ->label('Location (add-on)'),                    
+                FileUpload::make(name: 'banner_image')
+                    ->label('Banner Image')
+                    ->image(),
+                Select::make('user_id')
+                    ->relationship('user', 'name', fn (Builder $query) => $query->where('is_admin', true))
+                    ->searchable()
+                    ->preload()
+                    ->label('User in charge'),
                 Checkbox::make('is_published')
                     ->label('Is Published')
-                    ->default(false),
+                    ->default(false),                    
             ]);
     }
 
@@ -57,9 +75,16 @@ class EventResource extends Resource
                 TextColumn::make('location'),
                 TextColumn::make('start_date')
                     ->formatStateUsing(fn (CarbonImmutable $state) => $state->format('Y-m-d H:i')),
+                TextColumn::make('eventType.name'),
+                TextColumn::make('talks_count')
+                    ->label('Talks')
+                    ->counts('talks'),
+                TextColumn::make('user.name')
+                    ->label('In charge'),                    
                 Tables\Columns\IconColumn::make('is_published')
-                    ->boolean(),
+                    ->boolean()
             ])
+            ->defaultSort('start_date')
             ->actions([
                 Tables\Actions\EditAction::make(),
             ])
@@ -68,6 +93,13 @@ class EventResource extends Resource
                     Tables\Actions\DeleteBulkAction::make(),
                 ]),
             ]);
+    }
+
+    public static function getRelations(): array
+    {
+        return [
+            RelationManagers\TalksRelationManager::class,
+        ];
     }
 
     public static function getPages(): array
