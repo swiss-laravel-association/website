@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Filament\Resources\EventsResource\RelationManagers;
+namespace App\Filament\Resources\EventResource\RelationManagers;
 
 use Filament\Forms;
 use Filament\Forms\Components\SpatieTagsInput;
