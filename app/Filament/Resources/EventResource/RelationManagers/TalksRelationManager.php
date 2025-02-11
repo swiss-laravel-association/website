@@ -3,14 +3,14 @@
 namespace App\Filament\Resources\EventResource\RelationManagers;
 
 use Filament\Forms;
-use Filament\Tables;
-use Filament\Forms\Form;
-use Filament\Tables\Table;
-use Filament\Tables\Columns\TextColumn;
-use Illuminate\Database\Eloquent\Builder;
-use Filament\Tables\Columns\SpatieTagsColumn;
 use Filament\Forms\Components\SpatieTagsInput;
+use Filament\Forms\Form;
 use Filament\Resources\RelationManagers\RelationManager;
+use Filament\Tables;
+use Filament\Tables\Columns\SpatieTagsColumn;
+use Filament\Tables\Columns\TextColumn;
+use Filament\Tables\Table;
+use Illuminate\Database\Eloquent\Builder;
 
 class TalksRelationManager extends RelationManager
 {
@@ -53,9 +53,9 @@ class TalksRelationManager extends RelationManager
             ->recordTitleAttribute('name')
             ->columns([
                 TextColumn::make('order_column')
-                ->label('#')
-                ->toggleable()
-                ->sortable(),
+                    ->label('#')
+                    ->toggleable()
+                    ->sortable(),
                 Tables\Columns\TextColumn::make('name'),
                 Tables\Columns\TextColumn::make('user.name')
                     ->label('Speaker'),
