@@ -7,6 +7,7 @@ use App\Models\Location;
 use Filament\Forms\Components\Checkbox;
 use Filament\Forms\Components\FileUpload;
 use Filament\Forms\Components\Select;
+use Filament\Forms\Components\Textarea;
 use Filament\Forms\Components\TextInput;
 use Filament\Forms\Form;
 use Filament\Resources\Resource;
@@ -40,8 +41,13 @@ class LocationResource extends Resource
                 TextInput::make('canton'),
                 Select::make('country_id')
                     ->relationship('country', 'name', fn (Builder $query) => $query->orderBy('sort_order')),
+                Textarea::make('description'),
+                Textarea::make('notes')
+                    ->label('Internal notes'),
                 FileUpload::make(name: 'main_image')
                     ->image(),
+                TextInput::make('capacity')
+                    ->numeric(),
                 Checkbox::make('is_published')
                     ->label('Is Published')
                     ->default(false),

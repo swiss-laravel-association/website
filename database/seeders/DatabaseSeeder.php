@@ -25,7 +25,11 @@ class DatabaseSeeder extends Seeder
         if (! App::environment('production')) {
             User::firstOrCreate(
                 ['email' => 'test@laravel.swiss'],
-                ['name' => 'Test User'],
+                ['name' => 'Test User',
+                    'is_admin' => true,
+                    'password' => bcrypt('password'),
+                    'email_verified_at' => now(),
+                ],
             );
         }
 

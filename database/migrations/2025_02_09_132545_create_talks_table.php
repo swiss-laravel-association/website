@@ -24,7 +24,7 @@ return new class extends Migration
             // $table->json('tags')->nullable();
             $table->string('video_url')->nullable();
             $table->boolean('is_published')->default(false);
-            $table->integer('sort_order')->nullable();
+            $table->integer('order_column')->nullable();
             $table->timestamps();
         });
     }

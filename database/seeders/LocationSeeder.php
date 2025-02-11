@@ -47,6 +47,7 @@ class LocationSeeder extends Seeder
 
             Location::create([
                 'name' => 'Liip AG',
+                'complement' => 'Liip Arena',
                 'address' => 'Limmatstrasse 183',
                 'postal_code' => '8005',
                 'city' => 'Zurich',

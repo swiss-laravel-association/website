@@ -5,11 +5,14 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
+use Spatie\EloquentSortable\Sortable;
+use Spatie\EloquentSortable\SortableTrait;
 use Spatie\Tags\HasTags;
 
-class Talk extends Model
+class Talk extends Model implements Sortable
 {
     use HasTags;
+    use SortableTrait;
 
     public function event(): BelongsTo
     {

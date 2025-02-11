@@ -23,6 +23,8 @@ return new class extends Migration
             $table->string('canton')->nullable();
             $table->foreignIdFor(Country::class);
             $table->text('description')->nullable();
+            $table->text('notes')->nullable();
+            $table->integer('capacity')->unsigned()->nullable();
             $table->string('main_image')->nullable();
             $table->boolean('is_published')->default(false);
             $table->timestamps();
