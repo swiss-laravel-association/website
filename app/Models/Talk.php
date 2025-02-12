@@ -14,6 +14,10 @@ class Talk extends Model implements Sortable
     use HasTags;
     use SortableTrait;
 
+    protected $casts = [
+        'images' => 'array',
+    ];
+
     public function event(): BelongsTo
     {
         return $this->belongsTo(Event::class);

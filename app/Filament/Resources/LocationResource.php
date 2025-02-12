@@ -46,7 +46,11 @@ class LocationResource extends Resource
                     ->label('Internal notes'),
                 FileUpload::make(name: 'main_image')
                     ->image(),
+                FileUpload::make(name: 'images')
+                    ->panelLayout('grid')
+                    ->multiple(),
                 TextInput::make('capacity')
+                    ->label('Max capacity')
                     ->numeric(),
                 Checkbox::make('is_published')
                     ->label('Is Published')

@@ -26,6 +26,7 @@ return new class extends Migration
             $table->text('notes')->nullable();
             $table->integer('capacity')->unsigned()->nullable();
             $table->string('main_image')->nullable();
+            $table->json('images')->nullable();
             $table->boolean('is_published')->default(false);
             $table->timestamps();
         });

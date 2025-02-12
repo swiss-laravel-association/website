@@ -16,6 +16,8 @@ use Filament\Forms\Form;
 use Filament\Resources\Resource;
 use Filament\Tables;
 use Filament\Tables\Columns\TextColumn;
+use Filament\Tables\Filters\Filter;
+use Filament\Tables\Filters\SelectFilter;
 use Filament\Tables\Table;
 use Illuminate\Database\Eloquent\Builder;
 
@@ -43,6 +45,11 @@ class EventResource extends Resource
                     ->label('End Date')
                     ->firstDayOfWeek(1)
                     ->required(),
+                Select::make('location_id')
+                    ->relationship(name: 'location', titleAttribute: 'name')
+                    ->label('Location'),
+                TextInput::make('location')
+                    ->label('Location (add-on)'),
                 Textarea::make('description')
                     ->label('Description')
                     ->autosize()
@@ -50,11 +57,6 @@ class EventResource extends Resource
                 TextInput::make('meetup_link')
                     ->label('Meetup Link')
                     ->url(),
-                Select::make('location_id')
-                    ->relationship(name: 'location', titleAttribute: 'name')
-                    ->label('Location'),
-                TextInput::make('location')
-                    ->label('Location (add-on)'),
                 FileUpload::make(name: 'banner_image')
                     ->label('Banner Image')
                     // ->storeFileNamesIn('attachment_file_names')
@@ -78,10 +80,13 @@ class EventResource extends Resource
         return $table
             ->columns([
                 TextColumn::make('name')
-                    ->limit(20),
-                TextColumn::make('location'),
+                    ->limit(20)
+                    ->searchable(),
+                TextColumn::make('location.city')
+                    ->searchable(),
                 TextColumn::make('start_date')
-                    ->formatStateUsing(fn (CarbonImmutable $state) => $state->format('Y-m-d H:i')),
+                    ->formatStateUsing(fn (CarbonImmutable $state) => $state->format('Y-m-d H:i'))
+                    ->sortable(),
                 TextColumn::make('eventType.name'),
                 TextColumn::make('talks_count')
                     ->label('Talks')
@@ -89,9 +94,20 @@ class EventResource extends Resource
                 TextColumn::make('user.name')
                     ->label('In charge'),
                 Tables\Columns\IconColumn::make('is_published')
+                    ->label('Published')
                     ->boolean(),
             ])
             ->defaultSort('start_date')
+            ->filters([
+                SelectFilter::make('eventType')
+                    ->relationship('eventType', 'name'),
+                SelectFilter::make('user')
+                    ->relationship('user', 'name')
+                    ->label('In charge'),
+                Filter::make('is_published')
+                    ->query(fn (Builder $query): Builder => $query->where('is_published', true))
+                    ->toggle(),
+            ])
             ->actions([
                 Tables\Actions\EditAction::make(),
             ])

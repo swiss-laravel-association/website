@@ -21,7 +21,6 @@ return new class extends Migration
             $table->foreignIdFor(User::class)->nullable();
             $table->string('banner_image')->nullable();
             $table->json('images')->nullable();
-            // $table->json('tags')->nullable();
             $table->string('video_url')->nullable();
             $table->boolean('is_published')->default(false);
             $table->integer('order_column')->nullable();

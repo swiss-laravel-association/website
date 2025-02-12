@@ -35,9 +35,6 @@ class TalksRelationManager extends RelationManager
                 Forms\Components\FileUpload::make(name: 'banner_image')
                     ->label('Banner Image')
                     ->image(),
-                // Forms\Components\TagsInput::make('tags'),
-                // Forms\Components\TextInput::make('order_column')
-                //    ->numeric(),
                 Forms\Components\TextInput::make('video_url')
                     ->url(),
                 SpatieTagsInput::make('tags'),

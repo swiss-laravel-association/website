@@ -9,6 +9,10 @@ class Location extends Model
 {
     use HasFactory;
 
+    protected $casts = [
+        'images' => 'array',
+    ];
+
     public function country()
     {
         return $this->belongsTo(Country::class);
