@@ -16,7 +16,7 @@ class TagSeeder extends Seeder
 
         if (Tag::count() === 0) {
 
-            Tag::create([
+            Tag::firstOrCreate([
                 'name' => 'Laravel',
                 // 'description' => 'The best PHP framework.',
             ]);
