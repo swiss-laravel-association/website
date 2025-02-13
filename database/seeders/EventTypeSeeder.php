@@ -12,31 +12,25 @@ class EventTypeSeeder extends Seeder
      */
     public function run(): void
     {
-        // Prevents the seed from running multiple times :
+        EventType::firstOrCreate(
+            ['name' => 'Meetup'],
+            ['description' => "Let's meet at the meetups ! Our events are awesome, lots of people share their knowledge.",
+                'sort_order' => 1],
+        );
 
-        if (EventType::count() === 0) {
+        EventType::firstOrCreate(
+            ['name' => 'Meetup with diner'],
+            ['sort_order' => 2],
+        );
 
-            EventType::create([
-                'name' => 'Meetup',
-                'description' => "Let's meet at the meetups ! Our events are awesome, lots of people share their knowledge.",
-                'sort_order' => 1,
-            ]);
+        EventType::firstOrCreate(
+            ['name' => 'Fun activity'],
+            ['sort_order' => 2],
+        );
 
-            EventType::create([
-                'name' => 'Meetup with diner',
-                'sort_order' => 2,
-            ]);
-
-            EventType::create([
-                'name' => 'Fun activity',
-                'sort_order' => 2,
-            ]);
-
-            EventType::create([
-                'name' => 'Other',
-                'sort_order' => 3,
-            ]);
-
-        }
+        EventType::firstOrCreate(
+            ['name' => 'Other'],
+            ['sort_order' => 3],
+        );
     }
 }

@@ -12,54 +12,42 @@ class TagSeeder extends Seeder
      */
     public function run(): void
     {
-        // Prevents the seed from running multiple times :
 
-        if (Tag::count() === 0) {
+        Tag::firstOrCreate([
+            'name' => 'Laravel',
+        ]);
 
-            Tag::firstOrCreate([
-                'name' => 'Laravel',
-                // 'description' => 'The best PHP framework.',
-            ]);
+        Tag::firstOrCreate([
+            'name' => 'Vue.js',
+        ]);
 
-            Tag::create([
-                'name' => 'Vue.js',
-                // 'description' => 'The best JavaScript framework.',
-            ]);
+        Tag::firstOrCreate([
+            'name' => 'Tailwind CSS',
+        ]);
 
-            Tag::create([
-                'name' => 'Tailwind CSS',
-                // 'description' => 'The best CSS framework.',
-            ]);
+        Tag::firstOrCreate([
+            'name' => 'Livewire',
+        ]);
 
-            Tag::create([
-                'name' => 'Livewire',
-                // 'description' => 'Building dynamic interfaces without JavaScript.',
-            ]);
+        Tag::firstOrCreate([
+            'name' => 'Alpine.js',
+        ]);
 
-            Tag::create([
-                'name' => 'Alpine.js',
-                // 'description' => 'The best JavaScript framework.',
-            ]);
+        Tag::firstOrCreate([
+            'name' => 'JavaScript',
+        ]);
 
-            Tag::create([
-                'name' => 'JavaScript',
-                // 'description' => 'Back to the roots.',
-            ]);
+        Tag::firstOrCreate([
+            'name' => 'OctoberCMS',
+        ]);
 
-            Tag::create([
-                'name' => 'OctoberCMS',
-                // 'description' => 'Flat file CMS based on Laravel.',
-            ]);
+        Tag::firstOrCreate([
+            'name' => 'Tests',
+        ]);
 
-            Tag::create([
-                'name' => 'Tests',
-                // 'description' => 'Test your apps.',
-            ]);
+        Tag::firstOrCreate([
+            'name' => 'Laravel Cloud',
+        ]);
 
-            Tag::create([
-                'name' => 'Laravel Cloud',
-                // 'description' => 'From local to production. Easy-peasy',
-            ]);
-        }
     }
 }
