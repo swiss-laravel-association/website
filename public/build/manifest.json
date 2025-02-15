@@ -4,6 +4,22 @@
     "src": "resources/css/app.css",
     "isEntry": true
   },
+  "resources/images/default-open-graph-image.jpg": {
+    "file": "assets/default-open-graph-image-Dt4j4JRe.jpg",
+    "src": "resources/images/default-open-graph-image.jpg"
+  },
+  "resources/images/default-open-graph-image.webp": {
+    "file": "assets/default-open-graph-image-kxzKBw4c.webp",
+    "src": "resources/images/default-open-graph-image.webp"
+  },
+  "resources/images/logos/logo-mark-color.png": {
+    "file": "assets/logo-mark-color-BRljjndR.png",
+    "src": "resources/images/logos/logo-mark-color.png"
+  },
+  "resources/images/logos/logo-mark-color.webp": {
+    "file": "assets/logo-mark-color-BM67xMcD.webp",
+    "src": "resources/images/logos/logo-mark-color.webp"
+  },
   "resources/images/logos/logo-simple.png": {
     "file": "assets/logo-simple-CeE6Q00Y.png",
     "src": "resources/images/logos/logo-simple.png"
@@ -77,7 +93,7 @@
     "src": "resources/images/meetup/presentation.webp"
   },
   "resources/js/app.js": {
-    "file": "assets/app-z-Rg4TxU.js",
+    "file": "assets/app-Xaw6OIO1.js",
     "name": "app",
     "src": "resources/js/app.js",
     "isEntry": true

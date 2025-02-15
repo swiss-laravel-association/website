@@ -5,12 +5,18 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
     <title>Swiss Laravel Association</title>
+    <meta name="description" content="Bringing Laravel developers together across Switzerland." />
+    <meta property="og:image" content="{{ Vite::asset('resources/images/default-open-graph-image.webp') }}" />
+    <meta name="fediverse:creator" content="@swiss_laravel_association@phpc.social" />
+
+    <link rel="me" href="https://x.com/swisslaravel">
+    <link rel="me" href="https://github.com/swiss-laravel-association">
 
     <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
     <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
     <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
     <link rel="manifest" href="/site.webmanifest">
-
+    
     <style>
         [x-cloak] {
             display: none;
