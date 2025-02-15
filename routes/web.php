@@ -6,6 +6,24 @@ Route::get('/', function () {
     return view('welcome');
 })->name('home');
 
+// TODO: Implement the following routes
+// Route::get('/association/about' fn () => '');
+// Route::get('/association/membership' fn () => '');
+// Route::get('/association/become-a-member' fn () => ''); // Not sure if we should have a dedicated page for this
+// Route::get('/association/sponsorship' fn () => '');
+// Route::get('/association/leadership' fn () => '');
+// Route::get('/association/members/{member:slug}' fn () => '');
+
+// Route::get('/meetups' fn () => '');
+// Route::get('/meetups/speakers/{speaker:slug}' fn () => '');
+// Route::get('/meetups/talks/{talk:slug}' fn () => '');
+// Route::get('/meetups/calendar' fn () => '');
+// Route::get('/meetups/apply-to-speak' fn () => '');
+// Route::get('/meetups/apply-to-host' fn () => ''); // Not sure if we should have this
+
+// Route::get('/blog' fn () => '');
+// Route::get('/blog/{post:slug}' fn () => '');
+
 // Redirects to forms
 Route::redirect('/feedback', 'https://forms.gle/aGtW8T8GrgZX4kAfA')->name('links.feedback');
 Route::redirect('/rfp', 'https://forms.gle/M7gXenkv7F21ZYbMA')->name('links.rfp');
