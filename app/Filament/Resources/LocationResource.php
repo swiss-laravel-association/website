@@ -2,20 +2,21 @@
 
 namespace App\Filament\Resources;
 
-use App\Filament\Resources\LocationResource\Pages;
-use App\Models\Location;
-use Filament\Forms\Components\Checkbox;
-use Filament\Forms\Components\FileUpload;
-use Filament\Forms\Components\Select;
-use Filament\Forms\Components\Textarea;
-use Filament\Forms\Components\TextInput;
-use Filament\Forms\Form;
-use Filament\Resources\Resource;
 use Filament\Tables;
+use App\Models\Location;
+use Filament\Forms\Form;
+use Filament\Tables\Table;
+use Filament\Resources\Resource;
+use Filament\Forms\Components\Select;
+use Filament\Forms\Components\Toggle;
+use Filament\Forms\Components\Checkbox;
+use Filament\Forms\Components\Textarea;
 use Filament\Tables\Columns\IconColumn;
 use Filament\Tables\Columns\TextColumn;
-use Filament\Tables\Table;
+use Filament\Forms\Components\TextInput;
 use Illuminate\Database\Eloquent\Builder;
+use App\Filament\Resources\LocationResource\Pages;
+use Filament\Forms\Components\SpatieMediaLibraryFileUpload;
 
 class LocationResource extends Resource
 {
@@ -44,15 +45,21 @@ class LocationResource extends Resource
                 Textarea::make('description'),
                 Textarea::make('notes')
                     ->label('Internal notes'),
-                FileUpload::make(name: 'main_image')
-                    ->image(),
-                FileUpload::make(name: 'images')
-                    ->panelLayout('grid')
-                    ->multiple(),
+                SpatieMediaLibraryFileUpload::make('cover')
+                    ->label('Cover image')
+                    ->collection('locations-cover-image')
+                    ->responsiveImages()
+                    ->conversion('thumb'),
+                SpatieMediaLibraryFileUpload::make('photos')
+                    ->multiple()
+                    ->collection('locations-images')
+                    ->responsiveImages()
+                    ->conversion('thumb')
+                    ->reorderable(),
                 TextInput::make('capacity')
                     ->label('Max capacity')
                     ->numeric(),
-                Checkbox::make('is_published')
+                Toggle::make('is_published')
                     ->label('Is Published')
                     ->default(false),
             ]);

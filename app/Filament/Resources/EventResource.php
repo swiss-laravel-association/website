@@ -5,14 +5,18 @@ namespace App\Filament\Resources;
 use App\Filament\Resources\EventResource\Pages;
 use App\Filament\Resources\EventResource\RelationManagers;
 use App\Models\Event;
+use Carbon\Carbon;
 use Carbon\CarbonImmutable;
-use Filament\Forms\Components\Checkbox;
 use Filament\Forms\Components\DateTimePicker;
 use Filament\Forms\Components\FileUpload;
 use Filament\Forms\Components\Select;
+use Filament\Forms\Components\SpatieMediaLibraryFileUpload;
 use Filament\Forms\Components\Textarea;
 use Filament\Forms\Components\TextInput;
+use Filament\Forms\Components\Toggle;
 use Filament\Forms\Form;
+use Filament\Forms\Get;
+use Filament\Forms\Set;
 use Filament\Resources\Resource;
 use Filament\Tables;
 use Filament\Tables\Columns\TextColumn;
@@ -39,7 +43,11 @@ class EventResource extends Resource
                     ->relationship('eventType', 'name', fn (Builder $query) => $query->orderBy('sort_order')),
                 DateTimePicker::make('start_date')
                     ->label('Start Date')
+                    ->live()
                     ->firstDayOfWeek(1)
+                    ->afterStateUpdated(function (?string $state, ?string $old, Set $set, Get $get) {
+                        return $set('end_date', $get('end_date') ?: Carbon::parse($state)->addHours(2)->toDateTimeString());
+                    })
                     ->required(),
                 DateTimePicker::make('end_date')
                     ->label('End Date')
@@ -57,20 +65,19 @@ class EventResource extends Resource
                 TextInput::make('meetup_link')
                     ->label('Meetup Link')
                     ->url(),
-                FileUpload::make(name: 'banner_image')
-                    ->label('Banner Image')
-                    // ->storeFileNamesIn('attachment_file_names')
-                    ->image(),
-                FileUpload::make('images')
-                    ->panelLayout('grid')
-                    ->multiple(),
+                SpatieMediaLibraryFileUpload::make('cover')
+                    ->label('Cover image')
+                    ->collection('event-cover-image'),
+                SpatieMediaLibraryFileUpload::make('photos')
+                    ->multiple()
+                    ->collection('events-cover-images')
+                    ->reorderable(),
                 Select::make('user_id')
                     ->relationship('user', 'name', fn (Builder $query) => $query->where('is_admin', true))
                     ->searchable()
                     ->preload()
                     ->label('User in charge'),
-                Checkbox::make('is_published')
-                    ->label('Is Published')
+                Toggle::make('is_published')
                     ->default(false),
             ]);
     }

@@ -5,15 +5,20 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\HasMany;
+use Spatie\Image\Enums\Fit;
+use Spatie\MediaLibrary\HasMedia;
+use Spatie\MediaLibrary\InteractsWithMedia;
+use Spatie\MediaLibrary\MediaCollections\Models\Media;
 
-class Event extends Model
+class Event extends Model implements HasMedia
 {
+    use InteractsWithMedia;
+
     protected function casts(): array
     {
         return [
             'start_date' => 'immutable_datetime',
             'end_date' => 'immutable_datetime',
-            'images' => 'array',
         ];
     }
 
@@ -35,5 +40,13 @@ class Event extends Model
     public function talks(): HasMany
     {
         return $this->hasMany(Talk::class);
+    }
+
+    public function registerMediaConversions(?Media $media = null): void
+    {
+        $this
+            ->addMediaConversion('thum')
+            ->fit(Fit::Contain, 300, 300)
+            ->nonQueued();
     }
 }
