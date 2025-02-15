@@ -37,6 +37,21 @@
                         <h3 class="text-sm/6 font-semibold text-white">Links</h3>
                         <ul role="list" class="mt-6 space-y-2">
                             <li>
+                                <a href="{{ route('links.newsletter') }}" class="text-sm/6 text-gray-400 hover:text-white rounded focus-visible:outline focus-visible:outline-1 focus-visible:outline-offset-2 focus-visible:outline-white">
+                                    Newsletter
+                                </a>
+                            </li>
+                            <li>
+                                <a href="{{ route('links.feedback') }}" class="text-sm/6 text-gray-400 hover:text-white rounded focus-visible:outline focus-visible:outline-1 focus-visible:outline-offset-2 focus-visible:outline-white">
+                                    Feedback
+                                </a>
+                            </li>
+                            <li>
+                                <a href="{{ route('links.rfp') }}" class="text-sm/6 text-gray-400 hover:text-white rounded focus-visible:outline focus-visible:outline-1 focus-visible:outline-offset-2 focus-visible:outline-white">
+                                    Request for Proposal
+                                </a>
+                            </li>
+                            <li>
                                 <a href="{{ route('meetups.calendar') }}" class="text-sm/6 text-gray-400 hover:text-white rounded focus-visible:outline focus-visible:outline-1 focus-visible:outline-offset-2 focus-visible:outline-white">
                                     Event Calendar
                                 </a>
