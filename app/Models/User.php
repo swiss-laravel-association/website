@@ -6,6 +6,7 @@ namespace App\Models;
 use Filament\Models\Contracts\FilamentUser;
 use Filament\Panel;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 
@@ -35,6 +36,16 @@ class User extends Authenticatable implements FilamentUser
         'remember_token',
     ];
 
+    public function user(): BelongsTo
+    {
+        return $this->belongsTo(User::class);
+    }
+
+    public function eventType(): BelongsTo
+    {
+        return $this->belongsTo(EventType::class);
+    }
+
     /**
      * Get the attributes that should be cast.
      *
@@ -45,11 +56,21 @@ class User extends Authenticatable implements FilamentUser
         return [
             'email_verified_at' => 'datetime',
             'password' => 'hashed',
+            'is_admin' => 'boolean',
+            'is_speaker' => 'boolean',
         ];
     }
 
     public function canAccessPanel(Panel $panel): bool
     {
-        return $this->hasVerifiedEmail();
+
+        if ($panel->getId() === 'admin') {
+            return $this->is_admin == 1 && $this->hasVerifiedEmail() && str_ends_with($this->email, '@laravel.swiss');
+        }
+
+        if ($panel->getId() === 'cockpit') {
+            return $this->is_speaker == 1 && $this->hasVerifiedEmail();
+        }
+
     }
 }
