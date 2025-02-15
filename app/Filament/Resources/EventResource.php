@@ -8,7 +8,6 @@ use App\Models\Event;
 use Carbon\Carbon;
 use Carbon\CarbonImmutable;
 use Filament\Forms\Components\DateTimePicker;
-use Filament\Forms\Components\FileUpload;
 use Filament\Forms\Components\Select;
 use Filament\Forms\Components\SpatieMediaLibraryFileUpload;
 use Filament\Forms\Components\Textarea;
