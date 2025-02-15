@@ -1,0 +1,14 @@
+name: Merge me!
+
+on:
+  workflow_run:
+    types:
+      - completed
+    workflows:
+      - 'Integrate'
+
+jobs:
+  merge-me:
+    uses: stefanzweifel/reusable-workflows/.github/workflows/auto-merge-dependabot-pr.yml@main
+    secrets:
+      MERGE_ME_GITHUB_TOKEN: ${{ secrets.AUTO_MERGE_GITHUB_TOKEN }}

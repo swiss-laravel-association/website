@@ -3,12 +3,9 @@
 namespace App\Filament\Resources;
 
 use App\Filament\Resources\EventResource\Pages;
-use App\Filament\Resources\EventResource\RelationManagers;
 use App\Models\Event;
 use Carbon\CarbonImmutable;
-use Filament\Forms;
 use Filament\Forms\Components\Checkbox;
-use Filament\Forms\Components\DatePicker;
 use Filament\Forms\Components\DateTimePicker;
 use Filament\Forms\Components\Textarea;
 use Filament\Forms\Components\TextInput;
@@ -17,8 +14,6 @@ use Filament\Resources\Resource;
 use Filament\Tables;
 use Filament\Tables\Columns\TextColumn;
 use Filament\Tables\Table;
-use Illuminate\Database\Eloquent\Builder;
-use Illuminate\Database\Eloquent\SoftDeletingScope;
 
 class EventResource extends Resource
 {
@@ -33,8 +28,8 @@ class EventResource extends Resource
                 TextInput::make('name')
                     ->label('Name')
                     ->required(),
-                Textarea::make('description')
-                    ->label('Description')
+                TextInput::make('location')
+                    ->label('Location')
                     ->required(),
                 DateTimePicker::make('start_date')
                     ->label('Start Date')
@@ -42,8 +37,9 @@ class EventResource extends Resource
                 DateTimePicker::make('end_date')
                     ->label('End Date')
                     ->required(),
-                TextInput::make('location')
-                    ->label('Location')
+                Textarea::make('description')
+                    ->label('Description')
+                    ->autosize()
                     ->required(),
                 TextInput::make('meetup_link')
                     ->label('Meetup Link'),
@@ -60,7 +56,7 @@ class EventResource extends Resource
                 TextColumn::make('name'),
                 TextColumn::make('location'),
                 TextColumn::make('start_date')
-                    ->formatStateUsing(fn(CarbonImmutable $state) => $state->format('Y-m-d H:i')),
+                    ->formatStateUsing(fn (CarbonImmutable $state) => $state->format('Y-m-d H:i')),
                 Tables\Columns\IconColumn::make('is_published')
                     ->boolean(),
             ])
