@@ -43,6 +43,13 @@ class EventResource extends Resource
                     ->required(),
                 TextInput::make('meetup_link')
                     ->label('Meetup Link'),
+                DateTimePicker::make('sign_in_start')
+                    ->label('Activation of sign in'),
+                DateTimePicker::make('sign_in_end')
+                    ->label('Deactivation of sign in'),
+                TextInput::make('api_code')
+                    ->label('Registration app Code')
+                    ->password()->columnSpanFull(),
                 Checkbox::make('is_published')
                     ->label('Is Published')
                     ->default(false),
