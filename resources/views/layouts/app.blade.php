@@ -4,9 +4,8 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <title>Swiss Laravel Association</title>
-    <meta name="description" content="Bringing Laravel developers together across Switzerland." />
-    <meta property="og:image" content="{{ Vite::asset('resources/images/default-open-graph-image.webp') }}" />
+    {!! seo() !!}
+
     <meta name="fediverse:creator" content="@swiss_laravel_association@phpc.social" />
 
     <link rel="me" href="https://x.com/swisslaravel">
