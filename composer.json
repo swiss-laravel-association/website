@@ -11,8 +11,10 @@
         "laravel/framework": "^11.9",
         "laravel/tinker": "^2.9",
         "livewire/livewire": "^3.5",
+        "ralphjsmit/laravel-seo": "^1.6",
         "spatie/icalendar-generator": "^2.9",
         "spatie/laravel-mailcoach-sdk": "^1.3",
+        "spatie/schema-org": "^3.23",
         "ublabs/blade-simple-icons": "^0.143.0"
     },
     "require-dev": {
