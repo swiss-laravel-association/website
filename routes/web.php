@@ -1,10 +1,9 @@
 <?php
 
+use App\Http\Controllers\MeetupEventsCalendarController;
 use Illuminate\Support\Facades\Route;
 
-Route::get('/', function () {
-    return view('welcome');
-})->name('home');
+Route::get('/', \App\Http\Controllers\HomepageController::class)->name('home');
 
 // TODO: Implement the following routes
 // Route::get('/association/about' fn () => '');
@@ -41,4 +40,4 @@ Route::redirect('/mastodon', 'https://phpc.social/@swiss_laravel_association')->
 Route::redirect('/twitter', 'https://x.com/swisslaravel')->name('links.twitter');
 Route::redirect('/x', 'https://x.com/swisslaravel')->name('links.x');
 
-Route::get('/meetups/calendar.ics', \App\Http\Controllers\MeetupEventsCalendarController::class)->name('meetups.calendar');
+Route::get('/meetups/calendar.ics', MeetupEventsCalendarController::class)->name('meetups.calendar');
