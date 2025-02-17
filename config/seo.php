@@ -12,7 +12,7 @@ return [
     /**
      * Use this setting to specify the site name that will be used in OpenGraph tags.
      */
-    'site_name' => null,
+    'site_name' => 'Swiss Laravel Association',
 
     /**
      * Use this setting to specify the path to the sitemap of your website. This exact path will outputted, so
@@ -109,7 +109,7 @@ return [
          * Use this setting to specify a fallback author, which will be used on places where you
          * don't have an author set via an associated ->seo model or via the ->getDynamicSEOData() method.
          */
-        'fallback' => null,
+        'fallback' => 'Swiss Laravel Association',
     ],
 
     'twitter' => [
@@ -117,6 +117,6 @@ return [
          * Use this setting to enter your username and include that with the Twitter Card tags.
          * Enter the username like 'yourUserName', so without the '@'.
          */
-        '@username' => null,
+        '@username' => 'swisslaravel',
     ],
 ];
