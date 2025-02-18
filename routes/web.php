@@ -11,7 +11,7 @@ Route::get('/', HomepageController::class)->name('home');
 // Route::get('/association/about' fn () => '');
 // Route::get('/association/membership' fn () => '');
 // Route::get('/association/become-a-member' fn () => ''); // Not sure if we should have a dedicated page for this
- Route::get('/association/sponsors', SponsorsController::class)->name('association.sponsors');
+Route::get('/association/sponsors', SponsorsController::class)->name('association.sponsors');
 // Route::get('/association/leadership' fn () => '');
 // Route::get('/association/members/{member:slug}' fn () => '');
 

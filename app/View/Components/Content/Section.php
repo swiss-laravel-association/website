@@ -8,13 +8,11 @@ use Illuminate\View\Component;
 class Section extends Component
 {
     public function __construct(
-        public ?string $keyWords = null,
+        public ?string $keyWords,
         public string $title,
         public ?string $description = null,
         public bool $red = false,
-    )
-    {
-    }
+    ) {}
 
     public function render(): View
     {
