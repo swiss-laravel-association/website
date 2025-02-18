@@ -44,7 +44,10 @@
                     {{ __('nav.events') }}
                 </x-main-menu.item>
             </div>
-            <div class="space-y-2 sm:flex sm:items-center sm:space-x-2">
+            <div class="space-y-2 sm:space-y-0 sm:flex sm:items-center sm:space-x-2">
+                <x-main-menu.item :url="route('association.sponsors')">
+                    {{ __('nav.sponsors') }}
+                </x-main-menu.item>
                 <x-main-menu.item :url="route('home') . '#socials'">
                     {{ __('nav.follow_us') }}
                 </x-main-menu.item>

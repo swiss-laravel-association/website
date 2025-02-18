@@ -1,6 +1,4 @@
 <x-app-layout>
-
-
     <section class="bg-primary-500 dark:bg-black">
         <div class="container mx-auto flex items-center justify-center space-x-8 pt-2 pb-12 px-12">
             <img src="{{ Vite::asset('resources/images/logos/logo-simple.webp') }}"
@@ -56,53 +54,52 @@
             </div>
         </div>
     </section>
-    <section id="events" class="overflow-hidden bg-primary-500 dark:bg-black py-24 sm:py-32">
-        <div class="mx-auto container px-6 lg:max-w-7xl lg:px-8">
-            <div class="max-w-4xl">
-                <p class="text-base/7 font-semibold text-primary-200 dark:text-gray-400">Events</p>
-                <h1 class="mt-2 text-pretty text-4xl font-semibold tracking-tight text-white dark:text-gray-300 sm:text-5xl">Meet the Swiss Laravel community</h1>
-                <p class="mt-6 text-balance text-xl/8 text-primary-200 dark:text-gray-400">
-                <ul role="list" class="mx-auto mt-20 grid max-w-2xl grid-cols-1 gap-x-8 gap-y-16 sm:grid-cols-2 lg:mx-0 lg:max-w-none lg:grid-cols-3">
-                    @foreach(\App\Models\Event::query()->where('is_published', true)->orderBy('start_date')->get() as $event)
-                        <li x-data="{ collapsed: true }" wire:key="{{ $event->id }}">
-                            <div class="relative">
-                                <img class="aspect-[3/2] w-full rounded-2xl object-cover"
-                                     src="{{ \Illuminate\Support\Facades\Vite::asset('resources/images/meetup/laravel-letters.webp') }}"
-                                     alt=""
-                                     loading="lazy"
-                                >
-                                <div class="absolute right-2 bottom-2 rounded-lg rounded-br-2xl bg-white/90">
-                            <span class="block font-semibold text-sm text-gray-900 px-2 py-1 text-right">
-                                {{ $event->start_date->format('d. F Y') }}<br>
-                                {{ $event->start_date->format('H:i') }}<br>
-                                {{ $event->location }}
-                            </span>
-                                </div>
-                            </div>
-                            <h3 class="mt-4 text-md/8 font-semibold tracking-tight text-white">
-                                {{ $event->name }}
-                            </h3>
-                            <p class="text-base text-primary-100 dark:text-gray-400 line-clamp-1 cursor-pointer"
-                               :class="{ 'line-clamp-1 cursor-pointer': collapsed }"
-                               @click="collapsed = false"
-                            >
-                                {!! nl2br($event->description) !!}
-                                <br>
-                                @if($event->meetup_link)
-                                    <a href="{{ $event->meetup_link }}" class="underline" target="_blank">RSVP on Meetup.com</a>
-                                @endif
-                            </p>
-                            @if(\Illuminate\Support\Str::length($event->description) > 10)
-                                <button x-show="collapsed"
-                                        @click="collapsed = !collapsed"
-                                        class="text-sm font-semibold text-white hover:text-primary-100 rounded focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white"
-                                >Read more</button>
-                            @endif
-                        </li>
-                    @endforeach
-                </ul>
-                </p>
-            </div>
-        </div>
-    </section>
+
+    <x-content.section id="events"
+                       key-words="Events"
+                       title="Meet the Swiss Laravel community"
+                       red
+    >
+        <p class="mt-6 text-balance text-xl/8 text-primary-200 dark:text-gray-400">
+        <ul role="list" class="mx-auto mt-20 grid max-w-2xl grid-cols-1 gap-x-8 gap-y-16 sm:grid-cols-2 lg:mx-0 lg:max-w-none lg:grid-cols-3">
+            @foreach(\App\Models\Event::query()->where('is_published', true)->orderBy('start_date')->get() as $event)
+                <li x-data="{ collapsed: true }" wire:key="{{ $event->id }}">
+                    <div class="relative">
+                        <img class="aspect-[3/2] w-full rounded-2xl object-cover"
+                             src="{{ \Illuminate\Support\Facades\Vite::asset('resources/images/meetup/laravel-letters.webp') }}"
+                             alt=""
+                             loading="lazy"
+                        >
+                        <div class="absolute right-2 bottom-2 rounded-lg rounded-br-2xl bg-white/90">
+                    <span class="block font-semibold text-sm text-gray-900 px-2 py-1 text-right">
+                        {{ $event->start_date->format('d. F Y') }}<br>
+                        {{ $event->start_date->format('H:i') }}<br>
+                        {{ $event->location }}
+                    </span>
+                        </div>
+                    </div>
+                    <h3 class="mt-4 text-md/8 font-semibold tracking-tight text-white">
+                        {{ $event->name }}
+                    </h3>
+                    <p class="text-base text-primary-100 dark:text-gray-400 line-clamp-1 cursor-pointer"
+                       :class="{ 'line-clamp-1 cursor-pointer': collapsed }"
+                       @click="collapsed = false"
+                    >
+                        {!! nl2br($event->description) !!}
+                        <br>
+                        @if($event->meetup_link)
+                            <a href="{{ $event->meetup_link }}" class="underline" target="_blank">RSVP on Meetup.com</a>
+                        @endif
+                    </p>
+                    @if(\Illuminate\Support\Str::length($event->description) > 10)
+                        <button x-show="collapsed"
+                                @click="collapsed = !collapsed"
+                                class="text-sm font-semibold text-white hover:text-primary-100 rounded focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white"
+                        >Read more</button>
+                    @endif
+                </li>
+            @endforeach
+        </ul>
+        </p>
+    </x-content.section>
 </x-app-layout>

@@ -1,15 +1,17 @@
 <?php
 
+use App\Http\Controllers\Association\SponsorsController;
+use App\Http\Controllers\HomepageController;
 use App\Http\Controllers\MeetupEventsCalendarController;
 use Illuminate\Support\Facades\Route;
 
-Route::get('/', \App\Http\Controllers\HomepageController::class)->name('home');
+Route::get('/', HomepageController::class)->name('home');
 
 // TODO: Implement the following routes
 // Route::get('/association/about' fn () => '');
 // Route::get('/association/membership' fn () => '');
 // Route::get('/association/become-a-member' fn () => ''); // Not sure if we should have a dedicated page for this
-// Route::get('/association/sponsorship' fn () => '');
+ Route::get('/association/sponsors', SponsorsController::class)->name('association.sponsors');
 // Route::get('/association/leadership' fn () => '');
 // Route::get('/association/members/{member:slug}' fn () => '');
 

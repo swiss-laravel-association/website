@@ -5,4 +5,5 @@ return [
     'about' => 'About',
     'events' => 'Events',
     'follow_us' => 'Follow us',
+    'sponsors' => 'Sponsors',
 ];
