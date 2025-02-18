@@ -31,6 +31,9 @@
 <body class="flex flex-col min-h-screen font-sans antialiased bg-gray-100">
     <x-header />
 
+
+    <x-nav />
+
     {{ $slot }}
 
     <x-footer/>
