@@ -71,6 +71,10 @@ class PostResource extends Resource
                     TextEntry::make('excerpt'),
                     TextEntry::make('published_at')
                         ->dateTime('d.m.Y H:i'),
+                    TextEntry::make('authors.name')
+                        ->label('Authors')
+                        ->listWithLineBreaks()
+                        ->bulleted(),
                 ])->columnSpan(4),
             ]);
     }
@@ -86,6 +90,9 @@ class PostResource extends Resource
                 Tables\Columns\TextColumn::make('published_at')
                     ->dateTime()
                     ->sortable(),
+                Tables\Columns\TextColumn::make('authors.name')
+                    ->label('Authors')
+                    ->bulleted(),
                 Tables\Columns\TextColumn::make('created_at')
                     ->dateTime()
                     ->sortable()
@@ -95,6 +102,7 @@ class PostResource extends Resource
                     ->sortable()
                     ->toggleable(isToggledHiddenByDefault: true),
             ])
+            ->defaultSort('id', 'desc')
             ->filters([
                 //
             ])
