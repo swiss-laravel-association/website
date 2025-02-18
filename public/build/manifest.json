@@ -1,16 +1,8 @@
 {
   "resources/css/app.css": {
-    "file": "assets/app-DSCbrrRs.css",
+    "file": "assets/app-hiPcFxfK.css",
     "src": "resources/css/app.css",
     "isEntry": true
-  },
-  "resources/images/default-open-graph-image.jpg": {
-    "file": "assets/default-open-graph-image-Dt4j4JRe.jpg",
-    "src": "resources/images/default-open-graph-image.jpg"
-  },
-  "resources/images/default-open-graph-image.webp": {
-    "file": "assets/default-open-graph-image-kxzKBw4c.webp",
-    "src": "resources/images/default-open-graph-image.webp"
   },
   "resources/images/logos/logo-mark-color.png": {
     "file": "assets/logo-mark-color-BRljjndR.png",
@@ -52,14 +44,6 @@
     "file": "assets/swiss-laravel-association_white-DV1lWGgB.webp",
     "src": "resources/images/logos/swiss-laravel-association_white.webp"
   },
-  "resources/images/matterhorn.png": {
-    "file": "assets/matterhorn-BbUDBCvh.png",
-    "src": "resources/images/matterhorn.png"
-  },
-  "resources/images/matterhorn_2.png": {
-    "file": "assets/matterhorn_2-C8GRPj9c.png",
-    "src": "resources/images/matterhorn_2.png"
-  },
   "resources/images/meetup/group-photo.jpeg": {
     "file": "assets/group-photo-DN-JNVR8.jpeg",
     "src": "resources/images/meetup/group-photo.jpeg"
@@ -92,8 +76,20 @@
     "file": "assets/presentation-fulGV73u.webp",
     "src": "resources/images/meetup/presentation.webp"
   },
+  "resources/images/sponsoring/logos/cyon.svg": {
+    "file": "assets/cyon-CYuq8qtG.svg",
+    "src": "resources/images/sponsoring/logos/cyon.svg"
+  },
+  "resources/images/sponsoring/logos/liip.svg": {
+    "file": "assets/liip-DKMXoiuH.svg",
+    "src": "resources/images/sponsoring/logos/liip.svg"
+  },
+  "resources/images/sponsoring/logos/sysco.png": {
+    "file": "assets/sysco-B_wOdapU.png",
+    "src": "resources/images/sponsoring/logos/sysco.png"
+  },
   "resources/js/app.js": {
-    "file": "assets/app-Xaw6OIO1.js",
+    "file": "assets/app-z-Rg4TxU.js",
     "name": "app",
     "src": "resources/js/app.js",
     "isEntry": true
