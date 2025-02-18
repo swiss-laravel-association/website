@@ -29,6 +29,8 @@
 
 
 <body class="flex flex-col min-h-screen font-sans antialiased bg-gray-100">
+    <x-header />
+
     {{ $slot }}
 
     <x-footer/>
