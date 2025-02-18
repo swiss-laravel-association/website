@@ -2,9 +2,11 @@
 
 namespace App\Models;
 
+use Illuminate\Database\Eloquent\Casts\Attribute;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
+use Illuminate\Support\Str;
 use RalphJSmit\Laravel\SEO\Support\HasSEO;
 use RalphJSmit\Laravel\SEO\Support\SEOData;
 use Spatie\Sluggable\HasSlug;
@@ -39,6 +41,18 @@ class Post extends Model
             description: $this->excerpt,
             // image: $this->getFirstMedia('og_image')?->getUrl(),
         );
+    }
+
+    protected function parsedContent(): Attribute
+    {
+        return Attribute::make(
+            get: fn($value, array $attributes) => Str::markdown($this->content),
+        );
+    }
+
+    public function getReadingTimeInMinutes(): int
+    {
+        return ceil(str_word_count(strip_tags($this->content)) / 200);
     }
 
     public function authors(): BelongsToMany
