@@ -1,8 +1,8 @@
 <?php
 
 use App\Http\Controllers\Association\SponsorsController;
-use App\Http\Controllers\HomepageController;
 use App\Http\Controllers\BlogController;
+use App\Http\Controllers\HomepageController;
 use App\Http\Controllers\MeetupEventsCalendarController;
 use Illuminate\Support\Facades\Route;
 

@@ -46,7 +46,7 @@ class Post extends Model
     protected function parsedContent(): Attribute
     {
         return Attribute::make(
-            get: fn($value, array $attributes) => Str::markdown($this->content),
+            get: fn ($value, array $attributes) => Str::markdown($this->content),
         );
     }
 
