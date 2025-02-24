@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 
 /**
  * @property int $id
@@ -17,6 +18,8 @@ use Illuminate\Database\Eloquent\Relations\BelongsTo;
  * @property \Illuminate\Support\Carbon|null $created_at
  * @property \Illuminate\Support\Carbon|null $updated_at
  * @property-read \App\Models\Location|null $location
+ * @property-read \Illuminate\Database\Eloquent\Collection<int, \App\Models\Talk> $talks
+ * @property-read int|null $talks_count
  *
  * @method static \Illuminate\Database\Eloquent\Builder<static>|Event newModelQuery()
  * @method static \Illuminate\Database\Eloquent\Builder<static>|Event newQuery()
@@ -50,5 +53,13 @@ class Event extends Model
     public function location(): BelongsTo
     {
         return $this->belongsTo(Location::class);
+    }
+
+    /**
+     * @return BelongsToMany<Talk, $this>
+     */
+    public function talks(): BelongsToMany
+    {
+        return $this->belongsToMany(Talk::class);
     }
 }

@@ -2,9 +2,9 @@
 
 namespace App\Filament\Resources;
 
-use App\Filament\Resources\SpeakerResource\Pages\CreateEvent;
-use App\Filament\Resources\SpeakerResource\Pages\EditEvent;
-use App\Filament\Resources\SpeakerResource\Pages\ListEvents;
+use App\Filament\Resources\SpeakerResource\Pages\CreateSpeaker;
+use App\Filament\Resources\SpeakerResource\Pages\EditSpeaker;
+use App\Filament\Resources\SpeakerResource\Pages\ListSpeakers;
 use App\Models\Speaker;
 use Filament\Forms\Components\Textarea;
 use Filament\Forms\Components\TextInput;
@@ -59,9 +59,9 @@ class SpeakerResource extends Resource
     public static function getPages(): array
     {
         return [
-            'index' => ListEvents::route('/'),
-            'create' => CreateEvent::route('/create'),
-            'edit' => EditEvent::route('/{record}/edit'),
+            'index' => ListSpeakers::route('/'),
+            'create' => CreateSpeaker::route('/create'),
+            'edit' => EditSpeaker::route('/{record}/edit'),
         ];
     }
 }

@@ -47,6 +47,9 @@ class EventResource extends Resource
                     ->label('Description')
                     ->autosize()
                     ->required(),
+                Select::make('talks')
+                    ->relationship('talks', 'title')
+                    ->multiple(),
                 TextInput::make('meetup_link')
                     ->label('Meetup Link'),
                 Checkbox::make('is_published')
@@ -63,6 +66,9 @@ class EventResource extends Resource
                 TextColumn::make('location.name'),
                 TextColumn::make('start_date')
                     ->formatStateUsing(fn (CarbonImmutable $state): string => $state->format('Y-m-d H:i')),
+                TextColumn::make('talks_count')
+                    ->label('Talks')
+                    ->state(fn (Event $event): int => $event->talks->count()),
                 IconColumn::make('is_published')
                     ->boolean(),
             ])

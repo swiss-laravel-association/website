@@ -3,17 +3,17 @@
 namespace App\Filament\Resources\SpeakerResource\Pages;
 
 use App\Filament\Resources\SpeakerResource;
-use Filament\Actions\CreateAction;
-use Filament\Resources\Pages\ListRecords;
+use Filament\Actions\DeleteAction;
+use Filament\Resources\Pages\EditRecord;
 
-class ListEvents extends ListRecords
+class EditSpeaker extends EditRecord
 {
     protected static string $resource = SpeakerResource::class;
 
     protected function getHeaderActions(): array
     {
         return [
-            CreateAction::make(),
+            DeleteAction::make(),
         ];
     }
 }
