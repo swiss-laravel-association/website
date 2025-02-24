@@ -8,6 +8,9 @@ use Spatie\SchemaOrg\Schema;
 
 class SchemaHelper
 {
+    /**
+     * @var array<int, array{name: string, url: string, description: string|null}>
+     */
     protected static array $subsites = [];
 
     protected static ?string $canonicalUrl = null;
@@ -50,7 +53,7 @@ class SchemaHelper
             ->description('Bringing Laravel developers together across Switzerland.');
 
         foreach (self::$subsites as $subsite) {
-            $schema->hasPart(
+            $schema->hasPart( // @phpstan-ignore-line
                 Schema::webPage()
                     ->name($subsite['name'])
                     ->url($subsite['url'])
