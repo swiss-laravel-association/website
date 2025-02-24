@@ -3,6 +3,7 @@
 namespace App\Livewire;
 
 use App\Models\NewsletterSubscriber;
+use Illuminate\Contracts\View\View;
 use Livewire\Attributes\Locked;
 use Livewire\Attributes\Validate;
 use Livewire\Component;
@@ -38,7 +39,7 @@ class NewsletterSignup extends Component
         $this->subscribed = true;
     }
 
-    public function render()
+    public function render(): View
     {
         return view('livewire.newsletter-signup');
     }

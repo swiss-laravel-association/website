@@ -1,0 +1,16 @@
+includes:
+    - vendor/larastan/larastan/extension.neon
+
+parameters:
+
+    paths:
+        - app
+        - bootstrap/app.php
+        - bootstrap/providers.php
+        - config
+        - database
+        - lang
+        - routes
+
+    # Level 9 is the highest level
+    level: 6
