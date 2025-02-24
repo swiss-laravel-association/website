@@ -74,7 +74,7 @@
                     <span class="block font-semibold text-sm text-gray-900 px-2 py-1 text-right">
                         {{ $event->start_date->format('d. F Y') }}<br>
                         {{ $event->start_date->format('H:i') }}<br>
-                        {{ $event->location }}
+                        {{ $event->location ? $event->location->name . ', ' . $event->location->city : '' }}
                     </span>
                         </div>
                     </div>
