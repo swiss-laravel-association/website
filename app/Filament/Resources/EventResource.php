@@ -9,6 +9,7 @@ use App\Models\Event;
 use Carbon\CarbonImmutable;
 use Filament\Forms\Components\Checkbox;
 use Filament\Forms\Components\DateTimePicker;
+use Filament\Forms\Components\Select;
 use Filament\Forms\Components\Textarea;
 use Filament\Forms\Components\TextInput;
 use Filament\Forms\Form;
@@ -33,9 +34,9 @@ class EventResource extends Resource
                 TextInput::make('name')
                     ->label('Name')
                     ->required(),
-                TextInput::make('location')
+                Select::make('location_id')
                     ->label('Location')
-                    ->required(),
+                    ->relationship('location', 'name'),
                 DateTimePicker::make('start_date')
                     ->label('Start Date')
                     ->required(),
@@ -59,7 +60,7 @@ class EventResource extends Resource
         return $table
             ->columns([
                 TextColumn::make('name'),
-                TextColumn::make('location'),
+                TextColumn::make('location.name'),
                 TextColumn::make('start_date')
                     ->formatStateUsing(fn (CarbonImmutable $state): string => $state->format('Y-m-d H:i')),
                 IconColumn::make('is_published')

@@ -3,18 +3,20 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
 /**
  * @property int $id
+ * @property int|null $location_id
  * @property string $name
  * @property string $description
  * @property \Carbon\CarbonImmutable $start_date
  * @property \Carbon\CarbonImmutable $end_date
- * @property string $location
  * @property string|null $meetup_link
  * @property int $is_published
  * @property \Illuminate\Support\Carbon|null $created_at
  * @property \Illuminate\Support\Carbon|null $updated_at
+ * @property-read \App\Models\Location|null $location
  *
  * @method static \Illuminate\Database\Eloquent\Builder<static>|Event newModelQuery()
  * @method static \Illuminate\Database\Eloquent\Builder<static>|Event newQuery()
@@ -24,7 +26,7 @@ use Illuminate\Database\Eloquent\Model;
  * @method static \Illuminate\Database\Eloquent\Builder<static>|Event whereEndDate($value)
  * @method static \Illuminate\Database\Eloquent\Builder<static>|Event whereId($value)
  * @method static \Illuminate\Database\Eloquent\Builder<static>|Event whereIsPublished($value)
- * @method static \Illuminate\Database\Eloquent\Builder<static>|Event whereLocation($value)
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|Event whereLocationId($value)
  * @method static \Illuminate\Database\Eloquent\Builder<static>|Event whereMeetupLink($value)
  * @method static \Illuminate\Database\Eloquent\Builder<static>|Event whereName($value)
  * @method static \Illuminate\Database\Eloquent\Builder<static>|Event whereStartDate($value)
@@ -40,5 +42,13 @@ class Event extends Model
             'start_date' => 'immutable_datetime',
             'end_date' => 'immutable_datetime',
         ];
+    }
+
+    /**
+     * @return BelongsTo<Location, $this>
+     */
+    public function location(): BelongsTo
+    {
+        return $this->belongsTo(Location::class);
     }
 }
