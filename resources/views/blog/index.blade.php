@@ -10,6 +10,12 @@
                 </p>
                 <div class="mt-10 space-y-16 border-t border-gray-200 pt-10 sm:mt-16 sm:pt-16">
 
+                    @if ($posts->isEmpty())
+                        <p class="text-gray-600">
+                            Looks like there are no posts yet. Check back later!
+                        </p>
+                    @endif
+
                     @foreach($posts as $post)
 
                         <article class="flex max-w-xl flex-col items-start justify-between">
@@ -32,7 +38,7 @@
 
                             @if (false)
                             <div class="relative mt-8 flex items-center gap-x-4">
-                                    {{-- TODO: Use Avatar of User here --}}
+                                    {{-- TODO: Use Avatar of Author here --}}
                                     <img
                                         src="https://images.unsplash.com/photo-1519244703995-f4e0f30006d5?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80"
                                         alt="" class="size-10 rounded-full bg-gray-50">

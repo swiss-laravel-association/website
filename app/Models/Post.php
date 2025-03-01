@@ -27,6 +27,15 @@ class Post extends Model
         ];
     }
 
+    protected static function booting()
+    {
+        parent::booting();
+
+        self::deleting(function (Post $post) {
+            $post->authors()->detach();
+        });
+    }
+
     public function getSlugOptions(): SlugOptions
     {
         return SlugOptions::create()

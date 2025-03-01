@@ -102,7 +102,7 @@ class PostResource extends Resource
                     ->sortable()
                     ->toggleable(isToggledHiddenByDefault: true),
             ])
-            ->defaultSort('id', 'desc')
+            ->defaultSort('published_at', 'desc')
             ->filters([
                 //
             ])
