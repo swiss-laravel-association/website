@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "997732e0bff1db3783cfc8da246c1d66",
+    "content-hash": "335abaa3baafd02db034cf2546eec8e8",
     "packages": [
         {
             "name": "anourvalar/eloquent-serialize",
@@ -7747,16 +7747,16 @@
         },
         {
             "name": "ublabs/blade-simple-icons",
-            "version": "0.143.0",
+            "version": "0.146.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/ublabs/blade-simple-icons.git",
-                "reference": "30106e5b62b55baa59573438051b857d9e8fca96"
+                "reference": "d06a5a375266c99cb500a39e9fafd2bd16911e69"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/ublabs/blade-simple-icons/zipball/30106e5b62b55baa59573438051b857d9e8fca96",
-                "reference": "30106e5b62b55baa59573438051b857d9e8fca96",
+                "url": "https://api.github.com/repos/ublabs/blade-simple-icons/zipball/d06a5a375266c99cb500a39e9fafd2bd16911e69",
+                "reference": "d06a5a375266c99cb500a39e9fafd2bd16911e69",
                 "shasum": ""
             },
             "require": {
@@ -7800,7 +7800,7 @@
             ],
             "support": {
                 "issues": "https://github.com/ublabs/blade-simple-icons/issues",
-                "source": "https://github.com/ublabs/blade-simple-icons/tree/0.143.0"
+                "source": "https://github.com/ublabs/blade-simple-icons/tree/0.146.0"
             },
             "funding": [
                 {
@@ -7808,7 +7808,7 @@
                     "type": "github"
                 }
             ],
-            "time": "2025-02-02T14:08:12+00:00"
+            "time": "2025-02-23T14:10:03+00:00"
         },
         {
             "name": "vlucas/phpdotenv",
