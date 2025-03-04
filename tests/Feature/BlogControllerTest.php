@@ -5,10 +5,10 @@ use App\Models\Post;
 use function Pest\Laravel\get;
 
 it('loads blog index route and shows empty state message', function () {
-    get(route('blog.index'))
-        ->assertOk()
-        ->assertSeeText('Looks like there are no posts yet. Check back later!');
-});
+get(route('blog.index'))
+->assertOk()
+->assertSeeText('Looks like there are no posts yet. Check back later!');
+    });
 
 it('loads blog index route and lists recent blog posts', function () {
     $posts = Post::factory()->count(3)->create();
