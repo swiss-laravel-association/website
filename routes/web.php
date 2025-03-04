@@ -4,6 +4,7 @@ use App\Http\Controllers\Association\SponsorsController;
 use App\Http\Controllers\BlogController;
 use App\Http\Controllers\HomepageController;
 use App\Http\Controllers\MeetupEventsCalendarController;
+use App\Models\Post;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', HomepageController::class)->name('home');
@@ -23,8 +24,8 @@ Route::get('/association/sponsors', SponsorsController::class)->name('associatio
 // Route::get('/meetups/apply-to-speak' fn () => '');
 // Route::get('/meetups/apply-to-host' fn () => ''); // Not sure if we should have this
 
-Route::get('/blog', [BlogController::class, 'index'])->name('blog.index');
-Route::get('/blog/{post:slug}', [BlogController::class, 'show'])->name('blog.show');
+Route::get('/blog', [BlogController::class, 'index'])->name('blog.index')->can('view-any', Post::class);
+Route::get('/blog/{post:slug}', [BlogController::class, 'show'])->name('blog.show')->can('view', 'post');
 
 // Redirects to forms
 Route::redirect('/feedback', 'https://forms.gle/aGtW8T8GrgZX4kAfA')->name('links.feedback');

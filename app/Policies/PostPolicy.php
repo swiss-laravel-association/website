@@ -7,14 +7,14 @@ use App\Models\User;
 
 class PostPolicy
 {
-    public function viewAny(User $user): bool
+    public function viewAny(?User $user): bool
     {
         return true;
     }
 
-    public function view(User $user, Post $post): bool
+    public function view(?User $user, Post $post): bool
     {
-        return true;
+        return $post->published_at->isPast();
     }
 
     public function create(User $user): bool

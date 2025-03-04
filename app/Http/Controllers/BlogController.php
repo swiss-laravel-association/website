@@ -10,6 +10,7 @@ class BlogController extends Controller
     public function index(): View
     {
         $posts = Post::query()
+            ->where('published_at', '<=', now())
             ->latest('published_at')
             ->get();
 
