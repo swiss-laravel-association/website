@@ -4,25 +4,25 @@ use App\Models\Post;
 
 use function Pest\Laravel\get;
 
-it('loads blog index route and shows empty state message', function () {
-get(route('blog.index'))
-->assertOk()
-->assertSeeText('Looks like there are no posts yet. Check back later!');
-    });
+it('loads blog index route and shows empty state message', function (): void {
+    get(route('blog.index'))
+        ->assertOk()
+        ->assertSeeText('Looks like there are no posts yet. Check back later!');
+});
 
-it('loads blog index route and lists recent blog posts', function () {
+it('loads blog index route and lists recent blog posts', function (): void {
     $posts = Post::factory()->count(3)->create();
 
     $response = get(route('blog.index'))
         ->assertOk()
         ->assertDontSeeText('Looks like there are no posts yet. Check back later!');
 
-    $posts->each(function (Post $post) use ($response) {
+    $posts->each(function (Post $post) use ($response): void {
         $response->assertSee($post->title);
     });
 });
 
-it('loads blog index route and only listes published posts', function () {
+it('loads blog index route and only listes published posts', function (): void {
     $posts = Post::factory()->count(3)->create([
         'published_at' => now()->addDay(),
     ]);
@@ -31,12 +31,12 @@ it('loads blog index route and only listes published posts', function () {
         ->assertOk()
         ->assertSeeText('Looks like there are no posts yet. Check back later!');
 
-    $posts->each(function (Post $post) use ($response) {
+    $posts->each(function (Post $post) use ($response): void {
         $response->assertDontSee($post->title);
     });
 });
 
-it('loads blog show route for the given blog post', function () {
+it('loads blog show route for the given blog post', function (): void {
     /** @var Post $post */
     $post = Post::factory()->create([
         'published_at' => now()->subDays(4),
@@ -48,7 +48,7 @@ it('loads blog show route for the given blog post', function () {
         ->assertSeeHtml($post->parsed_content);
 });
 
-it('throws error if user tries to access not published blog post ', function () {
+it('throws error if user tries to access not published blog post ', function (): void {
     /** @var Post $post */
     $post = Post::factory()->create([
         'published_at' => now()->addDay(),

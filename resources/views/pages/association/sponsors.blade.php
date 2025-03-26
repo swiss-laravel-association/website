@@ -58,12 +58,11 @@
                        red
     >
         <ul class="mt-12 grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-12 items-center">
-            <x-sponsoring.item :img="\Illuminate\Support\Facades\Vite::asset('resources/images/sponsoring/logos/cyon.svg')"
-                               url="https://cyon.ch" />
-            <x-sponsoring.item :img="\Illuminate\Support\Facades\Vite::asset('resources/images/sponsoring/logos/liip.svg')"
-                               url="https://liip.ch" />
-            <x-sponsoring.item :img="\Illuminate\Support\Facades\Vite::asset('resources/images/sponsoring/logos/sysco.png')"
-                               url="https://sysco.swiss" />
+            @foreach($locationSponsors as $locationSponsor)
+                <x-sponsoring.item :img="$locationSponsor->getFirstMediaUrl('logo', 'thumb')"
+                                   :url="$locationSponsor->website"
+                />
+            @endforeach
         </ul>
     </x-content.section>
 </x-app-layout>
