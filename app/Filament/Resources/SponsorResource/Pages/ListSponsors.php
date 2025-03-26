@@ -1,14 +1,14 @@
 <?php
 
-namespace App\Filament\Resources\PostResource\Pages;
+namespace App\Filament\Resources\SponsorResource\Pages;
 
-use App\Filament\Resources\PostResource;
+use App\Filament\Resources\SponsorResource;
 use Filament\Actions\CreateAction;
 use Filament\Resources\Pages\ListRecords;
 
-class ListPosts extends ListRecords
+class ListSponsors extends ListRecords
 {
-    protected static string $resource = PostResource::class;
+    protected static string $resource = SponsorResource::class;
 
     protected function getHeaderActions(): array
     {
