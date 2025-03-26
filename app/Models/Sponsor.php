@@ -16,6 +16,7 @@ use Spatie\MediaLibrary\MediaCollections\Models\Media;
  * @property SponsorType $type
  * @property string $name
  * @property string $website
+ * @property string|null $background_color
  * @property \Illuminate\Support\Carbon|null $created_at
  * @property \Illuminate\Support\Carbon|null $updated_at
  * @property int $order
@@ -28,6 +29,7 @@ use Spatie\MediaLibrary\MediaCollections\Models\Media;
  * @method static SponsorBuilder<static>|Sponsor newModelQuery()
  * @method static SponsorBuilder<static>|Sponsor newQuery()
  * @method static SponsorBuilder<static>|Sponsor query()
+ * @method static SponsorBuilder<static>|Sponsor whereBackgroundColor($value)
  * @method static SponsorBuilder<static>|Sponsor whereCreatedAt($value)
  * @method static SponsorBuilder<static>|Sponsor whereId($value)
  * @method static SponsorBuilder<static>|Sponsor whereName($value)

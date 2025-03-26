@@ -13,17 +13,27 @@
     </section>
 
     <x-content.section id="founding-sponsors"
-                       key-words="Become a"
-                       title="Founding Sponsor"
+                       key-words="We welcome our first"
+                       title="Founding Sponsors"
+                       description="The Swiss Laravel Association gladly welcomes the following companies as our first founding sponsors. They are supporting us with a one-time contribution of CHF 500 or more to kickstart the association and help the Swiss Laravel community reach the next level 🚀"
     >
-        <x-slot:description>
-            <span class="text-xl">
-                by making a one-time contribution of <span class="font-bold text-primary-700 dark:text-primary-600">CHF 500 or more</span> and help to
-                kickstart the <span class="font-bold text-primary-700 dark:text-primary-600">newly founded officially-recognized Swiss Laravel
-                Association</span> and help the Laravel community reach the next level 🚀
-            </span>
-        </x-slot:description>
-        <div class="max-w-3xl mt-4 space-y-2">
+        <div>
+            <ul class="mt-12 grid grid-cols-1 min-[450px]:grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-8 items-center">
+                @foreach($foundingSponsors as $foundingSponsor)
+                    <x-sponsoring.item :img="$foundingSponsor->getFirstMediaUrl('logo', 'thumb')"
+                                       :url="$foundingSponsor->website"
+                                       :name="$foundingSponsor->name"
+                                       :background-color="$foundingSponsor->background_color"
+                    />
+                @endforeach
+            </ul>
+        </div>
+
+        <div class="max-w-3xl mt-16 space-y-2">
+            <p class="text-xl dark:text-white">
+                Become a <span class="font-bold text-primary-700 dark:text-primary-600">Founding Sponsor</span> by making a one-time contribution of <span class="font-bold text-primary-700 dark:text-primary-600">CHF 500 or more</span>.
+            </p>
+
             <p class="text-gray-600 dark:text-gray-400">
                 For a <span class="font-bold">limited time</span> (until summer 2025) you have the opportunity to become a pioneering founding sponsor of the officially-recognized
                 Swiss Laravel Association. We are a non-profit association, run by members of the community and registered under Swiss law. We have
@@ -57,10 +67,12 @@
                        description="For our events when can count on the support of the following companies providing us with locations, food and drinks."
                        red
     >
-        <ul class="mt-12 grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-12 items-center">
+        <ul class="mt-12 grid grid-cols-1 min-[450px]:grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-8 items-center">
             @foreach($locationSponsors as $locationSponsor)
                 <x-sponsoring.item :img="$locationSponsor->getFirstMediaUrl('logo', 'thumb')"
                                    :url="$locationSponsor->website"
+                                   :name="$locationSponsor->name"
+                                   :background-color="$locationSponsor->background_color"
                 />
             @endforeach
         </ul>

@@ -7,6 +7,7 @@ use App\Filament\Resources\SponsorResource\Pages\CreateSponsor;
 use App\Filament\Resources\SponsorResource\Pages\EditSponsor;
 use App\Filament\Resources\SponsorResource\Pages\ListSponsors;
 use App\Models\Sponsor;
+use Filament\Forms\Components\ColorPicker;
 use Filament\Forms\Components\Select;
 use Filament\Forms\Components\SpatieMediaLibraryFileUpload;
 use Filament\Forms\Components\TextInput;
@@ -37,8 +38,8 @@ class SponsorResource extends Resource
                     ->required(),
                 SpatieMediaLibraryFileUpload::make('logo')
                     ->collection('logo')
-                    ->multiple(false)
-                    ->columnSpanFull(),
+                    ->multiple(false),
+                ColorPicker::make('background_color'),
             ]);
     }
 
@@ -47,6 +48,7 @@ class SponsorResource extends Resource
         return $table
             ->columns([
                 TextColumn::make('name'),
+                TextColumn::make('type'),
             ])
             ->actions([
                 EditAction::make(),
@@ -56,7 +58,8 @@ class SponsorResource extends Resource
                     DeleteBulkAction::make(),
                 ]),
             ])
-            ->reorderable('order');
+            ->reorderable('order')
+            ->defaultSort('order');
     }
 
     public static function getPages(): array

@@ -2,10 +2,15 @@
     'name' => null,
     'url',
     'img',
+    'background-color' => null,
 ])
 
 <li>
-    <a href="{{ $url }}" target="_blank">
+    <a href="{{ $url }}"
+       target="_blank"
+       style="background-color: {{ $backgroundColor }};"
+       class="block p-4"
+    >
         <img src="{{ $img }}"
              alt="{{ $name }}"
              @class([
@@ -13,8 +18,5 @@
                 'dark:grayscale dark:invert' => \Illuminate\Support\Str::endsWith($img, ['.svg', '.webp']),
              ])
         >
-        @if($name)
-            <p>{{ $name }}</p>
-        @endif
     </a>
 </li>
