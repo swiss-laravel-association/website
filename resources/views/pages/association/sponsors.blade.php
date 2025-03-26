@@ -62,9 +62,9 @@
     </x-content.section>
 
     <x-content.section id="event-sponsors"
-                       key-words="Event Sponsors"
+                       key-words="Event & Infrastructure Sponsors"
                        title="Who makes our events possible?"
-                       description="For our events when can count on the support of the following companies providing us with locations, food and drinks."
+                       description="For our events and infrastructure we can count on the support of the following companies providing us with locations, food, drinks, webhosting and more."
                        red
     >
         <ul class="mt-12 grid grid-cols-1 min-[450px]:grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-8 items-center">
