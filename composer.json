@@ -19,7 +19,7 @@
         "spatie/laravel-medialibrary": "^11.12",
         "spatie/laravel-sluggable": "^3.7",
         "spatie/schema-org": "^3.23",
-        "ublabs/blade-simple-icons": "^0.146.0"
+        "ublabs/blade-simple-icons": "^0.153.0"
     },
     "require-dev": {
         "barryvdh/laravel-ide-helper": "^3.5",
