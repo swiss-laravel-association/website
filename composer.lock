@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "2351fdb3e9f69833ab7d12432088903f",
+    "content-hash": "b553777cbee4d71e8f8d6b9ba8ebf08b",
     "packages": [
         {
             "name": "anourvalar/eloquent-serialize",
@@ -146,12 +146,12 @@
             "version": "1.8.0",
             "source": {
                 "type": "git",
-                "url": "https://github.com/blade-ui-kit/blade-icons.git",
+                "url": "https://github.com/driesvints/blade-icons.git",
                 "reference": "7b743f27476acb2ed04cb518213d78abe096e814"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/blade-ui-kit/blade-icons/zipball/7b743f27476acb2ed04cb518213d78abe096e814",
+                "url": "https://api.github.com/repos/driesvints/blade-icons/zipball/7b743f27476acb2ed04cb518213d78abe096e814",
                 "reference": "7b743f27476acb2ed04cb518213d78abe096e814",
                 "shasum": ""
             },
@@ -8670,21 +8670,21 @@
         },
         {
             "name": "ublabs/blade-simple-icons",
-            "version": "0.146.0",
+            "version": "0.153.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/ublabs/blade-simple-icons.git",
-                "reference": "d06a5a375266c99cb500a39e9fafd2bd16911e69"
+                "reference": "490d6f578ae7df806d178b1d65e82ce12c3190a3"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/ublabs/blade-simple-icons/zipball/d06a5a375266c99cb500a39e9fafd2bd16911e69",
-                "reference": "d06a5a375266c99cb500a39e9fafd2bd16911e69",
+                "url": "https://api.github.com/repos/ublabs/blade-simple-icons/zipball/490d6f578ae7df806d178b1d65e82ce12c3190a3",
+                "reference": "490d6f578ae7df806d178b1d65e82ce12c3190a3",
                 "shasum": ""
             },
             "require": {
                 "blade-ui-kit/blade-icons": "^1.1",
-                "illuminate/support": "^8.0|^9.0|^10.0|^11.0",
+                "illuminate/support": "^8.0|^9.0|^10.0|^11.0|^12.0",
                 "php": "^7.4|^8.0"
             },
             "require-dev": {
@@ -8723,7 +8723,7 @@
             ],
             "support": {
                 "issues": "https://github.com/ublabs/blade-simple-icons/issues",
-                "source": "https://github.com/ublabs/blade-simple-icons/tree/0.146.0"
+                "source": "https://github.com/ublabs/blade-simple-icons/tree/0.153.0"
             },
             "funding": [
                 {
@@ -8731,7 +8731,7 @@
                     "type": "github"
                 }
             ],
-            "time": "2025-02-23T14:10:03+00:00"
+            "time": "2025-04-20T14:09:31+00:00"
         },
         {
             "name": "vlucas/phpdotenv",
