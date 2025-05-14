@@ -24,6 +24,8 @@ Route::get('/association/sponsors', SponsorsController::class)->name('associatio
 // Route::get('/meetups/apply-to-speak' fn () => '');
 // Route::get('/meetups/apply-to-host' fn () => ''); // Not sure if we should have this
 
+Route::get('/imprint', fn () => view('pages.imprint'))->name('imprint');
+
 Route::get('/blog', [BlogController::class, 'index'])->name('blog.index')->can('view-any', Post::class);
 Route::get('/blog/{post:slug}', [BlogController::class, 'show'])->name('blog.show')->can('view', 'post');
 
