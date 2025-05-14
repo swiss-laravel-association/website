@@ -70,7 +70,7 @@
                                 </a>
                             </li>
                             <li>
-                                <a href="#" class="text-sm/6 text-gray-400 hover:text-white rounded focus-visible:outline focus-visible:outline-1 focus-visible:outline-offset-2 focus-visible:outline-white">
+                                <a href="{{ route('privacy-policy') }}" class="text-sm/6 text-gray-400 hover:text-white rounded focus-visible:outline focus-visible:outline-1 focus-visible:outline-offset-2 focus-visible:outline-white">
                                     Privacy Policy
                                 </a>
                             </li>
