@@ -10,8 +10,8 @@
                     Boulevard Lilienthal 54<br/>
                     8152 Glattpark<br/>
                     Switzerland<br/>
-                    E-mail: <a href="mailto:sandro@trenda.ch" rel="noopener noreferrer"
-                               target="_blank">sandro@trenda.ch</a><br/>
+                    E-mail: <a href="mailto:sandro@laravel.swiss" rel="noopener noreferrer"
+                               target="_blank">sandro@laravel.swiss</a><br/>
                     Tel: 0792983635
                 </p>
             </div>
