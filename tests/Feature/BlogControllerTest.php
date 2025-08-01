@@ -22,7 +22,7 @@ it('loads blog index route and lists recent blog posts', function (): void {
     });
 });
 
-it('loads blog index route and only listes published posts', function (): void {
+it('loads blog index route and only lists published posts', function (): void {
     $posts = Post::factory()->count(3)->create([
         'published_at' => now()->addDay(),
     ]);
