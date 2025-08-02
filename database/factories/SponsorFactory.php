@@ -36,7 +36,7 @@ class SponsorFactory extends Factory
     public function isLocationSponsor(): Factory|SponsorFactory
     {
         return $this->state(fn (array $attributes): array => [
-            'type' => SponsorType::Founding,
+            'type' => SponsorType::Location,
         ]);
     }
 }

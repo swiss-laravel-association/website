@@ -17,13 +17,14 @@ use Filament\Tables\Actions\BulkActionGroup;
 use Filament\Tables\Actions\DeleteBulkAction;
 use Filament\Tables\Actions\EditAction;
 use Filament\Tables\Columns\TextColumn;
+use Filament\Tables\Filters\SelectFilter;
 use Filament\Tables\Table;
 
 class SponsorResource extends Resource
 {
     protected static ?string $model = Sponsor::class;
 
-    protected static ?string $navigationIcon = 'heroicon-o-currency-dollar';
+    protected static ?string $navigationIcon = 'phosphor-hand-heart-duotone';
 
     public static function form(Form $form): Form
     {
@@ -47,11 +48,17 @@ class SponsorResource extends Resource
     {
         return $table
             ->columns([
-                TextColumn::make('name'),
+                TextColumn::make('name')
+                    ->searchable(),
                 TextColumn::make('type'),
             ])
             ->actions([
                 EditAction::make(),
+            ])
+            ->filters([
+                SelectFilter::make('type')
+                    ->label('Sponsor Type')
+                    ->options(SponsorType::class),
             ])
             ->bulkActions([
                 BulkActionGroup::make([
