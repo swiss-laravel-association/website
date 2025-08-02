@@ -19,7 +19,7 @@
                             <x-simpleicon-linkedin class="size-5" />
                         </a>
                         <a href="https://www.youtube.com/@swiss-laravel-association" class="text-gray-400 hover:text-gray-300 rounded focus-visible:outline focus-visible:outline-1 focus-visible:outline-offset-2 focus-visible:outline-white" target="_blank">
-                            <span class="sr-only">Youtube</span>
+                            <span class="sr-only">YouTube</span>
                             <x-simpleicon-youtube class="size-5" />
                         </a>
                         <a href="https://www.meetup.com/laravel-switzerland-meetup/" class="text-gray-400 hover:text-gray-300 rounded focus-visible:outline focus-visible:outline-1 focus-visible:outline-offset-2 focus-visible:outline-white" target="_blank">
@@ -27,7 +27,7 @@
                             <x-simpleicon-meetup class="size-5" />
                         </a>
                         <a href="https://github.com/swiss-laravel-association" class="text-gray-400 hover:text-gray-300 rounded focus-visible:outline focus-visible:outline-1 focus-visible:outline-offset-2 focus-visible:outline-white" target="_blank">
-                            <span class="sr-only">Github</span>
+                            <span class="sr-only">GitHub</span>
                             <x-simpleicon-github class="size-5" />
                         </a>
                     </div>
