@@ -9,7 +9,7 @@
         "blade-ui-kit/blade-heroicons": "^2.4",
         "filament/filament": "^3.2",
         "filament/spatie-laravel-media-library-plugin": "^3.2",
-        "laravel/framework": "^11.9",
+        "laravel/framework": "^12.21",
         "laravel/tinker": "^2.9",
         "livewire/livewire": "^3.5",
         "ralphjsmit/laravel-seo": "^1.6",
