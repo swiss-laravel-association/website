@@ -26,14 +26,14 @@ class SponsorFactory extends Factory
         ];
     }
 
-    public function isFoundingSponsor(): Factory|SponsorFactory
+    public function isFoundingSponsor(): static
     {
         return $this->state(fn (array $attributes): array => [
             'type' => SponsorType::Founding,
         ]);
     }
 
-    public function isLocationSponsor(): Factory|SponsorFactory
+    public function isLocationSponsor(): static
     {
         return $this->state(fn (array $attributes): array => [
             'type' => SponsorType::Location,

@@ -41,6 +41,7 @@ use Illuminate\Database\Eloquent\Relations\BelongsToMany;
  */
 class Event extends Model
 {
+    /** @use HasFactory<\Database\Factories\EventFactory> */
     use HasFactory;
 
     protected function casts(): array

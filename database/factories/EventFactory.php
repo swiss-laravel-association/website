@@ -7,13 +7,16 @@ use App\Models\Location;
 use Illuminate\Database\Eloquent\Factories\Factory;
 use Illuminate\Support\Carbon;
 
+/**
+ * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\Event>
+ */
 class EventFactory extends Factory
 {
     protected $model = Event::class;
 
     public function definition(): array
     {
-        $date = Carbon::now()->addDays(rand(1, 30));
+        $date = Carbon::now()->addDays(random_int(1, 30));
 
         return [
             'name' => sprintf('%s Meetup', $date->format('F Y')),
