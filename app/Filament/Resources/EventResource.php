@@ -6,7 +6,6 @@ use App\Filament\Resources\EventResource\Pages\CreateEvent;
 use App\Filament\Resources\EventResource\Pages\EditEvent;
 use App\Filament\Resources\EventResource\Pages\ListEvents;
 use App\Models\Event;
-use Carbon\CarbonImmutable;
 use Filament\Forms\Components\Checkbox;
 use Filament\Forms\Components\DateTimePicker;
 use Filament\Forms\Components\Select;
@@ -19,13 +18,14 @@ use Filament\Tables\Actions\DeleteBulkAction;
 use Filament\Tables\Actions\EditAction;
 use Filament\Tables\Columns\IconColumn;
 use Filament\Tables\Columns\TextColumn;
+use Filament\Tables\Filters\SelectFilter;
 use Filament\Tables\Table;
 
 class EventResource extends Resource
 {
     protected static ?string $model = Event::class;
 
-    protected static ?string $navigationIcon = 'heroicon-o-rectangle-stack';
+    protected static ?string $navigationIcon = 'phosphor-calendar-dots-duotone';
 
     public static function form(Form $form): Form
     {
@@ -62,15 +62,24 @@ class EventResource extends Resource
     {
         return $table
             ->columns([
-                TextColumn::make('name'),
+                TextColumn::make('name')
+                    ->searchable(),
                 TextColumn::make('location.name'),
                 TextColumn::make('start_date')
-                    ->formatStateUsing(fn (CarbonImmutable $state): string => $state->format('Y-m-d H:i')),
+                    ->dateTime('Y-m-d H:i')
+                    ->sortable(),
                 TextColumn::make('talks_count')
                     ->label('Talks')
                     ->state(fn (Event $event): int => $event->talks->count()),
                 IconColumn::make('is_published')
                     ->boolean(),
+            ])
+            ->filters([
+                SelectFilter::make('location.name')
+                    ->label('Location')
+                    ->multiple()
+                    ->relationship('location', 'name')
+                    ->preload(),
             ])
             ->actions([
                 EditAction::make(),

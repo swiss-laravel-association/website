@@ -16,10 +16,10 @@ use Spatie\MediaLibrary\MediaCollections\Models\Media;
  * @property SponsorType $type
  * @property string $name
  * @property string $website
- * @property string|null $background_color
+ * @property int $order
  * @property \Illuminate\Support\Carbon|null $created_at
  * @property \Illuminate\Support\Carbon|null $updated_at
- * @property int $order
+ * @property string|null $background_color
  * @property-read \Spatie\MediaLibrary\MediaCollections\Models\Collections\MediaCollection<int, Media> $media
  * @property-read int|null $media_count
  *

@@ -20,7 +20,7 @@ class LocationResource extends Resource
 {
     protected static ?string $model = Location::class;
 
-    protected static ?string $navigationIcon = 'heroicon-o-map-pin';
+    protected static ?string $navigationIcon = 'phosphor-map-pin-line-duotone';
 
     public static function form(Form $form): Form
     {
@@ -47,9 +47,11 @@ class LocationResource extends Resource
     {
         return $table
             ->columns([
-                TextColumn::make('name'),
+                TextColumn::make('name')
+                    ->searchable(),
                 TextColumn::make('city'),
-                TextColumn::make('capacity'),
+                TextColumn::make('capacity')
+                    ->sortable(),
             ])
             ->actions([
                 EditAction::make(),

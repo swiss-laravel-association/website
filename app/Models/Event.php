@@ -2,13 +2,13 @@
 
 namespace App\Models;
 
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 
 /**
  * @property int $id
- * @property int|null $location_id
  * @property string $name
  * @property string $description
  * @property \Carbon\CarbonImmutable $start_date
@@ -17,10 +17,12 @@ use Illuminate\Database\Eloquent\Relations\BelongsToMany;
  * @property int $is_published
  * @property \Illuminate\Support\Carbon|null $created_at
  * @property \Illuminate\Support\Carbon|null $updated_at
+ * @property int|null $location_id
  * @property-read \App\Models\Location|null $location
  * @property-read \Illuminate\Database\Eloquent\Collection<int, \App\Models\Talk> $talks
  * @property-read int|null $talks_count
  *
+ * @method static \Database\Factories\EventFactory factory($count = null, $state = [])
  * @method static \Illuminate\Database\Eloquent\Builder<static>|Event newModelQuery()
  * @method static \Illuminate\Database\Eloquent\Builder<static>|Event newQuery()
  * @method static \Illuminate\Database\Eloquent\Builder<static>|Event query()
@@ -39,6 +41,8 @@ use Illuminate\Database\Eloquent\Relations\BelongsToMany;
  */
 class Event extends Model
 {
+    use HasFactory;
+
     protected function casts(): array
     {
         return [
