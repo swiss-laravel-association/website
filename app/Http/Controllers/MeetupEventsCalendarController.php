@@ -30,17 +30,10 @@ class MeetupEventsCalendarController extends Controller
                     ->endsAt(new DateTime($event->end_date, new DateTimeZone('Europe/Zurich')));
 
                 if ($event->location) {
-                    $address = collect([$event->location->address, $event->location->zip_code, $event->location->city])
-                        ->filter()
-                        ->implode(', ');
-
-                    if ($address) {
-                        $calendarEvent->address($address);
-                    }
-
-                    if ($event->location->name) {
-                        $calendarEvent->addressName($event->location->name);
-                    }
+                    $calendarEvent->address(
+                        address: "{$event->location->address}, {$event->location->zip_code} {$event->location->city}",
+                        name: $event->location->name,
+                    );
                 }
 
                 $calendar->event([
