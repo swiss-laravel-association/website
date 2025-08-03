@@ -33,11 +33,11 @@ class MeetupEventsCalendarController extends Controller
                     $address = collect([$event->location->address, $event->location->zip_code, $event->location->city])
                         ->filter()
                         ->implode(', ');
-                    
+
                     if ($address) {
                         $calendarEvent->address($address);
                     }
-                    
+
                     if ($event->location->name) {
                         $calendarEvent->addressName($event->location->name);
                     }
