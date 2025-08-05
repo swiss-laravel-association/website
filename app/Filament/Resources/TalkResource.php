@@ -21,7 +21,7 @@ class TalkResource extends Resource
 {
     protected static ?string $model = Talk::class;
 
-    protected static ?string $navigationIcon = 'heroicon-o-microphone';
+    protected static ?string $navigationIcon = 'phosphor-lectern-duotone';
 
     public static function form(Form $form): Form
     {
