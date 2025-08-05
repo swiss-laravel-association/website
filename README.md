@@ -19,10 +19,18 @@ Welcome to the Swiss Laravel Association website repository! This project is bui
    - Ensure you have the correct `APP_URL` set for your local environment.
    - If using SQLite, ensure the database file is writable.
 5. Generate application key: `php artisan key:generate`
-6. Run migrations and seed the database: `php artisan migrate --seed`
+6. Run migrations and seed the database: `php artisan migrate`
 7. Compile frontend assets: `npm run dev` or `npm run prod` for production builds.
 
 ### Development
+
+## Local Environment
+
+In your local environment, you can use the following command to seed your database with some initial data.
+
+```bash
+php artisan db:seed
+```
 
 
 ## Linting and Refactoring
