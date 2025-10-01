@@ -14,10 +14,8 @@ class LocationFactory extends Factory
 
     public function definition(): array
     {
-        $this->faker->addProvider(new \Wnx\FakerSwissLocations\Provider\Location($this->faker));
-
-        /** @var \Wnx\FakerSwissLocations\Location $location */
-        $location = $this->faker->location();
+        $provider = new \Wnx\FakerSwissLocations\Provider\Location($this->faker);
+        $location = $provider->location();
 
         return [
             'name' => $this->faker->company(),
