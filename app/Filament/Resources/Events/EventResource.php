@@ -75,6 +75,7 @@ class EventResource extends Resource
                 IconColumn::make('is_published')
                     ->boolean(),
             ])
+            ->defaultSort('start_date', 'desc')
             ->filters([
                 SelectFilter::make('location.name')
                     ->label('Location')
