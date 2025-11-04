@@ -2,30 +2,33 @@
 
 namespace App\Models;
 
+use Illuminate\Database\Eloquent\Builder;
+use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
+use Illuminate\Support\Carbon;
 
 /**
  * @property int $id
  * @property string $title
  * @property string $description
  * @property string|null $recording_url
- * @property \Illuminate\Support\Carbon|null $created_at
- * @property \Illuminate\Support\Carbon|null $updated_at
- * @property-read \Illuminate\Database\Eloquent\Collection<int, \App\Models\Event> $events
+ * @property Carbon|null $created_at
+ * @property Carbon|null $updated_at
+ * @property-read Collection<int, \App\Models\Event> $events
  * @property-read int|null $events_count
- * @property-read \Illuminate\Database\Eloquent\Collection<int, \App\Models\Speaker> $speakers
+ * @property-read Collection<int, \App\Models\Speaker> $speakers
  * @property-read int|null $speakers_count
  *
- * @method static \Illuminate\Database\Eloquent\Builder<static>|Talk newModelQuery()
- * @method static \Illuminate\Database\Eloquent\Builder<static>|Talk newQuery()
- * @method static \Illuminate\Database\Eloquent\Builder<static>|Talk query()
- * @method static \Illuminate\Database\Eloquent\Builder<static>|Talk whereCreatedAt($value)
- * @method static \Illuminate\Database\Eloquent\Builder<static>|Talk whereDescription($value)
- * @method static \Illuminate\Database\Eloquent\Builder<static>|Talk whereId($value)
- * @method static \Illuminate\Database\Eloquent\Builder<static>|Talk whereRecordingUrl($value)
- * @method static \Illuminate\Database\Eloquent\Builder<static>|Talk whereTitle($value)
- * @method static \Illuminate\Database\Eloquent\Builder<static>|Talk whereUpdatedAt($value)
+ * @method static Builder<static>|Talk newModelQuery()
+ * @method static Builder<static>|Talk newQuery()
+ * @method static Builder<static>|Talk query()
+ * @method static Builder<static>|Talk whereCreatedAt($value)
+ * @method static Builder<static>|Talk whereDescription($value)
+ * @method static Builder<static>|Talk whereId($value)
+ * @method static Builder<static>|Talk whereRecordingUrl($value)
+ * @method static Builder<static>|Talk whereTitle($value)
+ * @method static Builder<static>|Talk whereUpdatedAt($value)
  *
  * @mixin \Eloquent
  */

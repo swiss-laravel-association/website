@@ -4,11 +4,14 @@ namespace App\Models;
 
 use App\Builders\SponsorBuilder;
 use App\Enums\SponsorType;
+use Database\Factories\SponsorFactory;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Carbon;
 use Override;
 use Spatie\MediaLibrary\HasMedia;
 use Spatie\MediaLibrary\InteractsWithMedia;
+use Spatie\MediaLibrary\MediaCollections\Models\Collections\MediaCollection;
 use Spatie\MediaLibrary\MediaCollections\Models\Media;
 
 /**
@@ -17,10 +20,10 @@ use Spatie\MediaLibrary\MediaCollections\Models\Media;
  * @property string $name
  * @property string $website
  * @property int $order
- * @property \Illuminate\Support\Carbon|null $created_at
- * @property \Illuminate\Support\Carbon|null $updated_at
+ * @property Carbon|null $created_at
+ * @property Carbon|null $updated_at
  * @property string|null $background_color
- * @property-read \Spatie\MediaLibrary\MediaCollections\Models\Collections\MediaCollection<int, Media> $media
+ * @property-read MediaCollection<int, Media> $media
  * @property-read int|null $media_count
  *
  * @method static \Database\Factories\SponsorFactory factory($count = null, $state = [])
@@ -42,7 +45,7 @@ use Spatie\MediaLibrary\MediaCollections\Models\Media;
  */
 class Sponsor extends Model implements HasMedia
 {
-    /** @use HasFactory<\Database\Factories\SponsorFactory> */
+    /** @use HasFactory<SponsorFactory> */
     use HasFactory;
 
     use InteractsWithMedia;
