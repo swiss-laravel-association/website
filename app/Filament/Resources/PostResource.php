@@ -8,20 +8,19 @@ use App\Filament\Resources\PostResource\Pages\ListPosts;
 use App\Filament\Resources\PostResource\Pages\ViewPost;
 use App\Models\Post;
 use App\Models\User;
-use Filament\Forms;
+use BackedEnum;
+use Filament\Actions\BulkActionGroup;
+use Filament\Actions\DeleteBulkAction;
+use Filament\Actions\EditAction;
+use Filament\Actions\ViewAction;
 use Filament\Forms\Components\DateTimePicker;
 use Filament\Forms\Components\MarkdownEditor;
 use Filament\Forms\Components\Select;
 use Filament\Forms\Components\TextInput;
-use Filament\Forms\Form;
-use Filament\Infolists\Components\Section;
 use Filament\Infolists\Components\TextEntry;
-use Filament\Infolists\Infolist;
 use Filament\Resources\Resource;
-use Filament\Tables\Actions\BulkActionGroup;
-use Filament\Tables\Actions\DeleteBulkAction;
-use Filament\Tables\Actions\EditAction;
-use Filament\Tables\Actions\ViewAction;
+use Filament\Schemas\Components\Section;
+use Filament\Schemas\Schema;
 use Filament\Tables\Columns\TextColumn;
 use Filament\Tables\Table;
 use Illuminate\Support\Str;
@@ -30,17 +29,17 @@ class PostResource extends Resource
 {
     protected static ?string $model = Post::class;
 
-    protected static ?string $navigationIcon = 'phosphor-newspaper-duotone';
+    protected static string|BackedEnum|null $navigationIcon = 'phosphor-newspaper-duotone';
 
-    public static function form(Form $form): Form
+    public static function form(Schema $schema): Schema
     {
-        return $form
+        return $schema
             ->columns([
                 'sm' => 3,
                 'xl' => 12,
             ])
-            ->schema([
-                Forms\Components\Section::make()
+            ->components([
+                Section::make()
                     ->schema([
                         TextInput::make('title')
                             ->required(),
@@ -48,7 +47,7 @@ class PostResource extends Resource
                             ->required()
                             ->columnSpanFull(),
                     ])->columnSpan(8),
-                Forms\Components\Section::make()
+                Section::make()
                     ->heading('Metadata')
                     ->schema([
                         MarkdownEditor::make('excerpt')
@@ -64,14 +63,14 @@ class PostResource extends Resource
             ]);
     }
 
-    public static function infolist(Infolist $infolist): Infolist
+    public static function infolist(Schema $schema): Schema
     {
-        return $infolist
+        return $schema
             ->columns([
                 'sm' => 3,
                 'xl' => 12,
             ])
-            ->schema([
+            ->components([
                 Section::make()->schema([
                     TextEntry::make('title'),
                     TextEntry::make('content')
@@ -117,11 +116,11 @@ class PostResource extends Resource
             ->filters([
                 //
             ])
-            ->actions([
+            ->recordActions([
                 ViewAction::make(),
                 EditAction::make(),
             ])
-            ->bulkActions([
+            ->toolbarActions([
                 BulkActionGroup::make([
                     DeleteBulkAction::make(),
                 ]),

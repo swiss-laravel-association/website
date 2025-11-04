@@ -7,15 +7,16 @@ use App\Filament\Resources\SponsorResource\Pages\CreateSponsor;
 use App\Filament\Resources\SponsorResource\Pages\EditSponsor;
 use App\Filament\Resources\SponsorResource\Pages\ListSponsors;
 use App\Models\Sponsor;
+use BackedEnum;
+use Filament\Actions\BulkActionGroup;
+use Filament\Actions\DeleteBulkAction;
+use Filament\Actions\EditAction;
 use Filament\Forms\Components\ColorPicker;
 use Filament\Forms\Components\Select;
 use Filament\Forms\Components\SpatieMediaLibraryFileUpload;
 use Filament\Forms\Components\TextInput;
-use Filament\Forms\Form;
 use Filament\Resources\Resource;
-use Filament\Tables\Actions\BulkActionGroup;
-use Filament\Tables\Actions\DeleteBulkAction;
-use Filament\Tables\Actions\EditAction;
+use Filament\Schemas\Schema;
 use Filament\Tables\Columns\TextColumn;
 use Filament\Tables\Filters\SelectFilter;
 use Filament\Tables\Table;
@@ -24,12 +25,12 @@ class SponsorResource extends Resource
 {
     protected static ?string $model = Sponsor::class;
 
-    protected static ?string $navigationIcon = 'phosphor-hand-heart-duotone';
+    protected static string|BackedEnum|null $navigationIcon = 'phosphor-hand-heart-duotone';
 
-    public static function form(Form $form): Form
+    public static function form(Schema $schema): Schema
     {
-        return $form
-            ->schema([
+        return $schema
+            ->components([
                 TextInput::make('name')
                     ->required(),
                 TextInput::make('website')
@@ -52,7 +53,7 @@ class SponsorResource extends Resource
                     ->searchable(),
                 TextColumn::make('type'),
             ])
-            ->actions([
+            ->recordActions([
                 EditAction::make(),
             ])
             ->filters([
@@ -60,7 +61,7 @@ class SponsorResource extends Resource
                     ->label('Sponsor Type')
                     ->options(SponsorType::class),
             ])
-            ->bulkActions([
+            ->toolbarActions([
                 BulkActionGroup::make([
                     DeleteBulkAction::make(),
                 ]),

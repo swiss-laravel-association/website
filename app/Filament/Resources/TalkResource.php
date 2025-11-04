@@ -6,14 +6,15 @@ use App\Filament\Resources\TalkResource\Pages\CreateTalk;
 use App\Filament\Resources\TalkResource\Pages\EditTalk;
 use App\Filament\Resources\TalkResource\Pages\ListTalks;
 use App\Models\Talk;
+use BackedEnum;
+use Filament\Actions\BulkActionGroup;
+use Filament\Actions\DeleteBulkAction;
+use Filament\Actions\EditAction;
 use Filament\Forms\Components\MarkdownEditor;
 use Filament\Forms\Components\Select;
 use Filament\Forms\Components\TextInput;
-use Filament\Forms\Form;
 use Filament\Resources\Resource;
-use Filament\Tables\Actions\BulkActionGroup;
-use Filament\Tables\Actions\DeleteBulkAction;
-use Filament\Tables\Actions\EditAction;
+use Filament\Schemas\Schema;
 use Filament\Tables\Columns\TextColumn;
 use Filament\Tables\Table;
 
@@ -21,12 +22,12 @@ class TalkResource extends Resource
 {
     protected static ?string $model = Talk::class;
 
-    protected static ?string $navigationIcon = 'phosphor-lectern-duotone';
+    protected static string|BackedEnum|null $navigationIcon = 'phosphor-lectern-duotone';
 
-    public static function form(Form $form): Form
+    public static function form(Schema $schema): Schema
     {
-        return $form
-            ->schema([
+        return $schema
+            ->components([
                 TextInput::make('title')
                     ->required(),
                 MarkdownEditor::make('description')
@@ -48,10 +49,10 @@ class TalkResource extends Resource
                 TextColumn::make('speakers.name'),
                 TextColumn::make('events.name'),
             ])
-            ->actions([
+            ->recordActions([
                 EditAction::make(),
             ])
-            ->bulkActions([
+            ->toolbarActions([
                 BulkActionGroup::make([
                     DeleteBulkAction::make(),
                 ]),
