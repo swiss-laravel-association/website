@@ -1,48 +1,75 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+@import "tailwindcss";
 
-@layer base {
-    @font-face {
-        font-family: helvetica;
-        font-style: normal;
-        font-weight: 400;
-        src: url(https://fonts.cdnfonts.com/s/14028/Helvetica.woff) format('woff')
-    }
-    @font-face {
-        font-family: helvetica;
-        font-style: italic;
-        font-weight: 400;
-        src: url(https://fonts.cdnfonts.com/s/14028/Helvetica-Oblique.woff) format('woff')
-    }
-    @font-face {
-        font-family: helvetica;
-        font-style: normal;
-        font-weight: 500;
-        src: url(https://fonts.cdnfonts.com/s/14028/helvetica-compressed-5871d14b6903a.woff) format('woff')
-    }
-    @font-face {
-        font-family: helvetica;
-        font-style: normal;
-        font-weight: 700;
-        src: url(https://fonts.cdnfonts.com/s/14028/helvetica-rounded-bold-5871d05ead8de.woff) format('woff')
-    }
-    @font-face {
-        font-family: helvetica;
-        font-style: normal;
-        font-weight: 700;
-        src: url(https://fonts.cdnfonts.com/s/14028/Helvetica-Bold.woff) format('woff')
-    }
-    @font-face {
-        font-family: helvetica;
-        font-style: italic;
-        font-weight: 700;
-        src: url(https://fonts.cdnfonts.com/s/14028/Helvetica-BoldOblique.woff) format('woff')
-    }
-    @font-face {
-        font-family: helvetica light;
-        font-style: normal;
-        font-weight: 400;
-        src: local('Helvetica Light'), url(https://fonts.cdnfonts.com/s/14028/helvetica-light-587ebe5a59211.woff) format('woff')
-    }
+@source './vendor/laravel/framework/src/Illuminate/Pagination/resources/views/*.blade.php';
+@source './storage/framework/views/*.php';
+@source './resources/**/*.blade.php';
+@source './resources/**/*.js';
+@source './resources/**/*.vue';
+
+@plugin "@tailwindcss/typography";
+
+@theme {
+    --font-sans: helvetica, ui-sans-serif, system-ui, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+
+    --color-primary-50: #fff2f1;
+    --color-primary-100: #ffe1df;
+    --color-primary-200: #ffc8c5;
+    --color-primary-300: #ffa29d;
+    --color-primary-400: #ff6c64;
+    --color-primary-500: #ff2c20;
+    --color-primary-600: #ed2115;
+    --color-primary-700: #c8170d;
+    --color-primary-800: #a5170f;
+    --color-primary-900: #881a14;
+    --color-primary-950: #4b0804;
+
+    --animate-scale: scale 2s ease-in-out infinite;
+}
+
+@keyframes scale {
+    0%, 100% { transform: scale(1); }
+    50% { transform: scale(1.05); }
+}
+
+@font-face {
+    font-family: helvetica;
+    font-style: normal;
+    font-weight: 400;
+    src: url(https://fonts.cdnfonts.com/s/14028/Helvetica.woff) format('woff')
+}
+@font-face {
+    font-family: helvetica;
+    font-style: italic;
+    font-weight: 400;
+    src: url(https://fonts.cdnfonts.com/s/14028/Helvetica-Oblique.woff) format('woff')
+}
+@font-face {
+    font-family: helvetica;
+    font-style: normal;
+    font-weight: 500;
+    src: url(https://fonts.cdnfonts.com/s/14028/helvetica-compressed-5871d14b6903a.woff) format('woff')
+}
+@font-face {
+    font-family: helvetica;
+    font-style: normal;
+    font-weight: 700;
+    src: url(https://fonts.cdnfonts.com/s/14028/helvetica-rounded-bold-5871d05ead8de.woff) format('woff')
+}
+@font-face {
+    font-family: helvetica;
+    font-style: normal;
+    font-weight: 700;
+    src: url(https://fonts.cdnfonts.com/s/14028/Helvetica-Bold.woff) format('woff')
+}
+@font-face {
+    font-family: helvetica;
+    font-style: italic;
+    font-weight: 700;
+    src: url(https://fonts.cdnfonts.com/s/14028/Helvetica-BoldOblique.woff) format('woff')
+}
+@font-face {
+    font-family: helvetica light;
+    font-style: normal;
+    font-weight: 400;
+    src: local('Helvetica Light'), url(https://fonts.cdnfonts.com/s/14028/helvetica-light-587ebe5a59211.woff) format('woff')
 }

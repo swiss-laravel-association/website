@@ -1,8 +1,12 @@
 {
   "resources/css/app.css": {
-    "file": "assets/app-0gDnB2NC.css",
+    "file": "assets/app-DqFYVxoy.css",
     "src": "resources/css/app.css",
-    "isEntry": true
+    "isEntry": true,
+    "name": "app",
+    "names": [
+      "app.css"
+    ]
   },
   "resources/images/logos/logo-mark-color.png": {
     "file": "assets/logo-mark-color-BRljjndR.png",
@@ -89,7 +93,7 @@
     "src": "resources/images/sponsoring/logos/sysco.png"
   },
   "resources/js/app.js": {
-    "file": "assets/app-Xaw6OIO1.js",
+    "file": "assets/app-CAiCLEjY.js",
     "name": "app",
     "src": "resources/js/app.js",
     "isEntry": true
