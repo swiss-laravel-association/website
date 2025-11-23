@@ -7,10 +7,16 @@ use Illuminate\Contracts\View\View;
 use Livewire\Attributes\Locked;
 use Livewire\Attributes\Validate;
 use Livewire\Component;
+use Spatie\Honeypot\Http\Livewire\Concerns\HoneypotData;
+use Spatie\Honeypot\Http\Livewire\Concerns\UsesSpamProtection;
 use Spatie\MailcoachSdk\Facades\Mailcoach;
 
 class NewsletterSignup extends Component
 {
+    use UsesSpamProtection;
+
+    public HoneypotData $extraFields;
+
     #[Validate(['required', 'min:2'])]
     public string $name = '';
 
@@ -20,8 +26,15 @@ class NewsletterSignup extends Component
     #[Locked]
     public bool $subscribed = false;
 
+    public function mount(): void
+    {
+        $this->extraFields = new HoneypotData;
+    }
+
     public function submit(): void
     {
+        $this->protectAgainstSpam();
+
         $this->validate();
 
         NewsletterSubscriber::create([

@@ -5,6 +5,8 @@
         <form wire:submit.prevent="submit"
               class="my-4 w-full max-w-md lg:col-span-5 lg:pt-2 space-y-3"
         >
+            <x-honeypot livewire-model="extraFields" />
+
             <div>
                 <div class="flex gap-x-4">
                     <label for="name" class="sr-only">Name</label>
