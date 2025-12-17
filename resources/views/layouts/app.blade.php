@@ -24,6 +24,8 @@
 
     @vite(['resources/css/app.css', 'resources/js/app.js'])
 
+    @fluxAppearance
+
     {!! \App\Helpers\SchemaHelper::render() !!}
 </head>
 
@@ -68,5 +70,6 @@
     <x-footer/>
 
     @livewireScripts
+    @fluxScripts
 </body>
 </html>

@@ -1,5 +1,6 @@
 @import "tailwindcss";
 
+@import '../../vendor/livewire/flux/dist/flux.css';
 @source './vendor/laravel/framework/src/Illuminate/Pagination/resources/views/*.blade.php';
 @source './storage/framework/views/*.php';
 @source './resources/**/*.blade.php';
@@ -73,3 +74,5 @@
     font-weight: 400;
     src: local('Helvetica Light'), url(https://fonts.cdnfonts.com/s/14028/helvetica-light-587ebe5a59211.woff) format('woff')
 }
+
+@custom-variant dark (&:where(.dark, .dark *));
