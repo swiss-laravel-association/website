@@ -12,6 +12,7 @@
         "filament/spatie-laravel-media-library-plugin": "^4.0",
         "laravel/framework": "^12.0",
         "laravel/tinker": "^2.10.1",
+        "livewire/flux": "^2.10",
         "livewire/livewire": "^3.5",
         "ralphjsmit/laravel-seo": "^1.6",
         "spatie/icalendar-generator": "^3.0",
