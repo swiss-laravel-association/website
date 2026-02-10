@@ -39,8 +39,8 @@ class SponsorResource extends Resource
                     ->options(SponsorType::class)
                     ->required(),
                 SpatieMediaLibraryFileUpload::make('logo')
-                    ->collection('logo')
-                    ->multiple(false),
+                    ->disk('public')
+                    ->collection('logo'),
                 ColorPicker::make('background_color'),
             ]);
     }
