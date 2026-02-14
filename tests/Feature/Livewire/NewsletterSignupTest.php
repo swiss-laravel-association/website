@@ -10,6 +10,9 @@ use function Pest\Laravel\assertDatabaseHas;
 
 beforeEach(function (): void {
     Mailcoach::fake();
+    config([
+        'website.turnstile_enabled' => true,
+    ]);
 });
 
 it('renders newsletter sign up successfully', function (): void {
