@@ -1,5 +1,5 @@
 <?php
 
 return [
-    'turnstile_enabled' => env('TURNSTILE_ENABLED', true),
+    'turnstile_enabled' => env('TURNSTILE_ENABLED', false),
 ];

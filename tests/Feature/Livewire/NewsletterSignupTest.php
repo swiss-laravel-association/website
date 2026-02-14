@@ -56,7 +56,7 @@ it('throws validation error if name, email and turnstile fails', function () {
 });
 
 it('throws validation error if email already exists', function () {
-    Turnstile::fake()->fail();
+    Turnstile::fake();
 
     NewsletterSubscriber::factory()->create([
         'name' => 'John Doe',
