@@ -31,8 +31,7 @@
                         Previously all events were organized by a single person.<br>
                         Beginning in 2025 we want to spread the workload over more shoulders and create a sustainable organization for the next years to come.
                     </p>
-                    <h2 class="mt-10 text-pretty text-2xl font-semibold tracking-tight text-gray-900 dark:text-gray-300">Keep in touch</h2>
-                    <p class="mt-6 text-base/7 text-gray-600">Signup to our newsletter and be the first to know about upcoming events.</pv>
+                    <h2 class="mt-10 mb-4 text-pretty text-2xl font-semibold tracking-tight text-gray-900 dark:text-gray-300">Keep in touch</h2>
                     <livewire:newsletter-signup />
                 </div>
                 <div class="pt-16 lg:row-span-2 lg:-mr-16 xl:mr-auto">
