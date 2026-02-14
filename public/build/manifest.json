@@ -1,6 +1,6 @@
 {
   "resources/css/app.css": {
-    "file": "assets/app-1doGQXqc.css",
+    "file": "assets/app-BZSR9gCn.css",
     "src": "resources/css/app.css",
     "isEntry": true,
     "name": "app",
@@ -93,7 +93,7 @@
     "src": "resources/images/sponsoring/logos/sysco.png"
   },
   "resources/js/app.js": {
-    "file": "assets/app-CAiCLEjY.js",
+    "file": "assets/app-CKl8NZMC.js",
     "name": "app",
     "src": "resources/js/app.js",
     "isEntry": true
