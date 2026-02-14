@@ -5,11 +5,8 @@ namespace App\Livewire;
 use App\Models\NewsletterSubscriber;
 use Illuminate\Contracts\View\View;
 use Livewire\Attributes\Locked;
-use Livewire\Attributes\Validate;
 use Livewire\Component;
 use RyanChandler\LaravelCloudflareTurnstile\Rules\Turnstile;
-use Spatie\Honeypot\Http\Livewire\Concerns\HoneypotData;
-use Spatie\Honeypot\Http\Livewire\Concerns\UsesSpamProtection;
 use Spatie\MailcoachSdk\Facades\Mailcoach;
 
 class NewsletterSignup extends Component
