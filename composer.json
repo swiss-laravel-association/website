@@ -15,6 +15,7 @@
         "livewire/flux": "^2.10",
         "livewire/livewire": "^4.1.0",
         "ralphjsmit/laravel-seo": "^1.6",
+        "ryangjchandler/laravel-cloudflare-turnstile": "^3.0",
         "spatie/icalendar-generator": "^3.0",
         "spatie/laravel-honeypot": "^4.6",
         "spatie/laravel-ignition": "^2.9",
