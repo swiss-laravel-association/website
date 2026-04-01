@@ -27,7 +27,7 @@ use Illuminate\Support\Carbon;
  * @property Carbon|null $updated_at
  * @property-read DatabaseNotificationCollection<int, DatabaseNotification> $notifications
  * @property-read int|null $notifications_count
- * @property-read Collection<int, \App\Models\Post> $posts
+ * @property-read Collection<int, Post> $posts
  * @property-read int|null $posts_count
  *
  * @method static \Database\Factories\UserFactory factory($count = null, $state = [])

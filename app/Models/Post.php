@@ -27,7 +27,7 @@ use Spatie\Sluggable\SlugOptions;
  * @property CarbonImmutable|null $published_at
  * @property Carbon|null $created_at
  * @property Carbon|null $updated_at
- * @property-read Collection<int, \App\Models\User> $authors
+ * @property-read Collection<int, User> $authors
  * @property-read int|null $authors_count
  * @property-read mixed $parsed_content
  * @property-read SEO $seo

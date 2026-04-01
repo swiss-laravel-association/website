@@ -20,7 +20,7 @@ use Illuminate\Support\Carbon;
  * @property string|null $youtube_profile
  * @property Carbon|null $created_at
  * @property Carbon|null $updated_at
- * @property-read Collection<int, \App\Models\Talk> $talks
+ * @property-read Collection<int, Talk> $talks
  * @property-read int|null $talks_count
  *
  * @method static Builder<static>|Speaker newModelQuery()

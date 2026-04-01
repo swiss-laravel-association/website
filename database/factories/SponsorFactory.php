@@ -3,10 +3,11 @@
 namespace Database\Factories;
 
 use App\Enums\SponsorType;
+use App\Models\Sponsor;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**
- * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\Sponsor>
+ * @extends Factory<Sponsor>
  */
 class SponsorFactory extends Factory
 {

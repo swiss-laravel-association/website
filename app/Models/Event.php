@@ -23,8 +23,8 @@ use Illuminate\Support\Carbon;
  * @property Carbon|null $created_at
  * @property Carbon|null $updated_at
  * @property int|null $location_id
- * @property-read \App\Models\Location|null $location
- * @property-read Collection<int, \App\Models\Talk> $talks
+ * @property-read Location|null $location
+ * @property-read Collection<int, Talk> $talks
  * @property-read int|null $talks_count
  *
  * @method static \Database\Factories\EventFactory factory($count = null, $state = [])

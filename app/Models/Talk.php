@@ -15,9 +15,9 @@ use Illuminate\Support\Carbon;
  * @property string|null $recording_url
  * @property Carbon|null $created_at
  * @property Carbon|null $updated_at
- * @property-read Collection<int, \App\Models\Event> $events
+ * @property-read Collection<int, Event> $events
  * @property-read int|null $events_count
- * @property-read Collection<int, \App\Models\Speaker> $speakers
+ * @property-read Collection<int, Speaker> $speakers
  * @property-read int|null $speakers_count
  *
  * @method static Builder<static>|Talk newModelQuery()

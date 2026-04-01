@@ -48,7 +48,7 @@ it('throws validation error if name, email and turnstile fails', function () {
         ->assertHasErrors([
             'name' => 'required',
             'email' => 'email',
-            'turnstileResponse' => \RyanChandler\LaravelCloudflareTurnstile\Rules\Turnstile::class,
+            'turnstileResponse' => RyanChandler\LaravelCloudflareTurnstile\Rules\Turnstile::class,
         ])
         ->assertSet('subscribed', false);
 
