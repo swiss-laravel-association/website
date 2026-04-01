@@ -6577,16 +6577,16 @@
         },
         {
             "name": "spatie/laravel-sluggable",
-            "version": "3.8.0",
+            "version": "3.8.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/spatie/laravel-sluggable.git",
-                "reference": "8050bf38a6e03ac4974e1f7bc722983242abfae0"
+                "reference": "3624a2d7d8c8475d8561c53faf63f1af583ef76c"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spatie/laravel-sluggable/zipball/8050bf38a6e03ac4974e1f7bc722983242abfae0",
-                "reference": "8050bf38a6e03ac4974e1f7bc722983242abfae0",
+                "url": "https://api.github.com/repos/spatie/laravel-sluggable/zipball/3624a2d7d8c8475d8561c53faf63f1af583ef76c",
+                "reference": "3624a2d7d8c8475d8561c53faf63f1af583ef76c",
                 "shasum": ""
             },
             "require": {
@@ -6624,7 +6624,7 @@
                 "spatie"
             ],
             "support": {
-                "source": "https://github.com/spatie/laravel-sluggable/tree/3.8.0"
+                "source": "https://github.com/spatie/laravel-sluggable/tree/3.8.1"
             },
             "funding": [
                 {
@@ -6632,7 +6632,7 @@
                     "type": "github"
                 }
             ],
-            "time": "2026-02-21T14:25:10+00:00"
+            "time": "2026-03-23T07:42:02+00:00"
         },
         {
             "name": "spatie/mailcoach-sdk-php",
