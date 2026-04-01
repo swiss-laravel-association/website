@@ -5912,21 +5912,21 @@
         },
         {
             "name": "spatie/icalendar-generator",
-            "version": "3.2.1",
+            "version": "3.3.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/spatie/icalendar-generator.git",
-                "reference": "d93aded27abaa1b1e5f1402c5423f5c61469581b"
+                "reference": "6817d3f405563eca1afc9ea870077a898e11bc27"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spatie/icalendar-generator/zipball/d93aded27abaa1b1e5f1402c5423f5c61469581b",
-                "reference": "d93aded27abaa1b1e5f1402c5423f5c61469581b",
+                "url": "https://api.github.com/repos/spatie/icalendar-generator/zipball/6817d3f405563eca1afc9ea870077a898e11bc27",
+                "reference": "6817d3f405563eca1afc9ea870077a898e11bc27",
                 "shasum": ""
             },
             "require": {
                 "ext-mbstring": "*",
-                "php": "^8.1"
+                "php": "^8.2"
             },
             "require-dev": {
                 "ext-json": "*",
@@ -5965,9 +5965,9 @@
             ],
             "support": {
                 "issues": "https://github.com/spatie/icalendar-generator/issues",
-                "source": "https://github.com/spatie/icalendar-generator/tree/3.2.1"
+                "source": "https://github.com/spatie/icalendar-generator/tree/3.3.0"
             },
-            "time": "2026-01-05T15:01:46+00:00"
+            "time": "2026-03-18T09:51:41+00:00"
         },
         {
             "name": "spatie/ignition",
