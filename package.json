@@ -9,7 +9,7 @@
         "@tailwindcss/cli": "^4.2.2",
         "@tailwindcss/postcss": "^4.2.2",
         "@tailwindcss/typography": "^0.5.0-alpha.3",
-        "@tailwindcss/vite": "^4.2.1",
+        "@tailwindcss/vite": "^4.2.2",
         "axios": "^1.14.0",
         "concurrently": "^9.2.1",
         "laravel-vite-plugin": "^2.1",
