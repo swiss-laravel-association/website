@@ -30,7 +30,7 @@ jobs:
           ini-values: pcov.directory=app
           coverage: pcov
 
-      - uses: ramsey/composer-install@v3
+      - uses: ramsey/composer-install@v4
 
       - name: Setup Node.js
         uses: actions/setup-node@v6
