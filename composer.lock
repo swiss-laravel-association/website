@@ -6336,31 +6336,31 @@
         },
         {
             "name": "spatie/laravel-mailcoach-sdk",
-            "version": "1.4.0",
+            "version": "1.5.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/spatie/laravel-mailcoach-sdk.git",
-                "reference": "3307feda22d50b7c96c9ab5b266aa9c3e890b0e9"
+                "reference": "d69ff1e28dd8d77de14e8f12a385300f0dd20e9a"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spatie/laravel-mailcoach-sdk/zipball/3307feda22d50b7c96c9ab5b266aa9c3e890b0e9",
-                "reference": "3307feda22d50b7c96c9ab5b266aa9c3e890b0e9",
+                "url": "https://api.github.com/repos/spatie/laravel-mailcoach-sdk/zipball/d69ff1e28dd8d77de14e8f12a385300f0dd20e9a",
+                "reference": "d69ff1e28dd8d77de14e8f12a385300f0dd20e9a",
                 "shasum": ""
             },
             "require": {
-                "guzzlehttp/guzzle": "^6.0|^7.5",
-                "illuminate/contracts": "^9.0|^10.0|^11.0|^12.0",
-                "php": "^8.2",
+                "guzzlehttp/guzzle": "^7.5",
+                "illuminate/contracts": "^12.0|^13.0",
+                "php": "^8.3",
                 "spatie/laravel-package-tools": "^1.13.0",
                 "spatie/mailcoach-sdk-php": "^1.0"
             },
             "require-dev": {
                 "laravel/pint": "^1.0",
-                "nunomaduro/collision": "^6.0|^7.0|^8.0",
-                "orchestra/testbench": "^7.0|^8.0|^9.0|^10.0",
-                "pestphp/pest": "^1.19|^2.0|^3.0",
-                "pestphp/pest-plugin-laravel": "^v1.4.0|^2.0|^3.0",
+                "nunomaduro/collision": "^8.0|^9.0",
+                "orchestra/testbench": "^10.0|^11.0",
+                "pestphp/pest": "^4.0",
+                "pestphp/pest-plugin-laravel": "^4.0",
                 "spatie/laravel-ray": "^1.26"
             },
             "type": "library",
@@ -6400,9 +6400,9 @@
             ],
             "support": {
                 "issues": "https://github.com/spatie/laravel-mailcoach-sdk/issues",
-                "source": "https://github.com/spatie/laravel-mailcoach-sdk/tree/1.4.0"
+                "source": "https://github.com/spatie/laravel-mailcoach-sdk/tree/1.5.0"
             },
-            "time": "2025-02-25T07:04:49+00:00"
+            "time": "2026-03-18T08:29:23+00:00"
         },
         {
             "name": "spatie/laravel-medialibrary",
