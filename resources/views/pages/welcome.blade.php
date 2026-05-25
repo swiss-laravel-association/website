@@ -87,7 +87,9 @@
                         {!! nl2br($event->description) !!}
                         <br>
                         @if($event->meetup_link)
-                            <a href="{{ $event->meetup_link }}" class="underline" target="_blank">RSVP on Meetup.com</a>
+                            <a href="{{ $event->meetup_link }}" class="underline" target="_blank">
+                                RSVP on Luma
+                            </a>
                         @endif
                     </p>
                     @if(\Illuminate\Support\Str::length($event->description) > 10)
