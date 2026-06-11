@@ -21,3 +21,24 @@ yarn-error.log
 /.vscode
 /.zed
 _ide_helper.php
+
+
+# AI - user settings
+/.ai/gui
+/.ai/mcp/mcp.json
+/.claude/settings.local.json
+/.junie/**/*.json
+.mcp.json
+
+opencode.json
+
+# AI - Managed by Laravel Boost
+/CLAUDE.md
+/AGENTS.md
+boost.json
+
+/.agents/skills/
+/.claude/skills/
+/.github/skills/
+/.junie/skills/
+/.junie/guidelines.md
