@@ -8,7 +8,7 @@ class HomepageController extends Controller
 {
     public function __invoke(): View
     {
-        return view('pages.welcome', [
+        return view('pages.homepage', [
             //
         ]);
     }
