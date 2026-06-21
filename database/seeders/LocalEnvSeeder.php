@@ -4,7 +4,9 @@ namespace Database\Seeders;
 
 use App\Models\Event;
 use App\Models\Location;
+use App\Models\Speaker;
 use App\Models\Sponsor;
+use App\Models\Talk;
 use Carbon\Carbon;
 use Carbon\CarbonPeriod;
 use Illuminate\Database\Seeder;
@@ -15,6 +17,7 @@ class LocalEnvSeeder extends Seeder
     {
         $this->createSponsors();
         $this->createLocations();
+        $this->createSpeakers();
         $this->createEvents();
     }
 
@@ -38,6 +41,13 @@ class LocalEnvSeeder extends Seeder
             ->create();
     }
 
+    private function createSpeakers(): void
+    {
+        Speaker::factory()
+            ->count(20)
+            ->create();
+    }
+
     private function createEvents(): void
     {
         $period = CarbonPeriod::create(
@@ -48,13 +58,23 @@ class LocalEnvSeeder extends Seeder
 
         /** @var Carbon $date */
         foreach ($period as $date) {
-            Event::factory()->create([
+            $event = Event::factory()->create([
                 'name' => sprintf('%s Meetup', $date->format('F Y')),
                 'start_date' => $date->setTime(18, 30, 0),
                 'end_date' => $date->setTime(22, 0, 0),
                 'is_published' => true,
                 'location_id' => Location::inRandomOrder()->first()?->id,
             ]);
+
+            $talks = Talk::factory()->count(2)->create();
+
+            foreach ($talks as $talk) {
+                $talk->speakers()->attach(
+                    Speaker::inRandomOrder()->limit(random_int(1, 2))->pluck('id')
+                );
+            }
+
+            $event->talks()->attach($talks->pluck('id'));
         }
     }
 }

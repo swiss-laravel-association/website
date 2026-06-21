@@ -8,7 +8,7 @@
                     Join us at our next event.
                 </h1>
 
-                <x-events.card :event="$nextEvent" :featured="true" color="orange" />
+                <x-events.card :event="$nextEvent" :featured="true" :show_rsvp_link="true" :show_learn_more_link="true" />
             </div>
         </section>
 
@@ -38,7 +38,7 @@
                     @foreach ($upcomingEvents as $event)
                         <x-events.card
                             :event="$event"
-                            :show_learn_more_link="false"
+                            :show_learn_more_link="true"
                             :show_rsvp_link="true"
                         />
                     @endforeach

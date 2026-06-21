@@ -2,8 +2,10 @@
 
 namespace App\Models;
 
+use Database\Factories\TalkFactory;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Collection;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Illuminate\Support\Carbon;
@@ -34,6 +36,9 @@ use Illuminate\Support\Carbon;
  */
 class Talk extends Model
 {
+    /** @use HasFactory<TalkFactory> */
+    use HasFactory;
+
     /**
      * @return BelongsToMany<Speaker, $this>
      */
