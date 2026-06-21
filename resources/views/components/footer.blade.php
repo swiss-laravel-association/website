@@ -11,7 +11,7 @@
                         No spam, ever. Unsubscribe any time.
                     </p>
 
-                    <livewire:newsletter-sign-up />
+                    <livewire:newsletter-signup />
                 </div>
 
                 <div id="socials">
