@@ -23,7 +23,22 @@
                 </li>
                 <li>
                     <x-nav.link href="{{ route('links.feedback') }}" class="text-xs">
-                        Contact
+                        Feedback
+                    </x-nav.link>
+                </li>
+                <li>
+                    <x-nav.link href="{{ route('links.newsletter') }}" class="text-xs">
+                        Newsletter
+                    </x-nav.link>
+                </li>
+                <li>
+                    <x-nav.link href="{{ route('links.rfp') }}" class="text-xs">
+                        Request for Proposal
+                    </x-nav.link>
+                </li>
+                <li>
+                    <x-nav.link href="{{ route('meetups.calendar') }}" class="text-xs">
+                        Event Calendar
                     </x-nav.link>
                 </li>
             </ul>
