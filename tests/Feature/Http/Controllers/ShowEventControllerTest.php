@@ -51,6 +51,20 @@ it('returns 404 for an unknown event', function (): void {
     $response->assertStatus(404);
 });
 
+it('uses the event name and description as SEO title and description', function (): void {
+    $event = Event::factory()
+        ->for(Location::factory())
+        ->create([
+            'name' => 'June Meetup in Bern',
+            'description' => 'A short evening of Laravel talks, drinks and pizza in central Bern.',
+        ]);
+
+    $response = $this->get(route('events.show', $event));
+
+    $response->assertSee('<title>June Meetup in Bern | Swiss Laravel Association</title>', false);
+    $response->assertSee('A short evening of Laravel talks', false);
+});
+
 it('renders breadcrumbs ending with the event name and matching JSON-LD', function (): void {
     $event = Event::factory()
         ->for(Location::factory())

@@ -13,6 +13,9 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Illuminate\Support\Carbon;
+use Illuminate\Support\Str;
+use RalphJSmit\Laravel\SEO\Support\HasSEO;
+use RalphJSmit\Laravel\SEO\Support\SEOData;
 
 /**
  * @property int $id
@@ -50,6 +53,18 @@ class Event extends Model
 {
     /** @use HasFactory<EventFactory> */
     use HasFactory;
+
+    use HasSEO;
+
+    public function getDynamicSEOData(): SEOData
+    {
+        return new SEOData(
+            title: $this->name,
+            description: Str::limit($this->description, 160),
+            published_time: $this->start_date,
+            type: 'event',
+        );
+    }
 
     protected function casts(): array
     {

@@ -6,11 +6,17 @@ use App\Helpers\Breadcrumbs;
 use App\Models\Event;
 use Illuminate\Contracts\View\View;
 use Illuminate\Http\Request;
+use RalphJSmit\Laravel\SEO\Support\SEOData;
 
 class IndexEventsController extends Controller
 {
     public function __invoke(Request $request): View
     {
+        seo(new SEOData(
+            title: 'Meetups',
+            description: 'Browse upcoming and past Laravel Switzerland meetups — talks, venues and recordings from across the country.',
+        ));
+
         $nextEvent = Event::query()
             ->with(['location'])
             ->where('start_date', '>', now())

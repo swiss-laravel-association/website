@@ -20,6 +20,13 @@ it('renders breadcrumbs with matching JSON-LD', function (): void {
     $response->assertSee('"name":"Events"', false);
 });
 
+it('renders the page-specific SEO title and description', function (): void {
+    $response = $this->get(route('events.index'));
+
+    $response->assertSee('<title>Meetups | Swiss Laravel Association</title>', false);
+    $response->assertSee('Browse upcoming and past Laravel Switzerland meetups', false);
+});
+
 it('shows the next upcoming event and lists other upcoming and past events', function (): void {
     $location = Location::factory()->create();
 

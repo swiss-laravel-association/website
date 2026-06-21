@@ -11,13 +11,13 @@
             <div>
                 <h2>Responsible for the content</h2>
                 <p>
-                    Swiss Laravel Association<br/>
-                    Boulevard Lilienthal 54<br/>
-                    8152 Glattpark<br/>
-                    Switzerland<br/>
-                    E-mail: <a href="mailto:sandro@laravel.swiss" rel="noopener noreferrer"
-                               target="_blank">sandro@laravel.swiss</a><br/>
-                    Tel: 0792983635
+                    {{ config('sla.legal_name') }}<br/>
+                    {{ config('sla.address.street') }}<br/>
+                    {{ config('sla.address.postal_code') }} {{ config('sla.address.city') }}<br/>
+                    {{ config('sla.address.country') }}<br/>
+                    E-mail: <a href="mailto:{{ config('sla.contact.email') }}" rel="noopener noreferrer"
+                               target="_blank">{{ config('sla.contact.email') }}</a><br/>
+                    Tel: {{ config('sla.contact.phone') }}
                 </p>
             </div>
             <a href="https://www.legally-ok.com/dse-legally-free/">

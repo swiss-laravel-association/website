@@ -14,3 +14,12 @@ it('renders breadcrumbs with matching JSON-LD', function (): void {
     $response->assertSee('"@type":"BreadcrumbList"', false);
     $response->assertSee('"name":"Imprint"', false);
 });
+
+it('renders the address from config and an SEO title', function (): void {
+    $response = $this->get(route('imprint'));
+
+    $response->assertSeeText(config('sla.address.street'));
+    $response->assertSeeText(config('sla.address.city'));
+    $response->assertSeeText(config('sla.contact.email'));
+    $response->assertSee('<title>Imprint | Swiss Laravel Association</title>', false);
+});

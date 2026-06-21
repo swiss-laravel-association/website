@@ -13,6 +13,8 @@ class ShowEventController extends Controller
     {
         $event->load(['location', 'talks.speakers']);
 
+        seo($event);
+
         return view('pages.events.show', [
             'event' => $event,
             'breadcrumbs' => Breadcrumbs::make()
