@@ -4,6 +4,7 @@ use App\Http\Controllers\Association\SponsorsController;
 use App\Http\Controllers\BlogController;
 use App\Http\Controllers\HomepageController;
 use App\Http\Controllers\MeetupEventsCalendarController;
+use App\Http\Controllers\NextEventController;
 use App\Models\Post;
 use Illuminate\Contracts\View\Factory;
 use Illuminate\Contracts\View\View;
@@ -50,3 +51,5 @@ Route::redirect('/twitter', 'https://x.com/swisslaravel')->name('links.twitter')
 Route::redirect('/x', 'https://x.com/swisslaravel')->name('links.x');
 
 Route::get('/meetups/calendar.ics', MeetupEventsCalendarController::class)->name('meetups.calendar');
+
+Route::get('/events/next-event', NextEventController::class)->name('events.next-event');

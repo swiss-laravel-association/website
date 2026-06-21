@@ -2,14 +2,14 @@
     <flux:header container class="bg-zinc-50 dark:bg-zinc-900 border-b border-zinc-200 dark:border-zinc-700 flex items-center">
         <flux:sidebar.toggle class="lg:hidden" icon="bars-2" inset="left" />
 
-        <flux:brand href="#" logo="https://fluxui.dev/img/demo/logo.png" name="Swiss Laravel Association" class="max-lg:hidden dark:hidden" />
-        <flux:brand href="#" logo="{{ \Illuminate\Support\Facades\Vite::asset('resources/images/logos/logo-mark-color-small.png') }}" name="Swiss Laravel Association" class="max-lg:hidden! hidden dark:flex" />
+        <flux:brand :href="route('home')" logo="{{ \Illuminate\Support\Facades\Vite::asset('resources/images/logos/logo-mark-color-small.png') }}" name="Swiss Laravel Association" class="max-lg:hidden dark:hidden" />
+        <flux:brand :href="route('home')" logo="{{ \Illuminate\Support\Facades\Vite::asset('resources/images/logos/logo-mark-color-small.png') }}" name="Swiss Laravel Association" class="max-lg:hidden! hidden dark:flex" />
 
-                <flux:spacer />
+        <flux:spacer />
 
         @if (true)
             <flux:navbar class="me-4 lg:hidden">
-                <flux:navbar.item href="#" icon:trailing="arrow-up-right">
+                <flux:navbar.item :href="route('events.next-event')" icon:trailing="arrow-up-right">
                     Next Event
                 </flux:navbar.item>
             </flux:navbar>

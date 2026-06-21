@@ -18,7 +18,7 @@
                     </p>
 
                     <div class="flex flex-wrap gap-2">
-                        <flux:button href="https://luma.com/laravel.swiss"
+                        <flux:button :href="route('events.next-event')"
                                      variant="primary"
                                      target="_blank"
                                      rel="noopener"
