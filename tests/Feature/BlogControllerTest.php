@@ -59,3 +59,28 @@ it('throws error if user tries to access not published blog post ', function ():
         ->assertDontSeeText($post->title)
         ->assertDontSeeHtml($post->parsed_content);
 });
+
+it('renders breadcrumbs on the blog index page with matching JSON-LD', function (): void {
+    $response = get(route('blog.index'));
+
+    $response->assertOk();
+    $response->assertSee('data-flux-breadcrumbs', false);
+    $response->assertSee('"@type":"BreadcrumbList"', false);
+    $response->assertSee('"name":"Blog"', false);
+});
+
+it('renders breadcrumbs ending with the post title on the show page', function (): void {
+    /** @var Post $post */
+    $post = Post::factory()->create([
+        'title' => 'Announcing the SLA',
+        'published_at' => now()->subDay(),
+    ]);
+
+    $response = get(route('blog.show', ['post' => $post]));
+
+    $response->assertOk();
+    $response->assertSee('data-flux-breadcrumbs', false);
+    $response->assertSee('"@type":"BreadcrumbList"', false);
+    $response->assertSee('"name":"Blog"', false);
+    $response->assertSee('"name":"Announcing the SLA"', false);
+});

@@ -16,6 +16,10 @@ class BlogController extends Controller
 
         return view('blog.index', [
             'posts' => $posts,
+            'breadcrumbs' => [
+                ['label' => 'Home', 'url' => route('home'), 'icon' => 'home'],
+                ['label' => 'Blog'],
+            ],
         ]);
     }
 
@@ -23,6 +27,11 @@ class BlogController extends Controller
     {
         return view('blog.show', [
             'post' => $post,
+            'breadcrumbs' => [
+                ['label' => 'Home', 'url' => route('home'), 'icon' => 'home'],
+                ['label' => 'Blog', 'url' => route('blog.index')],
+                ['label' => $post->title],
+            ],
         ]);
     }
 }

@@ -3,6 +3,8 @@
         <div class="mx-auto max-w-7xl px-6 lg:px-8">
 
             <div class="mx-auto max-w-2xl">
+                <x-breadcrumbs :items="$breadcrumbs" class="mb-8" />
+
                 <h1 class="text-pretty text-4xl font-semibold tracking-tight text-gray-900 sm:text-5xl mb-4">
                     {{ $post->title }}
                 </h1>

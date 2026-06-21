@@ -33,6 +33,10 @@ class IndexEventsController extends Controller
             'nextEvent' => $nextEvent,
             'upcomingEvents' => $upcomingEvents,
             'pastEvents' => $pastEvents,
+            'breadcrumbs' => [
+                ['label' => 'Home', 'url' => route('home'), 'icon' => 'home'],
+                ['label' => 'Events'],
+            ],
         ]);
     }
 }

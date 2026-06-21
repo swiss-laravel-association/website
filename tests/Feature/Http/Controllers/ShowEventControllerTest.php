@@ -50,3 +50,21 @@ it('returns 404 for an unknown event', function (): void {
 
     $response->assertStatus(404);
 });
+
+it('renders breadcrumbs ending with the event name and matching JSON-LD', function (): void {
+    $event = Event::factory()
+        ->for(Location::factory())
+        ->create([
+            'name' => 'Helga Meetup',
+            'start_date' => Carbon::now()->addDays(7),
+            'end_date' => Carbon::now()->addDays(7)->addHours(3),
+        ]);
+
+    $response = $this->get(route('events.show', $event));
+
+    $response->assertStatus(200);
+    $response->assertSee('data-flux-breadcrumbs', false);
+    $response->assertSee('"@type":"BreadcrumbList"', false);
+    $response->assertSee('"name":"Events"', false);
+    $response->assertSee('"name":"Helga Meetup"', false);
+});

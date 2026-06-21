@@ -1,4 +1,8 @@
 <x-app-layout>
+    <x-sla-ui.container class="max-w-5xl">
+        <x-breadcrumbs :items="$breadcrumbs" />
+    </x-sla-ui.container>
+
     <x-sla-ui.container class="max-w-5xl space-y-24">
         <div>
             <x-hero-eyebrow class="mb-2">Swiss Laravel Association</x-hero-eyebrow>

@@ -28,6 +28,10 @@
                           :current="request()->routeIs('association.sponsors')">
             Sponsors
         </flux:navbar.item>
+        <flux:navbar.item :href="route('blog.index')"
+                          :current="request()->routeIs('blog.index')">
+            Blog
+        </flux:navbar.item>
 
         @if (false)
             <flux:navbar.item href="#">Association</flux:navbar.item>

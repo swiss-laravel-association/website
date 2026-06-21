@@ -14,6 +14,11 @@ class ShowEventController extends Controller
 
         return view('pages.events.show', [
             'event' => $event,
+            'breadcrumbs' => [
+                ['label' => 'Home', 'url' => route('home'), 'icon' => 'home'],
+                ['label' => 'Events', 'url' => route('events.index')],
+                ['label' => $event->name],
+            ],
         ]);
     }
 }

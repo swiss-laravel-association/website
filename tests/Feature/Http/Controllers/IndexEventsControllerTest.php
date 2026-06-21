@@ -10,6 +10,16 @@ it('returns a successful response', function (): void {
     $response->assertStatus(200);
 });
 
+it('renders breadcrumbs with matching JSON-LD', function (): void {
+    $response = $this->get(route('events.index'));
+
+    $response->assertStatus(200);
+    $response->assertSee('data-flux-breadcrumbs', false);
+    $response->assertSeeText('Events');
+    $response->assertSee('"@type":"BreadcrumbList"', false);
+    $response->assertSee('"name":"Events"', false);
+});
+
 it('shows the next upcoming event and lists other upcoming and past events', function (): void {
     $location = Location::factory()->create();
 

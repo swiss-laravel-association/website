@@ -1,5 +1,9 @@
 <x-app-layout>
-    <section class="relative overflow-hidden pt-16 pb-12">
+    <div class="container mx-auto max-w-4xl px-6 pt-8 lg:px-10">
+        <x-breadcrumbs :items="$breadcrumbs" />
+    </div>
+
+    <section class="relative overflow-hidden pt-8 pb-12">
         <div class="container mx-auto max-w-4xl px-6 lg:px-10">
             <x-hero-eyebrow class="mb-4">
                 {{ $event->start_date->isFuture() ? 'Upcoming meetup' : 'Past meetup' }}

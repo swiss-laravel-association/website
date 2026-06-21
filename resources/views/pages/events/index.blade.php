@@ -1,6 +1,10 @@
 <x-app-layout>
+    <div class="container mx-auto max-w-6xl px-6 pt-8 lg:px-10">
+        <x-breadcrumbs :items="$breadcrumbs" />
+    </div>
+
     @if ($nextEvent)
-        <section class="relative overflow-hidden pt-16 pb-16">
+        <section class="relative overflow-hidden pt-8 pb-16">
             <div class="container mx-auto max-w-6xl px-6 lg:px-10">
                 <x-hero-eyebrow class="mb-4">Next meetup</x-hero-eyebrow>
 
@@ -14,7 +18,7 @@
 
         <x-dither-divider canvasId="ditherEventsHero" :speed="0.010" />
     @else
-        <section class="relative overflow-hidden pt-16 pb-12">
+        <section class="relative overflow-hidden pt-8 pb-12">
             <div class="container mx-auto max-w-6xl px-6 lg:px-10">
                 <x-hero-eyebrow class="mb-4">Meetups</x-hero-eyebrow>
 
