@@ -2,7 +2,7 @@
     <x-content.section id="privacy-policy"
                        title="Privacy Policy"
     >
-        <div class="prose">
+        <div class="prose prose-invert">
             <div>
                 <p>Thank you for visiting our website laravel.swiss and for your interest in our association.</p>
                 <p>The protection of your personal data, such as date of birth, name, telephone number, address, etc.,

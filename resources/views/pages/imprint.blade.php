@@ -2,7 +2,7 @@
     <x-content.section id="imprint"
                        title="Imprint"
     >
-        <div class="prose">
+        <div class="prose prose-invert">
             <div>
                 <h2>Responsible for the content</h2>
                 <p>
