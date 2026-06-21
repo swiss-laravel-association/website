@@ -103,4 +103,10 @@ class Event extends Model
             $this->end_date->format('d.m.y H:i'),
         );
     }
+
+    public function showUrl(): Attribute
+    {
+        return Attribute::get(fn (): string => '#');
+        // return Attribute::get(fn (): string => route('events.show', $this));
+    }
 }

@@ -16,6 +16,11 @@ class HomepageController extends Controller
                 ->where('start_date', '>', now())
                 ->orderBy('start_date')
                 ->first(),
+            'futureEvents' => Event::query()
+                ->with(['location'])
+                ->where('start_date', '>', now())
+                ->orderBy('start_date')
+                ->get(),
             'pastEvents' => Event::query()
                 ->with(['location'])
                 ->where('start_date', '<', now())
