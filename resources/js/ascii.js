@@ -176,7 +176,7 @@ function init() {
     if (footer) {
         createAsciiAnimation({
             canvas: footer,
-            getSize: () => ({ w: window.innerWidth, h: 72 }),
+            getSize: () => ({ w: window.innerWidth, h: 80 }),
             plasmaFn: plasmaClassic,
             colorFn: (v) => `rgba(181,178,188,${(0.12 + v * 0.40).toFixed(3)})`,
             rowCount: 5,

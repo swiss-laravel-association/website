@@ -3,8 +3,10 @@
 namespace App\Models;
 
 use Carbon\CarbonImmutable;
+use Carbon\CarbonPeriodImmutable;
 use Database\Factories\EventFactory;
 use Illuminate\Database\Eloquent\Builder;
+use Illuminate\Database\Eloquent\Casts\Attribute;
 use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
@@ -71,5 +73,34 @@ class Event extends Model
     public function talks(): BelongsToMany
     {
         return $this->belongsToMany(Talk::class);
+    }
+
+    /**
+     * @return Attribute<CarbonPeriodImmutable, never>
+     */
+    protected function period(): Attribute
+    {
+        return Attribute::get(fn (): CarbonPeriodImmutable => CarbonPeriodImmutable::create(
+            $this->start_date,
+            $this->end_date,
+        ));
+    }
+
+    public function displayPeriod(): string
+    {
+        if ($this->start_date->isSameDay($this->end_date)) {
+            return sprintf(
+                '%s %s - %s',
+                $this->start_date->format('d.m.Y'),
+                $this->start_date->format('H:i'),
+                $this->end_date->format('H:i'),
+            );
+        }
+
+        return sprintf(
+            '%s - %s',
+            $this->start_date->format('d.m.Y H:i'),
+            $this->end_date->format('d.m.Y H:i'),
+        );
     }
 }

@@ -29,7 +29,7 @@ class LocalEnvSeeder extends Seeder
     {
         Sponsor::factory()
             ->isFoundingSponsor()
-            ->count(5)
+            ->count(10)
             ->create();
 
         Sponsor::factory()

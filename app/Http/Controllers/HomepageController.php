@@ -23,7 +23,6 @@ class HomepageController extends Controller
                 ->get(),
             'sponsors' => Sponsor::query()
                 ->with(['media'])
-                ->founding()
                 ->limit(8)
                 ->inRandomOrder()
                 ->get(),
