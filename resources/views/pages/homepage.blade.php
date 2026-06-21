@@ -70,7 +70,15 @@
     <section id="events" class="pb-16">
         <div class="container mx-auto max-w-6xl px-6 lg:px-10">
 
-            <x-section-label>Upcoming events</x-section-label>
+            <x-section-label>
+                Upcoming events
+
+                <x-slot:trailing>
+                    <flux:link :href="route('events.index')" class="!text-mauve-400 hover:!text-mauve-200">
+                        All events →
+                    </flux:link>
+                </x-slot:trailing>
+            </x-section-label>
 
             <div class="grid grid-cols-1 gap-2.5 md:grid-cols-2">
                 @foreach ($futureEvents as $event)
@@ -86,7 +94,15 @@
 
     <section id="events" class="pb-16">
         <div class="container mx-auto max-w-6xl px-6 lg:px-10">
-            <x-section-label>Past events</x-section-label>
+            <x-section-label>
+                Past events
+
+                <x-slot:trailing>
+                    <flux:link :href="route('events.index')" class="!text-mauve-400 hover:!text-mauve-200">
+                        All events →
+                    </flux:link>
+                </x-slot:trailing>
+            </x-section-label>
 
             <div class="grid grid-cols-1 gap-2.5 md:grid-cols-2">
                 @foreach ($pastEvents as $event)
@@ -101,35 +117,4 @@
 
     <x-dither-divider canvasId="ditherDivider2" :speed="0.002" />
 
-    <section class="border-y border-mauve-700 bg-mauve-950 py-10">
-        <div class="container mx-auto max-w-6xl px-6 lg:px-10">
-            <div class="grid items-start gap-16 md:grid-cols-2">
-                <div>
-                    <h2 class="mb-2 text-3xl font-light text-mauve-50">
-                        Stay in the loop.
-                    </h2>
-                    <p class="mb-4 text-sm text-mauve-300">
-                        Get notified about upcoming meetups, new talk recordings and community news.
-                        No spam, ever. Unsubscribe any time.
-                    </p>
-
-                    <livewire:newsletter-sign-up />
-                </div>
-
-                <div id="socials">
-                    <p class="mb-3 font-mono text-xs uppercase tracking-wide text-mauve-300">
-                        {{ __('nav.follow_us') }}
-                    </p>
-
-                    <div class="flex flex-col gap-2">
-                        <x-social-link platform="YouTube" url="{{ route('links.youtube') }}">Swiss Laravel Association</x-social-link>
-                        <x-social-link platform="Mastodon" url="{{ route('links.mastodon') }}">@swiss_laravel_association@phpc.social</x-social-link>
-                        <x-social-link platform="Bluesky" url="{{ route('links.bluesky') }}">@laravel.swiss</x-social-link>
-                        <x-social-link platform="LinkedIn" url="{{ route('links.linkedin') }}">Swiss Laravel Association</x-social-link>
-                        <x-social-link platform="Twitter/X" url="{{ route('links.x') }}">@swisslaravel</x-social-link>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
 </x-app-layout>
