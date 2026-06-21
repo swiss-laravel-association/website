@@ -4,9 +4,11 @@ namespace Database\Seeders;
 
 use App\Models\Event;
 use App\Models\Location;
+use App\Models\Post;
 use App\Models\Speaker;
 use App\Models\Sponsor;
 use App\Models\Talk;
+use App\Models\User;
 use Carbon\Carbon;
 use Carbon\CarbonPeriod;
 use Illuminate\Database\Seeder;
@@ -19,6 +21,7 @@ class LocalEnvSeeder extends Seeder
         $this->createLocations();
         $this->createSpeakers();
         $this->createEvents();
+        $this->createPosts();
     }
 
     private function createLocations(): void
@@ -76,5 +79,17 @@ class LocalEnvSeeder extends Seeder
 
             $event->talks()->attach($talks->pluck('id'));
         }
+    }
+
+    private function createPosts(): void
+    {
+        Post::factory()
+            ->count(15)
+            ->create()
+            ->each(function (Post $post): void {
+                $post->authors()->attach(
+                    User::inRandomOrder()->limit(random_int(1, 2))->pluck('id')
+                );
+            });
     }
 }

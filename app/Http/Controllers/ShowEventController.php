@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Helpers\Breadcrumbs;
 use App\Models\Event;
 use Illuminate\Contracts\View\View;
 use Illuminate\Http\Request;
@@ -14,11 +15,9 @@ class ShowEventController extends Controller
 
         return view('pages.events.show', [
             'event' => $event,
-            'breadcrumbs' => [
-                ['label' => 'Home', 'url' => route('home'), 'icon' => 'home'],
-                ['label' => 'Events', 'url' => route('events.index')],
-                ['label' => $event->name],
-            ],
+            'breadcrumbs' => Breadcrumbs::make()
+                ->add('Events', route('events.index'))
+                ->add($event->name),
         ]);
     }
 }

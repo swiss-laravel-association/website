@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Helpers\Breadcrumbs;
 use App\Models\Event;
 use Illuminate\Contracts\View\View;
 use Illuminate\Http\Request;
@@ -33,10 +34,8 @@ class IndexEventsController extends Controller
             'nextEvent' => $nextEvent,
             'upcomingEvents' => $upcomingEvents,
             'pastEvents' => $pastEvents,
-            'breadcrumbs' => [
-                ['label' => 'Home', 'url' => route('home'), 'icon' => 'home'],
-                ['label' => 'Events'],
-            ],
+            'breadcrumbs' => Breadcrumbs::make()
+                ->add('Events'),
         ]);
     }
 }

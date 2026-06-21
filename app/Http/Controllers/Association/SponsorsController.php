@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Association;
 
+use App\Helpers\Breadcrumbs;
 use App\Http\Controllers\Controller;
 use App\Models\Sponsor;
 use Illuminate\Contracts\View\View;
@@ -13,11 +14,9 @@ class SponsorsController extends Controller
         return view('pages.association.sponsors', [
             'foundingSponsors' => Sponsor::founding()->orderBy('order')->get(),
             'locationSponsors' => Sponsor::location()->orderBy('order')->get(),
-            'breadcrumbs' => [
-                ['label' => 'Home', 'url' => route('home'), 'icon' => 'home'],
-                ['label' => 'Association'],
-                ['label' => 'Sponsors'],
-            ],
+            'breadcrumbs' => Breadcrumbs::make()
+                ->add('Association')
+                ->add('Sponsors'),
         ]);
     }
 }

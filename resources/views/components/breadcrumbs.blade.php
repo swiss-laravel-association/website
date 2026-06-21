@@ -5,13 +5,17 @@
 {{--
     Renders a Flux breadcrumb trail plus a matching BreadcrumbList JSON-LD block.
 
-    $items is an array of:
+    Pass either an \App\Helpers\Breadcrumbs instance or a raw array of:
       - label (string, required) — visible text and schema name
       - url   (string, optional) — if present, the item is a link
       - icon  (string, optional) — if present, the visible item is icon-only
                                    (the label is still used as the schema name)
     The last item typically omits `url` to represent the current page.
 --}}
+@php
+    $items = $items instanceof \App\Helpers\Breadcrumbs ? $items->toArray() : $items;
+@endphp
+
 @if (! empty($items))
     @php
         $schemaItems = [];

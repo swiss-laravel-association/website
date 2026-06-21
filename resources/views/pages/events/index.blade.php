@@ -69,7 +69,7 @@
                 </div>
 
                 <div class="mt-10">
-                    {{ $pastEvents->withQueryString()->links() }}
+                    <flux:pagination :paginator="$pastEvents" />
                 </div>
             @endif
         </div>

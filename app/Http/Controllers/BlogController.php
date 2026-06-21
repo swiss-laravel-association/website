@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Helpers\Breadcrumbs;
 use App\Models\Post;
 use Illuminate\Contracts\View\View;
 
@@ -16,10 +17,8 @@ class BlogController extends Controller
 
         return view('blog.index', [
             'posts' => $posts,
-            'breadcrumbs' => [
-                ['label' => 'Home', 'url' => route('home'), 'icon' => 'home'],
-                ['label' => 'Blog'],
-            ],
+            'breadcrumbs' => Breadcrumbs::make()
+                ->add('Blog'),
         ]);
     }
 
@@ -27,11 +26,9 @@ class BlogController extends Controller
     {
         return view('blog.show', [
             'post' => $post,
-            'breadcrumbs' => [
-                ['label' => 'Home', 'url' => route('home'), 'icon' => 'home'],
-                ['label' => 'Blog', 'url' => route('blog.index')],
-                ['label' => $post->title],
-            ],
+            'breadcrumbs' => Breadcrumbs::make()
+                ->add('Blog', route('blog.index'))
+                ->add($post->title),
         ]);
     }
 }
