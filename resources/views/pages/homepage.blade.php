@@ -113,17 +113,7 @@
                         No spam, ever. Unsubscribe any time.
                     </p>
 
-                    <form action="{{ route('links.newsletter') }}" method="get" class="flex flex-col gap-2 sm:flex-row items-end">
-                        <flux:field>
-                            <flux:label>E-Mail Address</flux:label>
-                            <flux:input type="email" name="email" required placeholder="john@appleseed.com"/>
-                            <flux:error name="username"/>
-                        </flux:field>
-
-                        <flux:button type="submit">
-                            Subscribe
-                        </flux:button>
-                    </form>
+                    <livewire:newsletter-sign-up />
                 </div>
 
                 <div id="socials">

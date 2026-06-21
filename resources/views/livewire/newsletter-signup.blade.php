@@ -1,9 +1,6 @@
-<flux:callout variant="secondary">
-    <flux:callout.heading icon="inbox-arrow-down">Newsletter</flux:callout.heading>
+<div>
 
-    <flux:callout.text>
-        Signup to our newsletter and be the first to know about upcoming events.
-    </flux:callout.text>
+
 
     @if($subscribed)
         <flux:callout variant="success" icon="check-circle"
@@ -26,7 +23,7 @@
         </form>
     @endif
 
-</flux:callout>
+    </div>
 
 @assets
     @if (config('website.turnstile_enabled'))

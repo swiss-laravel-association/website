@@ -36,7 +36,7 @@
                                  target="_blank"
                                  rel="noopener"
                                  icon:trailing="arrow-up-right">
-                        RSVP on Meetup
+                        RSVP
                     </flux:button>
                 </div>
             @endif
