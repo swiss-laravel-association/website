@@ -35,6 +35,8 @@
 
     <x-header />
 
+    {{-- TODO: Breadcrumbs --}}
+
     {{ $slot }}
 
     <x-footer/>

@@ -1,5 +1,5 @@
 <x-app-layout>
-    <div class="container max-w-3xl mx-auto px-4 py-8">
+    <x-sla-ui.container class="max-w-3xl">
         <flux:heading size="xl" level="1">
             Imprint
         </flux:heading>
@@ -32,5 +32,5 @@
             </p>
         </div>
 
-    </div>
+    </x-sla-ui.container>
 </x-app-layout>

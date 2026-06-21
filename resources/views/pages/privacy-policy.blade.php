@@ -1,5 +1,5 @@
 <x-app-layout>
-    <div class="container max-w-3xl mx-auto px-4 py-8">
+    <x-sla-ui.container class="max-w-3xl">
         <flux:heading size="xl" level="1">
             Privacy Policy
         </flux:heading>
@@ -526,5 +526,5 @@
                     href="https://www.legally-ok.com/dse-legally-free/">ok</a>.
             </p>
         </div>
-    </div>
+    </x-sla-ui.container>
 </x-app-layout>
