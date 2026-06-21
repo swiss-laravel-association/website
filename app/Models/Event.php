@@ -106,7 +106,6 @@ class Event extends Model
 
     public function showUrl(): Attribute
     {
-        return Attribute::get(fn (): string => '#');
-        // return Attribute::get(fn (): string => route('events.show', $this));
+        return Attribute::get(fn (): string => route('events.show', $this));
     }
 }

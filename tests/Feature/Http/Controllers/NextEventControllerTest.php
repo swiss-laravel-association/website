@@ -42,11 +42,11 @@ it('ignores events whose start date is in the past', function (): void {
 
     $response = $this->get(route('events.next-event'));
 
-    $response->assertRedirect(route('homepage'));
+    $response->assertRedirect(route('home'));
 });
 
 it('redirects to the homepage when no upcoming event exists', function (): void {
     $response = $this->get(route('events.next-event'));
 
-    $response->assertRedirect(route('homepage'));
+    $response->assertRedirect(route('home'));
 });

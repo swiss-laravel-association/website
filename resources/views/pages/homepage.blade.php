@@ -42,7 +42,7 @@
             {{-- Next event strip --}}
             @if ($nextEvent)
                 <div class="mt-16 mb-16">
-                    <x-events.card :event="$nextEvent" :featured="true" color="orange" />
+                    <x-events.card :event="$nextEvent" :featured="true" show_learn_more_link="true" :show_rsvp_link="true" color="orange" />
                 </div>
             @endif
         </div>
@@ -76,7 +76,7 @@
                 @foreach ($futureEvents as $event)
                     <x-events.card
                         :event="$event"
-                        :show_learn_more_link="false"
+                        :show_learn_more_link="true"
                         :show_rsvp_link="true"
                     />
                 @endforeach
@@ -93,7 +93,6 @@
                     <x-events.card
                         :event="$event"
                         :show_learn_more_link="true"
-                        :show_rsvp_link="false"
                     />
                 @endforeach
             </div>

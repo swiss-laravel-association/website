@@ -12,7 +12,7 @@ class NextEventController extends Controller
         $nextEvent = Event::where('start_date', '>', now())->orderBy('start_date', 'asc')->first();
 
         if ($nextEvent === null) {
-            return redirect()->route('homepage');
+            return redirect()->route('home');
         }
 
         return redirect($nextEvent->meetup_link);

@@ -3,8 +3,10 @@
 use App\Http\Controllers\Association\SponsorsController;
 use App\Http\Controllers\BlogController;
 use App\Http\Controllers\HomepageController;
+use App\Http\Controllers\IndexEventsController;
 use App\Http\Controllers\MeetupEventsCalendarController;
 use App\Http\Controllers\NextEventController;
+use App\Http\Controllers\ShowEventController;
 use App\Models\Post;
 use Illuminate\Contracts\View\Factory;
 use Illuminate\Contracts\View\View;
@@ -52,4 +54,6 @@ Route::redirect('/x', 'https://x.com/swisslaravel')->name('links.x');
 
 Route::get('/meetups/calendar.ics', MeetupEventsCalendarController::class)->name('meetups.calendar');
 
+Route::get('/events', IndexEventsController::class)->name('events.index');
 Route::get('/events/next-event', NextEventController::class)->name('events.next-event');
+Route::get('/events/{event}', ShowEventController::class)->name('events.show');
