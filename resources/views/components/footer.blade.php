@@ -1,3 +1,8 @@
+<div
+    class="relative h-20 overflow-hidden before:absolute before:inset-x-0 before:top-0 before:z-10 before:h-7 before:bg-gradient-to-b before:from-mauve-950 before:to-transparent before:content-['']"
+    aria-hidden="true">
+    <canvas id="footerAsciiCanvas" class="block h-20 w-full"></canvas>
+</div>
 <footer class="border-t-[0.5px] border-mauve-700 py-4">
     <div class="container mx-auto max-w-6xl px-6 lg:px-10">
         <div class="flex flex-col items-start justify-between gap-2 sm:flex-row sm:items-center">

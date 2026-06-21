@@ -143,8 +143,4 @@
             </div>
         </div>
     </section>
-
-    <div class="relative h-20 overflow-hidden before:absolute before:inset-x-0 before:top-0 before:z-10 before:h-7 before:bg-gradient-to-b before:from-mauve-950 before:to-transparent before:content-['']" aria-hidden="true">
-        <canvas id="footerAsciiCanvas" class="block h-20 w-full"></canvas>
-    </div>
 </x-app-layout>
