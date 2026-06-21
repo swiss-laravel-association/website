@@ -91,7 +91,7 @@ class Event extends Model
         if ($this->start_date->isSameDay($this->end_date)) {
             return sprintf(
                 '%s %s - %s',
-                $this->start_date->format('d.m.Y'),
+                $this->start_date->format('d.m.y'),
                 $this->start_date->format('H:i'),
                 $this->end_date->format('H:i'),
             );
@@ -99,8 +99,8 @@ class Event extends Model
 
         return sprintf(
             '%s - %s',
-            $this->start_date->format('d.m.Y H:i'),
-            $this->end_date->format('d.m.Y H:i'),
+            $this->start_date->format('d.m.y H:i'),
+            $this->end_date->format('d.m.y H:i'),
         );
     }
 }

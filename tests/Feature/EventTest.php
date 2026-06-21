@@ -24,11 +24,11 @@ it('exposes the event period as a CarbonPeriodImmutable', function (): void {
 it('formats the display period for a single-day event with date once', function (): void {
     $event = makeEvent('2026-06-21 18:00:00', '2026-06-21 22:00:00');
 
-    expect($event->displayPeriod())->toBe('21.06.2026 18:00 - 22:00');
+    expect($event->displayPeriod())->toBe('21.06.26 18:00 - 22:00');
 });
 
 it('formats the display period for a multi-day event with both dates', function (): void {
     $event = makeEvent('2026-06-21 18:00:00', '2026-06-22 14:00:00');
 
-    expect($event->displayPeriod())->toBe('21.06.2026 18:00 - 22.06.2026 14:00');
+    expect($event->displayPeriod())->toBe('21.06.26 18:00 - 22.06.26 14:00');
 });
