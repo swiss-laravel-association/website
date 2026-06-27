@@ -130,7 +130,7 @@ function createDitherDivider({ canvas, height, speed }) {
 
                 if (gradient > threshold) {
                     const alpha = 0.10 + gradient * 0.20;
-                    ctx.fillStyle = `rgba(249,115,22,${alpha.toFixed(3)})`;
+                    ctx.fillStyle = `rgba(254,45,31,${alpha.toFixed(3)})`;
                     ctx.fillRect(c * PXSIZE, r * PXSIZE, PXSIZE, PXSIZE);
                 }
             }
@@ -166,7 +166,7 @@ function init() {
                 ? { w: wrap.offsetWidth, h: wrap.offsetHeight }
                 : { w: 500, h: 340 },
             plasmaFn: plasmaAurora,
-            colorFn: (v) => `rgba(249,115,22,${(0.3 + v * 0.7).toFixed(3)})`,
+            colorFn: (v) => `rgba(254,45,31,${(0.3 + v * 0.7).toFixed(3)})`,
             rowCount: 24,
             speed: 0.6,
         });
