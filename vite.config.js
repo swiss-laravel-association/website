@@ -18,7 +18,20 @@ export default defineConfig({
                         { weight: 400 },
                         { weight: 500 },
                     ],
-                    fallbacks: ['system-ui', 'sans-serif'],
+                    fallbacks: ['system-ui',     'sans-serif'],
+                }),
+                google('Instrument Serif', {
+                    alias: 'serif',
+                    weights: [300, 400, 500, 600, 700, 800, 900],
+                    styles: ['italic'],
+                    subsets: ['latin'],
+                    display: 'swap',
+                    preload: [
+                        { weight: 400 },
+                        { weight: 500 },
+                        { weight: 600 },
+                    ],
+                    fallbacks: ['serif', 'Georgia', 'Cambria', '"Times New Roman"', 'Times', 'serif'],
                 }),
                 google('IBM Plex Mono', {
                     alias: 'mono',

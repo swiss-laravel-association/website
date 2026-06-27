@@ -6,7 +6,7 @@
                 <div class="relative z-10">
                     <x-hero-eyebrow class="mb-4">Swiss Laravel Association</x-hero-eyebrow>
 
-                    <h1 class="mb-4 text-[clamp(2rem,4vw,3rem)] font-light leading-tight text-mauve-100">
+                    <h1 class="mb-4 text-[clamp(2rem,4vw,3rem)] font-light leading-[1] text-mauve-100">
                         Building the <strong class="font-semibold text-white">Laravel</strong><br>
                         community across<br>
                         Switzerland.
