@@ -25,6 +25,7 @@
                         <x-social-link platform="Bluesky" url="{{ route('links.bluesky') }}">@laravel.swiss</x-social-link>
                         <x-social-link platform="LinkedIn" url="{{ route('links.linkedin') }}">Swiss Laravel Association</x-social-link>
                         <x-social-link platform="Twitter/X" url="{{ route('links.x') }}">@swisslaravel</x-social-link>
+                        <x-social-link platform="Discord" url="{{ route('links.discord') }}">Swiss Laravel Association</x-social-link>
                     </div>
                 </div>
             </div>
