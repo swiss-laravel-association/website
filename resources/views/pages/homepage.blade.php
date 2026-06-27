@@ -36,7 +36,13 @@
                     </div>
                 </div>
 
-                <x-hero-ascii-wrap />
+                <div class="relative flex items-center justify-center h-full">
+                    <x-sla-logo class="w-60 text-brand" />
+                    <div class="absolute inset-0">
+                        <x-hero-ascii-wrap />
+                    </div>
+                </div>
+
             </div>
 
             {{-- Next event strip --}}
