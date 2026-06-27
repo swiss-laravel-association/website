@@ -28,13 +28,13 @@ class IndexEventsController extends Controller
             ->where('start_date', '>', now())
             ->when($nextEvent, fn ($query) => $query->whereKeyNot($nextEvent->getKey()))
             ->orderBy('start_date')
-            ->get();
+            ->paginate(perPage: 10, pageName: 'upcoming-events');
 
         $pastEvents = Event::query()
             ->with(['location'])
             ->where('start_date', '<', now())
             ->orderBy('start_date', 'desc')
-            ->paginate(10);
+            ->paginate(perPage: 10, pageName: 'past-events');
 
         return view('pages.events.index', [
             'nextEvent' => $nextEvent,

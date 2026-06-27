@@ -47,6 +47,9 @@
                         />
                     @endforeach
                 </div>
+                <div class="mt-10">
+                    {{ $upcomingEvents->links() }}
+                </div>
             </div>
         </section>
     @endif
@@ -71,7 +74,7 @@
                 </div>
 
                 <div class="mt-10">
-                    <flux:pagination :paginator="$pastEvents" />
+                    {{ $pastEvents->links() }}
                 </div>
             @endif
         </div>
