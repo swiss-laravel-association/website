@@ -28,7 +28,7 @@
 ])>
             <div class="inline-flex items-center gap-1">
                 <flux:icon name="map-pin" variant="micro" class="size-4"/>
-                {{ $event->location->name }}
+                {{ $event->location?->name }}
             </div>
             <div class="inline-flex items-center gap-1">
                 <flux:icon name="calendar" variant="micro" class="size-4"/>
