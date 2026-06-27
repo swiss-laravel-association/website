@@ -13,7 +13,7 @@
             {{ $event->name }}
 
             <flux:badge color="red" size="sm" inset="top bottom">
-                {{ $event->location->city }}
+                {{ $event->location?->city }}
             </flux:badge>
         </flux:callout.heading>
 

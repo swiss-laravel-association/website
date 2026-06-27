@@ -22,7 +22,7 @@
                 @if ($event->location)
                     <div class="inline-flex items-center gap-2">
                         <flux:icon name="map-pin" variant="micro" class="size-4" />
-                        {{ $event->location->name }}, {{ $event->location->city }}
+                        {{ $event->location?->name }}, {{ $event->location?->city }}
                     </div>
                 @endif
             </div>
@@ -92,10 +92,10 @@
                     @if ($event->location->address)
                         <p class="text-mist-300">
                             {{ $event->location->address }}<br>
-                            {{ $event->location->zip_code }} {{ $event->location->city }}
+                            {{ $event->location?->zip_code }} {{ $event->location?->city }}
                         </p>
                     @else
-                        <p class="text-mist-300">{{ $event->location->city }}</p>
+                        <p class="text-mist-300">{{ $event->location?->city }}</p>
                     @endif
 
                     @if ($event->location->description)
