@@ -51,6 +51,8 @@
         </section>
     @endif
 
+    <x-meetup-impressions class="pb-16" />
+
     <section class="pb-16 {{ $nextEvent ? '' : 'pt-4' }}">
         <div class="container mx-auto max-w-6xl px-6 lg:px-10">
             <x-section-label>Past events</x-section-label>

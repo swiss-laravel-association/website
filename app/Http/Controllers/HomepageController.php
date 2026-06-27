@@ -5,8 +5,6 @@ namespace App\Http\Controllers;
 use App\Models\Event;
 use App\Models\Sponsor;
 use Illuminate\Contracts\View\View;
-use Illuminate\Support\Collection;
-use Illuminate\Support\Facades\Vite;
 use RalphJSmit\Laravel\SEO\Support\SEOData;
 
 class HomepageController extends Controller
@@ -40,16 +38,6 @@ class HomepageController extends Controller
                 ->limit(8)
                 ->inRandomOrder()
                 ->get(),
-            'meetupImpressions' => $this->meetupImpressions(),
         ]);
-    }
-
-    /**
-     * @return Collection<int, string>
-     */
-    private function meetupImpressions(): Collection
-    {
-        return Collection::times(31, fn (int $i): string => Vite::asset("resources/images/meetup/meetup-{$i}.webp"))
-            ->shuffle();
     }
 }
