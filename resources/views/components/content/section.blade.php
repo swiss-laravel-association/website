@@ -7,8 +7,8 @@
             @if($keyWords)
                 <p @class([
                     'text-base/7 font-semibold',
-                    'text-mauve-400' => $red,
-                    'text-mauve-400' => !$red,
+                    'text-mist-400' => $red,
+                    'text-mist-400' => !$red,
                 ])>
                     {{ $keyWords }}
                 </p>

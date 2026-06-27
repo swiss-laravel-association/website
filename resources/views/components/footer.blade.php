@@ -1,12 +1,12 @@
 
-    <section class="border-y border-mauve-700 bg-mauve-950 py-10">
+    <section class="border-y border-mist-700 bg-mist-950 py-10">
         <div class="container mx-auto max-w-6xl px-6 lg:px-10">
             <div class="grid items-start gap-16 md:grid-cols-2">
                 <div>
-                    <h2 class="mb-2 text-3xl font-light text-mauve-50">
+                    <h2 class="mb-2 text-3xl font-light text-mist-50">
                         Stay in the loop.
                     </h2>
-                    <p class="mb-4 text-sm text-mauve-300">
+                    <p class="mb-4 text-sm text-mist-300">
                         Get notified about upcoming meetups, new talk recordings and community news.
                         No spam, ever. Unsubscribe any time.
                     </p>
@@ -15,7 +15,7 @@
                 </div>
 
                 <div id="socials">
-                    <p class="mb-3 font-mono text-xs uppercase tracking-wide text-mauve-300">
+                    <p class="mb-3 font-mono text-xs uppercase tracking-wide text-mist-300">
                         {{ __('nav.follow_us') }}
                     </p>
 
@@ -32,14 +32,14 @@
     </section>
 
 <div
-    class="relative h-20 overflow-hidden before:absolute before:inset-x-0 before:top-0 before:z-10 before:h-7 before:bg-gradient-to-b before:from-mauve-950 before:to-transparent before:content-['']"
+    class="relative h-20 overflow-hidden before:absolute before:inset-x-0 before:top-0 before:z-10 before:h-7 before:bg-gradient-to-b before:from-mist-950 before:to-transparent before:content-['']"
     aria-hidden="true">
     <canvas id="footerAsciiCanvas" class="block h-20 w-full"></canvas>
 </div>
-<footer class="border-t-[0.5px] border-mauve-700 py-4">
+<footer class="border-t-[0.5px] border-mist-700 py-4">
     <div class="container mx-auto max-w-6xl px-6 lg:px-10">
         <div class="flex flex-col items-start justify-between gap-2 sm:flex-row sm:items-center">
-            <span class="font-mono text-xs text-mauve-400">
+            <span class="font-mono text-xs text-mist-400">
                 &copy; 2024 - {{ now()->year }} Swiss Laravel Association
             </span>
 

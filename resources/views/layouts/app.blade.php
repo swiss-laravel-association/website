@@ -31,7 +31,7 @@
 </head>
 
 
-<body class="dark flex flex-col min-h-screen font-sans antialiased bg-mauve-950 text-mauve-50">
+<body class="dark flex flex-col min-h-screen font-sans antialiased bg-mist-950 text-mist-50">
 
     <x-header />
 

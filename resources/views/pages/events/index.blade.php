@@ -8,7 +8,7 @@
             <div class="container mx-auto max-w-6xl px-6 lg:px-10">
                 <x-hero-eyebrow class="mb-4">Next meetup</x-hero-eyebrow>
 
-                <h1 class="mb-8 text-[clamp(2rem,4vw,3rem)] font-light leading-tight text-mauve-100">
+                <h1 class="mb-8 text-[clamp(2rem,4vw,3rem)] font-light leading-tight text-mist-100">
                     Join us at our next event.
                 </h1>
 
@@ -22,11 +22,11 @@
             <div class="container mx-auto max-w-6xl px-6 lg:px-10">
                 <x-hero-eyebrow class="mb-4">Meetups</x-hero-eyebrow>
 
-                <h1 class="mb-4 text-[clamp(2rem,4vw,3rem)] font-light leading-tight text-mauve-100">
+                <h1 class="mb-4 text-[clamp(2rem,4vw,3rem)] font-light leading-tight text-mist-100">
                     No event is scheduled right now.
                 </h1>
 
-                <p class="max-w-[460px] text-base leading-[1.75] text-mauve-400">
+                <p class="max-w-[460px] text-base leading-[1.75] text-mist-400">
                     We are working on the next meetup. In the meantime, browse our past events below.
                 </p>
             </div>
@@ -56,7 +56,7 @@
             <x-section-label>Past events</x-section-label>
 
             @if ($pastEvents->isEmpty())
-                <p class="text-mauve-400">No past events yet.</p>
+                <p class="text-mist-400">No past events yet.</p>
             @else
                 <div class="grid grid-cols-1 gap-2.5 md:grid-cols-2">
                     @foreach ($pastEvents as $event)

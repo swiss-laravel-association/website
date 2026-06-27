@@ -6,13 +6,13 @@
                 <div class="relative z-10">
                     <x-hero-eyebrow class="mb-4">Swiss Laravel Association</x-hero-eyebrow>
 
-                    <h1 class="mb-4 text-[clamp(2rem,4vw,3rem)] font-light leading-[1] text-mauve-100">
+                    <h1 class="mb-4 text-[clamp(2rem,4vw,3rem)] font-light leading-[1] text-mist-100">
                         Building the <strong class="font-semibold text-white">Laravel</strong><br>
                         community across<br>
                         Switzerland.
                     </h1>
 
-                    <p class="mb-6 max-w-[460px] text-base leading-[1.75] text-mauve-400">
+                    <p class="mb-6 max-w-[460px] text-base leading-[1.75] text-mist-400">
                         We organise the regular Laravel Switzerland Meetup in different cities —
                         bringing PHP and Laravel developers together over talks, drinks and good conversation.
                     </p>
@@ -58,7 +58,7 @@
 
                 @foreach($sponsors as $sponsor)
                     <a href="{{ route('association.sponsors') }}"
-                       class="rounded-sm border border-mauve-700 px-4 py-1.5 font-mono text-base tracking-[0.04em] text-mauve-dark-9 transition-colors hover:border-mauve-dark-7 hover:text-mauve-dark-11"
+                       class="rounded-sm border border-mist-700 px-4 py-1.5 font-mono text-base tracking-[0.04em] text-mist-dark-9 transition-colors hover:border-mist-dark-7 hover:text-mist-dark-11"
                     >
                         {{ $sponsor->name }}
                     </a>
@@ -74,7 +74,7 @@
                 Upcoming events
 
                 <x-slot:trailing>
-                    <flux:link :href="route('events.index')" class="!text-mauve-400 hover:!text-mauve-200">
+                    <flux:link :href="route('events.index')" class="!text-mist-400 hover:!text-mist-200">
                         All events →
                     </flux:link>
                 </x-slot:trailing>
@@ -98,7 +98,7 @@
                 Past events
 
                 <x-slot:trailing>
-                    <flux:link :href="route('events.index')" class="!text-mauve-400 hover:!text-mauve-200">
+                    <flux:link :href="route('events.index')" class="!text-mist-400 hover:!text-mist-200">
                         All events →
                     </flux:link>
                 </x-slot:trailing>
