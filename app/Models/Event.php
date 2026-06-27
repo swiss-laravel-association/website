@@ -3,14 +3,19 @@
 namespace App\Models;
 
 use Carbon\CarbonImmutable;
+use Carbon\CarbonPeriodImmutable;
 use Database\Factories\EventFactory;
 use Illuminate\Database\Eloquent\Builder;
+use Illuminate\Database\Eloquent\Casts\Attribute;
 use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Illuminate\Support\Carbon;
+use Illuminate\Support\Str;
+use RalphJSmit\Laravel\SEO\Support\HasSEO;
+use RalphJSmit\Laravel\SEO\Support\SEOData;
 
 /**
  * @property int $id
@@ -49,6 +54,18 @@ class Event extends Model
     /** @use HasFactory<EventFactory> */
     use HasFactory;
 
+    use HasSEO;
+
+    public function getDynamicSEOData(): SEOData
+    {
+        return new SEOData(
+            title: $this->name,
+            description: Str::limit($this->description, 160),
+            published_time: $this->start_date,
+            type: 'event',
+        );
+    }
+
     protected function casts(): array
     {
         return [
@@ -71,5 +88,39 @@ class Event extends Model
     public function talks(): BelongsToMany
     {
         return $this->belongsToMany(Talk::class);
+    }
+
+    /**
+     * @return Attribute<CarbonPeriodImmutable, never>
+     */
+    protected function period(): Attribute
+    {
+        return Attribute::get(fn (): CarbonPeriodImmutable => CarbonPeriodImmutable::create(
+            $this->start_date,
+            $this->end_date,
+        ));
+    }
+
+    public function displayPeriod(): string
+    {
+        if ($this->start_date->isSameDay($this->end_date)) {
+            return sprintf(
+                '%s %s - %s',
+                $this->start_date->format('d.m.y'),
+                $this->start_date->format('H:i'),
+                $this->end_date->format('H:i'),
+            );
+        }
+
+        return sprintf(
+            '%s - %s',
+            $this->start_date->format('d.m.y H:i'),
+            $this->end_date->format('d.m.y H:i'),
+        );
+    }
+
+    public function showUrl(): Attribute
+    {
+        return Attribute::get(fn (): string => route('events.show', $this));
     }
 }

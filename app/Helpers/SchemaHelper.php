@@ -31,26 +31,29 @@ class SchemaHelper
 
     public static function render(): string
     {
+        $address = Schema::postalAddress()
+            ->streetAddress(config('sla.address.street'))
+            ->postalCode(config('sla.address.postal_code'))
+            ->addressLocality(config('sla.address.city'))
+            ->addressCountry(config('sla.address.country_code'));
+
         $schema = Schema::organization()
-            ->name('Swiss Laravel Association')
-            ->url(config('app.url'))
-            ->logo(Vite::asset('resources/images/logos/swiss-laravel-association.webp'))
-            ->foundingDate(Carbon::parse('2024-09-26')->startOfDay())
+            ->name(config('sla.name'))
+            ->legalName(config('sla.legal_name'))
+            ->url(config('sla.url'))
+            ->logo(Vite::asset(config('sla.logo')))
+            ->foundingDate(Carbon::parse(config('sla.founding_date'))->startOfDay())
+            ->description(config('sla.description'))
+            ->email(config('sla.contact.email'))
+            ->telephone(config('sla.contact.phone'))
+            ->address($address)
             ->contactPoint(
                 Schema::contactPoint()
-                    // ->email('info@laravel.swiss')
+                    ->email(config('sla.contact.email'))
+                    ->telephone(config('sla.contact.phone'))
                     ->availableLanguage(Schema::language()->name('English')),
             )
-            ->sameAs([
-                'https://www.youtube.com/@swiss-laravel-association',
-                'https://bsky.app/profile/laravel.swiss',
-                'https://www.linkedin.com/company/swiss-laravel-association/',
-                'https://phpc.social/@swiss_laravel_association',
-                'https://twitter.com/swisslaravel',
-                'https://x.com/swisslaravel',
-                'https://github.com/swiss-laravel-association',
-            ])
-            ->description('Bringing Laravel developers together across Switzerland.');
+            ->sameAs(array_values(config('sla.socials')));
 
         foreach (self::$subsites as $subsite) {
             $schema->hasPart( // @phpstan-ignore-line

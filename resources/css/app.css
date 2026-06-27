@@ -1,7 +1,8 @@
 @import "tailwindcss";
 
 @import '../../vendor/livewire/flux/dist/flux.css';
-@source './vendor/laravel/framework/src/Illuminate/Pagination/resources/views/*.blade.php';
+@source '../../vendor/laravel/framework/src/Illuminate/Pagination/resources/views/*.blade.php';
+
 @source './storage/framework/views/*.php';
 @source './resources/**/*.blade.php';
 @source './resources/**/*.js';
@@ -11,7 +12,12 @@
 
 @theme {
     /*--font-sans: helvetica, ui-sans-serif, system-ui, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";*/
-    --font-sans: ui-sans-serif, system-ui, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
+    --font-sans: 'IBM Plex Sans', ui-sans-serif, system-ui, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
+    --font-serif: 'Instrument Serif', ui-serif, Georgia, Cambria, "Times New Roman", Times, serif;
+    --font-mono: 'IBM Plex Mono', ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+
+    /* Primary Color of Swiss Laravel Association */
+    --color-brand: #FE2D1F;
 
     --color-primary-50: #fff2f1;
     --color-primary-100: #ffe1df;
@@ -26,12 +32,49 @@
     --color-primary-950: #4b0804;
 
     --animate-scale: scale 2s ease-in-out infinite;
+    --animate-pulse-dot: pulse-dot 2s ease-in-out infinite;
 }
 
 @keyframes scale {
     0%, 100% { transform: scale(1); }
     50% { transform: scale(1.05); }
 }
+
+@keyframes pulse-dot {
+    0%, 100% { opacity: 1; }
+    50%      { opacity: 0.4; }
+}
+
+
+/* Re-assign Flux's gray of choice... */
+@theme {
+    --color-zinc-50: var(--color-mist-50);
+    --color-zinc-100: var(--color-mist-100);
+    --color-zinc-200: var(--color-mist-200);
+    --color-zinc-300: var(--color-mist-300);
+    --color-zinc-400: var(--color-mist-400);
+    --color-zinc-500: var(--color-mist-500);
+    --color-zinc-600: var(--color-mist-600);
+    --color-zinc-700: var(--color-mist-700);
+    --color-zinc-800: var(--color-mist-800);
+    --color-zinc-900: var(--color-mist-900);
+    --color-zinc-950: var(--color-mist-950);
+}
+
+@theme {
+    --color-accent: var(--color-mist-800);
+    --color-accent-content: var(--color-mist-800);
+    --color-accent-foreground: var(--color-white);
+}
+
+@layer theme {
+    .dark {
+        --color-accent: var(--color-white);
+        --color-accent-content: var(--color-white);
+        --color-accent-foreground: var(--color-mauve-800);
+    }
+}
+
 
 @font-face {
     font-family: helvetica;

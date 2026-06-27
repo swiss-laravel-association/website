@@ -1,57 +1,96 @@
-<header class="sticky top-0 z-10 bg-primary-500 dark:bg-black">
-    <nav x-data="{
-                open: false,
-             }"
-         class="mx-auto container px-6 pt-2 lg:max-w-7xl lg:px-8 flex items-center justify-between space-x-8"
-    >
-        <a href="{{ route('home') }}" class="shrink-0 rounded focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white">
-            <img src="{{ Vite::asset('resources/images/logos/swiss-laravel-association_white.webp') }}"
-                 class="h-16"
-                 alt="Logo Swiss Laravel Association"
-            >
-        </a>
-        <button @click.prevent.stop="open = !open"
-                class="sm:hidden p-2 rounded focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white"
-        >
-            <x-heroicon-c-bars-3 class="size-8 text-white" />
-        </button>
-        <div x-show="open" class="!ml-0 fixed sm:hidden inset-0 backdrop-blur-sm"></div>
-        <div class="hidden fixed right-2 sm:right-auto top-2 sm:top-auto max-h-[100vh-16px] sm:max-h-none overflow-y-auto sm:overflow-y-visible w-[calc(100vw-16px)] sm:w-auto max-w-sm sm:max-w-none bg-white sm:bg-transparent rounded-lg sm:rounded-none shadow-xl sm:shadow-none space-y-2 sm:space-y-0 sm:relative sm:grow sm:flex sm:justify-between p-2 sm:p-0"
-             :class="{ 'block': open, 'hidden': !open }"
-             @click.outside="open = false"
-             @keydown.escape.window="open = false"
-             x-trap.inert.noscroll.noreturn="open"
-        >
-            <div class="flex sm:hidden items-center justify-between">
-                <img src="{{ Vite::asset('resources/images/logos/swiss-laravel-association.webp') }}"
-                     class="h-12"
-                     alt="Logo Swiss Laravel Association"
-                >
-                <button @click.prevent.stop="open = !open"
-                        class="p-2 mr-1 rounded focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary-600 dark:focus-visible:outline-gray-900"
-                >
-                    <x-heroicon-o-x-mark class="size-6 text-gray-500" />
-                </button>
-            </div>
-            <div class="space-y-2 sm:space-y-0 sm:flex sm:items-center sm:space-x-2">
-                <x-main-menu.item :url="route('home')">
-                    {{ __('nav.home') }}
-                </x-main-menu.item>
-                <x-main-menu.item :url="route('home') . '#about'">
-                    {{ __('nav.about') }}
-                </x-main-menu.item>
-                <x-main-menu.item :url="route('home') . '#events'">
-                    {{ __('nav.events') }}
-                </x-main-menu.item>
-            </div>
-            <div class="space-y-2 sm:space-y-0 sm:flex sm:items-center sm:space-x-2">
-                <x-main-menu.item :url="route('association.sponsors')">
-                    {{ __('nav.sponsors') }}
-                </x-main-menu.item>
-                <x-main-menu.item :url="route('home') . '#socials'">
-                    {{ __('nav.follow_us') }}
-                </x-main-menu.item>
-            </div>
-        </div>
-    </nav>
-</header>
+<flux:header container
+             class="bg-zinc-50 dark:bg-zinc-900 border-b border-zinc-200 dark:border-zinc-700 flex items-center">
+    <flux:sidebar.toggle class="lg:hidden" icon="bars-2" inset="left"/>
+
+    <flux:brand :href="route('home')"
+                logo="{{ \Illuminate\Support\Facades\Vite::asset('resources/images/logos/logo-mark-color-small.png') }}"
+                name="Swiss Laravel Association" class="max-lg:hidden dark:hidden"/>
+    <flux:brand :href="route('home')"
+                logo="{{ \Illuminate\Support\Facades\Vite::asset('resources/images/logos/logo-mark-color-small.png') }}"
+                name="Swiss Laravel Association" class="max-lg:hidden! hidden dark:flex"/>
+
+    <flux:spacer/>
+
+
+    <flux:navbar class="me-4 lg:hidden">
+        <flux:navbar.item :href="route('events.next-event')" icon:trailing="arrow-up-right">
+            Next Event
+        </flux:navbar.item>
+    </flux:navbar>
+
+
+    <flux:navbar class="-mb-px max-lg:hidden">
+        <flux:navbar.item :href="route('events.index')"
+                          :current="request()->routeIs(['events.index', 'events.show'])">
+            Events
+        </flux:navbar.item>
+        <flux:navbar.item :href="route('association.sponsors')"
+                          :current="request()->routeIs('association.sponsors')">
+            Sponsors
+        </flux:navbar.item>
+        <flux:navbar.item :href="route('blog.index')"
+                          :current="request()->routeIs('blog.index')">
+            Blog
+        </flux:navbar.item>
+
+        @if (false)
+            <flux:navbar.item href="#">Association</flux:navbar.item>
+
+            <flux:dropdown class="max-lg:hidden">
+                <flux:navbar.item icon:trailing="chevron-down">Association</flux:navbar.item>
+
+                <flux:navmenu>
+                    <flux:navmenu.item href="#">About</flux:navmenu.item>
+                    <flux:navmenu.item href="#">Team</flux:navmenu.item>
+                    <flux:navmenu.item href="#">Membership</flux:navmenu.item>
+                    <flux:navmenu.item href="#">Become a member</flux:navmenu.item>
+                    <flux:navmenu.separator/>
+                    <flux:navmenu.item href="#">Sponsors</flux:navmenu.item>
+                </flux:navmenu>
+            </flux:dropdown>
+
+        @endif
+    </flux:navbar>
+</flux:header>
+
+<flux:sidebar sticky collapsible="mobile"
+              class="lg:hidden bg-zinc-50 dark:bg-zinc-900 border-r border-zinc-200 dark:border-zinc-700">
+    <flux:sidebar.header>
+        <flux:sidebar.brand
+            :href="route('home')"
+            :logo="\Illuminate\Support\Facades\Vite::asset('resources/images/logos/logo-mark-color-small.png') "
+            :logo:dark="\Illuminate\Support\Facades\Vite::asset('resources/images/logos/logo-mark-color-small.png') "
+            name="Swiss Laravel Association"
+        />
+
+        <flux:sidebar.collapse
+            class="in-data-flux-sidebar-on-desktop:not-in-data-flux-sidebar-collapsed-desktop:-mr-2"/>
+    </flux:sidebar.header>
+
+    <flux:sidebar.nav>
+        <flux:sidebar.item :href="route('events.index')"
+                           :current="request()->routeIs(['events.index', 'events.show'])">
+            Events
+        </flux:sidebar.item>
+        <flux:sidebar.item :href="route('association.sponsors')"
+                           :current="request()->routeIs('association.sponsors')">Sponsors
+        </flux:sidebar.item>
+
+        @if (false)
+            <flux:sidebar.group expandable heading="Favorites" class="grid">
+                <flux:sidebar.item href="#">Marketing site</flux:sidebar.item>
+                <flux:sidebar.item href="#">Android app</flux:sidebar.item>
+                <flux:sidebar.item href="#">Brand guidelines</flux:sidebar.item>
+            </flux:sidebar.group>
+        @endif
+    </flux:sidebar.nav>
+
+    <flux:sidebar.spacer/>
+
+    @if(false)
+        <flux:sidebar.nav>
+            <flux:sidebar.item icon="cog-6-tooth" href="#">Settings</flux:sidebar.item>
+            <flux:sidebar.item icon="information-circle" href="#">Help</flux:sidebar.item>
+        </flux:sidebar.nav>
+    @endif
+</flux:sidebar>
