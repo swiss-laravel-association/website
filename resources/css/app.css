@@ -15,7 +15,9 @@
     --font-serif: 'Instrument Serif', ui-serif, Georgia, Cambria, "Times New Roman", Times, serif;
     --font-mono: 'IBM Plex Mono', ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
 
+    /* Primary Color of Swiss Laravel Association */
     --color-brand: #FE2D1F;
+
     --color-primary-50: #fff2f1;
     --color-primary-100: #ffe1df;
     --color-primary-200: #ffc8c5;

@@ -1,7 +1,7 @@
 {
-  "_fonts-CZtrqub7.css": {
-    "file": "assets/fonts-CZtrqub7.css",
-    "src": "_fonts-CZtrqub7.css"
+  "_fonts-Cdk9xEgC.css": {
+    "file": "assets/fonts-Cdk9xEgC.css",
+    "src": "_fonts-Cdk9xEgC.css"
   },
   "_ibm-plex-mono-300-normal-BEtQ2wm2.woff2": {
     "file": "assets/ibm-plex-mono-300-normal-BEtQ2wm2.woff2",
@@ -111,8 +111,16 @@
     "file": "assets/ibm-plex-sans-300-normal-d45eAU9y.woff2",
     "src": "_ibm-plex-sans-300-normal-d45eAU9y.woff2"
   },
+  "_instrument-serif-400-italic-C9HzH3YL.woff2": {
+    "file": "assets/instrument-serif-400-italic-C9HzH3YL.woff2",
+    "src": "_instrument-serif-400-italic-C9HzH3YL.woff2"
+  },
+  "_instrument-serif-400-italic-DKMiL14s.woff2": {
+    "file": "assets/instrument-serif-400-italic-DKMiL14s.woff2",
+    "src": "_instrument-serif-400-italic-DKMiL14s.woff2"
+  },
   "resources/css/app.css": {
-    "file": "assets/app-B53YIDBx.css",
+    "file": "assets/app-DlX_k_tt.css",
     "name": "app",
     "names": [
       "app.css"
@@ -120,13 +128,25 @@
     "src": "resources/css/app.css",
     "isEntry": true
   },
+  "resources/images/logos/logo-mark-color-small.png": {
+    "file": "assets/logo-mark-color-small-DJUoR1tz.png",
+    "src": "resources/images/logos/logo-mark-color-small.png"
+  },
   "resources/images/logos/logo-mark-color.png": {
     "file": "assets/logo-mark-color-BRljjndR.png",
     "src": "resources/images/logos/logo-mark-color.png"
   },
+  "resources/images/logos/logo-mark-color.svg": {
+    "file": "assets/logo-mark-color-A2HQpIwz.svg",
+    "src": "resources/images/logos/logo-mark-color.svg"
+  },
   "resources/images/logos/logo-mark-color.webp": {
     "file": "assets/logo-mark-color-BM67xMcD.webp",
     "src": "resources/images/logos/logo-mark-color.webp"
+  },
+  "resources/images/logos/logo-mark-white.svg": {
+    "file": "assets/logo-mark-white-DnlAA-Jb.svg",
+    "src": "resources/images/logos/logo-mark-white.svg"
   },
   "resources/images/logos/logo-simple.png": {
     "file": "assets/logo-simple-CeE6Q00Y.png",
@@ -160,37 +180,129 @@
     "file": "assets/swiss-laravel-association_white-DV1lWGgB.webp",
     "src": "resources/images/logos/swiss-laravel-association_white.webp"
   },
-  "resources/images/meetup/group-photo.jpeg": {
-    "file": "assets/group-photo-DN-JNVR8.jpeg",
-    "src": "resources/images/meetup/group-photo.jpeg"
+  "resources/images/meetup/meetup-1.webp": {
+    "file": "assets/meetup-1-DE9KzRhA.webp",
+    "src": "resources/images/meetup/meetup-1.webp"
   },
-  "resources/images/meetup/group-photo.webp": {
-    "file": "assets/group-photo-D6s_F-S_.webp",
-    "src": "resources/images/meetup/group-photo.webp"
+  "resources/images/meetup/meetup-10.webp": {
+    "file": "assets/meetup-10-DTNMi5Dk.webp",
+    "src": "resources/images/meetup/meetup-10.webp"
   },
-  "resources/images/meetup/group-selfie.jpeg": {
-    "file": "assets/group-selfie-BC9OlGKu.jpeg",
-    "src": "resources/images/meetup/group-selfie.jpeg"
+  "resources/images/meetup/meetup-11.webp": {
+    "file": "assets/meetup-11-BQ_Vyy4U.webp",
+    "src": "resources/images/meetup/meetup-11.webp"
   },
-  "resources/images/meetup/group-selfie.webp": {
-    "file": "assets/group-selfie-Yh99MzXt.webp",
-    "src": "resources/images/meetup/group-selfie.webp"
+  "resources/images/meetup/meetup-12.webp": {
+    "file": "assets/meetup-12-CFqE3A0G.webp",
+    "src": "resources/images/meetup/meetup-12.webp"
   },
-  "resources/images/meetup/laravel-letters.jpeg": {
-    "file": "assets/laravel-letters-B86JNMQN.jpeg",
-    "src": "resources/images/meetup/laravel-letters.jpeg"
+  "resources/images/meetup/meetup-13.webp": {
+    "file": "assets/meetup-13-CYPOVdhd.webp",
+    "src": "resources/images/meetup/meetup-13.webp"
   },
-  "resources/images/meetup/laravel-letters.webp": {
-    "file": "assets/laravel-letters-BnTuBNpb.webp",
-    "src": "resources/images/meetup/laravel-letters.webp"
+  "resources/images/meetup/meetup-14.webp": {
+    "file": "assets/meetup-14-C-9TCSCq.webp",
+    "src": "resources/images/meetup/meetup-14.webp"
   },
-  "resources/images/meetup/presentation.jpeg": {
-    "file": "assets/presentation-CydwV2iF.jpeg",
-    "src": "resources/images/meetup/presentation.jpeg"
+  "resources/images/meetup/meetup-15.webp": {
+    "file": "assets/meetup-15-fYgezBXa.webp",
+    "src": "resources/images/meetup/meetup-15.webp"
   },
-  "resources/images/meetup/presentation.webp": {
-    "file": "assets/presentation-fulGV73u.webp",
-    "src": "resources/images/meetup/presentation.webp"
+  "resources/images/meetup/meetup-16.webp": {
+    "file": "assets/meetup-16-jdv_4lw3.webp",
+    "src": "resources/images/meetup/meetup-16.webp"
+  },
+  "resources/images/meetup/meetup-17.webp": {
+    "file": "assets/meetup-17-BKXlwrcE.webp",
+    "src": "resources/images/meetup/meetup-17.webp"
+  },
+  "resources/images/meetup/meetup-18.webp": {
+    "file": "assets/meetup-18-DXpWTYQA.webp",
+    "src": "resources/images/meetup/meetup-18.webp"
+  },
+  "resources/images/meetup/meetup-19.webp": {
+    "file": "assets/meetup-19-DSQA3msY.webp",
+    "src": "resources/images/meetup/meetup-19.webp"
+  },
+  "resources/images/meetup/meetup-2.webp": {
+    "file": "assets/meetup-2-HbzHFJPl.webp",
+    "src": "resources/images/meetup/meetup-2.webp"
+  },
+  "resources/images/meetup/meetup-20.webp": {
+    "file": "assets/meetup-20-BnZGyMPC.webp",
+    "src": "resources/images/meetup/meetup-20.webp"
+  },
+  "resources/images/meetup/meetup-21.webp": {
+    "file": "assets/meetup-21-CBiVTUMI.webp",
+    "src": "resources/images/meetup/meetup-21.webp"
+  },
+  "resources/images/meetup/meetup-22.webp": {
+    "file": "assets/meetup-22-Bv_Z7ZOy.webp",
+    "src": "resources/images/meetup/meetup-22.webp"
+  },
+  "resources/images/meetup/meetup-23.webp": {
+    "file": "assets/meetup-23-D0LeW9d5.webp",
+    "src": "resources/images/meetup/meetup-23.webp"
+  },
+  "resources/images/meetup/meetup-24.webp": {
+    "file": "assets/meetup-24-DbWyl2MP.webp",
+    "src": "resources/images/meetup/meetup-24.webp"
+  },
+  "resources/images/meetup/meetup-25.webp": {
+    "file": "assets/meetup-25-CPOOKO-E.webp",
+    "src": "resources/images/meetup/meetup-25.webp"
+  },
+  "resources/images/meetup/meetup-26.webp": {
+    "file": "assets/meetup-26-ZSkeQa6m.webp",
+    "src": "resources/images/meetup/meetup-26.webp"
+  },
+  "resources/images/meetup/meetup-27.webp": {
+    "file": "assets/meetup-27-Cnhm4VGv.webp",
+    "src": "resources/images/meetup/meetup-27.webp"
+  },
+  "resources/images/meetup/meetup-28.webp": {
+    "file": "assets/meetup-28-eKFhB78t.webp",
+    "src": "resources/images/meetup/meetup-28.webp"
+  },
+  "resources/images/meetup/meetup-29.webp": {
+    "file": "assets/meetup-29-fulGV73u.webp",
+    "src": "resources/images/meetup/meetup-29.webp"
+  },
+  "resources/images/meetup/meetup-3.webp": {
+    "file": "assets/meetup-3-wD8uo0Y3.webp",
+    "src": "resources/images/meetup/meetup-3.webp"
+  },
+  "resources/images/meetup/meetup-30.webp": {
+    "file": "assets/meetup-30-D6s_F-S_.webp",
+    "src": "resources/images/meetup/meetup-30.webp"
+  },
+  "resources/images/meetup/meetup-31.webp": {
+    "file": "assets/meetup-31-Yh99MzXt.webp",
+    "src": "resources/images/meetup/meetup-31.webp"
+  },
+  "resources/images/meetup/meetup-4.webp": {
+    "file": "assets/meetup-4-BpQCAxoh.webp",
+    "src": "resources/images/meetup/meetup-4.webp"
+  },
+  "resources/images/meetup/meetup-5.webp": {
+    "file": "assets/meetup-5-C25bG_z5.webp",
+    "src": "resources/images/meetup/meetup-5.webp"
+  },
+  "resources/images/meetup/meetup-6.webp": {
+    "file": "assets/meetup-6-Cb25KHN3.webp",
+    "src": "resources/images/meetup/meetup-6.webp"
+  },
+  "resources/images/meetup/meetup-7.webp": {
+    "file": "assets/meetup-7-BsC-zJ75.webp",
+    "src": "resources/images/meetup/meetup-7.webp"
+  },
+  "resources/images/meetup/meetup-8.webp": {
+    "file": "assets/meetup-8-Bx7QKf2M.webp",
+    "src": "resources/images/meetup/meetup-8.webp"
+  },
+  "resources/images/meetup/meetup-9.webp": {
+    "file": "assets/meetup-9-1JWazsMW.webp",
+    "src": "resources/images/meetup/meetup-9.webp"
   },
   "resources/images/sponsoring/logos/cyon.svg": {
     "file": "assets/cyon-CYuq8qtG.svg",
@@ -205,9 +317,12 @@
     "src": "resources/images/sponsoring/logos/sysco.png"
   },
   "resources/js/app.js": {
-    "file": "assets/app-CXHjBrTG.js",
+    "file": "assets/app-BslqQXLR.js",
     "name": "app",
     "src": "resources/js/app.js",
-    "isEntry": true
+    "isEntry": true,
+    "css": [
+      "assets/app-a5-nZo2A.css"
+    ]
   }
 }
