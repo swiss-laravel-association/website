@@ -3,7 +3,7 @@
         <div class="container mx-auto max-w-6xl px-6 lg:px-10">
             <div class="grid items-start gap-16 md:grid-cols-2">
                 <div>
-                    <h2 class="mb-2 text-3xl font-light text-mist-50">
+                    <h2 class="mb-2 text-3xl text-mist-50 font-serif font-medium italic">
                         Stay in the loop.
                     </h2>
                     <p class="mb-4 text-sm text-mist-300">
@@ -15,9 +15,9 @@
                 </div>
 
                 <div id="socials">
-                    <p class="mb-3 font-mono text-xs uppercase tracking-wide text-mist-300">
+                    <h3 class="mb-2 text-3xl text-mist-50 font-serif font-medium italic">
                         {{ __('nav.follow_us') }}
-                    </p>
+                    </h3>
 
                     <div class="flex flex-col gap-2">
                         <x-social-link platform="YouTube" url="{{ route('links.youtube') }}">Swiss Laravel Association</x-social-link>

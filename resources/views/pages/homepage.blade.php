@@ -7,7 +7,7 @@
                     <x-hero-eyebrow class="mb-4">Swiss Laravel Association</x-hero-eyebrow>
 
                     <h1 class="mb-4 text-[clamp(2rem,4vw,3rem)] font-light leading-[1] text-mist-100">
-                        Building the <strong class="font-semibold text-white">Laravel</strong><br>
+                        Building the <strong class="font-serif italic font-medium text-white">Laravel</strong><br>
                         community across<br>
                         Switzerland.
                     </h1>
