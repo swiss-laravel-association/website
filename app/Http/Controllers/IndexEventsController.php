@@ -21,12 +21,14 @@ class IndexEventsController extends Controller
             ->with(['location'])
             ->where('start_date', '>', now())
             ->orderBy('start_date')
+            ->where('is_published', true)
             ->first();
 
         $upcomingEvents = Event::query()
             ->with(['location'])
             ->where('start_date', '>', now())
             ->when($nextEvent, fn ($query) => $query->whereKeyNot($nextEvent->getKey()))
+            ->where('is_published', true)
             ->orderBy('start_date')
             ->paginate(perPage: 10, pageName: 'upcoming-events');
 
@@ -34,6 +36,7 @@ class IndexEventsController extends Controller
             ->with(['location'])
             ->where('start_date', '<', now())
             ->orderBy('start_date', 'desc')
+            ->where('is_published', true)
             ->paginate(perPage: 10, pageName: 'past-events');
 
         return view('pages.events.index', [

@@ -20,17 +20,20 @@ class HomepageController extends Controller
                 ->with(['location'])
                 ->where('start_date', '>', now())
                 ->orderBy('start_date')
+                ->where('is_published', true)
                 ->first(),
             'futureEvents' => Event::query()
                 ->with(['location'])
                 ->where('start_date', '>', now())
                 ->orderBy('start_date')
+                ->where('is_published', true)
                 ->limit(6)
                 ->get(),
             'pastEvents' => Event::query()
                 ->with(['location'])
                 ->where('start_date', '<', now())
                 ->orderBy('start_date', 'desc')
+                ->where('is_published', true)
                 ->limit(6)
                 ->get(),
             'sponsors' => Sponsor::query()
