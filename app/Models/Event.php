@@ -2,10 +2,10 @@
 
 namespace App\Models;
 
+use App\Builders\EventBuilder;
 use Carbon\CarbonImmutable;
 use Carbon\CarbonPeriodImmutable;
 use Database\Factories\EventFactory;
-use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Casts\Attribute;
 use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
@@ -14,6 +14,7 @@ use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Illuminate\Support\Carbon;
 use Illuminate\Support\Str;
+use Override;
 use RalphJSmit\Laravel\SEO\Support\HasSEO;
 use RalphJSmit\Laravel\SEO\Support\SEOData;
 
@@ -33,19 +34,23 @@ use RalphJSmit\Laravel\SEO\Support\SEOData;
  * @property-read int|null $talks_count
  *
  * @method static \Database\Factories\EventFactory factory($count = null, $state = [])
- * @method static Builder<static>|Event newModelQuery()
- * @method static Builder<static>|Event newQuery()
- * @method static Builder<static>|Event query()
- * @method static Builder<static>|Event whereCreatedAt($value)
- * @method static Builder<static>|Event whereDescription($value)
- * @method static Builder<static>|Event whereEndDate($value)
- * @method static Builder<static>|Event whereId($value)
- * @method static Builder<static>|Event whereIsPublished($value)
- * @method static Builder<static>|Event whereLocationId($value)
- * @method static Builder<static>|Event whereMeetupLink($value)
- * @method static Builder<static>|Event whereName($value)
- * @method static Builder<static>|Event whereStartDate($value)
- * @method static Builder<static>|Event whereUpdatedAt($value)
+ * @method static EventBuilder<static>|Event newModelQuery()
+ * @method static EventBuilder<static>|Event newQuery()
+ * @method static EventBuilder<static>|Event notPublished()
+ * @method static EventBuilder<static>|Event past()
+ * @method static EventBuilder<static>|Event published()
+ * @method static EventBuilder<static>|Event query()
+ * @method static EventBuilder<static>|Event upcoming()
+ * @method static EventBuilder<static>|Event whereCreatedAt($value)
+ * @method static EventBuilder<static>|Event whereDescription($value)
+ * @method static EventBuilder<static>|Event whereEndDate($value)
+ * @method static EventBuilder<static>|Event whereId($value)
+ * @method static EventBuilder<static>|Event whereIsPublished($value)
+ * @method static EventBuilder<static>|Event whereLocationId($value)
+ * @method static EventBuilder<static>|Event whereMeetupLink($value)
+ * @method static EventBuilder<static>|Event whereName($value)
+ * @method static EventBuilder<static>|Event whereStartDate($value)
+ * @method static EventBuilder<static>|Event whereUpdatedAt($value)
  *
  * @mixin \Eloquent
  */
@@ -55,6 +60,15 @@ class Event extends Model
     use HasFactory;
 
     use HasSEO;
+
+    /**
+     * @return EventBuilder<Event>
+     */
+    #[Override]
+    public function newEloquentBuilder($query): EventBuilder
+    {
+        return new EventBuilder($query);
+    }
 
     public function getDynamicSEOData(): SEOData
     {
