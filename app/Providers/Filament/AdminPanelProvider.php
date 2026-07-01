@@ -2,6 +2,8 @@
 
 namespace App\Providers\Filament;
 
+use App\Filament\Resources\Events\EventResource;
+use App\Filament\Resources\Events\EventResourceConfiguration;
 use Filament\Http\Middleware\Authenticate;
 use Filament\Http\Middleware\AuthenticateSession;
 use Filament\Http\Middleware\DisableBladeIconComponents;
@@ -32,6 +34,22 @@ class AdminPanelProvider extends PanelProvider
                 'primary' => Color::Amber,
             ])
             ->discoverResources(in: app_path('Filament/Resources'), for: 'App\\Filament\\Resources')
+            ->resources([
+                EventResourceConfiguration::make(EventResource::class, 'all')
+                    ->navigationLabel('All Events')
+                    ->navigationSort(0)
+                    ->slug('events'),
+                EventResourceConfiguration::make(EventResource::class, 'upcoming')
+                    ->upcoming()
+                    ->navigationLabel('Upcoming Events')
+                    ->navigationSort(1)
+                    ->slug('upcoming-events'),
+                EventResourceConfiguration::make(EventResource::class, 'past')
+                    ->past()
+                    ->navigationLabel('Past Events')
+                    ->navigationSort(2)
+                    ->slug('past-events'),
+            ])
             ->discoverPages(in: app_path('Filament/Pages'), for: 'App\\Filament\\Pages')
             ->pages([
                 Dashboard::class,
