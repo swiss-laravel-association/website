@@ -5,92 +5,100 @@ namespace App\Filament\Resources\Events;
 use App\Filament\Resources\Events\Pages\CreateEvent;
 use App\Filament\Resources\Events\Pages\EditEvent;
 use App\Filament\Resources\Events\Pages\ListEvents;
+use App\Filament\Resources\Events\RelationManagers\TalksRelationManager;
+use App\Filament\Resources\Events\Schemas\EventForm;
+use App\Filament\Resources\Events\Tables\EventsTable;
 use App\Models\Event;
 use BackedEnum;
-use Filament\Actions\BulkActionGroup;
-use Filament\Actions\DeleteBulkAction;
-use Filament\Actions\EditAction;
-use Filament\Forms\Components\Checkbox;
-use Filament\Forms\Components\DateTimePicker;
-use Filament\Forms\Components\Select;
-use Filament\Forms\Components\Textarea;
-use Filament\Forms\Components\TextInput;
 use Filament\Resources\Resource;
 use Filament\Schemas\Schema;
-use Filament\Tables\Columns\IconColumn;
-use Filament\Tables\Columns\TextColumn;
-use Filament\Tables\Filters\SelectFilter;
 use Filament\Tables\Table;
+use Illuminate\Database\Eloquent\Builder;
+use UnitEnum;
 
 class EventResource extends Resource
 {
     protected static ?string $model = Event::class;
 
+    protected static ?string $configurationClass = EventResourceConfiguration::class;
+
+    /**
+     * Registered explicitly as "All", "Upcoming" and "Past" configurations in
+     * the panel provider, so the plain registration must be excluded from
+     * auto-discovery to avoid a duplicate (unscoped) navigation item.
+     */
+    protected static bool $isDiscovered = false;
+
     protected static string|BackedEnum|null $navigationIcon = 'phosphor-calendar-dots-duotone';
+
+    protected static string|UnitEnum|null $navigationGroup = 'Events';
+
+    protected static ?string $navigationLabel = 'All Events';
+
+    protected static ?string $recordTitleAttribute = 'name';
+
+    /**
+     * @return array<int, string>
+     */
+    public static function getGloballySearchableAttributes(): array
+    {
+        return ['name', 'location.name'];
+    }
 
     public static function form(Schema $schema): Schema
     {
-        return $schema
-            ->components([
-                TextInput::make('name')
-                    ->label('Name')
-                    ->required(),
-                Select::make('location_id')
-                    ->label('Location')
-                    ->relationship('location', 'name'),
-                DateTimePicker::make('start_date')
-                    ->label('Start Date')
-                    ->required(),
-                DateTimePicker::make('end_date')
-                    ->label('End Date')
-                    ->required(),
-                Textarea::make('description')
-                    ->label('Description')
-                    ->autosize()
-                    ->required(),
-                Select::make('talks')
-                    ->relationship('talks', 'title')
-                    ->multiple(),
-                TextInput::make('meetup_link')
-                    ->label('Meetup Link'),
-                Checkbox::make('is_published')
-                    ->label('Is Published')
-                    ->default(false),
-            ]);
+        return EventForm::configure($schema);
     }
 
     public static function table(Table $table): Table
     {
-        return $table
-            ->columns([
-                TextColumn::make('name')
-                    ->searchable(),
-                TextColumn::make('location.name'),
-                TextColumn::make('start_date')
-                    ->dateTime('Y-m-d H:i')
-                    ->sortable(),
-                TextColumn::make('talks_count')
-                    ->label('Talks')
-                    ->state(fn (Event $event): int => $event->talks->count()),
-                IconColumn::make('is_published')
-                    ->boolean(),
-            ])
-            ->defaultSort('start_date', 'desc')
-            ->filters([
-                SelectFilter::make('location.name')
-                    ->label('Location')
-                    ->multiple()
-                    ->relationship('location', 'name')
-                    ->preload(),
-            ])
-            ->recordActions([
-                EditAction::make(),
-            ])
-            ->toolbarActions([
-                BulkActionGroup::make([
-                    DeleteBulkAction::make(),
-                ]),
-            ]);
+        return EventsTable::configure($table);
+    }
+
+    public static function getEloquentQuery(): Builder
+    {
+        $query = parent::getEloquentQuery();
+
+        $configuration = static::getConfiguration();
+
+        if ($configuration instanceof EventResourceConfiguration) {
+            if ($configuration->getTimeframe() === 'upcoming') {
+                $query->where('start_date', '>', now());
+            } elseif ($configuration->getTimeframe() === 'past') {
+                $query->where('start_date', '<', now());
+            }
+        }
+
+        return $query;
+    }
+
+    public static function getNavigationLabel(): string
+    {
+        $configuration = static::getConfiguration();
+
+        if ($configuration instanceof EventResourceConfiguration && $configuration->getNavigationLabel()) {
+            return $configuration->getNavigationLabel();
+        }
+
+        return parent::getNavigationLabel();
+    }
+
+    public static function getNavigationSort(): ?int
+    {
+        $configuration = static::getConfiguration();
+
+        if ($configuration instanceof EventResourceConfiguration && $configuration->getNavigationSort() !== null) {
+            return $configuration->getNavigationSort();
+        }
+
+        return parent::getNavigationSort();
+    }
+
+    public static function getRelations(): array
+    {
+        return [
+            TalksRelationManager::class,
+        ];
     }
 
     public static function getPages(): array
