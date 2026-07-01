@@ -19,6 +19,16 @@ class TalkResource extends Resource
 
     protected static string|BackedEnum|null $navigationIcon = 'phosphor-lectern-duotone';
 
+    protected static ?string $recordTitleAttribute = 'title';
+
+    /**
+     * @return array<int, string>
+     */
+    public static function getGloballySearchableAttributes(): array
+    {
+        return ['title', 'speakers.name', 'events.name'];
+    }
+
     public static function form(Schema $schema): Schema
     {
         return TalkForm::configure($schema);

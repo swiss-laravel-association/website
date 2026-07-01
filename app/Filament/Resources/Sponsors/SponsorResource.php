@@ -19,6 +19,16 @@ class SponsorResource extends Resource
 
     protected static string|BackedEnum|null $navigationIcon = 'phosphor-hand-heart-duotone';
 
+    protected static ?string $recordTitleAttribute = 'name';
+
+    /**
+     * @return array<int, string>
+     */
+    public static function getGloballySearchableAttributes(): array
+    {
+        return ['name'];
+    }
+
     public static function form(Schema $schema): Schema
     {
         return SponsorForm::configure($schema);

@@ -6,6 +6,7 @@ use Filament\Actions\BulkActionGroup;
 use Filament\Actions\DeleteBulkAction;
 use Filament\Actions\EditAction;
 use Filament\Tables\Columns\TextColumn;
+use Filament\Tables\Grouping\Group;
 use Filament\Tables\Table;
 
 class TalksTable
@@ -14,9 +15,12 @@ class TalksTable
     {
         return $table
             ->columns([
-                TextColumn::make('title'),
-                TextColumn::make('speakers.name'),
-                TextColumn::make('events.name'),
+                TextColumn::make('title')
+                    ->searchable(),
+                TextColumn::make('speakers.name')
+                    ->searchable(),
+                TextColumn::make('events.name')
+                    ->searchable(),
             ])
             ->recordActions([
                 EditAction::make(),

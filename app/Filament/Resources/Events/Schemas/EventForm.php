@@ -2,6 +2,7 @@
 
 namespace App\Filament\Resources\Events\Schemas;
 
+use App\Filament\Resources\Locations\Schemas\LocationForm;
 use Filament\Forms\Components\Checkbox;
 use Filament\Forms\Components\DateTimePicker;
 use Filament\Forms\Components\Select;
@@ -20,7 +21,10 @@ class EventForm
                     ->required(),
                 Select::make('location_id')
                     ->label('Location')
-                    ->relationship('location', 'name'),
+                    ->relationship('location', 'name')
+                    ->searchable()
+                    ->preload()
+                    ->createOptionForm(fn (Schema $schema): Schema => LocationForm::configure($schema)),
                 DateTimePicker::make('start_date')
                     ->label('Start Date')
                     ->required(),

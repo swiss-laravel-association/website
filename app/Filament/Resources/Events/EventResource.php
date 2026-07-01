@@ -19,6 +19,16 @@ class EventResource extends Resource
 
     protected static string|BackedEnum|null $navigationIcon = 'phosphor-calendar-dots-duotone';
 
+    protected static ?string $recordTitleAttribute = 'name';
+
+    /**
+     * @return array<int, string>
+     */
+    public static function getGloballySearchableAttributes(): array
+    {
+        return ['name', 'location.name'];
+    }
+
     public static function form(Schema $schema): Schema
     {
         return EventForm::configure($schema);

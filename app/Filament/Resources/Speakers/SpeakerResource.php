@@ -19,6 +19,16 @@ class SpeakerResource extends Resource
 
     protected static string|BackedEnum|null $navigationIcon = 'phosphor-user-sound-duotone';
 
+    protected static ?string $recordTitleAttribute = 'name';
+
+    /**
+     * @return array<int, string>
+     */
+    public static function getGloballySearchableAttributes(): array
+    {
+        return ['name'];
+    }
+
     public static function form(Schema $schema): Schema
     {
         return SpeakerForm::configure($schema);

@@ -19,6 +19,16 @@ class LocationResource extends Resource
 
     protected static string|BackedEnum|null $navigationIcon = 'phosphor-map-pin-line-duotone';
 
+    protected static ?string $recordTitleAttribute = 'name';
+
+    /**
+     * @return array<int, string>
+     */
+    public static function getGloballySearchableAttributes(): array
+    {
+        return ['name', 'city'];
+    }
+
     public static function form(Schema $schema): Schema
     {
         return LocationForm::configure($schema);

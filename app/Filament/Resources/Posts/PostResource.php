@@ -21,6 +21,16 @@ class PostResource extends Resource
 
     protected static string|BackedEnum|null $navigationIcon = 'phosphor-newspaper-duotone';
 
+    protected static ?string $recordTitleAttribute = 'title';
+
+    /**
+     * @return array<int, string>
+     */
+    public static function getGloballySearchableAttributes(): array
+    {
+        return ['title', 'authors.name'];
+    }
+
     public static function form(Schema $schema): Schema
     {
         return PostForm::configure($schema);
