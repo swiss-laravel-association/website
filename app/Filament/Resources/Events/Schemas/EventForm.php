@@ -35,9 +35,6 @@ class EventForm
                     ->label('Description')
                     ->autosize()
                     ->required(),
-                Select::make('talks')
-                    ->relationship('talks', 'title')
-                    ->multiple(),
                 TextInput::make('meetup_link')
                     ->label('Meetup Link'),
                 Checkbox::make('is_published')

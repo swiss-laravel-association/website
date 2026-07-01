@@ -5,6 +5,8 @@ namespace App\Filament\Resources\Talks;
 use App\Filament\Resources\Talks\Pages\CreateTalk;
 use App\Filament\Resources\Talks\Pages\EditTalk;
 use App\Filament\Resources\Talks\Pages\ListTalks;
+use App\Filament\Resources\Talks\RelationManagers\EventsRelationManager;
+use App\Filament\Resources\Talks\RelationManagers\SpeakersRelationManager;
 use App\Filament\Resources\Talks\Schemas\TalkForm;
 use App\Filament\Resources\Talks\Tables\TalksTable;
 use App\Models\Talk;
@@ -37,6 +39,14 @@ class TalkResource extends Resource
     public static function table(Table $table): Table
     {
         return TalksTable::configure($table);
+    }
+
+    public static function getRelations(): array
+    {
+        return [
+            EventsRelationManager::class,
+            SpeakersRelationManager::class,
+        ];
     }
 
     public static function getPages(): array
