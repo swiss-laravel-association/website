@@ -25,7 +25,7 @@ class EventFactory extends Factory
             'end_date' => $date->setTime(22, 0, 0),
 
             'meetup_link' => 'https://www.meetup.com/laravel-switzerland-meetup/events/308234097/',
-            'is_published' => $this->faker->boolean(),
+            'is_published' => true,
             // 'location_id' => Location::factory(),
         ];
     }
