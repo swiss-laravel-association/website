@@ -10,7 +10,6 @@ use App\Models\Sponsor;
 use App\Models\Talk;
 use Illuminate\Console\Command;
 use Illuminate\Database\Eloquent\Model;
-use Illuminate\Support\Str;
 
 class BackfillUlids extends Command
 {
@@ -36,12 +35,12 @@ class BackfillUlids extends Command
             $modelClass::query()
                 ->whereNull('ulid')
                 ->each(function (Model $record) use (&$count): void {
-                    $record->setAttribute('ulid', (string) Str::ulid());
+                    $record->setAttribute('ulid', $record->newUniqueId());
                     $record->saveQuietly();
                     $count++;
                 });
 
-            $this->info("{$modelClass}: backfilled {$count} record(s).");
+            $this->info(class_basename($modelClass).": backfilled {$count} record(s).");
         }
 
         return self::SUCCESS;

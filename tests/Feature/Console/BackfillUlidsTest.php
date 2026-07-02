@@ -17,7 +17,8 @@ it('backfills a ulid for rows that are missing one', function (): void {
 
     $ulid = $event->fresh()->ulid;
     expect($ulid)->not->toBeNull()
-        ->and(Str::isUlid($ulid))->toBeTrue();
+        ->and(Str::isUlid($ulid))->toBeTrue()
+        ->and($ulid)->toBe(strtolower($ulid));
 });
 
 it('leaves existing ulids untouched', function (): void {
