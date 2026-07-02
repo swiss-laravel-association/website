@@ -24,6 +24,7 @@ use Spatie\MediaLibrary\MediaCollections\Models\Media;
  * @property Carbon|null $created_at
  * @property Carbon|null $updated_at
  * @property string|null $background_color
+ * @property string|null $ulid
  * @property-read MediaCollection<int, Media> $media
  * @property-read int|null $media_count
  *
@@ -39,6 +40,7 @@ use Spatie\MediaLibrary\MediaCollections\Models\Media;
  * @method static SponsorBuilder<static>|Sponsor whereName($value)
  * @method static SponsorBuilder<static>|Sponsor whereOrder($value)
  * @method static SponsorBuilder<static>|Sponsor whereType($value)
+ * @method static SponsorBuilder<static>|Sponsor whereUlid($value)
  * @method static SponsorBuilder<static>|Sponsor whereUpdatedAt($value)
  * @method static SponsorBuilder<static>|Sponsor whereWebsite($value)
  *

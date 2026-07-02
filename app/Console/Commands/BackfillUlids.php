@@ -36,7 +36,7 @@ class BackfillUlids extends Command
             $modelClass::query()
                 ->whereNull('ulid')
                 ->each(function (Model $record) use (&$count): void {
-                    $record->ulid = (string) Str::ulid();
+                    $record->setAttribute('ulid', (string) Str::ulid());
                     $record->saveQuietly();
                     $count++;
                 });

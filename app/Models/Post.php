@@ -28,6 +28,7 @@ use Spatie\Sluggable\SlugOptions;
  * @property CarbonImmutable|null $published_at
  * @property Carbon|null $created_at
  * @property Carbon|null $updated_at
+ * @property string|null $ulid
  * @property-read Collection<int, User> $authors
  * @property-read int|null $authors_count
  * @property-read mixed $parsed_content
@@ -44,6 +45,7 @@ use Spatie\Sluggable\SlugOptions;
  * @method static Builder<static>|Post wherePublishedAt($value)
  * @method static Builder<static>|Post whereSlug($value)
  * @method static Builder<static>|Post whereTitle($value)
+ * @method static Builder<static>|Post whereUlid($value)
  * @method static Builder<static>|Post whereUpdatedAt($value)
  *
  * @mixin \Eloquent

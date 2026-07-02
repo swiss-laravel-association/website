@@ -16,7 +16,7 @@ it('ulid column is nullable on domain tables', function (string $table): void {
 
 it('ulid column has unique index on domain tables', function (string $table): void {
     $indexes = Schema::getIndexes($table);
-    $ulidIndex = collect($indexes)->first(fn ($index) => $index['columns'] === ['ulid']);
+    $ulidIndex = collect($indexes)->first(fn ($index): bool => $index['columns'] === ['ulid']);
 
     expect($ulidIndex)->not->toBeNull();
     expect($ulidIndex['unique'])->toBeTrue();

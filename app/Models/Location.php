@@ -20,6 +20,7 @@ use Illuminate\Support\Carbon;
  * @property int|null $capacity
  * @property Carbon|null $created_at
  * @property Carbon|null $updated_at
+ * @property string|null $ulid
  *
  * @method static \Database\Factories\LocationFactory factory($count = null, $state = [])
  * @method static Builder<static>|Location newModelQuery()
@@ -33,6 +34,7 @@ use Illuminate\Support\Carbon;
  * @method static Builder<static>|Location whereId($value)
  * @method static Builder<static>|Location whereName($value)
  * @method static Builder<static>|Location whereNotes($value)
+ * @method static Builder<static>|Location whereUlid($value)
  * @method static Builder<static>|Location whereUpdatedAt($value)
  * @method static Builder<static>|Location whereZipCode($value)
  *
