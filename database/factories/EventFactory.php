@@ -29,4 +29,11 @@ class EventFactory extends Factory
             // 'location_id' => Location::factory(),
         ];
     }
+
+    public function unpublished(): self
+    {
+        return $this->state(fn (array $attributes): array => [
+            'is_published' => false,
+        ]);
+    }
 }

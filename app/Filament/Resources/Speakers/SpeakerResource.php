@@ -5,16 +5,13 @@ namespace App\Filament\Resources\Speakers;
 use App\Filament\Resources\Speakers\Pages\CreateSpeaker;
 use App\Filament\Resources\Speakers\Pages\EditSpeaker;
 use App\Filament\Resources\Speakers\Pages\ListSpeakers;
+use App\Filament\Resources\Speakers\RelationManagers\TalksRelationManager;
+use App\Filament\Resources\Speakers\Schemas\SpeakerForm;
+use App\Filament\Resources\Speakers\Tables\SpeakersTable;
 use App\Models\Speaker;
 use BackedEnum;
-use Filament\Actions\BulkActionGroup;
-use Filament\Actions\DeleteBulkAction;
-use Filament\Actions\EditAction;
-use Filament\Forms\Components\Textarea;
-use Filament\Forms\Components\TextInput;
 use Filament\Resources\Resource;
 use Filament\Schemas\Schema;
-use Filament\Tables\Columns\TextColumn;
 use Filament\Tables\Table;
 
 class SpeakerResource extends Resource
@@ -23,38 +20,31 @@ class SpeakerResource extends Resource
 
     protected static string|BackedEnum|null $navigationIcon = 'phosphor-user-sound-duotone';
 
+    protected static ?string $recordTitleAttribute = 'name';
+
+    /**
+     * @return array<int, string>
+     */
+    public static function getGloballySearchableAttributes(): array
+    {
+        return ['name'];
+    }
+
     public static function form(Schema $schema): Schema
     {
-        return $schema
-            ->components([
-                TextInput::make('name')
-                    ->required(),
-                Textarea::make('bio')
-                    ->columnSpanFull()
-                    ->autosize(),
-                TextInput::make('website'),
-                TextInput::make('github_profile'),
-                TextInput::make('x_profile'),
-                TextInput::make('linkedin_profile'),
-                TextInput::make('bluesky_profile'),
-                TextInput::make('youtube_profile'),
-            ]);
+        return SpeakerForm::configure($schema);
     }
 
     public static function table(Table $table): Table
     {
-        return $table
-            ->columns([
-                TextColumn::make('name'),
-            ])
-            ->recordActions([
-                EditAction::make(),
-            ])
-            ->toolbarActions([
-                BulkActionGroup::make([
-                    DeleteBulkAction::make(),
-                ]),
-            ]);
+        return SpeakersTable::configure($table);
+    }
+
+    public static function getRelations(): array
+    {
+        return [
+            TalksRelationManager::class,
+        ];
     }
 
     public static function getPages(): array
