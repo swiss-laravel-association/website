@@ -5,6 +5,7 @@ namespace App\Models;
 use App\Builders\SponsorBuilder;
 use App\Enums\SponsorType;
 use Database\Factories\SponsorFactory;
+use Illuminate\Database\Eloquent\Concerns\HasUlids;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Carbon;
@@ -48,7 +49,18 @@ class Sponsor extends Model implements HasMedia
     /** @use HasFactory<SponsorFactory> */
     use HasFactory;
 
+    use HasUlids;
     use InteractsWithMedia;
+
+    /**
+     * Get the columns that should receive a unique identifier.
+     *
+     * @return array<int, string>
+     */
+    public function uniqueIds(): array
+    {
+        return ['ulid'];
+    }
 
     protected function casts(): array
     {
