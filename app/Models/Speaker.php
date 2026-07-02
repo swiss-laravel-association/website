@@ -5,6 +5,7 @@ namespace App\Models;
 use Database\Factories\SpeakerFactory;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Collection;
+use Illuminate\Database\Eloquent\Concerns\HasUlids;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
@@ -22,9 +23,11 @@ use Illuminate\Support\Carbon;
  * @property string|null $youtube_profile
  * @property Carbon|null $created_at
  * @property Carbon|null $updated_at
+ * @property string|null $ulid
  * @property-read Collection<int, Talk> $talks
  * @property-read int|null $talks_count
  *
+ * @method static \Database\Factories\SpeakerFactory factory($count = null, $state = [])
  * @method static Builder<static>|Speaker newModelQuery()
  * @method static Builder<static>|Speaker newQuery()
  * @method static Builder<static>|Speaker query()
@@ -35,6 +38,7 @@ use Illuminate\Support\Carbon;
  * @method static Builder<static>|Speaker whereId($value)
  * @method static Builder<static>|Speaker whereLinkedinProfile($value)
  * @method static Builder<static>|Speaker whereName($value)
+ * @method static Builder<static>|Speaker whereUlid($value)
  * @method static Builder<static>|Speaker whereUpdatedAt($value)
  * @method static Builder<static>|Speaker whereWebsite($value)
  * @method static Builder<static>|Speaker whereXProfile($value)
@@ -46,6 +50,18 @@ class Speaker extends Model
 {
     /** @use HasFactory<SpeakerFactory> */
     use HasFactory;
+
+    use HasUlids;
+
+    /**
+     * Get the columns that should receive a unique identifier.
+     *
+     * @return array<int, string>
+     */
+    public function uniqueIds(): array
+    {
+        return ['ulid'];
+    }
 
     /**
      * @return BelongsToMany<Talk, $this>

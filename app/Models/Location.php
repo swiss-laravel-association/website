@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Database\Factories\LocationFactory;
 use Illuminate\Database\Eloquent\Builder;
+use Illuminate\Database\Eloquent\Concerns\HasUlids;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Carbon;
@@ -19,6 +20,7 @@ use Illuminate\Support\Carbon;
  * @property int|null $capacity
  * @property Carbon|null $created_at
  * @property Carbon|null $updated_at
+ * @property string|null $ulid
  *
  * @method static \Database\Factories\LocationFactory factory($count = null, $state = [])
  * @method static Builder<static>|Location newModelQuery()
@@ -32,6 +34,7 @@ use Illuminate\Support\Carbon;
  * @method static Builder<static>|Location whereId($value)
  * @method static Builder<static>|Location whereName($value)
  * @method static Builder<static>|Location whereNotes($value)
+ * @method static Builder<static>|Location whereUlid($value)
  * @method static Builder<static>|Location whereUpdatedAt($value)
  * @method static Builder<static>|Location whereZipCode($value)
  *
@@ -41,4 +44,16 @@ class Location extends Model
 {
     /** @use HasFactory<LocationFactory> */
     use HasFactory;
+
+    use HasUlids;
+
+    /**
+     * Get the columns that should receive a unique identifier.
+     *
+     * @return array<int, string>
+     */
+    public function uniqueIds(): array
+    {
+        return ['ulid'];
+    }
 }

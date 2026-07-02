@@ -5,6 +5,7 @@ namespace App\Models;
 use App\Builders\SponsorBuilder;
 use App\Enums\SponsorType;
 use Database\Factories\SponsorFactory;
+use Illuminate\Database\Eloquent\Concerns\HasUlids;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Carbon;
@@ -23,6 +24,7 @@ use Spatie\MediaLibrary\MediaCollections\Models\Media;
  * @property Carbon|null $created_at
  * @property Carbon|null $updated_at
  * @property string|null $background_color
+ * @property string|null $ulid
  * @property-read MediaCollection<int, Media> $media
  * @property-read int|null $media_count
  *
@@ -38,6 +40,7 @@ use Spatie\MediaLibrary\MediaCollections\Models\Media;
  * @method static SponsorBuilder<static>|Sponsor whereName($value)
  * @method static SponsorBuilder<static>|Sponsor whereOrder($value)
  * @method static SponsorBuilder<static>|Sponsor whereType($value)
+ * @method static SponsorBuilder<static>|Sponsor whereUlid($value)
  * @method static SponsorBuilder<static>|Sponsor whereUpdatedAt($value)
  * @method static SponsorBuilder<static>|Sponsor whereWebsite($value)
  *
@@ -48,7 +51,18 @@ class Sponsor extends Model implements HasMedia
     /** @use HasFactory<SponsorFactory> */
     use HasFactory;
 
+    use HasUlids;
     use InteractsWithMedia;
+
+    /**
+     * Get the columns that should receive a unique identifier.
+     *
+     * @return array<int, string>
+     */
+    public function uniqueIds(): array
+    {
+        return ['ulid'];
+    }
 
     protected function casts(): array
     {

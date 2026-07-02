@@ -8,6 +8,7 @@ use Carbon\CarbonPeriodImmutable;
 use Database\Factories\EventFactory;
 use Illuminate\Database\Eloquent\Casts\Attribute;
 use Illuminate\Database\Eloquent\Collection;
+use Illuminate\Database\Eloquent\Concerns\HasUlids;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
@@ -15,6 +16,7 @@ use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Illuminate\Support\Carbon;
 use Illuminate\Support\Str;
 use Override;
+use RalphJSmit\Laravel\SEO\Models\SEO;
 use RalphJSmit\Laravel\SEO\Support\HasSEO;
 use RalphJSmit\Laravel\SEO\Support\SEOData;
 
@@ -29,7 +31,11 @@ use RalphJSmit\Laravel\SEO\Support\SEOData;
  * @property Carbon|null $created_at
  * @property Carbon|null $updated_at
  * @property int|null $location_id
+ * @property string|null $ulid
  * @property-read Location|null $location
+ * @property-read CarbonPeriodImmutable $period
+ * @property-read SEO $seo
+ * @property-read string $show_url
  * @property-read Collection<int, Talk> $talks
  * @property-read int|null $talks_count
  *
@@ -50,6 +56,7 @@ use RalphJSmit\Laravel\SEO\Support\SEOData;
  * @method static EventBuilder<static>|Event whereMeetupLink($value)
  * @method static EventBuilder<static>|Event whereName($value)
  * @method static EventBuilder<static>|Event whereStartDate($value)
+ * @method static EventBuilder<static>|Event whereUlid($value)
  * @method static EventBuilder<static>|Event whereUpdatedAt($value)
  *
  * @mixin \Eloquent
@@ -60,6 +67,17 @@ class Event extends Model
     use HasFactory;
 
     use HasSEO;
+    use HasUlids;
+
+    /**
+     * Get the columns that should receive a unique identifier.
+     *
+     * @return array<int, string>
+     */
+    public function uniqueIds(): array
+    {
+        return ['ulid'];
+    }
 
     /**
      * @return EventBuilder<Event>

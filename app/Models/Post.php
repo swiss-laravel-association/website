@@ -7,6 +7,7 @@ use Database\Factories\PostFactory;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Casts\Attribute;
 use Illuminate\Database\Eloquent\Collection;
+use Illuminate\Database\Eloquent\Concerns\HasUlids;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
@@ -27,6 +28,7 @@ use Spatie\Sluggable\SlugOptions;
  * @property CarbonImmutable|null $published_at
  * @property Carbon|null $created_at
  * @property Carbon|null $updated_at
+ * @property string|null $ulid
  * @property-read Collection<int, User> $authors
  * @property-read int|null $authors_count
  * @property-read mixed $parsed_content
@@ -43,6 +45,7 @@ use Spatie\Sluggable\SlugOptions;
  * @method static Builder<static>|Post wherePublishedAt($value)
  * @method static Builder<static>|Post whereSlug($value)
  * @method static Builder<static>|Post whereTitle($value)
+ * @method static Builder<static>|Post whereUlid($value)
  * @method static Builder<static>|Post whereUpdatedAt($value)
  *
  * @mixin \Eloquent
@@ -54,6 +57,17 @@ class Post extends Model
 
     use HasSEO;
     use HasSlug;
+    use HasUlids;
+
+    /**
+     * Get the columns that should receive a unique identifier.
+     *
+     * @return array<int, string>
+     */
+    public function uniqueIds(): array
+    {
+        return ['ulid'];
+    }
 
     protected function casts(): array
     {

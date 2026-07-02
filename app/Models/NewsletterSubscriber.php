@@ -15,6 +15,7 @@ use Illuminate\Support\Carbon;
  * @property Carbon|null $created_at
  * @property Carbon|null $updated_at
  *
+ * @method static \Database\Factories\NewsletterSubscriberFactory factory($count = null, $state = [])
  * @method static Builder<static>|NewsletterSubscriber newModelQuery()
  * @method static Builder<static>|NewsletterSubscriber newQuery()
  * @method static Builder<static>|NewsletterSubscriber query()

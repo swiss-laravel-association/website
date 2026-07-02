@@ -5,6 +5,7 @@ namespace App\Models;
 use Database\Factories\TalkFactory;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Collection;
+use Illuminate\Database\Eloquent\Concerns\HasUlids;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
@@ -17,11 +18,13 @@ use Illuminate\Support\Carbon;
  * @property string|null $recording_url
  * @property Carbon|null $created_at
  * @property Carbon|null $updated_at
+ * @property string|null $ulid
  * @property-read Collection<int, Event> $events
  * @property-read int|null $events_count
  * @property-read Collection<int, Speaker> $speakers
  * @property-read int|null $speakers_count
  *
+ * @method static \Database\Factories\TalkFactory factory($count = null, $state = [])
  * @method static Builder<static>|Talk newModelQuery()
  * @method static Builder<static>|Talk newQuery()
  * @method static Builder<static>|Talk query()
@@ -30,6 +33,7 @@ use Illuminate\Support\Carbon;
  * @method static Builder<static>|Talk whereId($value)
  * @method static Builder<static>|Talk whereRecordingUrl($value)
  * @method static Builder<static>|Talk whereTitle($value)
+ * @method static Builder<static>|Talk whereUlid($value)
  * @method static Builder<static>|Talk whereUpdatedAt($value)
  *
  * @mixin \Eloquent
@@ -38,6 +42,18 @@ class Talk extends Model
 {
     /** @use HasFactory<TalkFactory> */
     use HasFactory;
+
+    use HasUlids;
+
+    /**
+     * Get the columns that should receive a unique identifier.
+     *
+     * @return array<int, string>
+     */
+    public function uniqueIds(): array
+    {
+        return ['ulid'];
+    }
 
     /**
      * @return BelongsToMany<Speaker, $this>
