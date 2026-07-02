@@ -3,6 +3,7 @@
 namespace App\Models;
 
 use App\Builders\EventBuilder;
+use App\Concerns\HasSlugUlidRouteKey;
 use Carbon\CarbonImmutable;
 use Carbon\CarbonPeriodImmutable;
 use Database\Factories\EventFactory;
@@ -19,6 +20,8 @@ use Override;
 use RalphJSmit\Laravel\SEO\Models\SEO;
 use RalphJSmit\Laravel\SEO\Support\HasSEO;
 use RalphJSmit\Laravel\SEO\Support\SEOData;
+use Spatie\Sluggable\HasSlug;
+use Spatie\Sluggable\SlugOptions;
 
 /**
  * @property int $id
@@ -32,6 +35,7 @@ use RalphJSmit\Laravel\SEO\Support\SEOData;
  * @property Carbon|null $updated_at
  * @property int|null $location_id
  * @property string|null $ulid
+ * @property string|null $slug
  * @property-read Location|null $location
  * @property-read CarbonPeriodImmutable $period
  * @property-read SEO $seo
@@ -55,6 +59,7 @@ use RalphJSmit\Laravel\SEO\Support\SEOData;
  * @method static EventBuilder<static>|Event whereLocationId($value)
  * @method static EventBuilder<static>|Event whereMeetupLink($value)
  * @method static EventBuilder<static>|Event whereName($value)
+ * @method static EventBuilder<static>|Event whereSlug($value)
  * @method static EventBuilder<static>|Event whereStartDate($value)
  * @method static EventBuilder<static>|Event whereUlid($value)
  * @method static EventBuilder<static>|Event whereUpdatedAt($value)
@@ -67,6 +72,10 @@ class Event extends Model
     use HasFactory;
 
     use HasSEO;
+    use HasSlug, HasSlugUlidRouteKey {
+        HasSlugUlidRouteKey::getRouteKey insteadof HasSlug;
+        HasSlugUlidRouteKey::resolveRouteBinding insteadof HasSlug;
+    }
     use HasUlids;
 
     /**
@@ -86,6 +95,14 @@ class Event extends Model
     public function newEloquentBuilder($query): EventBuilder
     {
         return new EventBuilder($query);
+    }
+
+    public function getSlugOptions(): SlugOptions
+    {
+        return SlugOptions::create()
+            ->generateSlugsFrom('name')
+            ->saveSlugsTo('slug')
+            ->allowDuplicateSlugs();
     }
 
     public function getDynamicSEOData(): SEOData

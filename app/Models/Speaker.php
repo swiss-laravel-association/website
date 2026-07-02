@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use App\Concerns\HasSlugUlidRouteKey;
 use Database\Factories\SpeakerFactory;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Collection;
@@ -10,6 +11,8 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Illuminate\Support\Carbon;
+use Spatie\Sluggable\HasSlug;
+use Spatie\Sluggable\SlugOptions;
 
 /**
  * @property int $id
@@ -24,6 +27,7 @@ use Illuminate\Support\Carbon;
  * @property Carbon|null $created_at
  * @property Carbon|null $updated_at
  * @property string|null $ulid
+ * @property string|null $slug
  * @property-read Collection<int, Talk> $talks
  * @property-read int|null $talks_count
  *
@@ -38,6 +42,7 @@ use Illuminate\Support\Carbon;
  * @method static Builder<static>|Speaker whereId($value)
  * @method static Builder<static>|Speaker whereLinkedinProfile($value)
  * @method static Builder<static>|Speaker whereName($value)
+ * @method static Builder<static>|Speaker whereSlug($value)
  * @method static Builder<static>|Speaker whereUlid($value)
  * @method static Builder<static>|Speaker whereUpdatedAt($value)
  * @method static Builder<static>|Speaker whereWebsite($value)
@@ -51,6 +56,10 @@ class Speaker extends Model
     /** @use HasFactory<SpeakerFactory> */
     use HasFactory;
 
+    use HasSlug, HasSlugUlidRouteKey {
+        HasSlugUlidRouteKey::getRouteKey insteadof HasSlug;
+        HasSlugUlidRouteKey::resolveRouteBinding insteadof HasSlug;
+    }
     use HasUlids;
 
     /**
@@ -61,6 +70,14 @@ class Speaker extends Model
     public function uniqueIds(): array
     {
         return ['ulid'];
+    }
+
+    public function getSlugOptions(): SlugOptions
+    {
+        return SlugOptions::create()
+            ->generateSlugsFrom('name')
+            ->saveSlugsTo('slug')
+            ->allowDuplicateSlugs();
     }
 
     /**

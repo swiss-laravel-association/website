@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use App\Concerns\HasSlugUlidRouteKey;
 use Database\Factories\TalkFactory;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Collection;
@@ -10,6 +11,8 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Illuminate\Support\Carbon;
+use Spatie\Sluggable\HasSlug;
+use Spatie\Sluggable\SlugOptions;
 
 /**
  * @property int $id
@@ -19,6 +22,7 @@ use Illuminate\Support\Carbon;
  * @property Carbon|null $created_at
  * @property Carbon|null $updated_at
  * @property string|null $ulid
+ * @property string|null $slug
  * @property-read Collection<int, Event> $events
  * @property-read int|null $events_count
  * @property-read Collection<int, Speaker> $speakers
@@ -32,6 +36,7 @@ use Illuminate\Support\Carbon;
  * @method static Builder<static>|Talk whereDescription($value)
  * @method static Builder<static>|Talk whereId($value)
  * @method static Builder<static>|Talk whereRecordingUrl($value)
+ * @method static Builder<static>|Talk whereSlug($value)
  * @method static Builder<static>|Talk whereTitle($value)
  * @method static Builder<static>|Talk whereUlid($value)
  * @method static Builder<static>|Talk whereUpdatedAt($value)
@@ -43,6 +48,10 @@ class Talk extends Model
     /** @use HasFactory<TalkFactory> */
     use HasFactory;
 
+    use HasSlug, HasSlugUlidRouteKey {
+        HasSlugUlidRouteKey::getRouteKey insteadof HasSlug;
+        HasSlugUlidRouteKey::resolveRouteBinding insteadof HasSlug;
+    }
     use HasUlids;
 
     /**
@@ -53,6 +62,14 @@ class Talk extends Model
     public function uniqueIds(): array
     {
         return ['ulid'];
+    }
+
+    public function getSlugOptions(): SlugOptions
+    {
+        return SlugOptions::create()
+            ->generateSlugsFrom('title')
+            ->saveSlugsTo('slug')
+            ->allowDuplicateSlugs();
     }
 
     /**
