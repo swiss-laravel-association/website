@@ -30,3 +30,12 @@ it('returns null when the ulid is valid but no record matches', function (): voi
 
     expect((new Event)->resolveRouteBinding("ghost-{$orphanUlid}"))->toBeNull();
 });
+
+it('resolves an uppercase ulid to the same record', function (): void {
+    $event = Event::factory()->create();
+
+    $resolved = (new Event)->resolveRouteBinding('slug-'.strtoupper($event->ulid));
+
+    expect($resolved)->not->toBeNull()
+        ->and($resolved->id)->toBe($event->id);
+});

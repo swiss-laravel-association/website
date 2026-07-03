@@ -20,12 +20,13 @@ trait HasSlugUlidRouteKey
 
     /**
      * Resolve the model by the ULID embedded in the trailing hyphen-delimited
-     * token of the route value. Returns null (→ 404) for any non-ULID tail,
-     * including old integer IDs.
+     * token of the route value. The ULID is lowercased so an uppercase form of
+     * a valid ULID still resolves (and then redirects to the canonical URL).
+     * Returns null (→ 404) for any non-ULID tail, including old integer IDs.
      */
     public function resolveRouteBinding($value, $field = null): ?Model
     {
-        $ulid = Str::afterLast((string) $value, '-');
+        $ulid = strtolower(Str::afterLast((string) $value, '-'));
 
         if (! Str::isUlid($ulid)) {
             return null;
