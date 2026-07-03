@@ -9,6 +9,7 @@ use App\Http\Controllers\MeetupEventsCalendarController;
 use App\Http\Controllers\NextEventController;
 use App\Http\Controllers\PrivacyPolicyController;
 use App\Http\Controllers\ShowEventController;
+use App\Http\Controllers\ShowSpeakerController;
 use App\Http\Controllers\ShowTalkController;
 use App\Models\Post;
 use Illuminate\Support\Facades\Route;
@@ -60,3 +61,4 @@ Route::get('/events/next-event', NextEventController::class)->name('events.next-
 Route::get('/events/{event}', ShowEventController::class)->name('events.show');
 
 Route::get('/meetups/talks/{talk}', ShowTalkController::class)->name('meetups.talks.show');
+Route::get('/meetups/speakers/{speaker}', ShowSpeakerController::class)->name('meetups.speakers.show');
