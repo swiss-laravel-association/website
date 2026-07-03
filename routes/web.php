@@ -25,8 +25,6 @@ Route::get('/association/sponsors', SponsorsController::class)->name('associatio
 // Route::get('/association/members/{member:slug}' fn () => '');
 
 // Route::get('/meetups' fn () => '');
-// Route::get('/meetups/speakers/{speaker:slug}' fn () => '');
-// Route::get('/meetups/talks/{talk:slug}' fn () => '');
 // Route::get('/meetups/calendar' fn () => '');
 // Route::get('/meetups/apply-to-speak' fn () => '');
 // Route::get('/meetups/apply-to-host' fn () => ''); // Not sure if we should have this
