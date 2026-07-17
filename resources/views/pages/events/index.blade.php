@@ -8,7 +8,7 @@
             <div class="container mx-auto max-w-6xl px-6 lg:px-10">
                 <x-hero-eyebrow class="mb-4">Next meetup</x-hero-eyebrow>
 
-                <h1 class="mb-8 text-[clamp(2rem,4vw,3rem)] font-light leading-tight text-mist-100">
+                <h1 class="mb-8 text-[clamp(2rem,4vw,3rem)] font-medium leading-tight text-mist-100">
                     Join us at our next event.
                 </h1>
 
@@ -22,7 +22,7 @@
             <div class="container mx-auto max-w-6xl px-6 lg:px-10">
                 <x-hero-eyebrow class="mb-4">Meetups</x-hero-eyebrow>
 
-                <h1 class="mb-4 text-[clamp(2rem,4vw,3rem)] font-light leading-tight text-mist-100">
+                <h1 class="mb-4 text-[clamp(2rem,4vw,3rem)] font-medium leading-tight text-mist-100">
                     No event is scheduled right now.
                 </h1>
 

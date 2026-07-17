@@ -9,7 +9,7 @@
                 {{ $event->start_date->isFuture() ? 'Upcoming meetup' : 'Past meetup' }}
             </x-hero-eyebrow>
 
-            <h1 class="mb-6 text-[clamp(2rem,4vw,3rem)] font-light leading-tight text-mist-100">
+            <h1 class="mb-6 text-[clamp(2rem,4vw,3rem)] font-medium leading-tight text-mist-100">
                 {{ $event->name }}
             </h1>
 
@@ -52,13 +52,27 @@
                     <div class="space-y-6">
                         @foreach ($event->talks as $talk)
                             <article class="rounded border border-mist-700 p-6">
-                                <h3 class="mb-2 text-xl font-medium text-mist-100">
-                                    {{ $talk->title }}
+                                <h3 class="mb-2 text-xl font-medium text-mist-100 hover:underline">
+                                    <a href="{{ $talk->show_url }}">
+                                        {{ $talk->title }}
+                                    </a>
                                 </h3>
 
                                 @if ($talk->speakers->isNotEmpty())
                                     <p class="mb-3 text-sm text-mist-400">
-                                        by {{ $talk->speakers->pluck('name')->join(', ', ' and ') }}
+                                        by
+                                        @foreach($talk->speakers as $speaker)
+                                            @if($loop->first === false && $loop->last === true)
+                                                and
+                                            @endif
+                                            <x-sla-ui.link
+                                                :href="$speaker->show_url">
+                                                {{ $speaker->name }}
+                                            </x-sla-ui.link>
+                                            @if($loop->first === false && $loop->last === false)
+                                                ,
+                                            @endif
+                                        @endforeach
                                     </p>
                                 @endif
 
