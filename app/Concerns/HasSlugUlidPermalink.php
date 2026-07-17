@@ -6,14 +6,16 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Str;
 
 /**
- * Route key of "{slug}-{ulid}"; route resolution is keyed on the immutable
- * ULID. The slug portion is cosmetic and never used for lookup.
+ * Builds a "{slug}-{ulid}" permalink where the ULID is the identity and the
+ * slug is cosmetic. The framework route key is left untouched so Filament and
+ * other consumers keep resolving records by the primary key; front-end URLs are
+ * built from {@see permalink()}.
  *
  * @mixin Model
  */
-trait HasSlugUlidRouteKey
+trait HasSlugUlidPermalink
 {
-    public function getRouteKey(): string
+    public function permalink(): string
     {
         return "{$this->slug}-{$this->ulid}";
     }

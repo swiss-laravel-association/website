@@ -10,7 +10,7 @@ it('shows the speaker at its canonical slug-ulid url', function (): void {
     $speaker = Speaker::factory()->create(['name' => 'Ada Lovelace']);
     $speaker->talks()->attach(Talk::factory()->create(['title' => 'Scaling Eloquent Queries']));
 
-    get(route('meetups.speakers.show', $speaker))
+    get($speaker->show_url)
         ->assertOk()
         ->assertSeeText('Ada Lovelace')
         ->assertSeeText('Scaling Eloquent Queries');
@@ -21,7 +21,7 @@ it('redirects a stale speaker slug to the canonical url with a 301', function ()
 
     get("/meetups/speakers/old-slug-{$speaker->ulid}")
         ->assertStatus(301)
-        ->assertRedirect(route('meetups.speakers.show', $speaker));
+        ->assertRedirect($speaker->show_url);
 });
 
 it('returns 404 for a non-ulid speaker tail', function (): void {

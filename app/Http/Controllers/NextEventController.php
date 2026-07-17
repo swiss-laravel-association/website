@@ -15,6 +15,6 @@ class NextEventController extends Controller
             return redirect()->route('home');
         }
 
-        return redirect()->route('events.show', $nextEvent);
+        return redirect($nextEvent->show_url);
     }
 }

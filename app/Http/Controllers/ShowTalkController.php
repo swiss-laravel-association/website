@@ -12,8 +12,8 @@ class ShowTalkController extends Controller
 {
     public function __invoke(Request $request, Talk $talk): View|RedirectResponse
     {
-        if ($request->route()->originalParameter('talk') !== $talk->getRouteKey()) {
-            return redirect()->route('meetups.talks.show', $talk, 301);
+        if ($request->route()->originalParameter('talk') !== $talk->permalink()) {
+            return redirect($talk->show_url, 301);
         }
 
         $talk->load(['speakers', 'events']);

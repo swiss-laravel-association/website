@@ -19,7 +19,7 @@ it('renders an upcoming event with its details', function (): void {
         'location_id' => $location->id,
     ]);
 
-    $response = $this->get(route('events.show', $event));
+    $response = $this->get($event->show_url);
 
     $response->assertStatus(200);
     $response->assertSeeText('June Meetup in Bern');
@@ -38,7 +38,7 @@ it('renders a past event without the RSVP button', function (): void {
             'meetup_link' => 'https://www.meetup.com/laravel-switzerland-meetup/events/past/',
         ]);
 
-    $response = $this->get(route('events.show', $event));
+    $response = $this->get($event->show_url);
 
     $response->assertStatus(200);
     $response->assertSeeText('May Meetup');
@@ -59,7 +59,7 @@ it('uses the event name and description as SEO title and description', function 
             'description' => 'A short evening of Laravel talks, drinks and pizza in central Bern.',
         ]);
 
-    $response = $this->get(route('events.show', $event));
+    $response = $this->get($event->show_url);
 
     $response->assertSee('<title>June Meetup in Bern | Swiss Laravel Association</title>', false);
     $response->assertSee('A short evening of Laravel talks', false);
@@ -74,7 +74,7 @@ it('renders breadcrumbs ending with the event name and matching JSON-LD', functi
             'end_date' => Carbon::now()->addDays(7)->addHours(3),
         ]);
 
-    $response = $this->get(route('events.show', $event));
+    $response = $this->get($event->show_url);
 
     $response->assertStatus(200);
     $response->assertSee('data-flux-breadcrumbs', false);

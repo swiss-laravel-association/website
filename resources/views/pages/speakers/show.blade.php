@@ -22,7 +22,7 @@
                     <ul class="space-y-2">
                         @foreach ($speaker->talks as $talk)
                             <li>
-                                <flux:link :href="route('meetups.talks.show', $talk)">
+                                <flux:link :href="$talk->show_url">
                                     {{ $talk->title }}
                                 </flux:link>
                             </li>

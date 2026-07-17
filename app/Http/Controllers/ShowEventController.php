@@ -12,8 +12,8 @@ class ShowEventController extends Controller
 {
     public function __invoke(Request $request, Event $event): View|RedirectResponse
     {
-        if ($request->route()->originalParameter('event') !== $event->getRouteKey()) {
-            return redirect()->route('events.show', $event, 301);
+        if ($request->route()->originalParameter('event') !== $event->permalink()) {
+            return redirect($event->show_url, 301);
         }
 
         $event->load(['location', 'talks.speakers']);

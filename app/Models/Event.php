@@ -3,7 +3,7 @@
 namespace App\Models;
 
 use App\Builders\EventBuilder;
-use App\Concerns\HasSlugUlidRouteKey;
+use App\Concerns\HasSlugUlidPermalink;
 use Carbon\CarbonImmutable;
 use Carbon\CarbonPeriodImmutable;
 use Database\Factories\EventFactory;
@@ -72,9 +72,8 @@ class Event extends Model
     use HasFactory;
 
     use HasSEO;
-    use HasSlug, HasSlugUlidRouteKey {
-        HasSlugUlidRouteKey::getRouteKey insteadof HasSlug;
-        HasSlugUlidRouteKey::resolveRouteBinding insteadof HasSlug;
+    use HasSlug, HasSlugUlidPermalink {
+        HasSlugUlidPermalink::resolveRouteBinding insteadof HasSlug;
     }
     use HasUlids;
 
@@ -170,6 +169,6 @@ class Event extends Model
 
     public function showUrl(): Attribute
     {
-        return Attribute::get(fn (): string => route('events.show', $this));
+        return Attribute::get(fn (): string => route('events.show', $this->permalink()));
     }
 }

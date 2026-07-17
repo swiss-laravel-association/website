@@ -2,7 +2,7 @@
 
 namespace App\Models;
 
-use App\Concerns\HasSlugUlidRouteKey;
+use App\Concerns\HasSlugUlidPermalink;
 use Database\Factories\SpeakerFactory;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Casts\Attribute;
@@ -29,6 +29,7 @@ use Spatie\Sluggable\SlugOptions;
  * @property Carbon|null $updated_at
  * @property string|null $ulid
  * @property string|null $slug
+ * @property-read string $show_url
  * @property-read Collection<int, Talk> $talks
  * @property-read int|null $talks_count
  *
@@ -57,9 +58,8 @@ class Speaker extends Model
     /** @use HasFactory<SpeakerFactory> */
     use HasFactory;
 
-    use HasSlug, HasSlugUlidRouteKey {
-        HasSlugUlidRouteKey::getRouteKey insteadof HasSlug;
-        HasSlugUlidRouteKey::resolveRouteBinding insteadof HasSlug;
+    use HasSlug, HasSlugUlidPermalink {
+        HasSlugUlidPermalink::resolveRouteBinding insteadof HasSlug;
     }
     use HasUlids;
 
@@ -91,6 +91,6 @@ class Speaker extends Model
 
     public function showUrl(): Attribute
     {
-        return Attribute::get(fn (): string => route('meetups.speakers.show', $this));
+        return Attribute::get(fn (): string => route('meetups.speakers.show', $this->permalink()));
     }
 }

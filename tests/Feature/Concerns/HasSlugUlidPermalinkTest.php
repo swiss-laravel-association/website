@@ -3,10 +3,16 @@
 use App\Models\Event;
 use Illuminate\Support\Str;
 
-it('builds a route key of slug and ulid', function (): void {
+it('builds a permalink of slug and ulid', function (): void {
     $event = Event::factory()->create(['name' => 'Laravel Zurich Meetup']);
 
-    expect($event->getRouteKey())->toBe("laravel-zurich-meetup-{$event->ulid}");
+    expect($event->permalink())->toBe("laravel-zurich-meetup-{$event->ulid}");
+});
+
+it('leaves the framework route key as the primary key', function (): void {
+    $event = Event::factory()->create();
+
+    expect($event->getRouteKey())->toBe($event->id);
 });
 
 it('resolves a route binding by the trailing ulid, ignoring the slug', function (): void {

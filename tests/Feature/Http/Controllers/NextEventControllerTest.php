@@ -11,7 +11,7 @@ it('redirects to the event detail page of the next upcoming event', function ():
 
     $response = $this->get(route('events.next-event'));
 
-    $response->assertRedirect(route('events.show', $event));
+    $response->assertRedirect($event->show_url);
 });
 
 it('redirects to the soonest upcoming event when several are scheduled', function (): void {
@@ -27,7 +27,7 @@ it('redirects to the soonest upcoming event when several are scheduled', functio
 
     $response = $this->get(route('events.next-event'));
 
-    $response->assertRedirect(route('events.show', $soonest));
+    $response->assertRedirect($soonest->show_url);
 });
 
 it('ignores events whose start date is in the past', function (): void {
