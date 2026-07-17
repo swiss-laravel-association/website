@@ -5,6 +5,7 @@ namespace App\Models;
 use App\Concerns\HasSlugUlidRouteKey;
 use Database\Factories\TalkFactory;
 use Illuminate\Database\Eloquent\Builder;
+use Illuminate\Database\Eloquent\Casts\Attribute;
 use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Database\Eloquent\Concerns\HasUlids;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
@@ -86,5 +87,11 @@ class Talk extends Model
     public function events(): BelongsToMany
     {
         return $this->belongsToMany(Event::class, 'event_talk');
+    }
+
+
+    public function showUrl(): Attribute
+    {
+        return Attribute::get(fn (): string => route('meetups.talks.show', $this));
     }
 }
