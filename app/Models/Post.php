@@ -16,6 +16,8 @@ use Illuminate\Support\Str;
 use RalphJSmit\Laravel\SEO\Models\SEO;
 use RalphJSmit\Laravel\SEO\Support\HasSEO;
 use RalphJSmit\Laravel\SEO\Support\SEOData;
+use Spatie\Sitemap\Contracts\Sitemapable;
+use Spatie\Sitemap\Tags\Url;
 use Spatie\Sluggable\HasSlug;
 use Spatie\Sluggable\SlugOptions;
 
@@ -50,7 +52,7 @@ use Spatie\Sluggable\SlugOptions;
  *
  * @mixin \Eloquent
  */
-class Post extends Model
+class Post extends Model implements Sitemapable
 {
     /** @use HasFactory<PostFactory> */
     use HasFactory;
@@ -99,6 +101,12 @@ class Post extends Model
             description: $this->excerpt,
             // image: $this->getFirstMedia('og_image')?->getUrl(),
         );
+    }
+
+    public function toSitemapTag(): Url
+    {
+        return Url::create(route('blog.show', $this->slug))
+            ->setLastModificationDate($this->updated_at ?? now());
     }
 
     protected function parsedContent(): Attribute // @phpstan-ignore-line

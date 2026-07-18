@@ -20,6 +20,8 @@ use Override;
 use RalphJSmit\Laravel\SEO\Models\SEO;
 use RalphJSmit\Laravel\SEO\Support\HasSEO;
 use RalphJSmit\Laravel\SEO\Support\SEOData;
+use Spatie\Sitemap\Contracts\Sitemapable;
+use Spatie\Sitemap\Tags\Url;
 use Spatie\Sluggable\HasSlug;
 use Spatie\Sluggable\SlugOptions;
 
@@ -66,7 +68,7 @@ use Spatie\Sluggable\SlugOptions;
  *
  * @mixin \Eloquent
  */
-class Event extends Model
+class Event extends Model implements Sitemapable
 {
     /** @use HasFactory<EventFactory> */
     use HasFactory;
@@ -167,8 +169,17 @@ class Event extends Model
         );
     }
 
+    /**
+     * @return Attribute<string, never>
+     */
     public function showUrl(): Attribute
     {
         return Attribute::get(fn (): string => route('events.show', $this->permalink()));
+    }
+
+    public function toSitemapTag(): Url
+    {
+        return Url::create($this->show_url)
+            ->setLastModificationDate($this->updated_at ?? now());
     }
 }

@@ -12,6 +12,8 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Illuminate\Support\Carbon;
+use Spatie\Sitemap\Contracts\Sitemapable;
+use Spatie\Sitemap\Tags\Url;
 use Spatie\Sluggable\HasSlug;
 use Spatie\Sluggable\SlugOptions;
 
@@ -53,7 +55,7 @@ use Spatie\Sluggable\SlugOptions;
  *
  * @mixin \Eloquent
  */
-class Speaker extends Model
+class Speaker extends Model implements Sitemapable
 {
     /** @use HasFactory<SpeakerFactory> */
     use HasFactory;
@@ -89,8 +91,17 @@ class Speaker extends Model
         return $this->belongsToMany(Talk::class, 'talk_speaker');
     }
 
+    /**
+     * @return Attribute<string, never>
+     */
     public function showUrl(): Attribute
     {
         return Attribute::get(fn (): string => route('meetups.speakers.show', $this->permalink()));
+    }
+
+    public function toSitemapTag(): Url
+    {
+        return Url::create($this->show_url)
+            ->setLastModificationDate($this->updated_at ?? now());
     }
 }

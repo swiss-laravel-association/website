@@ -11,10 +11,13 @@ use App\Http\Controllers\PrivacyPolicyController;
 use App\Http\Controllers\ShowEventController;
 use App\Http\Controllers\ShowSpeakerController;
 use App\Http\Controllers\ShowTalkController;
+use App\Http\Controllers\SitemapController;
 use App\Models\Post;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', HomepageController::class)->name('home');
+
+Route::get('/sitemap.xml', SitemapController::class)->name('sitemap');
 
 // TODO: Implement the following routes
 // Route::get('/association/about' fn () => '');

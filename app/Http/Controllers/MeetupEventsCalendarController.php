@@ -31,8 +31,8 @@ class MeetupEventsCalendarController extends Controller
 
                 if ($event->location) {
                     $calendarEvent->address(
-                        address: "{$event->location?->address}, {$event->location?->zip_code} {$event->location?->city}",
-                        name: $event->location?->name,
+                        address: "{$event->location->address}, {$event->location->zip_code} {$event->location->city}",
+                        name: $event->location->name,
                     );
                 }
 
