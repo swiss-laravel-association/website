@@ -91,6 +91,9 @@ class Speaker extends Model implements Sitemapable
         return $this->belongsToMany(Talk::class, 'talk_speaker');
     }
 
+    /**
+     * @return Attribute<string, never>
+     */
     public function showUrl(): Attribute
     {
         return Attribute::get(fn (): string => route('meetups.speakers.show', $this->permalink()));

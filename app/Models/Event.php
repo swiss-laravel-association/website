@@ -169,6 +169,9 @@ class Event extends Model implements Sitemapable
         );
     }
 
+    /**
+     * @return Attribute<string, never>
+     */
     public function showUrl(): Attribute
     {
         return Attribute::get(fn (): string => route('events.show', $this->permalink()));
