@@ -18,8 +18,6 @@ class SitemapController extends Controller
             ->add(route('association.sponsors'))
             ->add(route('blog.index'))
             ->add(route('events.index'))
-            ->add(route('imprint'))
-            ->add(route('privacy-policy'))
             ->add(Post::query()->where('published_at', '<=', now())->get())
             ->add(Event::query()->published()->get())
             ->add(Talk::query()->get())

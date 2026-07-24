@@ -21,8 +21,6 @@ it('includes the public static pages', function (): void {
     $response->assertSee(route('association.sponsors'), false);
     $response->assertSee(route('blog.index'), false);
     $response->assertSee(route('events.index'), false);
-    $response->assertSee(route('imprint'), false);
-    $response->assertSee(route('privacy-policy'), false);
 });
 
 it('excludes redirect and non-page routes', function (): void {
@@ -33,6 +31,13 @@ it('excludes redirect and non-page routes', function (): void {
     $response->assertDontSee(route('links.feedback'), false);
     $response->assertDontSee(route('meetups.calendar'), false);
     $response->assertDontSee(route('events.next-event'), false);
+});
+
+it('excludes nonindex routes', function (): void {
+    $response = get(route('sitemap'))->assertOk();
+
+    $response->assertDontSee(route('imprint'), false);
+    $response->assertDontSee(route('privacy-policy'), false);
 });
 
 it('includes published posts but not unpublished ones', function (): void {
