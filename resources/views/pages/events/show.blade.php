@@ -95,6 +95,29 @@
                         @endforeach
                     </div>
                 </div>
+            @elseif ($event->start_date->isFuture())
+                <div class="border-t border-mist-700 pt-10">
+                    <x-section-label>Talks</x-section-label>
+
+                    <aside class="rounded border border-mist-700 p-6" data-testid="talks-banner">
+                        <h3 class="mb-2 text-xl font-medium text-mist-100">
+                            No talks announced yet
+                        </h3>
+
+                        <p class="mb-4 text-mist-300">
+                            We will publish the talks as soon as the lineup is set.
+                            Want to speak at this event? Send us your talk idea.
+                        </p>
+
+                        <flux:button :href="route('links.rfp')"
+                                     variant="primary"
+                                     target="_blank"
+                                     rel="noopener"
+                                     icon:trailing="arrow-up-right">
+                            Submit a talk
+                        </flux:button>
+                    </aside>
+                </div>
             @endif
 
             @if ($event->location && ($event->location->address || $event->location->description))
