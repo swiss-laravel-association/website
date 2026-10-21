@@ -22,6 +22,7 @@ use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Support\Carbon;
 use Illuminate\Support\Str;
 use Laravel\Sanctum\PersonalAccessToken;
+use Livewire\Attributes\Locked;
 use UnitEnum;
 
 class ApiTokens extends Page implements HasActions, HasTable
@@ -45,6 +46,7 @@ class ApiTokens extends Page implements HasActions, HasTable
      * Plain-text token of the token created in this request cycle. It is
      * cleared on dismissal and never persisted.
      */
+    #[Locked]
     public ?string $newToken = null;
 
     public function table(Table $table): Table

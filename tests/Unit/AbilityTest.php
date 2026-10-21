@@ -28,3 +28,23 @@ it('groups abilities by resource label', function () {
         ->and($grouped['Talks'])->not->toHaveKey('talks:publish')
         ->and($grouped['Events']['events:create'])->toBe('Create events');
 });
+
+it('has exactly 26 cases', function () {
+    expect(Ability::cases())->toHaveCount(26);
+});
+
+it('has only events and posts publish abilities', function () {
+    $publish = collect(Ability::cases())
+        ->filter(fn (Ability $ability): bool => str_ends_with($ability->value, ':publish'))
+        ->map(fn (Ability $ability): string => $ability->value)
+        ->values()
+        ->all();
+
+    expect($publish)->toBe(['events:publish', 'posts:publish']);
+});
+
+it('has unique labels', function () {
+    $labels = array_map(fn (Ability $ability): string => $ability->getLabel(), Ability::cases());
+
+    expect($labels)->toHaveCount(count(array_unique($labels)));
+});

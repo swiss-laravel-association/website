@@ -102,3 +102,32 @@ it('cannot revoke the token of another user', function (): void {
     assertDatabaseHas('personal_access_tokens', ['id' => $foreign->getKey()]);
     expect(PersonalAccessToken::count())->toBe(1);
 });
+
+it('rejects a forged ability value', function (): void {
+    Livewire::test(ApiTokens::class)
+        ->callAction('createToken', [
+            'name' => 'Forged',
+            'abilities_events' => ['*'],
+        ])
+        ->assertHasActionErrors(['abilities_events.0']);
+
+    expect($this->user->tokens()->count())->toBe(0);
+});
+
+it('creates no token when name or expiry validation fails', function (): void {
+    Livewire::test(ApiTokens::class)
+        ->callAction('createToken', [
+            'name' => '',
+            'abilities_events' => ['events:view'],
+            'expires_at' => now()->subDay()->toDateString(),
+        ])
+        ->assertHasActionErrors(['name', 'expires_at']);
+
+    expect($this->user->tokens()->count())->toBe(0);
+});
+
+it('redirects guests away from the page', function (): void {
+    auth()->logout();
+
+    get('/admin/api-tokens')->assertRedirect();
+});
