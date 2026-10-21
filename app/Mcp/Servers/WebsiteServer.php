@@ -19,6 +19,13 @@ use App\Mcp\Tools\Locations\FindOrCreateLocationTool;
 use App\Mcp\Tools\Locations\GetLocationTool;
 use App\Mcp\Tools\Locations\ListLocationsTool;
 use App\Mcp\Tools\Locations\UpdateLocationTool;
+use App\Mcp\Tools\Posts\CreatePostTool;
+use App\Mcp\Tools\Posts\DeletePostTool;
+use App\Mcp\Tools\Posts\GetPostTool;
+use App\Mcp\Tools\Posts\ListPostsTool;
+use App\Mcp\Tools\Posts\PublishPostTool;
+use App\Mcp\Tools\Posts\UnpublishPostTool;
+use App\Mcp\Tools\Posts\UpdatePostTool;
 use App\Mcp\Tools\Speakers\CreateSpeakerTool;
 use App\Mcp\Tools\Speakers\DeleteSpeakerTool;
 use App\Mcp\Tools\Speakers\GetSpeakerTool;
@@ -44,6 +51,8 @@ use Laravel\Mcp\Server\Attributes\Version;
 #[Instructions('Manage the content of the Swiss Laravel Association website: meetup events, talks, speakers, locations, sponsors and blog posts. Records are addressed by their ulid. Every tool checks the abilities of your API token and returns an error when the token lacks the required ability.')]
 class WebsiteServer extends Server
 {
+    public int $defaultPaginationLength = 50;
+
     protected array $tools = [
         ListLocationsTool::class,
         GetLocationTool::class,
@@ -77,6 +86,13 @@ class WebsiteServer extends Server
         DetachTalkFromEventTool::class,
         AttachSpeakerToTalkTool::class,
         DetachSpeakerFromTalkTool::class,
+        ListPostsTool::class,
+        GetPostTool::class,
+        CreatePostTool::class,
+        UpdatePostTool::class,
+        DeletePostTool::class,
+        PublishPostTool::class,
+        UnpublishPostTool::class,
     ];
 
     protected array $resources = [
