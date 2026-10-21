@@ -2,6 +2,17 @@
 
 namespace App\Mcp\Servers;
 
+use App\Mcp\Tools\Events\CreateEventTool;
+use App\Mcp\Tools\Events\DeleteEventTool;
+use App\Mcp\Tools\Events\GetEventTool;
+use App\Mcp\Tools\Events\ListEventsTool;
+use App\Mcp\Tools\Events\PublishEventTool;
+use App\Mcp\Tools\Events\UnpublishEventTool;
+use App\Mcp\Tools\Events\UpdateEventTool;
+use App\Mcp\Tools\Linking\AttachSpeakerToTalkTool;
+use App\Mcp\Tools\Linking\AttachTalkToEventTool;
+use App\Mcp\Tools\Linking\DetachSpeakerFromTalkTool;
+use App\Mcp\Tools\Linking\DetachTalkFromEventTool;
 use App\Mcp\Tools\Locations\CreateLocationTool;
 use App\Mcp\Tools\Locations\DeleteLocationTool;
 use App\Mcp\Tools\Locations\FindOrCreateLocationTool;
@@ -18,6 +29,11 @@ use App\Mcp\Tools\Sponsors\DeleteSponsorTool;
 use App\Mcp\Tools\Sponsors\GetSponsorTool;
 use App\Mcp\Tools\Sponsors\ListSponsorsTool;
 use App\Mcp\Tools\Sponsors\UpdateSponsorTool;
+use App\Mcp\Tools\Talks\CreateTalkTool;
+use App\Mcp\Tools\Talks\DeleteTalkTool;
+use App\Mcp\Tools\Talks\GetTalkTool;
+use App\Mcp\Tools\Talks\ListTalksTool;
+use App\Mcp\Tools\Talks\UpdateTalkTool;
 use Laravel\Mcp\Server;
 use Laravel\Mcp\Server\Attributes\Instructions;
 use Laravel\Mcp\Server\Attributes\Name;
@@ -45,6 +61,22 @@ class WebsiteServer extends Server
         CreateSponsorTool::class,
         UpdateSponsorTool::class,
         DeleteSponsorTool::class,
+        ListEventsTool::class,
+        GetEventTool::class,
+        CreateEventTool::class,
+        UpdateEventTool::class,
+        DeleteEventTool::class,
+        PublishEventTool::class,
+        UnpublishEventTool::class,
+        ListTalksTool::class,
+        GetTalkTool::class,
+        CreateTalkTool::class,
+        UpdateTalkTool::class,
+        DeleteTalkTool::class,
+        AttachTalkToEventTool::class,
+        DetachTalkFromEventTool::class,
+        AttachSpeakerToTalkTool::class,
+        DetachSpeakerFromTalkTool::class,
     ];
 
     protected array $resources = [
