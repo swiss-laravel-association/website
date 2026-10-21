@@ -3,13 +3,14 @@
 namespace App\Actions\Posts;
 
 use App\Models\Post;
+use Illuminate\Support\Arr;
 use Illuminate\Support\Facades\DB;
 use InvalidArgumentException;
 
 class CreatePost
 {
     /**
-     * New posts always start unpublished; any `published_at` input is ignored.
+     * New posts always start unpublished. Only title, content and excerpt are read from `$attributes`.
      *
      * @param  array{title: string, content: string, excerpt: string}  $attributes
      * @param  array<int, int>  $authorIds
@@ -23,7 +24,7 @@ class CreatePost
         }
 
         return DB::transaction(function () use ($attributes, $authorIds): Post {
-            $post = Post::create([...$attributes, 'published_at' => null]);
+            $post = Post::create([...Arr::only($attributes, ['title', 'content', 'excerpt']), 'published_at' => null]);
             $post->authors()->sync($authorIds);
 
             return $post;

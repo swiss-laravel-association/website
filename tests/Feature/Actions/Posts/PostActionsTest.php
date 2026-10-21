@@ -15,13 +15,27 @@ it('creates an unpublished post with authors and a slug from the title', functio
         'title' => 'Hello Laravel World',
         'content' => 'Body',
         'excerpt' => 'Short',
-        'published_at' => now(),
     ], [$author->id]);
 
     expect($post->exists)->toBeTrue()
         ->and($post->slug)->toBe('hello-laravel-world')
         ->and($post->published_at)->toBeNull()
         ->and($post->authors->modelKeys())->toBe([$author->id]);
+});
+
+it('ignores published_at and slug when creating a post', function (): void {
+    $author = User::factory()->create();
+
+    $post = app(CreatePost::class)->handle([
+        'title' => 'Fresh Title',
+        'content' => 'Body',
+        'excerpt' => 'Short',
+        'published_at' => now(),
+        'slug' => 'custom-slug',
+    ], [$author->id]);
+
+    expect($post->fresh()->published_at)->toBeNull()
+        ->and($post->fresh()->slug)->toBe('fresh-title');
 });
 
 it('rejects creating a post without authors', function (): void {
@@ -42,6 +56,32 @@ it('updates only the given keys and keeps authors when none are given', function
     expect($updated->title)->toBe('New')
         ->and($updated->fresh()->excerpt)->toBe('Keep')
         ->and($updated->authors()->pluck('users.id')->all())->toBe([$author->id]);
+});
+
+it('ignores published_at when updating an unpublished post', function (): void {
+    $post = Post::factory()->create(['published_at' => null]);
+
+    app(UpdatePost::class)->handle($post, ['title' => 'Changed', 'published_at' => now()]);
+
+    expect($post->fresh()->published_at)->toBeNull();
+});
+
+it('ignores published_at when updating a published post', function (): void {
+    $original = now()->subYear()->startOfDay();
+    $post = Post::factory()->create(['published_at' => $original]);
+
+    app(UpdatePost::class)->handle($post, ['title' => 'Changed', 'published_at' => null]);
+
+    expect($post->fresh()->published_at->equalTo($original))->toBeTrue();
+});
+
+it('ignores slug when updating a post', function (): void {
+    $post = Post::factory()->create(['title' => 'Original Title']);
+
+    app(UpdatePost::class)->handle($post, ['content' => 'New body', 'slug' => 'custom-slug']);
+
+    expect($post->fresh()->slug)->not->toBe('custom-slug')
+        ->and($post->fresh()->content)->toBe('New body');
 });
 
 it('syncs authors when given', function (): void {
