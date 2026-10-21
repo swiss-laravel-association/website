@@ -52,7 +52,7 @@ class UpdateEventTool extends Tool
             'description' => $schema->string()->description('Public description of the event.'),
             'start_date' => $schema->string()->description('Start as ISO 8601 date-time. Without an offset it is read as Europe/Zurich time.'),
             'end_date' => $schema->string()->description('End as ISO 8601 date-time, after start_date. Without an offset it is read as Europe/Zurich time.'),
-            'location_ulid' => $schema->string()->description('The ulid of an existing location, or null to remove the location.'),
+            'location_ulid' => $schema->string()->nullable()->description('The ulid of an existing location, or null to remove the location.'),
             'meetup_link' => $schema->string()->description('Link to the event on meetup.com, full URL.'),
         ];
     }

@@ -24,7 +24,9 @@ class UpdateLocationTool extends Tool
     public function handle(Request $request, UpdateLocation $updateLocation): Response
     {
         return $this->respond(function () use ($request, $updateLocation): Response {
-            $location = $this->findByUlid(Location::class, (string) $request->string('ulid'));
+            $validated = $request->validate(['ulid' => ['required', 'string']]);
+
+            $location = $this->findByUlid(Location::class, $validated['ulid']);
 
             $this->authorize($request, 'update', $location);
 

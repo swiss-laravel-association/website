@@ -31,7 +31,7 @@ class GetTalkTool extends Tool
 
             $this->authorize($request, 'view', $talk);
 
-            return $this->jsonResponse($this->talkPayload($talk->load(['speakers', 'events'])));
+            return $this->jsonResponse($this->talkPayload($talk->load(['speakers', 'events.location'])));
         });
     }
 

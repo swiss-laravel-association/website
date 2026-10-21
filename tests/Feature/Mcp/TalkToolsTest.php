@@ -184,3 +184,9 @@ it('denies delete without the delete ability', function (): void {
 
     expect(Talk::query()->count())->toBe(1);
 });
+
+it('declares recording_url as nullable in the update-talk schema', function (): void {
+    $property = (new UpdateTalkTool)->toArray()['inputSchema']['properties']['recording_url'];
+
+    expect($property['type'])->toBe(['string', 'null']);
+});

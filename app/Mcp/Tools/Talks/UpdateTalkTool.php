@@ -52,7 +52,7 @@ class UpdateTalkTool extends Tool
             'ulid' => $schema->string()->description('The ulid of the talk to update.')->required(),
             'title' => $schema->string()->description('Title of the talk.'),
             'description' => $schema->string()->description('Abstract of the talk.'),
-            'recording_url' => $schema->string()->description('Link to the recording, full URL, or null to remove it.'),
+            'recording_url' => $schema->string()->nullable()->description('Link to the recording, full URL, or null to remove it.'),
         ];
     }
 }

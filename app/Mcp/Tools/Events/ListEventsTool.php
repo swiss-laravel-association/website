@@ -15,7 +15,7 @@ use Laravel\Mcp\Server\Tool;
 use Laravel\Mcp\Server\Tools\Annotations\IsReadOnly;
 
 #[Name('list-events')]
-#[Description('List all meetup events, newest first, including unpublished ones. Each event includes its numeric id, ulid, is_published, public url and location_id. start_date and end_date are ISO 8601 with the Europe/Zurich offset.')]
+#[Description('List all meetup events, newest first, including unpublished ones. Each event includes its numeric id, ulid, is_published, public url, location_id and location_ulid, and the full location. start_date and end_date are ISO 8601 with the Europe/Zurich offset.')]
 #[IsReadOnly]
 class ListEventsTool extends Tool
 {
@@ -27,7 +27,7 @@ class ListEventsTool extends Tool
         return $this->respond(function () use ($request): Response {
             $this->authorize($request, 'viewAny', Event::class);
 
-            $events = Event::query()->orderByDesc('start_date')->get();
+            $events = Event::query()->with('location')->orderByDesc('start_date')->get();
 
             return $this->jsonResponse($events->map(fn (Event $event): array => $this->eventPayload($event))->all());
         });

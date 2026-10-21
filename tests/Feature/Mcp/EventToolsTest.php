@@ -13,6 +13,7 @@ use App\Models\Event;
 use App\Models\Location;
 use App\Models\Speaker;
 use App\Models\Talk;
+use Illuminate\Support\Facades\DB;
 
 /**
  * @return array<string, string>
@@ -347,4 +348,41 @@ it('unpublishes an event only with the publish ability', function (): void {
         ->assertSee('"is_published":false');
 
     expect($event->refresh()->is_published)->toBeFalse();
+});
+
+it('includes location_ulid next to location_id in every event response', function (): void {
+    $location = Location::factory()->create();
+    $event = Event::factory()->create(['location_id' => $location->id]);
+    $withoutLocation = Event::factory()->create();
+
+    $viewer = userWithAbilities(Ability::EventsView);
+
+    $get = toolJson(WebsiteServer::actingAs($viewer)->tool(GetEventTool::class, ['ulid' => $event->ulid]));
+    $list = collect(toolJson(WebsiteServer::actingAs($viewer)->tool(ListEventsTool::class, [])))->keyBy('ulid');
+    $update = toolJson(WebsiteServer::actingAs(userWithAbilities(Ability::EventsUpdate))->tool(UpdateEventTool::class, ['ulid' => $event->ulid, 'name' => 'Renamed']));
+    $create = toolJson(WebsiteServer::actingAs(userWithAbilities(Ability::EventsCreate))->tool(CreateEventTool::class, eventInput(['location_ulid' => $location->ulid])));
+
+    expect($get['location_ulid'])->toBe($location->ulid)
+        ->and($get['location_id'])->toBe($location->id)
+        ->and($list[$event->ulid]['location_ulid'])->toBe($location->ulid)
+        ->and($list[$withoutLocation->ulid]['location_ulid'])->toBeNull()
+        ->and($update['location_ulid'])->toBe($location->ulid)
+        ->and($create['location_ulid'])->toBe($location->ulid);
+});
+
+it('loads the locations of listed events with one query', function (): void {
+    Event::factory()->count(3)->create(['location_id' => Location::factory()->create()->id]);
+    $viewer = userWithAbilities(Ability::EventsView);
+
+    DB::enableQueryLog();
+    WebsiteServer::actingAs($viewer)->tool(ListEventsTool::class, [])->assertOk();
+    $locationQueries = collect(DB::getQueryLog())->filter(fn (array $query): bool => str_contains($query['query'], 'locations'));
+
+    expect($locationQueries)->toHaveCount(1);
+});
+
+it('declares location_ulid as nullable in the update-event schema', function (): void {
+    $property = (new UpdateEventTool)->toArray()['inputSchema']['properties']['location_ulid'];
+
+    expect($property['type'])->toBe(['string', 'null']);
 });

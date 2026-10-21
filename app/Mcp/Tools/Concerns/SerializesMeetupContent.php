@@ -3,6 +3,7 @@
 namespace App\Mcp\Tools\Concerns;
 
 use App\Models\Event;
+use App\Models\Location;
 use App\Models\Speaker;
 use App\Models\Talk;
 use Carbon\CarbonImmutable;
@@ -23,6 +24,9 @@ trait SerializesMeetupContent
             'start_date' => $this->zurichDateString($event->start_date),
             'end_date' => $this->zurichDateString($event->end_date),
             'url' => $event->show_url,
+            'location_ulid' => $event->relationLoaded('location')
+                ? $event->location?->ulid
+                : Location::query()->whereKey($event->location_id)->value('ulid'),
         ];
 
         if ($event->relationLoaded('location')) {

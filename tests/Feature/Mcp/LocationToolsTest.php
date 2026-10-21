@@ -226,3 +226,20 @@ it('enforces token abilities over the http endpoint', function (): void {
 
     expect(Location::query()->count())->toBe(0);
 });
+
+it('requires a ulid to update a location', function (): void {
+    $user = userWithAbilities(Ability::LocationsUpdate);
+
+    WebsiteServer::actingAs($user)->tool(UpdateLocationTool::class, ['name' => 'New'])
+        ->assertHasErrors();
+});
+
+it('requires a ulid to delete a location', function (): void {
+    $user = userWithAbilities(Ability::LocationsDelete);
+    Location::factory()->create();
+
+    WebsiteServer::actingAs($user)->tool(DeleteLocationTool::class, [])
+        ->assertHasErrors();
+
+    expect(Location::query()->count())->toBe(1);
+});

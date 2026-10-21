@@ -24,7 +24,9 @@ class DeleteLocationTool extends Tool
     public function handle(Request $request, DeleteLocation $deleteLocation): Response
     {
         return $this->respond(function () use ($request, $deleteLocation): Response {
-            $location = $this->findByUlid(Location::class, (string) $request->string('ulid'));
+            $validated = $request->validate(['ulid' => ['required', 'string']]);
+
+            $location = $this->findByUlid(Location::class, $validated['ulid']);
 
             $this->authorize($request, 'delete', $location);
 
