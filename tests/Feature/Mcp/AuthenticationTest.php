@@ -2,6 +2,7 @@
 
 use App\Mcp\Servers\WebsiteServer;
 use App\Models\User;
+use Illuminate\Auth\SessionGuard;
 use Illuminate\Testing\TestResponse;
 
 /**
@@ -54,4 +55,28 @@ it('returns every registered tool from a single tools/list call', function (): v
 
     expect($response->json('result.tools'))->toHaveCount(count($registered))
         ->and($response->json('result'))->not->toHaveKey('nextCursor');
+});
+
+it('rejects a logged-in web session without a bearer token', function (): void {
+    $user = User::factory()->create();
+
+    $this->withSession(['login_web_'.sha1(SessionGuard::class) => $user->id])
+        ->postJson('/mcp', ['jsonrpc' => '2.0', 'id' => 1, 'method' => 'tools/list', 'params' => (object) []])
+        ->assertUnauthorized();
+});
+
+it('throttles the mcp endpoint to 120 requests per minute per user', function (): void {
+    $token = User::factory()->create()->createToken('t', ['events:view'])->plainTextToken;
+    $other = User::factory()->create()->createToken('t', ['events:view'])->plainTextToken;
+
+    foreach (range(1, 120) as $attempt) {
+        mcpRequest('tools/list', token: $token)->assertOk();
+    }
+
+    mcpRequest('tools/list', token: $token)->assertTooManyRequests();
+
+    // The test application keeps the resolved guard user between requests.
+    app('auth')->forgetGuards();
+
+    mcpRequest('tools/list', token: $other)->assertOk();
 });
