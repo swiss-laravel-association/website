@@ -31,6 +31,25 @@ it('updates only the given keys', function (): void {
         ->and($updated->fresh()->description)->toBe('Keep');
 });
 
+it('ignores keys outside the whitelist on create and update', function (): void {
+    $talk = app(CreateTalk::class)->handle([
+        'title' => 'Octane in Production',
+        'description' => 'A talk.',
+        'slug' => 'hacked',
+        'id' => 9999,
+    ]);
+
+    expect($talk->fresh()->slug)->not->toBe('hacked')
+        ->and($talk->id)->not->toBe(9999);
+
+    app(UpdateTalk::class)->handle($talk, ['title' => 'New', 'slug' => 'hacked-again', 'ulid' => 'x']);
+
+    expect($talk->fresh())
+        ->title->toBe('New')
+        ->slug->not->toBe('hacked-again')
+        ->ulid->not->toBe('x');
+});
+
 it('deletes a talk that has speakers and events', function (): void {
     $talk = Talk::factory()->create();
     $speaker = Speaker::factory()->create();

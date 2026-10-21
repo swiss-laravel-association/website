@@ -32,7 +32,7 @@ use Spatie\Sluggable\SlugOptions;
  * @property CarbonImmutable $start_date
  * @property CarbonImmutable $end_date
  * @property string|null $meetup_link
- * @property int $is_published
+ * @property bool $is_published
  * @property Carbon|null $created_at
  * @property Carbon|null $updated_at
  * @property int|null $location_id
@@ -121,6 +121,7 @@ class Event extends Model implements Sitemapable
         return [
             'start_date' => 'immutable_datetime',
             'end_date' => 'immutable_datetime',
+            'is_published' => 'boolean',
         ];
     }
 
