@@ -3,6 +3,7 @@
 namespace App\Actions\Locations;
 
 use App\Models\Location;
+use Illuminate\Support\Arr;
 
 class CreateLocation
 {
@@ -11,6 +12,6 @@ class CreateLocation
      */
     public function handle(array $attributes): Location
     {
-        return Location::create($attributes);
+        return Location::create(Arr::only($attributes, ['name', 'address', 'zip_code', 'city', 'description', 'notes', 'capacity']));
     }
 }

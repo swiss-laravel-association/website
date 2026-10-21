@@ -31,7 +31,7 @@ class CreateSponsorTool extends Tool
                 'name' => ['required', 'string', 'max:255'],
                 'website' => ['required', 'url', 'max:255'],
                 'type' => ['required', Rule::enum(SponsorType::class)],
-                'background_color' => ['nullable', 'string', 'max:255'],
+                'background_color' => ['nullable', 'string', 'regex:/^#(?:[0-9a-fA-F]{3}|[0-9a-fA-F]{6}|[0-9a-fA-F]{8})$/'],
             ]);
 
             $validated['type'] = SponsorType::from($validated['type']);
@@ -50,7 +50,7 @@ class CreateSponsorTool extends Tool
             'name' => $schema->string()->description('Name of the sponsor.')->required(),
             'website' => $schema->string()->description('Website, full URL.')->required(),
             'type' => $schema->string()->enum(array_map(fn (SponsorType $type): string => $type->value, SponsorType::cases()))->description('Sponsor type: founding or location.')->required(),
-            'background_color' => $schema->string()->description('CSS background color behind the logo, e.g. "#ffffff".'),
+            'background_color' => $schema->string()->description('Hex background color behind the logo: #RGB, #RRGGBB or #RRGGBBAA, e.g. "#ffffff".'),
         ];
     }
 }

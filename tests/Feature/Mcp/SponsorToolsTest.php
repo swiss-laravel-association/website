@@ -181,3 +181,45 @@ it('denies delete without the delete ability', function (): void {
 
     expect(Sponsor::query()->count())->toBe(1);
 });
+
+it('accepts hex colors and rejects other background colors on create', function (string $color, bool $valid): void {
+    $user = userWithAbilities(Ability::SponsorsCreate);
+
+    $response = WebsiteServer::actingAs($user)->tool(CreateSponsorTool::class, [
+        'name' => 'Acme',
+        'website' => 'https://acme.test',
+        'type' => 'location',
+        'background_color' => $color,
+    ]);
+
+    if ($valid) {
+        $response->assertHasNoErrors();
+    } else {
+        $response->assertHasErrors(['background color']);
+    }
+
+    expect(Sponsor::query()->count())->toBe($valid ? 1 : 0);
+})->with([
+    'rgb' => ['#fff', true],
+    'rrggbb' => ['#FFaa00', true],
+    'rrggbbaa' => ['#ffaa0080', true],
+    'css injection' => ['red; background:url(x)', false],
+    'named color' => ['red', false],
+]);
+
+it('rejects a non-hex background color on update', function (): void {
+    $user = userWithAbilities(Ability::SponsorsUpdate);
+    $sponsor = Sponsor::factory()->isFoundingSponsor()->create(['background_color' => '#ffffff']);
+
+    WebsiteServer::actingAs($user)->tool(UpdateSponsorTool::class, [
+        'ulid' => $sponsor->ulid,
+        'background_color' => 'red; background:url(x)',
+    ])->assertHasErrors(['background color']);
+
+    WebsiteServer::actingAs($user)->tool(UpdateSponsorTool::class, [
+        'ulid' => $sponsor->ulid,
+        'background_color' => '#000',
+    ])->assertHasNoErrors();
+
+    expect($sponsor->refresh()->background_color)->toBe('#000');
+});

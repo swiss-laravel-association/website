@@ -138,3 +138,11 @@ it('unpublishes a post', function (): void {
     expect($unpublished->published_at)->toBeNull()
         ->and($post->fresh()->published_at)->toBeNull();
 });
+
+it('publishes a scheduled post now', function (): void {
+    $post = Post::factory()->create(['published_at' => now()->addWeek()]);
+
+    $published = app(PublishPost::class)->handle($post);
+
+    expect($published->fresh()->published_at->isPast())->toBeTrue();
+});

@@ -46,3 +46,14 @@ it('detaches talks when deleting a speaker', function (): void {
     $this->assertModelExists($talk);
     $this->assertDatabaseCount('talk_speaker', 0);
 });
+
+it('ignores keys that are not speaker fields', function (): void {
+    $speaker = app(CreateSpeaker::class)->handle(['name' => 'Jane', 'ulid' => 'forced-ulid']);
+
+    expect($speaker->fresh()->ulid)->not->toBe('forced-ulid');
+
+    app(UpdateSpeaker::class)->handle($speaker, ['name' => 'Janet', 'ulid' => 'forced-ulid']);
+
+    expect($speaker->fresh()->ulid)->not->toBe('forced-ulid')
+        ->and($speaker->fresh()->name)->toBe('Janet');
+});

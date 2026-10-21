@@ -3,6 +3,7 @@
 namespace App\Actions\Speakers;
 
 use App\Models\Speaker;
+use Illuminate\Support\Arr;
 
 class UpdateSpeaker
 {
@@ -11,7 +12,7 @@ class UpdateSpeaker
      */
     public function handle(Speaker $speaker, array $attributes): Speaker
     {
-        $speaker->update($attributes);
+        $speaker->update(Arr::only($attributes, ['name', 'bio', 'website', 'github_profile', 'x_profile', 'linkedin_profile', 'bluesky_profile', 'youtube_profile']));
 
         return $speaker;
     }

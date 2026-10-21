@@ -36,3 +36,19 @@ it('deletes a sponsor', function (): void {
 
     $this->assertModelMissing($sponsor);
 });
+
+it('ignores keys that are not sponsor fields', function (): void {
+    $sponsor = app(CreateSponsor::class)->handle([
+        'name' => 'Acme',
+        'website' => 'https://acme.test',
+        'type' => SponsorType::Founding,
+        'ulid' => 'forced-ulid',
+    ]);
+
+    expect($sponsor->fresh()->ulid)->not->toBe('forced-ulid');
+
+    app(UpdateSponsor::class)->handle($sponsor, ['name' => 'New', 'ulid' => 'forced-ulid']);
+
+    expect($sponsor->fresh()->ulid)->not->toBe('forced-ulid')
+        ->and($sponsor->fresh()->name)->toBe('New');
+});

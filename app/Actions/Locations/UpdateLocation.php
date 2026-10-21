@@ -3,6 +3,7 @@
 namespace App\Actions\Locations;
 
 use App\Models\Location;
+use Illuminate\Support\Arr;
 
 class UpdateLocation
 {
@@ -11,7 +12,7 @@ class UpdateLocation
      */
     public function handle(Location $location, array $attributes): Location
     {
-        $location->update($attributes);
+        $location->update(Arr::only($attributes, ['name', 'address', 'zip_code', 'city', 'description', 'notes', 'capacity']));
 
         return $location;
     }

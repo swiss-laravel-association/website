@@ -3,6 +3,7 @@
 namespace App\Actions\Speakers;
 
 use App\Models\Speaker;
+use Illuminate\Support\Arr;
 
 class CreateSpeaker
 {
@@ -11,6 +12,6 @@ class CreateSpeaker
      */
     public function handle(array $attributes): Speaker
     {
-        return Speaker::create($attributes);
+        return Speaker::create(Arr::only($attributes, ['name', 'bio', 'website', 'github_profile', 'x_profile', 'linkedin_profile', 'bluesky_profile', 'youtube_profile']));
     }
 }

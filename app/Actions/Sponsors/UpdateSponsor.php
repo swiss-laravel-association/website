@@ -4,6 +4,7 @@ namespace App\Actions\Sponsors;
 
 use App\Enums\SponsorType;
 use App\Models\Sponsor;
+use Illuminate\Support\Arr;
 
 class UpdateSponsor
 {
@@ -12,7 +13,7 @@ class UpdateSponsor
      */
     public function handle(Sponsor $sponsor, array $attributes): Sponsor
     {
-        $sponsor->update($attributes);
+        $sponsor->update(Arr::only($attributes, ['name', 'website', 'type', 'background_color']));
 
         return $sponsor;
     }

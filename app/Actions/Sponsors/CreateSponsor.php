@@ -4,6 +4,7 @@ namespace App\Actions\Sponsors;
 
 use App\Enums\SponsorType;
 use App\Models\Sponsor;
+use Illuminate\Support\Arr;
 
 class CreateSponsor
 {
@@ -12,6 +13,6 @@ class CreateSponsor
      */
     public function handle(array $attributes): Sponsor
     {
-        return Sponsor::create($attributes);
+        return Sponsor::create(Arr::only($attributes, ['name', 'website', 'type', 'background_color']));
     }
 }

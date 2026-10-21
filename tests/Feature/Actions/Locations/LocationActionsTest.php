@@ -71,3 +71,19 @@ it('keeps events when their location is deleted and clears the location id', fun
     expect($event->fresh())->not->toBeNull()
         ->and($event->fresh()->location_id)->toBeNull();
 });
+
+it('ignores keys that are not location fields', function (): void {
+    $location = app(CreateLocation::class)->handle([
+        'name' => 'Kosmos',
+        'zip_code' => '8004',
+        'city' => 'Zürich',
+        'ulid' => 'forced-ulid',
+    ]);
+
+    expect($location->fresh()->ulid)->not->toBe('forced-ulid');
+
+    app(UpdateLocation::class)->handle($location, ['city' => 'Bern', 'ulid' => 'forced-ulid']);
+
+    expect($location->fresh()->ulid)->not->toBe('forced-ulid')
+        ->and($location->fresh()->city)->toBe('Bern');
+});

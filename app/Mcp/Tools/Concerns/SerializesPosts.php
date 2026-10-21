@@ -20,7 +20,7 @@ trait SerializesPosts
 
         return [
             ...$post->attributesToArray(),
-            'is_published' => $post->published_at !== null,
+            'is_published' => $post->published_at !== null && $post->published_at->isPast(),
             'url' => route('blog.show', $post->slug),
             'authors' => $post->authors->map(fn (User $author): array => [
                 'id' => $author->id,

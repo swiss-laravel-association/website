@@ -3,12 +3,15 @@
 namespace App\Actions\Speakers;
 
 use App\Models\Speaker;
+use Illuminate\Support\Facades\DB;
 
 class DeleteSpeaker
 {
     public function handle(Speaker $speaker): void
     {
-        $speaker->talks()->detach();
-        $speaker->delete();
+        DB::transaction(function () use ($speaker): void {
+            $speaker->talks()->detach();
+            $speaker->delete();
+        });
     }
 }
