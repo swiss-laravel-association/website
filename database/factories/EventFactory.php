@@ -21,8 +21,8 @@ class EventFactory extends Factory
         return [
             'name' => sprintf('%s Meetup', $date->format('F Y')),
             'description' => $this->faker->text(),
-            'start_date' => $date->setTime(18, 30, 0),
-            'end_date' => $date->setTime(22, 0, 0),
+            'start_date' => $date->copy()->setTime(18, 30, 0),
+            'end_date' => $date->copy()->setTime(22, 0, 0),
 
             'meetup_link' => 'https://www.meetup.com/laravel-switzerland-meetup/events/308234097/',
             'is_published' => true,
