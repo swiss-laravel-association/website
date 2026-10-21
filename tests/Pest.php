@@ -1,5 +1,7 @@
 <?php
 
+use App\Enums\Ability;
+use App\Models\User;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Tests\TestCase;
 
@@ -45,4 +47,16 @@ expect()->extend('toBeOne', fn () => $this->toBe(1));
 function something(): void
 {
     // ..
+}
+
+/**
+ * A user authenticated through a real Sanctum personal access token with the given abilities.
+ */
+function userWithAbilities(Ability ...$abilities): User
+{
+    $user = User::factory()->create();
+
+    $token = $user->createToken('test', array_map(fn (Ability $ability): string => $ability->value, $abilities));
+
+    return $user->withAccessToken($token->accessToken);
 }
