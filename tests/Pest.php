@@ -1,6 +1,9 @@
 <?php
 
+use App\Enums\Ability;
+use App\Models\User;
 use Illuminate\Foundation\Testing\RefreshDatabase;
+use Laravel\Mcp\Server\Testing\TestResponse;
 use Tests\TestCase;
 
 /*
@@ -45,4 +48,29 @@ expect()->extend('toBeOne', fn () => $this->toBe(1));
 function something(): void
 {
     // ..
+}
+
+/**
+ * A user authenticated through a real Sanctum personal access token with the given abilities.
+ */
+function userWithAbilities(Ability ...$abilities): User
+{
+    $user = User::factory()->create();
+
+    $token = $user->createToken('test', array_map(fn (Ability $ability): string => $ability->value, $abilities));
+
+    return $user->withAccessToken($token->accessToken);
+}
+
+/**
+ * Decode the JSON text returned by a tool. The MCP TestResponse has no public accessor for it.
+ *
+ * @return array<array-key, mixed>
+ */
+function toolJson(TestResponse $response): array
+{
+    /** @var list<string> $content */
+    $content = (fn (): array => $this->content())->call($response);
+
+    return json_decode($content[0], true, 512, JSON_THROW_ON_ERROR);
 }

@@ -15,6 +15,9 @@ use Illuminate\Notifications\DatabaseNotification;
 use Illuminate\Notifications\DatabaseNotificationCollection;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Support\Carbon;
+use Laravel\Sanctum\HasApiTokens;
+use Laravel\Sanctum\PersonalAccessToken;
+use Laravel\Sanctum\TransientToken;
 
 /**
  * @property int $id
@@ -29,6 +32,8 @@ use Illuminate\Support\Carbon;
  * @property-read int|null $notifications_count
  * @property-read Collection<int, Post> $posts
  * @property-read int|null $posts_count
+ * @property-read Collection<int, PersonalAccessToken> $tokens
+ * @property-read int|null $tokens_count
  *
  * @method static \Database\Factories\UserFactory factory($count = null, $state = [])
  * @method static Builder<static>|User newModelQuery()
@@ -47,8 +52,11 @@ use Illuminate\Support\Carbon;
  */
 class User extends Authenticatable implements FilamentUser
 {
-    /** @use HasFactory<UserFactory> */
-    use HasFactory, Notifiable;
+    /**
+     * @use HasApiTokens<PersonalAccessToken|TransientToken>
+     * @use HasFactory<UserFactory>
+     */
+    use HasApiTokens, HasFactory, Notifiable;
 
     /**
      * Get the attributes that should be cast.
