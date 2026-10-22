@@ -3,8 +3,8 @@
 namespace App\Mcp\Tools\Talks;
 
 use App\Actions\Talks\UpdateTalk;
+use App\Http\Resources\TalkResource;
 use App\Mcp\Tools\Concerns\AuthorizesToolCalls;
-use App\Mcp\Tools\Concerns\SerializesMeetupContent;
 use App\Models\Talk;
 use Illuminate\Contracts\JsonSchema\JsonSchema;
 use Illuminate\JsonSchema\Types\Type;
@@ -21,7 +21,6 @@ use Laravel\Mcp\Server\Tools\Annotations\IsIdempotent;
 class UpdateTalkTool extends Tool
 {
     use AuthorizesToolCalls;
-    use SerializesMeetupContent;
 
     public function handle(Request $request, UpdateTalk $updateTalk): Response
     {
@@ -39,7 +38,7 @@ class UpdateTalkTool extends Tool
                 'recording_url' => ['sometimes', 'nullable', 'url', 'max:255'],
             ]);
 
-            return $this->jsonResponse($this->talkPayload($updateTalk->handle($talk, $attributes)));
+            return $this->jsonResponse(TalkResource::make($updateTalk->handle($talk, $attributes))->resolve());
         });
     }
 

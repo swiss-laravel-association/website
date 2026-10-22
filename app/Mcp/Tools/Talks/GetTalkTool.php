@@ -2,8 +2,8 @@
 
 namespace App\Mcp\Tools\Talks;
 
+use App\Http\Resources\TalkResource;
 use App\Mcp\Tools\Concerns\AuthorizesToolCalls;
-use App\Mcp\Tools\Concerns\SerializesMeetupContent;
 use App\Models\Talk;
 use Illuminate\Contracts\JsonSchema\JsonSchema;
 use Illuminate\JsonSchema\Types\Type;
@@ -20,7 +20,6 @@ use Laravel\Mcp\Server\Tools\Annotations\IsReadOnly;
 class GetTalkTool extends Tool
 {
     use AuthorizesToolCalls;
-    use SerializesMeetupContent;
 
     public function handle(Request $request): Response
     {
@@ -31,7 +30,7 @@ class GetTalkTool extends Tool
 
             $this->authorize($request, 'view', $talk);
 
-            return $this->jsonResponse($this->talkPayload($talk->load(['speakers', 'events.location'])));
+            return $this->jsonResponse(TalkResource::make($talk->load(['speakers', 'events.location']))->resolve());
         });
     }
 

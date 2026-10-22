@@ -2,8 +2,8 @@
 
 namespace App\Mcp\Tools\Events;
 
+use App\Http\Resources\EventResource;
 use App\Mcp\Tools\Concerns\AuthorizesToolCalls;
-use App\Mcp\Tools\Concerns\SerializesMeetupContent;
 use App\Models\Event;
 use Illuminate\Contracts\JsonSchema\JsonSchema;
 use Illuminate\JsonSchema\Types\Type;
@@ -20,7 +20,6 @@ use Laravel\Mcp\Server\Tools\Annotations\IsReadOnly;
 class ListEventsTool extends Tool
 {
     use AuthorizesToolCalls;
-    use SerializesMeetupContent;
 
     public function handle(Request $request): Response
     {
@@ -29,7 +28,7 @@ class ListEventsTool extends Tool
 
             $events = Event::query()->with('location')->orderByDesc('start_date')->get();
 
-            return $this->jsonResponse($events->map(fn (Event $event): array => $this->eventPayload($event))->all());
+            return $this->jsonResponse(EventResource::collection($events)->resolve());
         });
     }
 

@@ -2,8 +2,8 @@
 
 namespace App\Mcp\Tools\Posts;
 
+use App\Http\Resources\PostResource;
 use App\Mcp\Tools\Concerns\AuthorizesToolCalls;
-use App\Mcp\Tools\Concerns\SerializesPosts;
 use App\Models\Post;
 use Illuminate\Contracts\JsonSchema\JsonSchema;
 use Illuminate\JsonSchema\Types\Type;
@@ -20,7 +20,6 @@ use Laravel\Mcp\Server\Tools\Annotations\IsReadOnly;
 class ListPostsTool extends Tool
 {
     use AuthorizesToolCalls;
-    use SerializesPosts;
 
     public function handle(Request $request): Response
     {
@@ -29,7 +28,7 @@ class ListPostsTool extends Tool
 
             $posts = Post::query()->with('authors')->latest('id')->get();
 
-            return $this->jsonResponse($posts->map(fn (Post $post): array => $this->postPayload($post))->all());
+            return $this->jsonResponse(PostResource::collection($posts)->resolve());
         });
     }
 

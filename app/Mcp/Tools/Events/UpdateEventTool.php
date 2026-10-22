@@ -3,8 +3,8 @@
 namespace App\Mcp\Tools\Events;
 
 use App\Actions\Events\UpdateEvent;
+use App\Http\Resources\EventResource;
 use App\Mcp\Tools\Concerns\AuthorizesToolCalls;
-use App\Mcp\Tools\Concerns\SerializesMeetupContent;
 use App\Mcp\Tools\Concerns\ValidatesEventInput;
 use App\Models\Event;
 use Illuminate\Contracts\JsonSchema\JsonSchema;
@@ -22,7 +22,6 @@ use Laravel\Mcp\Server\Tools\Annotations\IsIdempotent;
 class UpdateEventTool extends Tool
 {
     use AuthorizesToolCalls;
-    use SerializesMeetupContent;
     use ValidatesEventInput;
 
     public function handle(Request $request, UpdateEvent $updateEvent): Response
@@ -37,7 +36,7 @@ class UpdateEventTool extends Tool
             /** @var array{name?: string, description?: string, start_date?: string, end_date?: string, location_ulid?: string|null, meetup_link?: string|null} $input */
             $input = $request->validate($this->eventRules(partial: true), $this->eventMessages());
 
-            return $this->jsonResponse($this->eventPayload($updateEvent->handle($event, $this->eventAttributes($input, $event))));
+            return $this->jsonResponse(EventResource::make($updateEvent->handle($event, $this->eventAttributes($input, $event)))->resolve());
         });
     }
 

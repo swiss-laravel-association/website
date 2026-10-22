@@ -3,8 +3,8 @@
 namespace App\Mcp\Tools\Posts;
 
 use App\Actions\Posts\UpdatePost;
+use App\Http\Resources\PostResource;
 use App\Mcp\Tools\Concerns\AuthorizesToolCalls;
-use App\Mcp\Tools\Concerns\SerializesPosts;
 use App\Models\Post;
 use Illuminate\Contracts\JsonSchema\JsonSchema;
 use Illuminate\JsonSchema\Types\Type;
@@ -21,7 +21,6 @@ use Laravel\Mcp\Server\Tools\Annotations\IsIdempotent;
 class UpdatePostTool extends Tool
 {
     use AuthorizesToolCalls;
-    use SerializesPosts;
 
     public function handle(Request $request, UpdatePost $updatePost): Response
     {
@@ -46,7 +45,7 @@ class UpdatePostTool extends Tool
 
             $post = $updatePost->handle($post, $input, $authorIds);
 
-            return $this->jsonResponse($this->postPayload($post->unsetRelation('authors')));
+            return $this->jsonResponse(PostResource::make($post->unsetRelation('authors'))->resolve());
         });
     }
 

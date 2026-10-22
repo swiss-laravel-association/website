@@ -3,8 +3,8 @@
 namespace App\Mcp\Tools\Posts;
 
 use App\Actions\Posts\UnpublishPost;
+use App\Http\Resources\PostResource;
 use App\Mcp\Tools\Concerns\AuthorizesToolCalls;
-use App\Mcp\Tools\Concerns\SerializesPosts;
 use App\Models\Post;
 use Illuminate\Contracts\JsonSchema\JsonSchema;
 use Illuminate\JsonSchema\Types\Type;
@@ -21,7 +21,6 @@ use Laravel\Mcp\Server\Tools\Annotations\IsIdempotent;
 class UnpublishPostTool extends Tool
 {
     use AuthorizesToolCalls;
-    use SerializesPosts;
 
     public function handle(Request $request, UnpublishPost $action): Response
     {
@@ -32,7 +31,7 @@ class UnpublishPostTool extends Tool
 
             $this->authorize($request, 'publish', $post);
 
-            return $this->jsonResponse($this->postPayload($action->handle($post)));
+            return $this->jsonResponse(PostResource::make($action->handle($post))->resolve());
         });
     }
 

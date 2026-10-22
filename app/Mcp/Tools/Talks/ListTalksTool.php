@@ -2,8 +2,8 @@
 
 namespace App\Mcp\Tools\Talks;
 
+use App\Http\Resources\TalkResource;
 use App\Mcp\Tools\Concerns\AuthorizesToolCalls;
-use App\Mcp\Tools\Concerns\SerializesMeetupContent;
 use App\Models\Talk;
 use Illuminate\Contracts\JsonSchema\JsonSchema;
 use Illuminate\JsonSchema\Types\Type;
@@ -20,7 +20,6 @@ use Laravel\Mcp\Server\Tools\Annotations\IsReadOnly;
 class ListTalksTool extends Tool
 {
     use AuthorizesToolCalls;
-    use SerializesMeetupContent;
 
     public function handle(Request $request): Response
     {
@@ -29,7 +28,7 @@ class ListTalksTool extends Tool
 
             $talks = Talk::query()->orderBy('title')->get();
 
-            return $this->jsonResponse($talks->map(fn (Talk $talk): array => $this->talkPayload($talk))->all());
+            return $this->jsonResponse(TalkResource::collection($talks)->resolve());
         });
     }
 

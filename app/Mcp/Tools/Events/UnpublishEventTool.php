@@ -3,8 +3,8 @@
 namespace App\Mcp\Tools\Events;
 
 use App\Actions\Events\UnpublishEvent;
+use App\Http\Resources\EventResource;
 use App\Mcp\Tools\Concerns\AuthorizesToolCalls;
-use App\Mcp\Tools\Concerns\SerializesMeetupContent;
 use App\Models\Event;
 use Illuminate\Contracts\JsonSchema\JsonSchema;
 use Illuminate\JsonSchema\Types\Type;
@@ -21,7 +21,6 @@ use Laravel\Mcp\Server\Tools\Annotations\IsIdempotent;
 class UnpublishEventTool extends Tool
 {
     use AuthorizesToolCalls;
-    use SerializesMeetupContent;
 
     public function handle(Request $request, UnpublishEvent $unpublishEvent): Response
     {
@@ -32,7 +31,7 @@ class UnpublishEventTool extends Tool
 
             $this->authorize($request, 'publish', $event);
 
-            return $this->jsonResponse($this->eventPayload($unpublishEvent->handle($event)));
+            return $this->jsonResponse(EventResource::make($unpublishEvent->handle($event))->resolve());
         });
     }
 

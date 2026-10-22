@@ -2,8 +2,8 @@
 
 namespace App\Mcp\Tools\Posts;
 
+use App\Http\Resources\PostResource;
 use App\Mcp\Tools\Concerns\AuthorizesToolCalls;
-use App\Mcp\Tools\Concerns\SerializesPosts;
 use App\Models\Post;
 use Illuminate\Contracts\JsonSchema\JsonSchema;
 use Illuminate\JsonSchema\Types\Type;
@@ -20,7 +20,6 @@ use Laravel\Mcp\Server\Tools\Annotations\IsReadOnly;
 class GetPostTool extends Tool
 {
     use AuthorizesToolCalls;
-    use SerializesPosts;
 
     public function handle(Request $request): Response
     {
@@ -32,7 +31,7 @@ class GetPostTool extends Tool
             // PostPolicy::view only lets a token see published posts. Editors need to read drafts too.
             $this->authorize($request, 'viewAny', Post::class);
 
-            return $this->jsonResponse($this->postPayload($post));
+            return $this->jsonResponse(PostResource::make($post)->resolve());
         });
     }
 

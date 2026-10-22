@@ -3,8 +3,8 @@
 namespace App\Mcp\Tools\Posts;
 
 use App\Actions\Posts\CreatePost;
+use App\Http\Resources\PostResource;
 use App\Mcp\Tools\Concerns\AuthorizesToolCalls;
-use App\Mcp\Tools\Concerns\SerializesPosts;
 use App\Models\Post;
 use Illuminate\Contracts\JsonSchema\JsonSchema;
 use Illuminate\JsonSchema\Types\Type;
@@ -19,7 +19,6 @@ use Laravel\Mcp\Server\Tool;
 class CreatePostTool extends Tool
 {
     use AuthorizesToolCalls;
-    use SerializesPosts;
 
     public function handle(Request $request, CreatePost $createPost): Response
     {
@@ -43,7 +42,7 @@ class CreatePostTool extends Tool
                 'excerpt' => $validated['excerpt'],
             ], array_values($authorIds));
 
-            return $this->jsonResponse($this->postPayload($post->refresh()));
+            return $this->jsonResponse(PostResource::make($post->refresh())->resolve());
         });
     }
 

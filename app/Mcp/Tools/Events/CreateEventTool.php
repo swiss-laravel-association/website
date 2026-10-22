@@ -3,8 +3,8 @@
 namespace App\Mcp\Tools\Events;
 
 use App\Actions\Events\CreateEvent;
+use App\Http\Resources\EventResource;
 use App\Mcp\Tools\Concerns\AuthorizesToolCalls;
-use App\Mcp\Tools\Concerns\SerializesMeetupContent;
 use App\Mcp\Tools\Concerns\ValidatesEventInput;
 use App\Models\Event;
 use Illuminate\Contracts\JsonSchema\JsonSchema;
@@ -20,7 +20,6 @@ use Laravel\Mcp\Server\Tool;
 class CreateEventTool extends Tool
 {
     use AuthorizesToolCalls;
-    use SerializesMeetupContent;
     use ValidatesEventInput;
 
     public function handle(Request $request, CreateEvent $createEvent): Response
@@ -34,7 +33,7 @@ class CreateEventTool extends Tool
             /** @var array{name: string, description: string, start_date: string, end_date: string, location_id?: int|null, meetup_link?: string|null} $attributes */
             $attributes = $this->eventAttributes($validated);
 
-            return $this->jsonResponse($this->eventPayload($createEvent->handle($attributes)->refresh()));
+            return $this->jsonResponse(EventResource::make($createEvent->handle($attributes)->refresh())->resolve());
         });
     }
 
