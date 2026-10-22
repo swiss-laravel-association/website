@@ -9,14 +9,14 @@
             <x-slot name="description">Copy it now. It is not shown again.</x-slot>
 
             <div
-                x-data="{ copied: false }"
+                x-data="{ copied: false, token: @js($newToken) }"
                 class="flex flex-col gap-3"
             >
                 <code class="block break-all rounded-lg bg-gray-100 p-3 font-mono text-sm dark:bg-white/5" data-test="new-token">{{ $newToken }}</code>
                 <div class="flex gap-2">
                     <x-filament::button
                         size="sm"
-                        x-on:click="navigator.clipboard.writeText(@js($newToken)); copied = true"
+                        x-on:click="navigator.clipboard.writeText(token).then(() => copied = true)"
                     >
                         <span x-text="copied ? 'Copied' : 'Copy'"></span>
                     </x-filament::button>

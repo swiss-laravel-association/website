@@ -46,6 +46,9 @@ it('creates a token with the selected abilities and exposes the plain-text value
     $plainText = $component->get('newToken');
     expect($plainText)->toStartWith($token->getKey().'|');
 
+    $component->assertSeeHtml('token: '.Js::from($plainText))
+        ->assertDontSeeHtml('@js(');
+
     $component->call('dismissNewToken')->assertSet('newToken', null);
 });
 
