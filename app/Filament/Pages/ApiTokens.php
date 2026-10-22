@@ -60,6 +60,9 @@ class ApiTokens extends Page implements HasActions, HasTable
                 TextColumn::make('name'),
                 TextColumn::make('abilities')
                     ->badge()
+                    ->listWithLineBreaks()
+                    ->limitList(3)
+                    ->expandableLimitedList()
                     ->formatStateUsing(fn (string $state): string => Ability::tryFrom($state)?->getLabel() ?? $state),
                 TextColumn::make('last_used_at')
                     ->dateTime()
