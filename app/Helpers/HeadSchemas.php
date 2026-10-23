@@ -5,7 +5,9 @@ namespace App\Helpers;
 use App\Models\Event;
 use App\Models\Speaker;
 use App\Models\Talk;
+use Illuminate\Support\Carbon;
 use Illuminate\Support\Collection;
+use Illuminate\Support\Facades\Vite;
 use Illuminate\Support\Str;
 use Laravel\Head\Facades\Schema;
 use Laravel\Head\Schema\SchemaObject;
@@ -18,6 +20,29 @@ use Laravel\Head\Schema\SchemaObject;
  */
 class HeadSchemas
 {
+    public static function organization(): SchemaObject
+    {
+        return Schema::organization()
+            ->name(config('sla.name'))
+            ->url(config('sla.url'))
+            ->logo(Vite::asset(config('sla.logo')))
+            ->set('legalName', config('sla.legal_name'))
+            ->date('foundingDate', Carbon::parse(config('sla.founding_date'))->startOfDay())
+            ->set('description', config('sla.description'))
+            ->set('email', config('sla.contact.email'))
+            ->set('telephone', config('sla.contact.phone'))
+            ->set('address', Schema::make('PostalAddress')
+                ->set('streetAddress', config('sla.address.street'))
+                ->set('postalCode', config('sla.address.postal_code'))
+                ->set('addressLocality', config('sla.address.city'))
+                ->set('addressCountry', config('sla.address.country_code')))
+            ->set('contactPoint', Schema::make('ContactPoint')
+                ->set('email', config('sla.contact.email'))
+                ->set('telephone', config('sla.contact.phone'))
+                ->set('availableLanguage', Schema::make('Language')->set('name', 'English')))
+            ->set('sameAs', array_values(config('sla.socials')));
+    }
+
     /**
      * Pass $withTalks = false in listings to avoid loading talks and speakers for every event.
      */

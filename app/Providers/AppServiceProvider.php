@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace App\Providers;
 
+use App\Helpers\HeadSchemas;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\ServiceProvider;
 use Laravel\Head\Enums\OgType;
@@ -35,6 +36,7 @@ class AppServiceProvider extends ServiceProvider
             ->robots('max-snippet:-1,max-image-preview:large,max-video-preview:-1')
             ->og(type: OgType::Website, siteName: config('sla.name'), locale: 'en_US')
             ->ogImage(asset('images/default-open-graph-image.webp'), alt: config('sla.name'))
-            ->twitter(card: TwitterCard::SummaryWithLargeImage, site: '@swisslaravel'));
+            ->twitter(card: TwitterCard::SummaryWithLargeImage, site: '@swisslaravel')
+            ->schema(HeadSchemas::organization()));
     }
 }

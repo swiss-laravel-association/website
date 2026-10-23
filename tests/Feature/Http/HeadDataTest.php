@@ -151,3 +151,23 @@ it('renders a speaker without optional profile fields', function (): void {
 
     get($speaker->show_url)->assertOk();
 });
+
+it('renders the Organization schema on every page', function (): void {
+    $schema = jsonLdOfType(get(route('home'))->assertOk()->getContent(), 'Organization');
+
+    expect($schema['name'])->toBe(config('sla.name'))
+        ->and($schema['legalName'])->toBe(config('sla.legal_name'))
+        ->and($schema['address']['addressCountry'])->toBe('CH')
+        ->and($schema['sameAs'])->toBe(array_values(config('sla.socials')));
+});
+
+it('renders a BreadcrumbList schema in the head that falls back to the current page for the last crumb', function (): void {
+    $html = get(route('events.index'))->assertOk()->getContent();
+
+    $schema = jsonLdOfType($html, 'BreadcrumbList');
+
+    expect($schema['itemListElement'])->toHaveCount(2)
+        ->and($schema['itemListElement'][0])->toMatchArray(['position' => 1, 'name' => 'Home', 'item' => route('home')])
+        ->and($schema['itemListElement'][1])->toMatchArray(['position' => 2, 'name' => 'Events', 'item' => route('events.index')])
+        ->and(strpos($html, 'BreadcrumbList'))->toBeLessThan(strpos($html, '</head>'));
+});

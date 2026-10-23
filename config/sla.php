@@ -9,7 +9,7 @@ return [
     |--------------------------------------------------------------------------
     |
     | These values describe the association as a single source of truth. Both
-    | the Organization JSON-LD (rendered globally via SchemaHelper) and the
+    | the Organization JSON-LD (see HeadSchemas::organization()) and the
     | imprint page read from here. Update them in one place.
     */
 

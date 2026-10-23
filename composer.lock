@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "d7058505b471cc76a81cd3d692d155b5",
+    "content-hash": "cc997dc0f4e7383173af320243dab16c",
     "packages": [
         {
             "name": "anourvalar/eloquent-serialize",
@@ -6801,79 +6801,6 @@
                 }
             ],
             "time": "2026-10-17T08:57:09+00:00"
-        },
-        {
-            "name": "spatie/schema-org",
-            "version": "5.0.2",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/spatie/schema-org.git",
-                "reference": "8c4fe7ed874a1f8bb4de62c70d41bed0b9e3114a"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/spatie/schema-org/zipball/8c4fe7ed874a1f8bb4de62c70d41bed0b9e3114a",
-                "reference": "8c4fe7ed874a1f8bb4de62c70d41bed0b9e3114a",
-                "shasum": ""
-            },
-            "require": {
-                "ext-json": "*",
-                "php": "^8.4"
-            },
-            "require-dev": {
-                "friendsofphp/php-cs-fixer": "^3.88.2",
-                "graham-campbell/analyzer": "^5.0.0",
-                "illuminate/collections": "^10",
-                "league/flysystem": "^3.30",
-                "pestphp/pest": "^5.0.4",
-                "symfony/console": "^6.0 || ^7.3.4",
-                "twig/twig": "^3.21.1"
-            },
-            "type": "library",
-            "autoload": {
-                "psr-4": {
-                    "Spatie\\SchemaOrg\\": "src"
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "Sebastian De Deyne",
-                    "email": "sebastian@spatie.be",
-                    "homepage": "https://spatie.be",
-                    "role": "Developer"
-                },
-                {
-                    "name": "Tom Witkowski",
-                    "email": "dev.gummibeer@gmail.com",
-                    "homepage": "https://gummibeer.de",
-                    "role": "Developer"
-                }
-            ],
-            "description": "A fluent builder Schema.org types and ld+json generator",
-            "homepage": "https://github.com/spatie/schema-org",
-            "keywords": [
-                "schema-org",
-                "spatie"
-            ],
-            "support": {
-                "issues": "https://github.com/spatie/schema-org/issues",
-                "source": "https://github.com/spatie/schema-org/tree/5.0.2"
-            },
-            "funding": [
-                {
-                    "url": "https://spatie.be/open-source/support-us",
-                    "type": "custom"
-                },
-                {
-                    "url": "https://github.com/spatie",
-                    "type": "github"
-                }
-            ],
-            "time": "2026-09-30T06:09:48+00:00"
         },
         {
             "name": "spatie/shiki-php",
