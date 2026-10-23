@@ -3,7 +3,6 @@
 namespace Database\Factories;
 
 use App\Models\Event;
-use App\Models\Location;
 use Illuminate\Database\Eloquent\Factories\Factory;
 use Illuminate\Support\Carbon;
 

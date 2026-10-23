@@ -3,7 +3,6 @@
 declare(strict_types=1);
 
 use Rector\Config\RectorConfig;
-use Rector\Php81\Rector\Array_\FirstClassCallableRector;
 use Rector\Set\ValueObject\SetList;
 
 return RectorConfig::configure()
@@ -23,11 +22,6 @@ return RectorConfig::configure()
         SetList::CODE_QUALITY,
         SetList::DEAD_CODE,
         SetList::TYPE_DECLARATION,
-    ])
-    ->withSkip([
-        FirstClassCallableRector::class => [
-            __DIR__.'/routes',
-        ],
     ])
     ->withImportNames(importDocBlockNames: false)
     ->withParallel(timeoutSeconds: 600);

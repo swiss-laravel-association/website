@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 use App\Http\Controllers\Association\SponsorsController;
 use App\Http\Controllers\BlogController;
 use App\Http\Controllers\HomepageController;

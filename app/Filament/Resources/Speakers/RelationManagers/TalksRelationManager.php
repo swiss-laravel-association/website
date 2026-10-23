@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App\Filament\Resources\Speakers\RelationManagers;
 
 use App\Filament\Resources\Talks\Schemas\TalkForm;

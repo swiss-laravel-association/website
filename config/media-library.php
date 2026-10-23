@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 use Spatie\ImageOptimizer\Optimizers\Avifenc;
 use Spatie\ImageOptimizer\Optimizers\Cwebp;
 use Spatie\ImageOptimizer\Optimizers\Gifsicle;
@@ -24,7 +26,6 @@ use Spatie\MediaLibrary\Support\FileNamer\DefaultFileNamer;
 use Spatie\MediaLibrary\Support\FileRemover\DefaultFileRemover;
 use Spatie\MediaLibrary\Support\PathGenerator\DefaultPathGenerator;
 use Spatie\MediaLibrary\Support\UrlGenerator\DefaultUrlGenerator;
-use Spatie\MediaLibraryPro\Models\TemporaryUpload;
 
 return [
 

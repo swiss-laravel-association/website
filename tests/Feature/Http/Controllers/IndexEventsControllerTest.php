@@ -78,7 +78,7 @@ it('does not duplicate the next event in the upcoming events list', function ():
 it('paginates past events at ten per page', function (): void {
     $location = Location::factory()->create();
 
-    Event::factory()->count(12)->sequence(fn ($sequence) => [
+    Event::factory()->count(12)->sequence(fn ($sequence): array => [
         'start_date' => Carbon::now()->subDays($sequence->index + 1),
         'end_date' => Carbon::now()->subDays($sequence->index + 1)->addHours(3),
         'location_id' => $location->id,
@@ -87,7 +87,7 @@ it('paginates past events at ten per page', function (): void {
     $response = $this->get(route('events.index'));
 
     $response->assertStatus(200);
-    $response->assertViewHas('pastEvents', fn ($pastEvents) => $pastEvents->total() === 12
+    $response->assertViewHas('pastEvents', fn ($pastEvents): bool => $pastEvents->total() === 12
         && $pastEvents->perPage() === 10
         && $pastEvents->count() === 10);
 });

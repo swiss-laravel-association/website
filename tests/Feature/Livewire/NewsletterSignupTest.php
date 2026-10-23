@@ -37,7 +37,7 @@ it('subscribes user to newsletter', function (): void {
     ]);
 });
 
-it('throws validation error if name, email and turnstile fails', function () {
+it('throws validation error if name, email and turnstile fails', function (): void {
     Turnstile::fake()->fail();
 
     Livewire::test(NewsletterSignup::class)
@@ -55,7 +55,7 @@ it('throws validation error if name, email and turnstile fails', function () {
     assertDatabaseCount(NewsletterSubscriber::class, 0);
 });
 
-it('throws validation error if email already exists', function () {
+it('throws validation error if email already exists', function (): void {
     Turnstile::fake();
 
     NewsletterSubscriber::factory()->create([

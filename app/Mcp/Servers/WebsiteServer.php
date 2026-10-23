@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App\Mcp\Servers;
 
 use App\Mcp\Tools\Events\CreateEventTool;

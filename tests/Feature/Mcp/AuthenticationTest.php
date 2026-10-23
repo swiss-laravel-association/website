@@ -49,7 +49,7 @@ it('rejects an expired token with 401', function (): void {
 
 it('returns every registered tool from a single tools/list call', function (): void {
     $token = User::factory()->create()->createToken('t', ['events:view']);
-    $registered = (fn (): array => $this->tools)->call((new ReflectionClass(WebsiteServer::class))->newInstanceWithoutConstructor());
+    $registered = (fn (): array => $this->tools)->call(new ReflectionClass(WebsiteServer::class)->newInstanceWithoutConstructor());
 
     $response = mcpRequest('tools/list', token: $token->plainTextToken)->assertOk();
 

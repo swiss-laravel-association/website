@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App\Filament\Resources\Events\Schemas;
 
 use App\Filament\Resources\Locations\Schemas\LocationForm;
