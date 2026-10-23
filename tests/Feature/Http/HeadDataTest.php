@@ -157,7 +157,8 @@ it('renders the Organization schema on every page', function (): void {
 
     expect($schema['name'])->toBe(config('sla.name'))
         ->and($schema['legalName'])->toBe(config('sla.legal_name'))
-        ->and($schema['address']['addressCountry'])->toBe('CH')
+        ->and($schema)->not->toHaveKeys(['address', 'telephone'])
+        ->and($schema['contactPoint'])->not->toHaveKey('telephone')
         ->and($schema['sameAs'])->toBe(array_values(config('sla.socials')));
 });
 

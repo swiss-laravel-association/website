@@ -20,6 +20,9 @@ use Laravel\Head\Schema\SchemaObject;
  */
 class HeadSchemas
 {
+    /**
+     * The postal address and phone number are private, so they are left out of the JSON-LD.
+     */
     public static function organization(): SchemaObject
     {
         return Schema::organization()
@@ -30,15 +33,8 @@ class HeadSchemas
             ->date('foundingDate', Carbon::parse(config('sla.founding_date'))->startOfDay())
             ->set('description', config('sla.description'))
             ->set('email', config('sla.contact.email'))
-            ->set('telephone', config('sla.contact.phone'))
-            ->set('address', Schema::make('PostalAddress')
-                ->set('streetAddress', config('sla.address.street'))
-                ->set('postalCode', config('sla.address.postal_code'))
-                ->set('addressLocality', config('sla.address.city'))
-                ->set('addressCountry', config('sla.address.country_code')))
             ->set('contactPoint', Schema::make('ContactPoint')
                 ->set('email', config('sla.contact.email'))
-                ->set('telephone', config('sla.contact.phone'))
                 ->set('availableLanguage', Schema::make('Language')->set('name', 'English')))
             ->set('sameAs', array_values(config('sla.socials')));
     }
