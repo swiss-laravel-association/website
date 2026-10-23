@@ -6,15 +6,16 @@ it('returns a successful response', function (): void {
     $response->assertStatus(200);
 });
 
-it('renders the global Organization JSON-LD with the address from config', function (): void {
+it('renders the global Organization JSON-LD without the private address and phone number', function (): void {
     $response = $this->get('/');
 
     $response->assertStatus(200);
     $response->assertSee('"@type":"Organization"', false);
-    $response->assertSee('"streetAddress":"Boulevard Lilienthal 54"', false);
-    $response->assertSee('"postalCode":"8152"', false);
-    $response->assertSee('"addressLocality":"Glattpark"', false);
     $response->assertSee('"email":"sandro@laravel.swiss"', false);
+    $response->assertDontSee('Boulevard Lilienthal', false);
+    $response->assertDontSee('Glattpark', false);
+    $response->assertDontSee('+41 79 298 36 35', false);
+    $response->assertDontSee('"telephone"', false);
 });
 
 it('renders a title and meta description on the homepage', function (): void {

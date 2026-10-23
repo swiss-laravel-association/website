@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App\Filament\Resources\Talks;
 
 use App\Filament\Resources\Talks\Pages\CreateTalk;

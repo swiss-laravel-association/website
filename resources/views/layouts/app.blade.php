@@ -4,7 +4,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    {!! seo() !!}
+    @head
 
     <meta name="fediverse:creator" content="@swiss_laravel_association@phpc.social" />
 
@@ -26,8 +26,6 @@
     @vite(['resources/css/app.css', 'resources/js/app.js'])
 
     @fluxAppearance
-
-    {!! \App\Helpers\SchemaHelper::render() !!}
 </head>
 
 

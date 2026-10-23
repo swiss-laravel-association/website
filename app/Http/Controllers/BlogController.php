@@ -5,7 +5,8 @@ namespace App\Http\Controllers;
 use App\Helpers\Breadcrumbs;
 use App\Models\Post;
 use Illuminate\Contracts\View\View;
-use RalphJSmit\Laravel\SEO\Support\SEOData;
+use Laravel\Head\Enums\OgType;
+use Laravel\Head\Facades\Head;
 
 class BlogController extends Controller
 {
@@ -16,10 +17,8 @@ class BlogController extends Controller
             ->latest('published_at')
             ->get();
 
-        seo(new SEOData(
-            title: 'Blog',
-            description: 'News and updates from the Swiss Laravel Association.',
-        ));
+        Head::title('Blog')
+            ->description('News and updates from the Swiss Laravel Association.');
 
         return view('blog.index', [
             'posts' => $posts,
@@ -30,7 +29,13 @@ class BlogController extends Controller
 
     public function show(Post $post): View
     {
-        seo($post);
+        Head::title($post->title)
+            ->description($post->excerpt)
+            ->og(type: OgType::Article);
+
+        if ($post->published_at !== null) {
+            Head::meta('article:published_time', $post->published_at->toIso8601String());
+        }
 
         return view('blog.show', [
             'post' => $post,

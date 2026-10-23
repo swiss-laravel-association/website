@@ -3,10 +3,13 @@
 namespace App\Http\Controllers;
 
 use App\Helpers\Breadcrumbs;
+use App\Helpers\HeadSchemas;
 use App\Models\Event;
 use Illuminate\Contracts\View\View;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
+use Illuminate\Support\Str;
+use Laravel\Head\Facades\Head;
 
 class ShowEventController extends Controller
 {
@@ -18,7 +21,9 @@ class ShowEventController extends Controller
 
         $event->load(['location', 'talks.speakers']);
 
-        seo($event);
+        Head::title($event->name)
+            ->description(Str::limit($event->description, 160))
+            ->schema(HeadSchemas::event($event));
 
         return view('pages.events.show', [
             'event' => $event,

@@ -1,10 +1,16 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App\Providers;
 
+use App\Helpers\HeadSchemas;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\ServiceProvider;
-use RalphJSmit\Laravel\SEO\TagManager;
+use Laravel\Head\Enums\OgType;
+use Laravel\Head\Enums\TwitterCard;
+use Laravel\Head\Facades\Head;
+use Laravel\Head\HeadBuilder;
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -13,9 +19,7 @@ class AppServiceProvider extends ServiceProvider
      */
     public function register(): void
     {
-        // Share a single TagManager across each request so seo() calls from
-        // the controller and the layout operate on the same instance.
-        $this->app->scoped(TagManager::class);
+        //
     }
 
     /**
@@ -24,5 +28,15 @@ class AppServiceProvider extends ServiceProvider
     public function boot(): void
     {
         Model::unguard();
+
+        Head::defaults(fn (HeadBuilder $head): HeadBuilder => $head
+            ->title(config('sla.name'), suffix: ' | '.config('sla.name'))
+            ->description(config('sla.description'))
+            ->canonical()
+            ->robots('max-snippet:-1,max-image-preview:large,max-video-preview:-1')
+            ->og(type: OgType::Website, siteName: config('sla.name'), locale: 'en_US')
+            ->ogImage(asset('images/default-open-graph-image.webp'), alt: config('sla.name'))
+            ->twitter(card: TwitterCard::SummaryWithLargeImage, site: '@swisslaravel')
+            ->schema(HeadSchemas::organization()));
     }
 }

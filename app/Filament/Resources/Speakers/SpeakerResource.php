@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App\Filament\Resources\Speakers;
 
 use App\Filament\Resources\Speakers\Pages\CreateSpeaker;

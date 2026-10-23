@@ -18,19 +18,14 @@
 
 @if (! empty($items))
     @php
-        $schemaItems = [];
-
-        foreach ($items as $index => $item) {
-            $listItem = \Spatie\SchemaOrg\Schema::listItem()
-                ->position($index + 1)
-                ->name($item['label']);
-
-            if (isset($item['url'])) {
-                $listItem->item($item['url']);
-            }
-
-            $schemaItems[] = $listItem;
-        }
+        // The slot renders before the layout's @head directive runs, so the schema reaches the <head>.
+        // The last crumb has no url, so it falls back to the current page.
+        \Laravel\Head\Facades\Head::schema(
+            collect($items)->reduce(
+                fn ($breadcrumbs, $item) => $breadcrumbs->item($item['label'], $item['url'] ?? url()->current()),
+                \Laravel\Head\Facades\Schema::breadcrumbs(),
+            )
+        );
     @endphp
 
     <flux:breadcrumbs {{ $attributes }}>
@@ -46,6 +41,4 @@
             </flux:breadcrumbs.item>
         @endforeach
     </flux:breadcrumbs>
-
-    {!! \Spatie\SchemaOrg\Schema::breadcrumbList()->itemListElement($schemaItems)->toScript() !!}
 @endif

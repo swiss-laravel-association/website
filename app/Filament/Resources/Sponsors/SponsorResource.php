@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App\Filament\Resources\Sponsors;
 
 use App\Filament\Resources\Sponsors\Pages\CreateSponsor;

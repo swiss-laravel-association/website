@@ -50,17 +50,15 @@ class EventsTable
                         DatePicker::make('start_until')
                             ->label('Start until'),
                     ])
-                    ->query(function (Builder $query, array $data): Builder {
-                        return $query
-                            ->when(
-                                $data['start_from'],
-                                fn (Builder $query, $date): Builder => $query->whereDate('start_date', '>=', $date),
-                            )
-                            ->when(
-                                $data['start_until'],
-                                fn (Builder $query, $date): Builder => $query->whereDate('start_date', '<=', $date),
-                            );
-                    }),
+                    ->query(fn (Builder $query, array $data): Builder => $query
+                        ->when(
+                            $data['start_from'],
+                            fn (Builder $query, $date): Builder => $query->whereDate('start_date', '>=', $date),
+                        )
+                        ->when(
+                            $data['start_until'],
+                            fn (Builder $query, $date): Builder => $query->whereDate('start_date', '<=', $date),
+                        )),
             ])
             ->recordActions([
                 EditAction::make(),
