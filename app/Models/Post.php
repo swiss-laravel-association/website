@@ -13,9 +13,6 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Illuminate\Support\Carbon;
 use Illuminate\Support\Str;
-use RalphJSmit\Laravel\SEO\Models\SEO;
-use RalphJSmit\Laravel\SEO\Support\HasSEO;
-use RalphJSmit\Laravel\SEO\Support\SEOData;
 use Spatie\Sitemap\Contracts\Sitemapable;
 use Spatie\Sitemap\Tags\Url;
 use Spatie\Sluggable\HasSlug;
@@ -34,7 +31,6 @@ use Spatie\Sluggable\SlugOptions;
  * @property-read Collection<int, User> $authors
  * @property-read int|null $authors_count
  * @property-read mixed $parsed_content
- * @property-read SEO $seo
  *
  * @method static \Database\Factories\PostFactory factory($count = null, $state = [])
  * @method static Builder<static>|Post newModelQuery()
@@ -57,7 +53,6 @@ class Post extends Model implements Sitemapable
     /** @use HasFactory<PostFactory> */
     use HasFactory;
 
-    use HasSEO;
     use HasSlug;
     use HasUlids;
 
@@ -92,15 +87,6 @@ class Post extends Model implements Sitemapable
         return SlugOptions::create()
             ->generateSlugsFrom('title')
             ->saveSlugsTo('slug');
-    }
-
-    public function getDynamicSEOData(): SEOData
-    {
-        return new SEOData(
-            title: $this->title,
-            description: $this->excerpt,
-            // image: $this->getFirstMedia('og_image')?->getUrl(),
-        );
     }
 
     public function toSitemapTag(): Url

@@ -2,23 +2,28 @@
 
 namespace App\Http\Controllers;
 
+use App\Helpers\HeadSchemas;
 use App\Models\Sponsor;
 use App\Queries\PastEvents;
 use App\Queries\UpcomingEvents;
 use Illuminate\Contracts\View\View;
-use RalphJSmit\Laravel\SEO\Support\SEOData;
+use Laravel\Head\Facades\Head;
 
 class HomepageController extends Controller
 {
     public function __invoke(UpcomingEvents $upcomingEvents, PastEvents $pastEvents): View
     {
-        seo(new SEOData(
-            description: 'The Swiss Laravel Association brings PHP and Laravel developers together at monthly meetups across Switzerland.',
-        ));
+        $futureEvents = $upcomingEvents->query()->limit(6)->get();
+
+        Head::description('The Swiss Laravel Association brings PHP and Laravel developers together at monthly meetups across Switzerland.');
+
+        if ($futureEvents->isNotEmpty()) {
+            Head::schema(HeadSchemas::eventList($futureEvents, 'Upcoming meetups'));
+        }
 
         return view('pages.homepage', [
-            'nextEvent' => $upcomingEvents->query()->first(),
-            'futureEvents' => $upcomingEvents->query()->limit(6)->get(),
+            'nextEvent' => $futureEvents->first(),
+            'futureEvents' => $futureEvents,
             'pastEvents' => $pastEvents->query()->limit(6)->get(),
             'sponsors' => Sponsor::query()
                 ->with(['media'])

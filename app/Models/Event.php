@@ -15,11 +15,7 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Illuminate\Support\Carbon;
-use Illuminate\Support\Str;
 use Override;
-use RalphJSmit\Laravel\SEO\Models\SEO;
-use RalphJSmit\Laravel\SEO\Support\HasSEO;
-use RalphJSmit\Laravel\SEO\Support\SEOData;
 use Spatie\Sitemap\Contracts\Sitemapable;
 use Spatie\Sitemap\Tags\Url;
 use Spatie\Sluggable\HasSlug;
@@ -40,7 +36,6 @@ use Spatie\Sluggable\SlugOptions;
  * @property string|null $slug
  * @property-read Location|null $location
  * @property-read CarbonPeriodImmutable $period
- * @property-read SEO $seo
  * @property-read string $show_url
  * @property-read Collection<int, Talk> $talks
  * @property-read int|null $talks_count
@@ -73,7 +68,6 @@ class Event extends Model implements Sitemapable
     /** @use HasFactory<EventFactory> */
     use HasFactory;
 
-    use HasSEO;
     use HasSlug, HasSlugUlidPermalink {
         HasSlugUlidPermalink::resolveRouteBinding insteadof HasSlug;
     }
@@ -104,16 +98,6 @@ class Event extends Model implements Sitemapable
             ->generateSlugsFrom('name')
             ->saveSlugsTo('slug')
             ->allowDuplicateSlugs();
-    }
-
-    public function getDynamicSEOData(): SEOData
-    {
-        return new SEOData(
-            title: $this->name,
-            description: Str::limit($this->description, 160),
-            published_time: $this->start_date,
-            type: 'event',
-        );
     }
 
     protected function casts(): array
