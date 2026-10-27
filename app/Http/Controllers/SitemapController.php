@@ -15,6 +15,7 @@ class SitemapController extends Controller
     {
         return Sitemap::create()
             ->add(Url::create(route('home'))->setPriority(1.0))
+            ->add(route('association.about'))
             ->add(route('association.sponsors'))
             ->add(route('blog.index'))
             ->add(route('events.index'))

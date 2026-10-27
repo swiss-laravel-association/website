@@ -28,7 +28,7 @@
     "src": "_instrument-serif-400-italic-DKMiL14s.woff2"
   },
   "resources/css/app.css": {
-    "file": "assets/app-aKMs9i5M.css",
+    "file": "assets/app-XAVcQRD1.css",
     "name": "app",
     "names": [
       "app.css"
@@ -223,6 +223,26 @@
   "resources/images/sponsoring/logos/sysco.png": {
     "file": "assets/sysco-B_wOdapU.png",
     "src": "resources/images/sponsoring/logos/sysco.png"
+  },
+  "resources/images/team/gehrisandro.webp": {
+    "file": "assets/gehrisandro-DXd7Vx8o.webp",
+    "src": "resources/images/team/gehrisandro.webp"
+  },
+  "resources/images/team/najbo.webp": {
+    "file": "assets/najbo-BWAV6GuM.webp",
+    "src": "resources/images/team/najbo.webp"
+  },
+  "resources/images/team/saschagysel.webp": {
+    "file": "assets/saschagysel-CdD5-SKF.webp",
+    "src": "resources/images/team/saschagysel.webp"
+  },
+  "resources/images/team/stefanzweifel.webp": {
+    "file": "assets/stefanzweifel-B3QgzHG1.webp",
+    "src": "resources/images/team/stefanzweifel.webp"
+  },
+  "resources/images/team/xanobius.webp": {
+    "file": "assets/xanobius-BYj5ke0d.webp",
+    "src": "resources/images/team/xanobius.webp"
   },
   "resources/js/app.js": {
     "file": "assets/app-BINTqAfV.js",

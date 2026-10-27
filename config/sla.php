@@ -30,7 +30,25 @@ return [
 
     'contact' => [
         'email' => 'sandro@laravel.swiss',
+        'general_email' => 'info@laravel.swiss',
         'phone' => '+41 79 298 36 35',
+    ],
+
+    /*
+    |--------------------------------------------------------------------------
+    | Executive committee
+    |--------------------------------------------------------------------------
+    |
+    | Shown on the about page. Avatars live in resources/images/team and are
+    | named after the GitHub username.
+    */
+
+    'executive_committee' => [
+        ['name' => 'Philipp Lauwiner', 'role' => 'Co-Chair', 'github' => 'xanobius'],
+        ['name' => 'Stefan Zweifel', 'role' => 'Co-Chair', 'github' => 'stefanzweifel'],
+        ['name' => 'Sascha Gysel', 'role' => 'Treasurer', 'github' => 'saschagysel'],
+        ['name' => 'Sandro Gehri', 'role' => 'Actuary', 'github' => 'gehrisandro'],
+        ['name' => 'Jan Boesch', 'role' => 'Assessor', 'github' => 'najbo'],
     ],
 
     'socials' => [

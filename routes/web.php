@@ -2,6 +2,7 @@
 
 declare(strict_types=1);
 
+use App\Http\Controllers\Association\AboutController;
 use App\Http\Controllers\Association\SponsorsController;
 use App\Http\Controllers\BlogController;
 use App\Http\Controllers\HomepageController;
@@ -22,9 +23,9 @@ Route::get('/', HomepageController::class)->name('home');
 Route::get('/sitemap.xml', SitemapController::class)->name('sitemap');
 
 // TODO: Implement the following routes
-// Route::get('/association/about' fn () => '');
 // Route::get('/association/membership' fn () => '');
 // Route::get('/association/become-a-member' fn () => ''); // Not sure if we should have a dedicated page for this
+Route::get('/association/about', AboutController::class)->name('association.about');
 Route::get('/association/sponsors', SponsorsController::class)->name('association.sponsors');
 // Route::get('/association/leadership' fn () => '');
 // Route::get('/association/members/{member:slug}' fn () => '');
