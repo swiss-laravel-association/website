@@ -15,7 +15,8 @@ class HomepageController extends Controller
     {
         $futureEvents = $upcomingEvents->query()->limit(6)->get();
 
-        Head::description('The Swiss Laravel Association brings PHP and Laravel developers together at monthly meetups across Switzerland.');
+        Head::title('Swiss Laravel Association | Laravel Meetups in Switzerland', exact: true)
+            ->description('The Swiss Laravel Association brings PHP and Laravel developers together at monthly meetups across Switzerland.');
 
         if ($futureEvents->isNotEmpty()) {
             Head::schema(HeadSchemas::eventList($futureEvents, 'Upcoming meetups'));
