@@ -48,35 +48,12 @@ class HeadSchemas
             ->set('name', $event->name)
             ->set('url', $event->show_url)
             ->date('startDate', $event->start_date)
-            ->date('endDate', $event->end_date)
-            ->set('eventStatus', 'https://schema.org/EventScheduled')
-            ->set('eventAttendanceMode', 'https://schema.org/OfflineEventAttendanceMode')
-            ->set('image', asset('images/default-open-graph-image.webp'))
-            ->set('organizer',
-                Schema::organization()
-                    ->name(config('sla.name'))
-                    ->url(config('sla.url'))
-            );
+            ->date('endDate', $event->end_date);
+
+        static::setEventDetails($schema, $event);
 
         if (filled($event->description)) {
             $schema->set('description', Str::limit($event->description, 300));
-        }
-
-        if ($event->location) {
-            $address = Schema::make('PostalAddress')
-                ->set('postalCode', $event->location->zip_code)
-                ->set('addressLocality', $event->location->city)
-                ->set('addressCountry', config('sla.address.country_code'));
-
-            if (filled($event->location->address)) {
-                $address->set('streetAddress', $event->location->address);
-            }
-
-            $schema->set('location',
-                Schema::make('Place')
-                    ->set('name', $event->location->name)
-                    ->set('address', $address)
-            );
         }
 
         if ($withTalks && $event->talks->isNotEmpty()) {
@@ -211,6 +188,8 @@ class HeadSchemas
             ->date('startDate', $event->start_date)
             ->date('endDate', $event->end_date);
 
+        static::setEventDetails($schema, $event);
+
         if (filled($talk->description)) {
             $schema->set('description', Str::limit($talk->description, 300));
         }
@@ -220,6 +199,39 @@ class HeadSchemas
         }
 
         return $schema;
+    }
+
+    /**
+     * Google validates every subEvent as a standalone Event, so talks need the same location and details as their event.
+     */
+    protected static function setEventDetails(SchemaObject $schema, Event $event): void
+    {
+        $schema
+            ->set('eventStatus', 'https://schema.org/EventScheduled')
+            ->set('eventAttendanceMode', 'https://schema.org/OfflineEventAttendanceMode')
+            ->set('image', asset('images/default-open-graph-image.webp'))
+            ->set('organizer',
+                Schema::organization()
+                    ->name(config('sla.name'))
+                    ->url(config('sla.url'))
+            );
+
+        if ($event->location) {
+            $address = Schema::make('PostalAddress')
+                ->set('postalCode', $event->location->zip_code)
+                ->set('addressLocality', $event->location->city)
+                ->set('addressCountry', config('sla.address.country_code'));
+
+            if (filled($event->location->address)) {
+                $address->set('streetAddress', $event->location->address);
+            }
+
+            $schema->set('location',
+                Schema::make('Place')
+                    ->set('name', $event->location->name)
+                    ->set('address', $address)
+            );
+        }
     }
 
     /**
