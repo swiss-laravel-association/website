@@ -86,6 +86,20 @@ it('renders an Event schema with location, talks and speakers on the event page'
         ->and($schema['performer'][0]['name'])->toBe('Ada Lovelace');
 });
 
+it('gives talk sub events the location and details of their event', function (): void {
+    $event = Event::factory()
+        ->for(Location::factory(['name' => 'Helga', 'city' => 'Bern', 'zip_code' => '3011']))
+        ->create(['name' => 'June Meetup in Bern']);
+
+    $event->talks()->attach(Talk::factory()->create(['title' => 'Scaling Eloquent']));
+
+    $schema = jsonLdOfType(get($event->show_url)->assertOk()->getContent(), 'Event', 'June Meetup in Bern');
+
+    expect($schema['subEvent'][0])
+        ->toHaveKeys(['eventStatus', 'eventAttendanceMode', 'image', 'organizer'])
+        ->and($schema['subEvent'][0]['location'])->toBe($schema['location']);
+});
+
 it('renders ItemList schemas on the events index and homepage', function (): void {
     Event::factory()->create(['name' => 'Next Meetup', 'start_date' => Carbon::now()->addWeek(), 'end_date' => Carbon::now()->addWeek()->addHours(3)]);
     Event::factory()->create(['name' => 'Old Meetup', 'start_date' => Carbon::now()->subMonth(), 'end_date' => Carbon::now()->subMonth()->addHours(3)]);
