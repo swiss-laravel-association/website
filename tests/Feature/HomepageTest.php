@@ -21,6 +21,6 @@ it('renders the global Organization JSON-LD without the private address and phon
 it('renders a title and meta description on the homepage', function (): void {
     $response = $this->get('/');
 
-    $response->assertSee('<title>Swiss Laravel Association</title>', false);
+    $response->assertSee('<title>Swiss Laravel Association | Laravel Meetups in Switzerland</title>', false);
     $response->assertSee('<meta name="description"', false);
 });

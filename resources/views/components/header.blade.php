@@ -28,6 +28,10 @@
                           :current="request()->routeIs('association.sponsors')">
             Sponsors
         </flux:navbar.item>
+        <flux:navbar.item :href="route('association.about')"
+                          :current="request()->routeIs('association.about')">
+            About
+        </flux:navbar.item>
         <flux:navbar.item :href="route('blog.index')"
                           :current="request()->routeIs('blog.index')">
             Blog
@@ -40,7 +44,7 @@
                 <flux:navbar.item icon:trailing="chevron-down">Association</flux:navbar.item>
 
                 <flux:navmenu>
-                    <flux:navmenu.item href="#">About</flux:navmenu.item>
+                    <flux:navmenu.item :href="route('association.about')">About</flux:navmenu.item>
                     <flux:navmenu.item href="#">Team</flux:navmenu.item>
                     <flux:navmenu.item href="#">Membership</flux:navmenu.item>
                     <flux:navmenu.item href="#">Become a member</flux:navmenu.item>
@@ -74,6 +78,9 @@
         </flux:sidebar.item>
         <flux:sidebar.item :href="route('association.sponsors')"
                            :current="request()->routeIs('association.sponsors')">Sponsors
+        </flux:sidebar.item>
+        <flux:sidebar.item :href="route('association.about')"
+                           :current="request()->routeIs('association.about')">About
         </flux:sidebar.item>
 
         @if (false)

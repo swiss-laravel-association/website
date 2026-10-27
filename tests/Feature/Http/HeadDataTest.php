@@ -36,7 +36,7 @@ function jsonLdOfType(string $html, string $type, ?string $name = null): ?array
 it('renders default head tags on the homepage', function (): void {
     get(route('home'))
         ->assertOk()
-        ->assertSee('<title>Swiss Laravel Association</title>', false)
+        ->assertSee('<title>Swiss Laravel Association | Laravel Meetups in Switzerland</title>', false)
         ->assertSee('rel="canonical"', false)
         ->assertSee('property="og:site_name"', false)
         ->assertSee('property="og:image"', false)

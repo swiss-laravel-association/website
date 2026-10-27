@@ -18,6 +18,10 @@ class SpeakersTable
             ->columns([
                 TextColumn::make('name')
                     ->searchable(),
+                TextColumn::make('talks_count')
+                    ->label('Talks')
+                    ->counts('talks')
+                    ->sortable(),
             ])
             ->recordActions([
                 EditAction::make(),

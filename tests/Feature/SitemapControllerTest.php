@@ -18,6 +18,7 @@ it('includes the public static pages', function (): void {
     $response = get(route('sitemap'))->assertOk();
 
     $response->assertSee(route('home'), false);
+    $response->assertSee(route('association.about'), false);
     $response->assertSee(route('association.sponsors'), false);
     $response->assertSee(route('blog.index'), false);
     $response->assertSee(route('events.index'), false);
